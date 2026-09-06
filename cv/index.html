@@ -9,10 +9,10 @@
 
 </head>
 <body>
-  <div class="content-wrapper">
-    <div id="header-placeholder"></div>
-    <script src="/general/header/header-loader.js"></script>
+  <div id="header-placeholder"></div>
+  <script src="/general/header/header-loader.js"></script>
 
+  <main>
     <h1>Curriculum Vitae</h1>
 
     <div class="cv-wrapper">
@@ -26,19 +26,11 @@
         <button class="fancy-button" onclick="loadPDF(this, '/cv/CV-dutch.pdf')">View PDF here</button>
       </div>
     </div>
-  </div>
-
-  <script>
-    function loadPDF(button, pdfUrl) {
-      const container = document.createElement('div');
-      container.className = 'pdf-container';
-      container.innerHTML = `<iframe src="${pdfUrl}"></iframe>`;
-      button.replaceWith(container);
-    }
-  </script>
+  </main>
 
   <div id="footer-placeholder"></div>
 
   <script src="/general/footer/footer-loader.js"></script>
+  <script src="/cv/load-pdf.js"></script>
 </body>
 </html>

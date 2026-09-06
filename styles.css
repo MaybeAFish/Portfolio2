@@ -23,12 +23,17 @@
   font-family: inherit;
 }
 
+main {
+    flex: 1;
+}
+
 html {
   scrollbar-gutter: stable;
 }
 html,
 body {
   height: 100%;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
 }
@@ -60,12 +65,4 @@ h2 {
   font-weight: normal;
   color: var(--text-color-muted);
   margin-top: 0;
-}
-
-.content-wrapper {
-  flex: 1 0 auto;
-  margin: 0 auto;
-  padding: 0px 0px 70px 0px;
-  width: 100%;
-  max-width: 1300px;
 }
