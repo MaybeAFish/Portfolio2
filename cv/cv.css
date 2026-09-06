@@ -1,0 +1,57 @@
+.fancy-button {
+  position: relative;
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: inherit; 
+  color: #f0f0f0;
+  background-color: #111;
+  border: 2px solid #333;
+  border-radius: 0.6rem;
+  text-align: center;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 0;
+  transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 80px rgba(0, 255, 255, 0.05);
+  cursor: pointer;
+}
+
+.fancy-button:hover {
+  transform: scale(1.01);
+  color: var(--standout-color-green);
+  border-color: var(--standout-color-green);
+  box-shadow: 0 0 12px rgba(3, 245, 168, 0.2);
+}
+
+.fancy-button:active {
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+  border-color: cyan;
+  color: cyan;
+}
+
+.fancy-button span {
+  position: relative;
+  display: inline-block;
+}
+
+.fancy-button span::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  transform: translateX(-50%);
+  background-color: var(--standout-color-green);
+  background-color: currentColor;
+  transition: width 0.2s ease;
+}
+
+.fancy-button:hover span::after {
+  width: 100%;
+}
+.fancy-button:active span::after {
+  background-color: cyan;
+}

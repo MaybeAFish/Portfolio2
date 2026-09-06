@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amine El Hammdaoui – CV</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/cv/cv.css" />
+  <style>
+    .cv-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      padding: 2rem 1rem;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+      align-items: center;
+    }
+
+    @media (max-width: 600px) {
+      .cv-wrapper {
+        padding: 1rem 0.5rem;
+        gap: 1.5rem;
+      }
+    }
+
+    .cv-section {
+      width: 100%;
+    }
+
+    .pdf-container iframe {
+      width: 100%;
+      height: 800px;
+      border: none;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <div id="header-placeholder"></div>
+    <script src="/general/header/header-loader.js"></script>
+
+    <h1 class="outlined-heading">Curriculum Vitae</h1>
+
+    <div class="cv-wrapper">
+      <!-- English CV -->
+      <div class="cv-section" style="background-color: var(--supporting-background-color); padding: 1.5rem; border-radius: 10px; text-align: center;">
+        <h2>English Version</h2>
+        <button class="fancy-button" style="display: block; margin: 0 auto;" onclick="loadPDF(this, '/cv/CV-english.pdf')">View PDF here</button>
+      </div>
+
+      <!-- Dutch CV -->
+      <div class="cv-section" style="background-color: var(--supporting-background-color); padding: 1.5rem; border-radius: 10px; text-align: center;">
+        <h2>Dutch Version</h2>
+        <button class="fancy-button" style="display: block; margin: 0 auto;" onclick="loadPDF(this, '/cv/CV-dutch.pdf')">View PDF here</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function loadPDF(button, pdfUrl) {
+      const container = document.createElement('div');
+      container.className = 'pdf-container';
+      container.innerHTML = `<iframe src="${pdfUrl}"></iframe>`;
+      button.replaceWith(container);
+    }
+  </script>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/general/footer/footer-loader.js"></script>
+</body>
+</html>

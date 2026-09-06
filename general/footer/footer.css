@@ -1,0 +1,11 @@
+.site-footer {
+  padding: 1.5rem 1rem;
+  background: var(--supporting-background-color);
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.site-footer p {
+  margin: 0;
+}
