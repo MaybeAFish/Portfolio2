@@ -1,0 +1,125 @@
+.profile-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 42px;
+    max-width: 1000px;
+    margin: 60px auto 80px;
+    padding: 0 30px;
+    text-align: left;
+}
+
+.profile-picture {
+    display: block;
+    width: 180px;
+    height: 180px;
+    margin: 0;
+    object-fit: cover;
+    border: 5px solid white;
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.profile-picture:hover {
+    border-color: var(--standout-color-green);
+    transform: scale(1.02);
+}
+.profile-picture:active {
+    border-color: var(--standout-color-cyan);
+}
+
+/* About me button effect */
+body:has(.profile-picture:hover) #about-nav {
+  color: var(--standout-color-green);
+}
+body:has(.profile-picture:hover) #about-nav::after {
+    width: 100%;
+    background-color: var(--standout-color-green);
+}
+body:has(.profile-picture:active) #about-nav {
+    color: var(--standout-color-cyan);
+}
+body:has(.profile-picture:active) #about-nav::after {
+    width: 100%;
+    background-color: var(--standout-color-cyan);
+}
+
+.profile-info h1 {
+    margin: 0;
+    text-align: left;
+}
+
+.profile-info h2 {
+    margin: 8px 0 20px;
+    text-align: left;
+}
+
+.social-links {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.social-label {
+    padding: 0;
+    margin: 0;
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+
+    text-decoration: none;
+    color: var(--text-color-muted);
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+}
+
+.social-links svg {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transform-origin: center;
+}
+.social-label:nth-child(2) svg {
+    width: 21px;
+    height: 21px;
+}
+.social-label:nth-child(3) svg {
+    width: 21px;
+    height: 21px;
+}
+.social-label p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.social-label::after {
+    bottom: -6px !important;
+}
+.social-label.active {
+    color: var(--standout-color-cyan) !important;
+}
+
+.social-label.active::after {
+    background-color: var(--standout-color-cyan) !important;
+}
+
+@media (max-width: 768px) {
+  .profile-banner {
+    flex-direction: column;
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .profile-info h1,
+  .profile-info h2 {
+    text-align: center;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}

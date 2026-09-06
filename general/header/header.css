@@ -97,6 +97,15 @@ nav a.selected::after {
   background-color: var(--standout-color-cyan);
 }
 
+#about-nav.hover {
+  color: var(--standout-color-green);
+}
+
+#about-nav.hover::after {
+  width: 100%;
+  background-color: var(--standout-color-green);
+}
+
 @media (max-width: 768px) {
   .nav-container {
     gap: 4px;

@@ -1,38 +1,43 @@
 @import "projects/project-cards.css";
+@import "projects/profile.css";
+@import "general/carousel/carousel.css";
 @import "general/header/header.css";
 @import "general/footer/footer.css";
 @import "general/scrollbar.css";
 @import "general/dropdown.css";
+@import "general/underline-hover.css";
+@import "general/button.css";
 
 :root {
-    --standout-color-cyan: #47cbd2;
-    --standout-color-green: #58b550;
-    --supporting-background-color: #3b3b3b;
-    --main-background-color: #212121;
-    --text-color: #e0e0e0;
-    --text-color-muted: #a5a5a5;
+  --standout-color-cyan: #47cbd2;
+  --standout-color-green: #58b550;
+  --supporting-background-color: #3b3b3b;
+  --main-background-color: #212121;
+  --text-color: #e0e0e0;
+  --text-color-muted: #a5a5a5;
 
-    --header-height: 100px;
+  --header-height: 100px;
 }
 
 * {
-    font-family: inherit;
+  font-family: inherit;
 }
 
 html {
-    scrollbar-gutter: stable;
+  scrollbar-gutter: stable;
 }
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 body {
-    display: flex;
-    flex-direction: column;
-    background: var(--main-background-color);
-    color: var(--text-color);
-    font-family: "Salsa", cursive;
+  display: flex;
+  flex-direction: column;
+  background: var(--main-background-color);
+  color: var(--text-color);
+  font-family: "Salsa", cursive;
 }
 
 a {
@@ -44,23 +49,23 @@ p {
   line-height: 1.3;
 }
 h1 {
-    font-size: 2.2rem;
-    text-align: center;
-    color: var(--text-color);
-    margin: 0;
+  font-size: 2.2rem;
+  text-align: center;
+  color: var(--text-color);
+  margin: 0;
 }
 h2 {
-    font-size: 1.8rem;
-    text-align: center;
-    font-weight: normal;
-    color: var(--text-color-muted);
-    margin-top: 0;
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: normal;
+  color: var(--text-color-muted);
+  margin-top: 0;
 }
 
 .content-wrapper {
-    flex: 1 0 auto;
-    margin: 0 auto;
-    padding: 0px 0px 70px 0px;
-    width: 100%;
-    max-width: 1300px;
+  flex: 1 0 auto;
+  margin: 0 auto;
+  padding: 0px 0px 70px 0px;
+  width: 100%;
+  max-width: 1300px;
 }

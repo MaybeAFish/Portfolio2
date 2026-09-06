@@ -1,0 +1,142 @@
+.carousel {
+  --carousel-accent: var(--standout-color-green);
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto 90px;
+  padding: 28px;
+  background: color-mix(
+    in srgb,
+    var(--carousel-accent) 22%,
+    var(--supporting-background-color)
+  );
+  border: 1px solid color-mix(in srgb, var(--carousel-accent) 55%, white 10%);
+  border-radius: 20px;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.carousel[data-category="development"] {
+  --carousel-accent: var(--standout-color-cyan);
+}
+
+.carousel-track {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory; /* for snapping effect */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+  scroll-behavior: smooth; /* smooth scroll in modern browsers */
+}
+.carousel-track {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.carousel-slide {
+  flex: 0 0 100%; /* slide takes full carousel width */
+  scroll-snap-align: start;
+  box-sizing: border-box;
+  padding: 12px;
+  text-align: center;
+}
+
+.carousel-slide h3 {
+  margin: 0 0 8px;
+  color: white;
+  font-size: 1.55rem;
+}
+
+.carousel-slide p {
+  max-width: 620px;
+  margin: 0 auto 22px;
+  color: var(--text-color);
+}
+
+.carousel-visual {
+  display: grid;
+  place-items: center;
+  min-height: 190px;
+  padding: 20px;
+  color: var(--main-background-color);
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid white;
+  border-radius: 12px;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: bold;
+}
+
+.carousel-visual img,
+.carousel-visual iframe {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: 190px;
+  object-fit: contain;
+  border: 0;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.carousel-button {
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 10px;
+}
+
+.carousel-dot {
+  padding: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.carousel-controls > button {
+  min-width: 38px;
+  min-height: 38px;
+}
+
+.carousel:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+
+.carousel-dot.active {
+  background: white;
+  transform: scale(1.7);
+}
+
+@media (max-width: 600px) {
+  .carousel {
+    padding: 18px 10px;
+  }
+
+  .carousel-visual,
+  .carousel-visual img,
+  .carousel-visual iframe {
+    min-height: 145px;
+    height: 145px;
+  }
+}
