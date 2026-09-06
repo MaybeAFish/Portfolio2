@@ -6,59 +6,24 @@
   <title>Amine El Hammdaoui – CV</title>
   <link rel="stylesheet" href="/styles.css" />
   <link rel="stylesheet" href="/cv/cv.css" />
-  <style>
-    .cv-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 3rem;
-      padding: 2rem 1rem;
-      margin: 0 auto;
-      width: 100%;
-      box-sizing: border-box;
-      align-items: center;
-    }
 
-    @media (max-width: 600px) {
-      .cv-wrapper {
-        padding: 1rem 0.5rem;
-        gap: 1.5rem;
-      }
-    }
-
-    .cv-section {
-      width: 100%;
-    }
-
-    .pdf-container iframe {
-      width: 100%;
-      height: 800px;
-      border: none;
-    }
-
-    body {
-      display: flex;
-      flex-direction: column;
-    }
-  </style>
 </head>
 <body>
   <div class="content-wrapper">
     <div id="header-placeholder"></div>
     <script src="/general/header/header-loader.js"></script>
 
-    <h1 class="outlined-heading">Curriculum Vitae</h1>
+    <h1>Curriculum Vitae</h1>
 
     <div class="cv-wrapper">
-      <!-- English CV -->
-      <div class="cv-section" style="background-color: var(--supporting-background-color); padding: 1.5rem; border-radius: 10px; text-align: center;">
+      <div class="cv-section">
         <h2>English Version</h2>
-        <button class="fancy-button" style="display: block; margin: 0 auto;" onclick="loadPDF(this, '/cv/CV-english.pdf')">View PDF here</button>
+        <button class="fancy-button" onclick="loadPDF(this, '/cv/CV-english.pdf')">View PDF here</button>
       </div>
 
-      <!-- Dutch CV -->
-      <div class="cv-section" style="background-color: var(--supporting-background-color); padding: 1.5rem; border-radius: 10px; text-align: center;">
+      <div class="cv-section">
         <h2>Dutch Version</h2>
-        <button class="fancy-button" style="display: block; margin: 0 auto;" onclick="loadPDF(this, '/cv/CV-dutch.pdf')">View PDF here</button>
+        <button class="fancy-button" onclick="loadPDF(this, '/cv/CV-dutch.pdf')">View PDF here</button>
       </div>
     </div>
   </div>
