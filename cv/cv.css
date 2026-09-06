@@ -4,7 +4,6 @@
   padding: 0.8rem 1.8rem;
   font-size: 1.2rem;
   font-weight: bold;
-  font-family: inherit; 
   color: #f0f0f0;
   background-color: #111;
   border: 2px solid #333;
@@ -14,7 +13,6 @@
   overflow: hidden;
   z-index: 0;
   transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 80px rgba(0, 255, 255, 0.05);
   cursor: pointer;
 }
 
@@ -22,13 +20,12 @@
   transform: scale(1.01);
   color: var(--standout-color-green);
   border-color: var(--standout-color-green);
-  box-shadow: 0 0 12px rgba(3, 245, 168, 0.2);
 }
 
 .fancy-button:active {
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-  border-color: cyan;
-  color: cyan;
+  box-shadow: 0 0 20px var(--standout-color-cyan);
+  border-color: var(--standout-color-cyan);
+  color: var(--standout-color-cyan);
 }
 
 .fancy-button span {
