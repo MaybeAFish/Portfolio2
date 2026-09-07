@@ -1,45 +1,33 @@
 .like-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
-  max-width: 1080px;
-  padding: 0;
-  background: #2a302d;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 8px;
-  overflow: hidden;
+
+  background: var(--supporting-background-color);
+  border-radius: var(--border-radius);
 }
 .likes-column {
   padding: 42px clamp(24px, 5vw, 70px);
 }
 .likes-column + .likes-column {
-  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 1px solid var(--main-background-color);
 }
-.likes-column h2 {
-  margin: 8px 0 24px;
-  text-align: left;
-  color: white;
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-}
+
+/* Bullet points */
 .likes-column ul {
   display: grid;
   gap: 14px;
   padding: 0;
-  margin: 0;
-  list-style: none;
 }
 .likes-column li {
   display: flex;
   gap: 12px;
-  color: #d8ddd8;
-  line-height: 1.4;
 }
 .likes-column li::before {
   content: "+";
-  color: var(--standout-color-green);
+  color: lime;
   font-weight: bold;
 }
-.dislikes .section-kicker,
 .dislikes li::before {
-  color: #f29a67;
+  content: "–";
+  color: red;
 }
