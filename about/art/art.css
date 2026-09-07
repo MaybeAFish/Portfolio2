@@ -1,0 +1,31 @@
+.art-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.art-grid figure {
+  aspect-ratio: 1;
+  margin: 0;
+  position: relative;
+}
+
+.art-grid img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+
+  image-rendering: pixelated;
+  filter: saturate(0.75);
+
+  transition:
+    transform 0.4s ease,
+    filter 0.4s ease;
+}
+
+.art-grid figure:hover img {
+  transform: scale(1.08);
+  filter: saturate(1);
+}
+

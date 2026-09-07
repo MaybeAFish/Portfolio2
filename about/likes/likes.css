@@ -11,6 +11,9 @@
 .likes-column + .likes-column {
   border-left: 1px solid var(--main-background-color);
 }
+.likes-column h1 {
+  margin-bottom: 16px;
+}
 
 /* Bullet points */
 .likes-column ul {

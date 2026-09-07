@@ -14,7 +14,7 @@ sections.forEach(async (slot) => {
 });
 
 function initialiseGameCharacters() {
-  const preview = document.querySelector(".character-preview");
+  const preview = document.querySelector(".hover-preview");
 
   function positionPreview(event) {
     const margin = 18;
@@ -34,7 +34,7 @@ function initialiseGameCharacters() {
   }
 
   document.querySelectorAll(".game-card").forEach((card) => {
-    const previewTemplate = card.querySelector(".game-preview");
+    const previewTemplate = card.querySelector(".game-hover");
 
     if (!previewTemplate) {
       return;
