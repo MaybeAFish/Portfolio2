@@ -5,18 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amine El Hammdaoui – About</title>
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/about/about.css" />
+
+
+    <link rel="stylesheet" href="/about/intro/intro.css" />
+    <link rel="stylesheet" href="/about/testimonials/testimonials.css" />
+    <link rel="stylesheet" href="/about/fav_games/fav_games.css" />
+    <link rel="stylesheet" href="/about/likes/likes.css" />
+    <link rel="stylesheet" href="/about/pixelart/pixelart.css" />
 </head>
 <body>
     <div id="header-placeholder"></div>
     <script src="/general/header/header-loader.js"></script>
 
-    <main>
-        <h1 class="page-heading">About</h1>
-        <p>I'm a game development student at the Amsterdam University of Applied Sciences, interested in thoughtful design and maintainable technology.</p>
-        <p>My work combines gameplay, systems programming, and the craft of making interactive experiences feel clear and rewarding.</p>
+    <main class="about-page">
+        <div class="about-section-slot" data-section="intro"></div>
+        <div class="about-section-slot" data-section="testimonials"></div>
+        <div class="about-section-slot" data-section="fav_games"></div>
+        <div class="about-section-slot" data-section="likes"></div>
+        <div class="about-section-slot" data-section="pixelart"></div>
     </main>
 
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
+    <script src="/about/about.js"></script>
 </body>
 </html>
