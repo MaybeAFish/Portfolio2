@@ -6,6 +6,7 @@ sections.forEach(async (slot) => {
 
   if (response.ok) {
     slot.innerHTML = await response.text();
+    slot.querySelectorAll(".carousel").forEach(setupCarousel);
   }
 
   if (sectionName === "fav_games") {

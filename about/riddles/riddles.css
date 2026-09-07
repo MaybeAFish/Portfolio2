@@ -1,0 +1,32 @@
+.riddles-carousel {
+    margin-top: 24px;
+}
+
+.riddle-text {
+    max-width: 720px;
+    margin: 20px auto;
+    padding: 24px;
+    background: var(--main-background-color);
+    border-radius: 12px;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.riddle-text + p {
+    margin-bottom: 16px;
+}
+
+.riddle-carousel details {
+    margin-top: 10px;
+}
+
+.riddles-carousel details summary {
+    display: inline-block;
+    cursor: pointer;
+    color: var(--standout-color-green);
+}
+
+.riddles-carousel details p {
+    margin-top: 12px;
+    margin-bottom: 0;
+}
