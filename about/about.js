@@ -1,17 +1,28 @@
 const sections = document.querySelectorAll("[data-section]");
+Promise.all(
+  [...sections].map(async (slot) => {
+    const sectionName = slot.dataset.section;
+    const response = await fetch(`/about/${sectionName}/${sectionName}.html`);
 
-sections.forEach(async (slot) => {
-  const sectionName = slot.dataset.section;
-  const response = await fetch(`/about/${sectionName}/${sectionName}.html`);
+    if (response.ok) {
+      slot.innerHTML = await response.text();
+      slot.querySelectorAll(".carousel").forEach(setupCarousel);
+    }
 
-  if (response.ok) {
-    slot.innerHTML = await response.text();
-    slot.querySelectorAll(".carousel").forEach(setupCarousel);
+    if (sectionName === "fav_games") {
+      initialiseGameCharacters();
+    }
+  }),
+).then(() => {
+  const savedScroll = sessionStorage.getItem("about-scroll");
+
+  if (savedScroll !== null) {
+    window.scrollTo(0, Number(savedScroll));
   }
+});
 
-  if (sectionName === "fav_games") {
-    initialiseGameCharacters();
-  }
+window.addEventListener("scroll", () => {
+  sessionStorage.setItem("about-scroll", String(window.scrollY));
 });
 
 function initialiseGameCharacters() {
