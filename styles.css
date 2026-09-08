@@ -1,3 +1,6 @@
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=Salsa&display=swap"); 
+
 @import "projects/project-cards.css";
 @import "projects/profile.css";
 @import "general/carousel/carousel.css";
