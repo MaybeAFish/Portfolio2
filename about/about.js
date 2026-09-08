@@ -76,20 +76,29 @@ function initialiseGameCharacters() {
 function initialiseEyeball() {
   const eyeball = document.querySelector(".eyeball");
 
-  document.addEventListener("mousemove", (event) => {
+  function updateEyeball(x, y) {
     const rect = eyeball.getBoundingClientRect();
 
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
 
-    const x = event.clientX - centerX;
-    const y = event.clientY - centerY;
-
-    const angle = Math.atan2(y, x) - Math.PI / 2;
+    const angle = Math.atan2(y - centerY, x - centerX) - Math.PI / 2;
 
     eyeball.style.transform = `rotate(${angle}rad)`;
+  }
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    updateEyeball(mouseX, mouseY);
   });
+  window.addEventListener("scroll", () => updateEyeball(mouseX, mouseY));
+  window.addEventListener("resize", () => updateEyeball(mouseX, mouseY));
 }
+
 // function logAnimations() {
 //   document.querySelectorAll("model-viewer").forEach((model) => {
 //     model.addEventListener("load", () => {
