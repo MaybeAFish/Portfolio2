@@ -1,0 +1,216 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+html {
+  scrollbar-gutter: auto;
+}
+
+/* Loading screen */
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+}
+
+.loading-content {
+  max-width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#loading-text {
+  font-size: 3em;
+  margin-bottom: 30px;
+  white-space: nowrap;
+}
+
+.loading-bar-container {
+  width: 300px;
+  max-width: 80vw;
+  height: 20px;
+  background-color: #444;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+#loading-bar {
+  width: 0%;
+  height: 100%;
+  background-color: #00ff00;
+  transition: width 0.3s ease;
+}
+
+/* Game container stuff */
+#game-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  z-index: 1;
+}
+
+#game-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#player-coordinates {
+  padding: 5px 5px;
+  margin-bottom: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  border-radius: 5px;
+  z-index: 100;
+}
+
+#minimap-container {
+  position: absolute;
+  align-items: center;
+  top: 1rem;
+  right: 1rem;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#minimap-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#minimap-itself {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  z-index: 4;
+  pointer-events: none;
+
+  transform-origin: center;
+}
+
+#minimap-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, -50%) rotate(0deg);
+  transform-origin: center center;
+  pointer-events: none;
+  z-index: 6;
+}
+
+/* World map legend */
+.world-map-legend {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 0px 5px;
+  font-size: 16px;
+  color: white;
+  width: fit-content;
+
+  z-index: 150;
+  max-height: 600px;
+  overflow-y: auto;
+}
+.legend-group-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 0 0 0;
+  padding: 12px 0;
+  user-select: none;
+}
+.legend-group-header:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.legend-group-header input[type="checkbox"] {
+  pointer-events: none; /* disable direct clicks on checkbox so only container handles */
+  width: 18px;
+  height: 18px;
+  margin-left: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0px 0 0px 30px;
+  padding: 5px 10px 5px 0;
+  cursor: pointer;
+  user-select: none;
+}
+.legend-item:last-child {
+  margin-bottom: 5px;
+}
+.legend-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+}
+.legend-item input[type="checkbox"] {
+  pointer-events: none;
+  width: 18px;
+  height: 18px;
+  margin-left: 10px;
+}
+
+.legend-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.legend-dot img {
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+}
+.legend-group ul {
+  margin: 0;
+  padding: 0;
+}
+#close-map-btn {
+  z-index: 200;
+}

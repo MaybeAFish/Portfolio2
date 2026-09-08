@@ -1,0 +1,88 @@
+.settings-menu-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background-color: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 400;
+}
+
+.settings-menu-container {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.settings-menu-header {
+  background: #444;
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settings-tabs {
+  display: flex;
+  gap: 12px;
+}
+
+.tab-button {
+  background: #222;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tab-button.active {
+  background: #555;
+}
+
+.close-button {
+  background: #aa3333;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.settings-menu-content {
+  background: #333;
+  padding: 24px;
+  border-radius: 16px;
+  color: white;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active-tab {
+  display: block;
+}
+
+#controls-tab label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+
+#fps-display {
+  position: fixed;
+  font-size: 2rem;
+  top: 50px;
+  left: 10px;
+  color: white;
+  z-index: 300;
+  display: none;
+  pointer-events: none;
+  user-select: none;
+}

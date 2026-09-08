@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amine El Hammdaoui – Game</title>
+  <link rel="stylesheet" href="/styles.css"/>
+  <link rel="stylesheet" href="/game/character-select.css"/>
+  <link rel="stylesheet" href="/game/settings.css"/>
+  <link rel="stylesheet" href="/game/scene-tutorial.css"/>
+  <link rel="stylesheet" href="/game/scene-game.css"/>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js",
+      "three/examples/jsm/loaders/GLTFLoader": "https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/loaders/GLTFLoader.js"
+    }
+  }
+  </script>
+  
+</head>
+<body>
+  <div class="content-wrapper">
+    <!-- Start -->
+    <div id="character-select">
+      <div id="iridescence-container" class="iridescence-container"></div>
+      <script type="module" src="/game/character-select/iridescent.js"></script>
+      <button id="play-game-button" class="about-button fancy-button" type="button">
+        Play The Underground
+      </button>
+    </div>
+
+    <!-- Actual game stuff -->
+    <div id="game-container" style="width: 100%; height: 100vh; display: none;">
+      <!-- Interact button [E] -->
+      <button id="interact-button" class="fancy-button" style="display: none; position: absolute; z-index: 100;"></button>
+      <button id="fullscreen-button" class="about-button fancy-button" type="button" style="position: absolute; top: 10px; left: 10px; z-index: 300;">
+        Fullscreen [F]
+      </button>
+      <!-- Settings button top-left -->
+      <button id="settings-button" class="about-button fancy-button" style="position: absolute; top: 10px; left: 150px; z-index: 300;">
+        Settings [P]
+      </button>
+      <div id="fps-display"></div>
+      <!-- Tutorial -->
+      <div id="tutorial-box">
+        <!-- <div id="tutorial-title" style="font-size: 2rem;">Tutorial</div> -->
+        <div id="tutorial-text"></div>
+        <img id="tutorial-image" src="" alt="tutorial image" style="display: none;">
+      </div>
+
+      <!-- Minimap stuff -->
+      <div id="minimap-container">
+        <div id="minimap-content">
+          <div id="player-coordinates" style="display: none;"></div>
+
+          <div id="minimap-itself">
+            <canvas id="minimap-canvas" width="200" height="200"></canvas>
+            <img id="minimap-arrow" class="arrow" src="/game/map/arrow.png" alt="Player Arrow"/>
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" id="minimap-icons-container"></div>
+          </div>
+
+          <div id="map-toggle" class="about-button fancy-button" style="margin-top: 20px;">
+            Open Map [M]
+          </div>
+        </div>
+      </div>
+      <!-- Entire map -->
+      <div id="full-map-overlay" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:#222;">
+        <canvas id="full-map-canvas" style="background:#333; display:block; width:100vw; height:100vh;"></canvas>
+        <img id="world-map-arrow" class="arrow" src="/game/map/arrow.png" alt="Player Arrow" />
+        <div class="world-map-legend"></div>
+
+        <button id="close-map-btn" class="about-button fancy-button"
+                style="position:absolute; top:80px; left:50%; transform:translateX(-50%);">
+          Close Map [M]
+        </button>
+      </div>
+      <!-- Settings menu overlay, hidden by default -->
+       <div id="settings-menu" class="settings-menu-overlay" style="display: none;">
+        <div class="settings-menu-container">
+          
+          <div class="settings-menu-header">
+            <div class="settings-tabs">
+              <button class="tab-button active" data-tab="visual-tab">Visual</button>
+              <button class="tab-button" data-tab="audio-tab">Audio</button>
+              <button class="tab-button" data-tab="controls-tab">Controls</button>
+              <button class="tab-button" data-tab="accessibility-tab">Accessibility</button>
+            </div>
+            <button id="close-settings" class="close-button">✖</button>
+          </div>
+
+          <div class="settings-menu-content">
+            <div id="visual-tab" class="tab-content active-tab">
+              <label><input type="checkbox" id="show-fps"> Show FPS</label><br><br>
+              <label><input type="checkbox" id="toggle-shadows"> Enable Shadows</label><br><br>
+              <label>Model Quality: (NOT IMPLEMENTED)
+                <select id="model-quality">
+                  <option value="low">Low</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="high">High</option>
+                </select>
+              </label>
+            </div>
+            <div id="audio-tab" class="tab-content">
+              <label>Master Volume: <input type="range" min="0" max="1" step="0.01" id="volume-master"></label><br><br>
+              <label>Music Volume: <input type="range" min="0" max="1" step="0.01" id="volume-music"></label><br><br>
+              <label>SFX Volume: <input type="range" min="0" max="1" step="0.01" id="volume-sfx"></label><br><br>
+            </div>
+            <div id="controls-tab" class="tab-content">
+              <label>FOV (NOT IMPLEMENTED): <input type="range" min="0.1" max="2" step="0.1" id="camera-sensitivity"></label><br><br>
+              <label>Camera Rotation Speed: <input type="range" min="0.1" max="2" step="0.1" id="camera-sensitivity"></label><br><br>
+              
+              <label>Move Forward: <input type="text" id="forward-key" readonly></label>
+              <label>Move Backward: <input type="text" id="backward-key" readonly></label>
+              <label>Move Left: <input type="text" id="left-key" readonly></label>
+              <label>Move Right: <input type="text" id="right-key" readonly></label>
+              <label>Jump: <input type="text" id="jump-key" value="Space" readonly></label>
+
+              <label>Interact: <input type="text" id="interact-key" readonly></label>
+              <label>Open/Close World Map: <input type="text" id="map-key" readonly></label>
+              <label>Open/Close Settings: <input type="text" id="settings-key" readonly></label>
+              <label>Toggle Fullscreen: <input type="text" id="fullscreen-key" readonly></label>
+
+            </div>
+            <div id="accessibility-tab" class="tab-content">
+              <label><input type="checkbox" id="subtitles">Enable Subtitles (NOT IMPLEMENTED)</label><br><br>
+              <label>Text Size:
+                <select id="text-size">
+                  <option value="small">Small</option>
+                  <option value="normal">Normal</option>
+                  <option value="large">Large</option>
+                </select>
+              </label><br><br>
+              <label>Colorblind Mode:
+                <select id="colorblind-mode">
+                  <option value="none">None</option>
+                  <option value="deuteranopia">Deuteranopia (green-weak)</option>
+                  <option value="protanopia">Protanopia (red-weak)</option>
+                  <option value="tritanopia">Tritanopia (blue-weak)</option>
+                </select>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- Loading -->
+    <div id="loading-overlay">
+      <div class="loading-content">
+        <div id="loading-text">Loading...</div>
+        <div class="loading-bar-container">
+          <div id="loading-bar"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module">
+    import { startGame } from '/game/sketch.js';
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key.toLowerCase() !== 'f' || event.repeat) return;
+
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      }
+    });
+
+    document.getElementById('play-game-button').addEventListener('click', async (event) => {
+      const button = event.currentTarget;
+      button.disabled = true;
+
+      const launchSound = new Audio('/game/sounds/ui/play-game-button.mp3');
+      launchSound.volume = 0.8;
+      launchSound.play().catch(() => {});
+
+      if (document.documentElement.requestFullscreen) {
+        try {
+          await document.documentElement.requestFullscreen();
+        } catch {
+          // Continue launching when fullscreen is unavailable or denied.
+        }
+      }
+
+      await startGame();
+    });
+  </script>
+</body>
+</html>

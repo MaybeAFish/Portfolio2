@@ -1,0 +1,68 @@
+#scene-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 1000;
+}
+
+#start-scene-content {
+  display: none;
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1001;
+  text-align: center;
+  color: white;
+  font-size: 2.5rem;
+}
+
+.start-scene-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+#btn-no.no-button,
+#btn-yes.yes-button {
+  font-family: inherit; 
+  padding: 1rem 3rem;
+  font-size: 2rem;
+  background: transparent;
+  border-radius: 12px;
+}
+#btn-no.no-button {
+  color: darkred;
+  border: 2px solid darkred;
+  transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+}
+
+#btn-yes.yes-button {
+  color: darkgreen;
+  border: 2px solid darkgreen;
+  transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+}
+
+/* On hover */
+#btn-no.no-button:hover,
+#btn-no.no-button:focus,
+#btn-no.no-button:active {
+  color: var(--supporting--color-green);
+  border-color: var(--supporting--color-green);
+  background-color: transparent;
+}
+
+#btn-yes.yes-button:hover,
+#btn-yes.yes-button:focus,
+#btn-yes.yes-button:active {
+  color: var(--supporting--color-cyan);
+  border-color: var(--supporting--color-cyan);
+  background-color: transparent;
+}
