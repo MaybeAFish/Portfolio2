@@ -4,21 +4,86 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amine El Hammdaoui – Tetris</title>
-    
+
     <link rel="stylesheet" href="/styles.css"/>
+    <link rel="stylesheet" href="/projects/pages/project-page"/>
   </head>
 
-  <body>  
+  <body>
     <div id="header-placeholder"></div>
     <script src="/general/header/header-loader.js"></script>
 
-    <main>
-      <h1 class="page-heading">Tetris Airconsole</h1>
-      <div class="project-content">
-        <p>Tetris Airconsole is a reimagining of the classic Tetris game, designed for air console play. I developed it to explore the dynamics of mobile gaming and the challenges of translating traditional gameplay into a touch-based interface.</p>
-        <p>The game features a clean, intuitive interface and smooth, responsive controls.</p>
-        <p>Check out the game on <a href="https://maybeafish.itch.io/tetris-airconsole" target="_blank" rel="noopener noreferrer">itch.io</a>.</p>
-      </div>
+    <main class="page-shell project-page">
+      <article class="project-article">
+        <p>Official Tetris title • AirConsole • Wanted 5 Games</p>
+        <h1>Tetris Airconsole</h1>
+
+        <div class="project-lead">
+          <p>
+            Tetris Airconsole is an official Tetris title built for an in-car multiplayer experience,
+            where players connect through their phones and interact with the game on a shared screen.
+            The project was created by Wanted 5 Games, later rebranded as Wanted Game Studio,
+            and I was lucky enough to intern during its development.
+          </p>
+        </div>
+
+        <div class="project-meta">
+          <div class="project-meta-item">
+            <span>Studio</span>
+            <strong>Wanted 5 Games</strong>
+          </div>
+          <div class="project-meta-item">
+            <span>Role</span>
+            <strong>Gameplay & UI Intern</strong>
+          </div>
+          <div class="project-meta-item">
+            <span>Platform</span>
+            <strong>AirConsole / Car Play</strong>
+          </div>
+        </div>
+
+        <section class="project-section">
+          <h2>What I added</h2>
+          <p>
+            I implemented, tested, and iterated on a wide range of multiplayer gameplay and UX systems,
+            helping the team support disconnect scenarios, controller flow, and responsive in-game feedback.
+          </p>
+          <ul>
+            <li>Worked closely with the creative director to test and solve disconnect and reconnect edge cases.</li>
+            <li>Handled disconnects in singleplayer, including auto-pausing and lobby timeouts when other players were waiting.</li>
+            <li>Supported player rejoin flows mid-game, including wait states for late joiners and correct UI states on controller devices.</li>
+            <li>Implemented timeout-based disconnect handling and competitive-mode pause logic with synchronized player feedback.</li>
+            <li>Designed the flow where a disconnected player’s board shows a “Disconnected” state while still allowing them to continue if they reconnect before dying.</li>
+            <li>Managed reconnection timing rules, including the 3-second resume delay and waiting for multiple disconnects to recover.</li>
+            <li>Built the phone-side hold preview, showing the current Tetris piece before it is used.</li>
+            <li>Implemented UI and UX transitions across screen and controller devices, including subtle motion, masking, and mode-switch feedback.</li>
+            <li>Created the double and triple clear feedback popups for 2-line and 3-line clears.</li>
+            <li>Added multiple controller UX improvements, including the carousel flow and horizontal-mode support across every interface state.</li>
+            <li>Researched and implemented haptic feedback on both Android and iPhone devices.</li>
+            <li>Built a small prototype to test different buzzer patterns, which the creative director used to communicate the intended feedback language.</li>
+            <li>Added the final haptic feedback implementation for gameplay actions and interactions.</li>
+            <li>Implemented the math and animation for the lightning shader used when sending garbage to opponents.</li>
+            <li>Handled the calculation, keyframing, and timing for the projectile’s start and end states, including its trajectory.</li>
+            <li>Proposed and implemented the level-up animation in Marathon mode, adding feedback where there had previously been none.</li>
+          </ul>
+        </section>
+
+        <section class="project-section">
+          <h2>Screen & controller work</h2>
+          <ul>
+            <li><strong>Screen:</strong> mode button masking, gamemode switch animation, clear feedback popups, and lobby/game-state transitions.</li>
+            <li><strong>Phone:</strong> controller carousel, responsive horizontal layout support, haptics, and feedback-driven interaction polish.</li>
+          </ul>
+        </section>
+
+        <section class="project-section">
+          <h2>Links</h2>
+          <p>
+            You can check out the game on
+            <a href="https://maybeafish.itch.io/tetris-airconsole" target="_blank" rel="noopener noreferrer">itch.io</a>.
+          </p>
+        </section>
+      </article>
     </main>
 
     <div id="footer-placeholder"></div>

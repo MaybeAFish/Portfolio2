@@ -13,9 +13,3 @@
 .skill-detail p:last-child {
   color: var(--text-color-muted);
 }
-.eyebrow {
-  color: var(--standout-color-green);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 14px;
-}
