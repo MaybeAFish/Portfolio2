@@ -90,3 +90,10 @@ function initialiseEyeball() {
     eyeball.style.transform = `rotate(${angle}rad)`;
   });
 }
+// function logAnimations() {
+//   document.querySelectorAll("model-viewer").forEach((model) => {
+//     model.addEventListener("load", () => {
+//       console.log(model.src, model.availableAnimations);
+//     });
+//   });
+// }
