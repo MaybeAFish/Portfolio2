@@ -12,6 +12,9 @@ Promise.all(
     if (sectionName === "fav_games") {
       initialiseGameCharacters();
     }
+    if (sectionName === "art") {
+      initialiseEyeball();
+    }
   }),
 ).then(() => {
   const savedScroll = sessionStorage.getItem("about-scroll");
@@ -25,6 +28,9 @@ window.addEventListener("scroll", () => {
   sessionStorage.setItem("about-scroll", String(window.scrollY));
 });
 
+
+
+// SPECIFIC SHIZZLE
 function initialiseGameCharacters() {
   const preview = document.querySelector(".hover-preview");
 
@@ -64,5 +70,23 @@ function initialiseGameCharacters() {
     card.addEventListener("pointerleave", () => {
       preview.classList.remove("is-visible");
     });
+  });
+}
+
+function initialiseEyeball() {
+  const eyeball = document.querySelector(".eyeball");
+
+  document.addEventListener("mousemove", (event) => {
+    const rect = eyeball.getBoundingClientRect();
+
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const x = event.clientX - centerX;
+    const y = event.clientY - centerY;
+
+    const angle = Math.atan2(y, x) - Math.PI / 2;
+
+    eyeball.style.transform = `rotate(${angle}rad)`;
   });
 }

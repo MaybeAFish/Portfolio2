@@ -29,3 +29,6 @@
   filter: saturate(1);
 }
 
+.eyeball {
+  transition: none !important;
+}
