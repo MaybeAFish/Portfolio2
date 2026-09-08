@@ -1,0 +1,134 @@
+.skills-page {
+    max-width: 1100px;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    padding: 40px 0 80px;
+}
+
+
+.skills-intro {
+    max-width: 650px;
+    margin: 0 auto 60px;
+    text-align: center;
+    color: var(--text-color-muted);
+}
+
+
+/* Categories */
+
+.skills-category {
+    margin-bottom: 70px;
+}
+
+.skills-category h2 {
+    margin-bottom: 28px;
+    color: var(--text-color);
+}
+
+
+/* Skill grid */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+
+/* Cards */
+
+.skill-card {
+    padding: 24px;
+    background: var(--supporting-background-color);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--standout-color-green);
+}
+
+.skill-card h3 {
+    margin: 0 0 10px;
+    color: var(--text-color);
+    font-size: 1.3rem;
+}
+
+.skill-card p {
+    color: var(--text-color-muted);
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+
+/* Tags */
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.skill-tags span {
+    padding: 5px 9px;
+
+    color: var(--text-color);
+    background: var(--main-background-color);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+
+    font-size: 13px;
+}
+
+
+/* Development accent */
+
+.development h2 {
+    color: var(--standout-color-cyan);
+}
+
+.development .skill-card:hover {
+    border-color: var(--standout-color-cyan);
+}
+
+
+/* Design accent */
+
+.design h2 {
+    color: var(--standout-color-green);
+}
+
+
+/* Responsive */
+
+@media (max-width: 850px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .skills-page {
+        width: calc(100% - 24px);
+        padding-top: 25px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-category {
+        margin-bottom: 50px;
+    }
+
+    .skills-intro {
+        margin-bottom: 40px;
+    }
+}

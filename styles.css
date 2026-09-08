@@ -44,9 +44,15 @@ body {
 body {
   display: flex;
   flex-direction: column;
-  background: var(--main-background-color);
-  color: var(--text-color);
+
   font-family: "Salsa", cursive;
+  color: var(--text-color);
+
+  background: var(--main-background-color);
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
 a {
