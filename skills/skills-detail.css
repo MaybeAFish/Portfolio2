@@ -82,10 +82,6 @@
   text-align: left;
 }
 
-.side-navigation-media {
-  margin-top: 1rem;
-}
-
 @media (max-width: 760px) {
   .skill-layout {
     display: block;
