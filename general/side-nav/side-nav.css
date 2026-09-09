@@ -1,10 +1,8 @@
 .side-navigation {
-  flex: 0 0 200px;
-  width: 200px;
+  width: 100%;
   padding-right: 40px;
   margin-top: 1rem;
-  margin-right: 40px;
-
+  box-sizing: border-box;
   border-right: 1px solid var(--supporting-background-color);
 }
 
@@ -16,21 +14,49 @@
 }
 
 .side-navigation-content {
-  display: flex;
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  column-gap: 40px;
+  width: 100%;
+  align-items: start;
+}
+
+.side-navigation-content > div {
+  min-width: 0;
   width: 100%;
 }
-.side-navigation-content > div {
-  flex: 1 1 0;
-  min-width: 0;
-  max-width: 100%;
-  overflow: hidden;
-}
+
 .side-navigation-media {
   display: block;
   width: 100%;
   max-width: 100%;
   height: auto;
   margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+  .side-navigation-content {
+    grid-template-columns: 170px minmax(0, 1fr);
+    column-gap: 24px;
+  }
+
+  .side-navigation {
+    padding-right: 24px;
+  }
+}
+
+@media (max-width: 700px) {
+  .side-navigation-content {
+    display: block;
+  }
+
+  .side-navigation {
+    width: 100%;
+    margin: 0 0 1rem;
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--supporting-background-color);
+  }
 }
 
 .side-navigation a.underline-hover {

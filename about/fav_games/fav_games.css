@@ -19,6 +19,10 @@
   height: 250px;
   object-fit: cover;
   filter: brightness(0.4);
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
   transition:
     transform 0.4s ease,
     filter 0.4s ease;
@@ -26,6 +30,12 @@
 .game-card:hover img {
   transform: scale(1.06);
   filter: brightness(0.8);
+}
+
+.game-card,
+.game-card * {
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 .game-card span {
   position: absolute;
