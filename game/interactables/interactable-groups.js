@@ -129,7 +129,7 @@ export const GameInteractables = {
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(-130, interactableHeight, 50),
-      templateUrl: '/about/testimonials/testimonials.html',
+      templateUrl: '/projects/tetris.html',
       options: { color: 'rgb(107, 245, 255)', icon: '/game/map/vote.png' },
       name: 'Vote'
     },

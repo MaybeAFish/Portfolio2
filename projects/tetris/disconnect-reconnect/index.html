@@ -19,20 +19,72 @@
         </aside>
 
         <div>
-          <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
-            <source src="/projects/tetris/chunk.webm" type="video/webm" />
-          </video>
+          <img class="side-navigation-media" src="/projects/tetris/tetris.jpg">
 
-          <h1>Disconnect &amp; Reconnect</h1>
-          <div class="project-body">
-            <p>I handled the multiplayer edge cases that made the game resilient when players dropped out or rejoined mid-session.</p>
-            <ul>
-              <li>Protected singleplayer and lobby states from abrupt disconnects, including auto-pause and timeout logic.</li>
-              <li>Created graceful reconnect flows so late joiners could re-enter without breaking the active match.</li>
-              <li>Managed resume timing, waiting conditions, and the disconnected board state so a player could recover before dying.</li>
-              <li>Coordinated competitive-mode pause logic and synchronized player feedback to keep the match state readable and fair.</li>
-            </ul>
-          </div>
+          <h1>Disconnect & Reconnect</h1>
+          <p>I handled the multiplayer edge cases that made the game resilient when players dropped out or rejoined mid-session.</p>
+          <ul>
+            <li>Protected singleplayer and lobby states from abrupt disconnects, including auto-pause and timeout logic.</li>
+            <li>Created graceful reconnect flows so late joiners could re-enter without breaking the active match.</li>
+            <li>Managed resume timing, waiting conditions, and the disconnected board state so a player could recover before dying.</li>
+            <li>Coordinated competitive-mode pause logic and synchronized player feedback to keep the match state readable and fair.</li>
+          </ul>
+
+
+
+
+<p>
+  I designed and implemented the disconnect and reconnect flows for the game's multiplayer sessions.
+  I tested a wide range of edge cases and worked closely with the Creative Director to discuss and propose
+  solutions for situations I identified during development.
+</p>
+
+<ul>
+  <li>
+    Singleplayer disconnects:
+    <ul>
+      <li>Pauses the game if you're playing alone.</li>
+      <li>Shows a 20-second timeout to reconnect if there is atleast one other person waiting in the lobby.</li>
+    </ul>
+  </li>
+
+  <li>
+    Mid-game reconnects:
+    <ul>
+      <li>Pauses the game if you're playing alone.</li>
+      <li>Shows a 20-second timeout inside your playingfieldto reconnect if there is atleast one other person waiting in the lobby.</li>
+    </ul>
+  </li>
+
+  <li>
+    <strong>Mid-game reconnects:</strong> allowing disconnected players to rejoin an active match without
+    disrupting the other players.
+  </li>
+  <li>
+    <strong>Mid-game joining:</strong> providing appropriate feedback to new players who join while a match
+    is already in progress, instructing them to wait until the current game ends.
+  </li>
+  <li>
+    <strong>Competitive disconnects:</strong> pausing the entire match with a 10-second countdown and clearly
+    communicating which player disconnected.
+  </li>
+  <li>
+    <strong>Reconnect timing:</strong> when a disconnected player reconnects during the countdown, a 3-second
+    timer gives them time to return before the match resumes.
+  </li>
+  <li>
+    <strong>Disconnected players:</strong> if the timeout expires, the player's board visually indicates that
+    they are disconnected, while still allowing them to continue playing if they reconnect before their board
+    reaches its game-over state.
+  </li>
+  <li>
+    <strong>Multiple disconnects:</strong> handling additional disconnects while another player's reconnect
+    timer is active, ensuring the game waits for all affected players before resuming.
+  </li>
+</ul>
+
+
+
         </div>
       </section>
     </main>
