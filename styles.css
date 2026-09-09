@@ -1,6 +1,8 @@
 /* font */
 @import url("https://fonts.googleapis.com/css2?family=Salsa&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+
 @import "general/carousel/carousel.css";
 @import "general/header/header.css";
 @import "general/footer/footer.css";
@@ -42,12 +44,12 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  font-family: "Varela Round", sans-serif;
 }
 body {
   display: flex;
   flex-direction: column;
 
-  font-family: "Salsa", cursive;
   color: var(--text-color);
 
   background: var(--main-background-color);
@@ -73,6 +75,8 @@ h1 {
   margin: 0;
   margin-top: 1rem; 
   margin-bottom: 2rem;
+  font-family: "Salsa", cursive;
+
 }
 h2 {
   font-size: 1.8rem;
