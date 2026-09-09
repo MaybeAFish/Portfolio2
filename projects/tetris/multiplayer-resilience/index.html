@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplayer Resilience – Tetris Airconsole</title>
+    <link rel="stylesheet" href="/styles.css"/>
+    <link rel="stylesheet" href="/projects/project-page"/>
+  </head>
+  <body>
+    <div id="header-placeholder"></div>
+    <script src="/general/header/header-loader.js"></script>
+
+    <main>
+      <section class="side-navigation-content">
+        <aside
+          class="side-navigation"
+          data-component="/projects/tetris/tetris-navigation.html">
+        </aside>
+
+        <div>
+          <img class="side-navigation-media" src="/projects/tetris/tetris.jpg">
+
+          <h1>Multiplayer Resilience</h1>
+          <p>
+            I handled multiplayer edge cases that made the game resilient when players 
+            performed actions such as dropping out or rejoining mid-session.
+          </p>
+          <p>
+            When I would discover a new edge-case scenario, I would propose a solution 
+            to the Creative Director before we'd discuss for the desired behaviour.
+          </p>
+
+          <ul>
+            <li>
+              Marathon disconnects:
+              <ul>
+                <li>Pauses the game if you're playing alone.</li>
+                <li>Pauses your playingfield if one other person is playing with you, without disrupting the second player's game. The disconnectee's playingfield will show a 20-second timeout to reconnect before KO'ing.</li>
+              </ul>
+            </li>
+
+            <li>
+              Marathon reconnects:
+              <ul>
+                <li>Resumes the game if you were playing alone.</li>
+                <li>Resumes your playingfield if someone else was playing with you.</li>
+              </ul>
+            </li>
+
+            <li>
+              Battle disconnects:
+              <ul>
+                <li>Pauses the entire game for everyone, and shows a 10s timer on the disconnectee's playingfield. If the 10s timer passes, the game resumes and the disconnectee's playingfield shows "DISCONNECTED".</li>
+                <li>If multiple people disconnect, the game ensures all affected players' timers have passed before resuming the game.</li>
+              </ul>
+            </li>
+
+            <li>
+              Battle reconnects:
+              <ul>
+                <li>If the player survives long enough to reconnect, the player can continue playing.</li>
+              </ul>
+            </li>
+
+
+            <li>
+              Joining as a new player on the leaderboard screen:
+              <ul>
+                <li>The controller updates their global and friends' rankings accordingly based on which state the host has selected.</li>
+              </ul>
+            </li>
+
+            <li>
+              Joining as a new player while an existing game is in progress:
+              <ul>
+                <li>The controller will tell the player to wait their turn.</li>
+              </ul>
+            </li>
+
+            <li>
+              Joining as a new player while the game is in it's resultscreen:
+              <ul>
+                <li>The controller will tell the player to wait their turn.</li>
+                <li>
+                  Specifically in the marathon mode (where only 1-2 players are allowed because of the big playingfields), 
+                  the host won't be allowed to restart the game if the new player exceeds the 2 player limit.
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+
+          <br>
+          <p style="font-weight: 600;">
+            Handling these situations gracefully matters a lot for players. If the behaviour ends up being stupid or buggy, 
+            if it wasn't clear who the disconnectee is, or if the disconnectee would gain an unfair advantage, 
+            <span style="color: var(--standout-color-cyan);">players would get frustrated.</span>
+          </p>
+
+
+        </div>
+      </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="/general/footer/footer-loader.js"></script>
+    <script src="/general/component-loader.js"></script>
+  </body>
+</html>
