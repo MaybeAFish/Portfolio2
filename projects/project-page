@@ -9,74 +9,63 @@
   display: block;
 }
 
-.project-article {
-  width: 100%;
-}
-
-.project-lead {
-  margin: 20px 0 28px;
-}
-
-.project-lead p {
-  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
-  line-height: 1.6;
-  color: var(--text-color);
-  max-width: 780px;
-}
-
-.project-meta {
+.project-layout {
   display: grid;
-  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  grid-template-columns: 230px minmax(0, 760px);
+  gap: 56px;
+  align-items: start;
+}
+
+.project-detail {
+  display: flex;
+  flex-direction: column;
   gap: 18px;
-  margin: 32px 0 42px;
 }
 
-.project-meta-item {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--border-radius);
-  padding: 18px 20px;
-}
-
-.project-meta-item span {
+.project-video {
   display: block;
-  margin-bottom: 8px;
-  color: var(--text-color-muted);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--border-radius);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+  object-fit: cover;
 }
 
-.project-meta-item strong {
+.project-summary,
+.project-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+}
+
+.project-summary p,
+.project-body p,
+.project-body li {
+  margin: 0;
+  font-size: clamp(1.02rem, 1.5vw, 1.15rem);
+  line-height: 1.7;
   color: var(--text-color);
-  font-size: 1.05rem;
-  font-weight: 500;
 }
 
-.project-section {
-  margin-top: 36px;
-}
-
-.project-section h2 {
-  margin: 0 0 16px;
+.project-body h2 {
+  margin: 0;
+  color: var(--text-color);
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
   text-align: left;
-  color: var(--text-color);
-  font-size: clamp(1.35rem, 2vw, 1.9rem);
 }
 
-.project-section p,
-.project-section li {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--text-color);
-}
-
-.project-section ul {
+.project-body ul {
   margin: 0;
   padding-left: 1.2rem;
 }
 
-.project-section li + li {
+.project-body li + li {
   margin-top: 10px;
 }
 
@@ -86,7 +75,13 @@
     padding-top: 24px;
   }
 
-  .project-meta {
+  .project-layout {
     grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .project-summary,
+  .project-body {
+    padding: 18px 18px;
   }
 }

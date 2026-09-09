@@ -3,12 +3,10 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amine El Hammdaoui � Tetris Airconsole</title>
-
+    <title>UI &amp; UX &amp; Interaction � Tetris Airconsole</title>
     <link rel="stylesheet" href="/styles.css"/>
     <link rel="stylesheet" href="/projects/project-page"/>
   </head>
-
   <body>
     <div id="header-placeholder"></div>
     <script src="/general/header/header-loader.js"></script>
@@ -17,9 +15,9 @@
       <div class="project-layout">
         <aside class="vertical-nav" aria-label="Tetris Airconsole navigation">
           <nav class="vertical-nav__list" aria-label="Project sections">
-            <a class="vertical-nav__item" href="/projects/tetris/" aria-current="page">Home</a>
+            <a class="vertical-nav__item" href="/projects/tetris/">Home</a>
             <a class="vertical-nav__item" href="/projects/tetris/disconnect-reconnect/">Disconnect / Reconnect</a>
-            <a class="vertical-nav__item" href="/projects/tetris/ui-ux/">UI &amp; UX &amp; Interaction</a>
+            <a class="vertical-nav__item" href="/projects/tetris/ui-ux/" aria-current="page">UI &amp; UX &amp; Interaction</a>
             <a class="vertical-nav__item" href="/projects/tetris/lightning-animation/">Lightning Animation</a>
           </nav>
         </aside>
@@ -29,19 +27,15 @@
             <source src="/projects/tetris/chunk.webm" type="video/webm" />
           </video>
 
-          <div class="project-summary">
-            <p>
-              Tetris Airconsole is an official Tetris title built for the Airconsole platform for an in-car multiplayer experience,
-              where players connect through their phones and interact with the game on a shared screen.
-            </p>
-            <p>
-              Airconsole works together with external game companies, such as Wanted Game Studio, to develop these games.
-              I was lucky enough to intern for Wanted while they were tasked with developing Tetris Airconsole.
-            </p>
-            <p>
-              During the project, I built and iterated on game-state recovery flows, multiplayer feedback systems, controller UX,
-              and visual polish for a strong in-car competitive experience.
-            </p>
+          <div class="project-body">
+            <h2>UI &amp; UX &amp; interaction work</h2>
+            <p>I improved how players understood state changes and how the phone-controller flow felt in motion.</p>
+            <ul>
+              <li>Built the phone-side hold preview so players could read upcoming state before using a piece.</li>
+              <li>Added controller carousel navigation and responsive horizontal layouts across interface states.</li>
+              <li>Polished transitions with masking, motion, and mode-switch feedback to make screen-to-phone context changes feel clear.</li>
+              <li>Created 2-line and 3-line clear feedback popups, and implemented haptic patterns for gameplay actions.</li>
+            </ul>
           </div>
         </article>
       </div>

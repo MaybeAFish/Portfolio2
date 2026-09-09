@@ -1,12 +1,6 @@
-.about-section {
-    max-width: 1080px;
-    margin: 0 auto 120px;
-    padding: 0 28px;
-}
-
 .section-title {
     margin: 0 0 24px;
     color: white;
     font-size: clamp(1.8rem, 3vw, 2.6rem);
-    text-align: left;
+    text-align: center;
 }

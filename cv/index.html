@@ -13,19 +13,22 @@
   <script src="/general/header/header-loader.js"></script>
 
   <main>
-    <h1 style="margin-top: 1rem; margin-bottom: 2rem;">Curriculum Vitae</h1>
+    <section>
+      <h1>Curriculum Vitae</h1>
 
-    <div class="cv-wrapper">
-      <div class="cv-section">
-        <h2>English Version</h2>
-        <button class="fancy-button" onclick="loadPDF(this, '/cv/CV-english.pdf')">View PDF here</button>
+      <div class="cv-wrapper">
+        <div class="cv-section">
+          <h2>English Version</h2>
+          <button class="fancy-button" onclick="loadPDF(this, '/cv/CV-english.pdf')">View PDF here</button>
+        </div>
+
+        <div class="cv-section">
+          <h2>Dutch Version</h2>
+          <button class="fancy-button" onclick="loadPDF(this, '/cv/CV-dutch.pdf')">View PDF here</button>
+        </div>
       </div>
 
-      <div class="cv-section">
-        <h2>Dutch Version</h2>
-        <button class="fancy-button" onclick="loadPDF(this, '/cv/CV-dutch.pdf')">View PDF here</button>
-      </div>
-    </div>
+    </section>
   </main>
 
   <div id="footer-placeholder"></div>

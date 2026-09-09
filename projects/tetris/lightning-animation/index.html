@@ -3,12 +3,10 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amine El Hammdaoui � Tetris Airconsole</title>
-
+    <title>Lightning Animation � Tetris Airconsole</title>
     <link rel="stylesheet" href="/styles.css"/>
     <link rel="stylesheet" href="/projects/project-page"/>
   </head>
-
   <body>
     <div id="header-placeholder"></div>
     <script src="/general/header/header-loader.js"></script>
@@ -17,10 +15,10 @@
       <div class="project-layout">
         <aside class="vertical-nav" aria-label="Tetris Airconsole navigation">
           <nav class="vertical-nav__list" aria-label="Project sections">
-            <a class="vertical-nav__item" href="/projects/tetris/" aria-current="page">Home</a>
+            <a class="vertical-nav__item" href="/projects/tetris/">Home</a>
             <a class="vertical-nav__item" href="/projects/tetris/disconnect-reconnect/">Disconnect / Reconnect</a>
             <a class="vertical-nav__item" href="/projects/tetris/ui-ux/">UI &amp; UX &amp; Interaction</a>
-            <a class="vertical-nav__item" href="/projects/tetris/lightning-animation/">Lightning Animation</a>
+            <a class="vertical-nav__item" href="/projects/tetris/lightning-animation/" aria-current="page">Lightning Animation</a>
           </nav>
         </aside>
 
@@ -29,19 +27,15 @@
             <source src="/projects/tetris/chunk.webm" type="video/webm" />
           </video>
 
-          <div class="project-summary">
-            <p>
-              Tetris Airconsole is an official Tetris title built for the Airconsole platform for an in-car multiplayer experience,
-              where players connect through their phones and interact with the game on a shared screen.
-            </p>
-            <p>
-              Airconsole works together with external game companies, such as Wanted Game Studio, to develop these games.
-              I was lucky enough to intern for Wanted while they were tasked with developing Tetris Airconsole.
-            </p>
-            <p>
-              During the project, I built and iterated on game-state recovery flows, multiplayer feedback systems, controller UX,
-              and visual polish for a strong in-car competitive experience.
-            </p>
+          <div class="project-body">
+            <h2>Lightning &amp; feedback animation</h2>
+            <p>I helped design the visual impact when garbage was sent to opponents, pairing a clear read with good pacing and timing.</p>
+            <ul>
+              <li>Implemented the math and animation for the lightning shader used during garbage attacks.</li>
+              <li>Handled projectile start, path, and end states to make the attack feel directional and readable.</li>
+              <li>Timed the animation so it landed with the feedback language established by the team.</li>
+              <li>Also proposed the Marathon level-up animation to add clearer progression feedback where it was missing.</li>
+            </ul>
           </div>
         </article>
       </div>

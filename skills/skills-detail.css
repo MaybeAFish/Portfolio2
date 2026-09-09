@@ -82,6 +82,10 @@
   text-align: left;
 }
 
+.skills-header-media {
+    margin-top: 1rem;
+}
+
 @media (max-width: 760px) {
   .skill-layout {
     display: block;

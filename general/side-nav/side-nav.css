@@ -1,0 +1,30 @@
+.side-navigation {
+    width: 200px;
+    padding-right: 40px;
+    margin-top: 1rem;
+    margin-right: 40px;
+
+    border-right: 1px solid var(--supporting-background-color);
+}
+
+.side-navigation a {
+    display: block;
+    padding: 8px 0;
+    color: var(--text-color-muted);
+    text-decoration: none;
+}
+
+.skills-detail-section {
+    display: flex;
+}
+
+.side-navigation a.underline-hover {
+    display: table;
+}
+.side-navigation a.underline-hover[aria-current="page"]::after {
+    width: 100%;
+    background-color: var(--standout-color-cyan);
+}
+.side-navigation a.underline-hover[aria-current="page"] {
+    color: var(--standout-color-cyan);
+}
