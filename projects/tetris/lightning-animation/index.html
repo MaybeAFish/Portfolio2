@@ -20,19 +20,105 @@
 
         <div>
           <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
-            <source src="/projects/tetris/chunk.webm" type="video/webm" />
+            <source src="/projects/tetris/lightning-animation/battle.mp4" type="video/webm" />
           </video>
 
           <h1>Lightning Animation</h1>
-          <div>
-            <p>I helped design the visual impact when garbage was sent to opponents, pairing a clear read with good pacing and timing.</p>
-            <ul>
-              <li>Implemented the math and animation for the lightning shader used during garbage attacks.</li>
-              <li>Handled projectile start, path, and end states to make the attack feel directional and readable.</li>
-              <li>Timed the animation so it landed with the feedback language established by the team.</li>
-              <li>Also proposed the Marathon level-up animation to add clearer progression feedback where it was missing.</li>
-            </ul>
-          </div>
+          <p>
+            I implemented the mathematical logic behind a lightning effect that visually connects the line a player clears
+            to the destination of the garbage they send. The effect was designed to make the connection between clearing
+            lines and sending garbage immediately readable to the player.
+          </p>
+
+          <p>
+            I was provided with the initial line shader and a concept GIF, and was responsible for turning these
+            references into an actual implementation within the game.
+          </p>
+
+          <br>
+          <h2>How I did this:</h2>
+          <ul>
+            <li>
+              The first thing I did was defining the start and endpoints of the animation whenever garbage was sent, 
+              with the effect originating from the relevant cleared line and ending at each opponents' playingfields' garbage column's top most empty cell + amount of cells being sent.
+            </li>
+            <li>
+              Then, I calculated a parabolic trajectory of the line between those two points. I made sure the parabole's maximum was calculated lower at larger distances, otherwise the animation would reach out of bounds.
+            </li>
+            <li>
+              Afterwards I created an instance of the line shader for each garbage being sent, and animated its keyframes
+              to appear as if the electricity is travelling towards its destination to make it feel directional. 
+              <ul>
+                <li>
+                  The line grows from the starting point...
+                </li>
+                <li>
+                  ...animates towards the middle of the trajectory... 
+                </li>
+                <li>
+                  ...continues to the endpoint before retracting.
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              I also included keyframes with varying line thickness to make the electricity
+              feel more energetic.
+            </li>
+
+            <li>
+              At this point, the line itself was done. All that was left were particles.
+              <ul>
+                <li>
+                  Start particle with a decaying size.
+                </li>
+                <li>
+                  End particle that shows an impact effect with a random rotation, with random small electricity like spark particles flying off in random directions using a particlesystem.
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              Finally, added a 9-sliced bar at the destination, positioned over the garbage
+              indicator next to the opponent's playfield when the impact lands. 
+              This bar was stretched to fill all the garbage cells that were being sent
+            </li>
+          </ul>
+
+          <br>
+          <p>
+            After implementing the animation for sending garbage in the Battle mode, 
+            I also proposed and implemented the same animation for levelling up in the Marathon Mode, 
+            as I found that there was previously no visual feedback when the player reached a new level:
+          </p>
+          <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
+            <source src="/projects/tetris/lightning-animation/marathon.mp4" type="video/webm" />
+          </video>
+
+          <br><br>
+          <p style="font-weight: 600;">
+            I had to experiment a lot with the timing and duration, as it either felt unimpactful, unclear or too distracting. 
+            Here's an old version where the animation was somehow ALL 3:
+          </p>
+          <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
+            <source src="/projects/tetris/lightning-animation/old.mp4" type="video/webm" />
+          </video>
+          <ul>
+            <li>
+              The impact particles were boring, soft, randomized in ways that didn't matter, and mistimed, making the sending part feel <span style="color: var(--standout-color-cyan);">unimpactful</span>.
+            </li>
+            <li>
+              The electricity didn't gradually increase, making it <span style="color: var(--standout-color-cyan);">unclear</span> who was sending it and why.
+            </li>
+            <li>
+              The electricity line was too big, making the animation wayyy too <span style="color: var(--standout-color-cyan);">distracting</span>.
+            </li>
+          </ul>
+
+
+
+
+
         </div>
       </section>
     </main>
