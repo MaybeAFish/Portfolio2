@@ -33,24 +33,6 @@
   object-fit: cover;
 }
 
-
-
-.project-body h2 {
-  margin: 0;
-  color: var(--text-color);
-  font-size: clamp(1.35rem, 2vw, 1.8rem);
-  text-align: left;
-}
-
-.project-body ul {
-  margin: 0;
-  padding-left: 1.2rem;
-}
-
-.project-body li + li {
-  margin-top: 10px;
-}
-
 @media (max-width: 760px) {
   .page-shell {
     width: min(100%, calc(100% - 24px));

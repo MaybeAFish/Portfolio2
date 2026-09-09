@@ -21,17 +21,84 @@
         <div>
           <img class="side-navigation-media" src="/projects/tetris/ui-ux/main-screen.png">
 
-          <h1>UI & UX & Interaction</h1>
-          <div class="project-body">
-            <p>I improved how players understood state changes and how the phone-controller flow felt in motion.</p>
-            <ul>
-              <li>Built the phone-side hold preview so players could read upcoming state before using a piece.</li>
-              <li>Added controller carousel navigation and responsive horizontal layouts across interface states.</li>
-              <li>Polished transitions with masking, motion, and mode-switch feedback to make screen-to-phone context changes feel clear.</li>
-              <li>Created 2-line and 3-line clear feedback popups, and implemented haptic patterns for gameplay actions.</li>
-            </ul>
-          </div>
-          <img class="side-navigation-media" src="/projects/tetris/ui-ux/airconsole.webp">
+          <h1>UI, UX & Interaction</h1>
+
+          <h2>Controller UX</h2>
+          <ul>
+            <li>
+              Controller:
+              <ul>
+                <li>
+                  Implemented a landscape layout for every single interface to support both phone orientations.
+                </li>
+                <li>
+                  Implemented a preview of the currently held tetromino directly on the player's phone.
+                </li>
+                <li>
+                  Built a carousel for navigating the gamemodes.
+                </li>
+                <li>
+                  Pre-emptive access to the controls screen while the game is still counting down.
+                </li>
+                <li>
+                  Proposed and added non-hosts being able to view their own best score/time in the leaderboard screen.
+                </li>
+                <li>
+                  Feedback when you have no leaderboard entry.
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              Screen:
+              <ul>
+                <li>
+                  Feedback when you have too many or too few players for a gamemode.
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <br>
+          <h2>UI Feedback</h2>
+          <ul>
+            <li>
+              Controller:
+              <ul>
+                <li>Made sure every button reacts the exact same way when pressed.</li>
+                <li>The settings menu transition when opening/closing it.</li>
+                <li>Various feedback animations when opening the leaderboard.</li>
+                <li>Consistent rounding to .00 instead of .000 for time-based results.</li>
+                <li>Various resultscreen UI bugfixes.</li>
+              </ul>
+            </li>
+            <li>
+              Screen:
+              <ul>
+                <li>Background UI mask gliding in and out when switching between lobby/leaderboard/match.</li>
+                <li>Created the animation that plays when switching between game modes.</li>
+                <li>"Double" and "Triple" feedback popups when clearing two or three lines at once.</li>
+              </ul>
+            </li>
+          </ul>
+
+          <br>
+          <img class="side-navigation-media" src="/projects/tetris/ui-ux/controller.png">
+
+          <br><br>
+          <h2>Haptic Feedback</h2>
+          <ul>
+            <li>
+              Researched haptic feedback solutions for both Android and iOS devices.
+            </li>
+            <li>
+              Created a prototype on my own initiative that allowed the Creative Director to test and compare different haptic feedback patterns.
+            </li>
+            <li>
+              The Creative Director used the prototype to help establish which haptic feedback should be used for which player actions, I then implemented those actions, including a setting to turn it off.
+            </li>
+          </ul>
+
 
         </div>
       </section>

@@ -19,7 +19,7 @@
         </aside>
 
         <div>
-          <img class="side-navigation-media" src="/projects/tetris/tetris.jpg">
+          <img class="side-navigation-media" src="/projects/tetris/multiplayer-resilience/airconsole.webp">
 
           <h1>Multiplayer Resilience</h1>
           <p>
@@ -31,9 +31,11 @@
             to the Creative Director before we'd discuss for the desired behaviour.
           </p>
 
+          <br>
+          <h2>Edge cases</h2>
           <ul>
             <li>
-              Marathon disconnects:
+              Marathon player disconnects:
               <ul>
                 <li>Pauses the game if you're playing alone.</li>
                 <li>Pauses your playingfield if one other person is playing with you, without disrupting the second player's game. The disconnectee's playingfield will show a 20-second timeout to reconnect before KO'ing.</li>
@@ -41,7 +43,7 @@
             </li>
 
             <li>
-              Marathon reconnects:
+              Marathon player reconnects:
               <ul>
                 <li>Resumes the game if you were playing alone.</li>
                 <li>Resumes your playingfield if someone else was playing with you.</li>
@@ -49,7 +51,7 @@
             </li>
 
             <li>
-              Battle disconnects:
+              Battle player disconnects:
               <ul>
                 <li>Pauses the entire game for everyone, and shows a 10s timer on the disconnectee's playingfield. If the 10s timer passes, the game resumes and the disconnectee's playingfield shows "DISCONNECTED".</li>
                 <li>If multiple people disconnect, the game ensures all affected players' timers have passed before resuming the game.</li>
@@ -57,15 +59,14 @@
             </li>
 
             <li>
-              Battle reconnects:
+              Battle player reconnects:
               <ul>
                 <li>If the player survives long enough to reconnect, the player can continue playing.</li>
               </ul>
             </li>
 
-
             <li>
-              Joining as a new player on the leaderboard screen:
+              Joining as a new player when the host has the leaderboard screen open:
               <ul>
                 <li>The controller updates their global and friends' rankings accordingly based on which state the host has selected.</li>
               </ul>
