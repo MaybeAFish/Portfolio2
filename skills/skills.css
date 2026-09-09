@@ -24,7 +24,11 @@
 
 .skills-banner h2 {
   margin: 0 0 1.5rem;
-  text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-shadow:
+    -1px -1px 0 #fff,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
   font-size: clamp(2rem, 5vw, 3.6rem);
 }
 .design-h2 {
@@ -58,9 +62,9 @@
   isolation: isolate;
   overflow: hidden;
   transition:
-    transform 0.2s ease,
-    background-color 0.2s ease,
-    border-color 0.2s ease;
+    transform 0.4s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .skill-card h3 {
@@ -77,7 +81,10 @@
   background-position: center;
   background-repeat: no-repeat;
   transform: scale(1.02);
-  opacity: 0.8;
+  filter: brightness(0.4);
+  transition:
+    transform 0.4s ease,
+    filter 0.4s ease;
   z-index: -2;
 }
 
@@ -95,9 +102,14 @@
 
 .skill-card:hover {
   border-color: var(--standout-color-green);
-  transform: scale(1.02);
-
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
+
+.skill-card:hover::before {
+  transform: scale(1.15);
+  filter: brightness(1);
+}
+
 .skill-card:active {
   border-color: var(--standout-color-cyan);
 }

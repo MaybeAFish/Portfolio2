@@ -11,37 +11,34 @@
     <div id="header-placeholder"></div>
     <script src="/general/header/header-loader.js"></script>
 
-    <main class="page-shell project-page">
-      <div class="project-layout">
-        <aside class="vertical-nav" aria-label="Tetris Airconsole navigation">
-          <nav class="vertical-nav__list" aria-label="Project sections">
-            <a class="vertical-nav__item" href="/projects/tetris/">Home</a>
-            <a class="vertical-nav__item" href="/projects/tetris/disconnect-reconnect/" aria-current="page">Disconnect / Reconnect</a>
-            <a class="vertical-nav__item" href="/projects/tetris/ui-ux/">UI &amp; UX &amp; Interaction</a>
-            <a class="vertical-nav__item" href="/projects/tetris/lightning-animation/">Lightning Animation</a>
-          </nav>
+    <main>
+      <section class="side-navigation-content">
+        <aside
+          class="side-navigation"
+          data-component="/projects/tetris/tetris-navigation.html">
         </aside>
 
-        <article class="project-detail">
-          <video class="project-video" autoplay muted loop playsinline preload="metadata">
+        <div>
+          <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
             <source src="/projects/tetris/chunk.webm" type="video/webm" />
           </video>
 
+          <h1>Disconnect &amp; Reconnect</h1>
           <div class="project-body">
-            <h2>Disconnect &amp; reconnect flow</h2>
             <p>I handled the multiplayer edge cases that made the game resilient when players dropped out or rejoined mid-session.</p>
             <ul>
               <li>Protected singleplayer and lobby states from abrupt disconnects, including auto-pause and timeout logic.</li>
               <li>Created graceful reconnect flows so late joiners could re-enter without breaking the active match.</li>
-              <li>Managed resume timing, waiting conditions, and the �Disconnected� board state so a player could recover before dying.</li>
+              <li>Managed resume timing, waiting conditions, and the disconnected board state so a player could recover before dying.</li>
               <li>Coordinated competitive-mode pause logic and synchronized player feedback to keep the match state readable and fair.</li>
             </ul>
           </div>
-        </article>
-      </div>
+        </div>
+      </section>
     </main>
 
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
+    <script src="/general/component-loader.js"></script>
   </body>
 </html>

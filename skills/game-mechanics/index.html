@@ -13,17 +13,153 @@
   <script src="/general/header/header-loader.js"></script>
 
   <main>
-    <section class="skills-detail-section">
+    <section class="side-navigation-content">
       <aside
         class="side-navigation"
         data-component="/skills/skills-navigation.html">
       </aside>
 
       <div>
-        <img class="skills-header-media" src="/skills/game-mechanics/eyeballs.gif">
+        <img class="side-navigation-media" src="/skills/game-mechanics/eyeballs.gif">
 
         <h1>Game Mechanics</h1>
-        <p>Designing rules, feedback loops, and choices that make a game readable and rewarding.</p>
+        <p>
+          Game mechanics are the most important part of any game.
+          They are the rules and systems that define what players can do.
+          Some completely warp how the game is played, while others expand
+          upon that experience.
+        </p>
+
+        <br>
+        <p>
+          There are many ways to define/categorize game mechanics. One useful
+          framework, made by game designer Charmie Kim, separates a game's
+          mechanics into four layers:
+        </p>
+        <img class="side-navigation-media" src="/skills/game-mechanics/diagram.svg">
+        <ul>
+          <li>
+            Core mechanic(s) are 
+            systems that make up the game's primary gameplay loop.
+          </li>
+          <li>
+            Secondary mechanics support or add depth to the core gameplay, 
+            but are generally less centralized.
+          </li>
+          <li>
+            Progression is about how the player's/game state changes over time.
+          </li>
+          <li>
+            The narrative gives context and meaning to the player's actions and the game's mechanics within its world.
+          </li>
+        </ul>
+
+        <br>
+        <p>
+          As an example, here is how I would fit a few mechanics from League of Legends
+          into this framework:
+        </p>
+        <div class="mechanics-comparison">
+          <div class="mechanics-column">
+            <h3>LoL's core mechanics</h3>
+            <div class="mechanics-image-grid">
+              <img src="/skills/game-mechanics/league/core/moving.png" alt="Moving">
+              <img src="/skills/game-mechanics/league/core/attacking.webp" alt="Attacking">
+              <img src="/skills/game-mechanics/league/core/abilities.webp" alt="Abilities">
+              <img src="/skills/game-mechanics/league/core/damage.png" alt="Damage/Health">
+            </div>
+
+            <p>
+              Moving, attacking, using abilities, and taking/dealing damage are
+              examples of interactions that repeatedly form the game's core combat loop.
+            </p>
+          </div>
+
+          <div class="mechanics-column">
+            <h3>Some of LoL's secondary mechanics</h3>
+            <div class="mechanics-image-grid">
+              <img src="/skills/game-mechanics/league/secondary/recalling.jpg" alt="Recalling">
+              <img src="/skills/game-mechanics/league/secondary/wards.webp" alt="Warding">
+              <img src="/skills/game-mechanics/league/secondary/ping.jpg" alt="Ping and communication">
+              <img src="/skills/game-mechanics/league/secondary/dragon.jpg" alt="Dragon objective">
+            </div>
+
+            <p>
+              Recalling, warding, pinging, and taking objectives support
+              the core gameplay while adding strategic depth around it.
+            </p>
+          </div>
+
+          <div class="mechanics-column">
+            <h3>LoL's progression mechanics</h3>
+            <div class="mechanics-image-grid">
+              <img src="/skills/game-mechanics/league/progression/items.webp" alt="Gold and items">
+              <img src="/skills/game-mechanics/league/progression/level-up.webp" alt="Leveling up">
+              <img src="/skills/game-mechanics/league/progression/role-quest.jpg" alt="Role quest progression">
+              <img src="/skills/game-mechanics/league/progression/super-minions.jpg" alt="Objective-based pressure">
+            </div>
+
+            <p>
+              Items, leveling up, role quests, and map pressure create a clear sense of
+              progression in a way that feels meaningful for the rest of the game.
+            </p>
+          </div>
+
+          <div class="mechanics-column narrative">
+            <h3>LoL's narrative layer</h3>
+            <div class="mechanics-image-grid">
+              <img src="/skills/game-mechanics/league/narrative/runeterra.jpg" alt="Runeterra map overview">
+              <img src="/skills/game-mechanics/league/narrative/ekko.webp" alt="Characters">
+            </div>
+
+            <p>
+              League's worldbuilding and characters enhance the game feel in different ways.
+            </p>
+          </div>
+        </div>
+
+        <br>
+        <p>
+          The core mechanics diagram works great. However, I've recognized that game mechanics are still an inconsistently defined concept;
+          There is no universally accepted framework for categorizing them.          
+        </p>
+        <p>
+          I would personally argue that it'd be more useful to categorize game mechanics based on their specific purpose 
+          (systemic, narrative, reward, feedback, meta (inventory), etc) instead of forcing them into a fixed hierarchy.
+          Despite that, I still support Charmie Kim's diagram as it's currently the most practical design tool for game mechanics I've found.
+        </p>
+        
+        <br><br>
+        <h2>Core mechanics I've designed & implemented</h2>
+        <p>Moving Elara around with a hairdryer:</p>
+        <video class="side-navigation-media" autoplay muted loop playsinline>
+          <source src="/skills/game-mechanics/hairdryer.mp4" type="video/mp4">
+        </video>
+        <br>
+        <p>Avoiding environmental hazards:</p>
+        <img class="side-navigation-media" src="/skills/game-mechanics/eyeballs.gif">
+        <br>
+        <p>Physiotherapy exercise prompts:</p>
+        <img class="side-navigation-media" src="/skills/game-mechanics/eyeballs.gif">
+
+        <br><br>
+        <h2>Secondary mechanics I've designed & implemented</h2>
+        <p>Physiotherapy minigames:</p>
+        <img class="side-navigation-media" src="/skills/game-mechanics/eyeballs.gif">
+        <br>
+        <p>Buying and combining items to become a stronger samurai:</p>
+        <video class="side-navigation-media" autoplay muted loop playsinline>
+          <source src="/skills/game-mechanics/combining.mp4" type="video/mp4">
+        </video>
+        <br>
+        <p>Karaoke Play of the Game (NDA):</p>
+        <img class="side-navigation-media" src="/skills/game-mechanics/karaoke.png">
+
+        <p>
+          Creating good and fun mechanics takes a lot of creativity and refinement.
+          It gets very difficult sometimes, but it's a process that I really enjoy.
+        </p>
+
       </div>
     </section>
   </main>

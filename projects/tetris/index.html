@@ -13,22 +13,19 @@
     <div id="header-placeholder"></div>
     <script src="/general/header/header-loader.js"></script>
 
-    <main class="page-shell project-page">
-      <div class="project-layout">
-        <aside class="vertical-nav" aria-label="Tetris Airconsole navigation">
-          <nav class="vertical-nav__list" aria-label="Project sections">
-            <a class="vertical-nav__item" href="/projects/tetris/" aria-current="page">Home</a>
-            <a class="vertical-nav__item" href="/projects/tetris/disconnect-reconnect/">Disconnect / Reconnect</a>
-            <a class="vertical-nav__item" href="/projects/tetris/ui-ux/">UI &amp; UX &amp; Interaction</a>
-            <a class="vertical-nav__item" href="/projects/tetris/lightning-animation/">Lightning Animation</a>
-          </nav>
+    <main>
+      <section class="side-navigation-content">
+        <aside
+          class="side-navigation"
+          data-component="/projects/tetris/tetris-navigation.html">
         </aside>
 
-        <article class="project-detail">
-          <video class="project-video" autoplay muted loop playsinline preload="metadata">
+        <div>
+          <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
             <source src="/projects/tetris/chunk.webm" type="video/webm" />
           </video>
 
+          <h1>Tetris Airconsole</h1>
           <div class="project-summary">
             <p>
               Tetris Airconsole is an official Tetris title built for the Airconsole platform for an in-car multiplayer experience,
@@ -43,11 +40,12 @@
               and visual polish for a strong in-car competitive experience.
             </p>
           </div>
-        </article>
-      </div>
+        </div>
+      </section>
     </main>
 
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
+    <script src="/general/component-loader.js"></script>
   </body>
 </html>

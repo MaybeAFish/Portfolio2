@@ -11,24 +11,20 @@
     <div id="header-placeholder"></div>
     <script src="/general/header/header-loader.js"></script>
 
-    <main class="page-shell project-page">
-      <div class="project-layout">
-        <aside class="vertical-nav" aria-label="Tetris Airconsole navigation">
-          <nav class="vertical-nav__list" aria-label="Project sections">
-            <a class="vertical-nav__item" href="/projects/tetris/">Home</a>
-            <a class="vertical-nav__item" href="/projects/tetris/disconnect-reconnect/">Disconnect / Reconnect</a>
-            <a class="vertical-nav__item" href="/projects/tetris/ui-ux/" aria-current="page">UI &amp; UX &amp; Interaction</a>
-            <a class="vertical-nav__item" href="/projects/tetris/lightning-animation/">Lightning Animation</a>
-          </nav>
+    <main>
+      <section class="side-navigation-content">
+        <aside
+          class="side-navigation"
+          data-component="/projects/tetris/tetris-navigation.html">
         </aside>
 
-        <article class="project-detail">
-          <video class="project-video" autoplay muted loop playsinline preload="metadata">
+        <div>
+          <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
             <source src="/projects/tetris/chunk.webm" type="video/webm" />
           </video>
 
+          <h1>UI &amp; UX &amp; Interaction</h1>
           <div class="project-body">
-            <h2>UI &amp; UX &amp; interaction work</h2>
             <p>I improved how players understood state changes and how the phone-controller flow felt in motion.</p>
             <ul>
               <li>Built the phone-side hold preview so players could read upcoming state before using a piece.</li>
@@ -37,11 +33,12 @@
               <li>Created 2-line and 3-line clear feedback popups, and implemented haptic patterns for gameplay actions.</li>
             </ul>
           </div>
-        </article>
-      </div>
+        </div>
+      </section>
     </main>
 
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
+    <script src="/general/component-loader.js"></script>
   </body>
 </html>

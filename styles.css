@@ -82,6 +82,12 @@ h2 {
   margin-top: 0;
 }
 
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 section {
   max-width: 1080px;
   margin: 0 auto 120px;
