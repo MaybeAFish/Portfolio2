@@ -12,7 +12,7 @@
     <script src="/general/header/header-loader.js"></script>
 
     <main>
-      <section class="side-navigation-content">
+      <section>
         <aside
           class="side-navigation"
           data-component="/projects/tetris/tetris-navigation.html">
@@ -47,33 +47,33 @@
             </li>
             <li>
               Afterwards I created an instance of the line shader for each garbage being sent, and animated its keyframes
-              to appear as if the electricity is travelling towards its destination to make it feel directional. 
+              using Cocos' tween function to appear as if the electricity is travelling towards its destination to make it feel directional. 
               <ul>
                 <li>
-                  The line grows from the starting point...
+                  The first set of keyframes makes the line grow from it's starting point...
                 </li>
                 <li>
-                  ...animates towards the middle of the trajectory... 
+                  ...the next set of keyframes animates the line towards the middle of the trajectory... 
                 </li>
                 <li>
-                  ...continues to the endpoint before retracting.
+                  ...and the last set of keyframes continues the line to the endpoint before retracting.
                 </li>
               </ul>
             </li>
 
             <li>
-              I also included keyframes with varying line thickness to make the electricity
+              I also created a new tween including new keyframes for a varying line thickness to make the electricity
               feel more energetic.
             </li>
 
             <li>
-              At this point, the line itself was done. All that was left were particles.
+              At this point, the line itself is done. All that is left are the particles.
               <ul>
                 <li>
-                  Start particle with a decaying size.
+                  A start particle with a decaying size.
                 </li>
                 <li>
-                  End particle that shows an impact effect with a random rotation, with random small electricity like spark particles flying off in random directions using a particlesystem.
+                  An end particle that shows an impact effect with a random rotation, with random small electricity like spark particles flying off in random directions using a particlesystem.
                 </li>
               </ul>
             </li>
