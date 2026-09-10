@@ -11,40 +11,35 @@
     <div id="header-placeholder"></div>
     <script src="/general/header/header-loader.js"></script>
 
-    <main class="skills-page">
+    <main>
         <h1>My Skills</h1>
-
-        <section class="skills-banner design-banner">
-            <div class="banner-content">
-                <h2 class="design-h2">Game Design</h2>
-                <div class="skill-links">
-                    <a class="skill-card" href="/skills/game-mechanics/" data-media-type="video">
-                        <video class="skill-card-media" autoplay muted loop playsinline aria-hidden="true">
-                            <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
-                        </video>
-                        <h3>Game Mechanics</h3>
-                    </a>
-
-                    <a class="skill-card" href="/skills/game-feel/" style="--card-bg: url('/skills/game-feel/doomed.gif');">
-                        <h3>Game Feel</h3>
-                    </a>
-
+        <section class="skill-grid" aria-label="Core skills">
+            <a class="skill-card card-mechanics" href="/skills/game-mechanics/">
+                <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
+                    <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
+                </video>
+                <div class="skill-card__content">
+                    <h2>Game Mechanics</h2>
                 </div>
-            </div>
-        </section>
+            </a>
 
-        <section class="skills-banner development-banner">
-            <div class="banner-content">
-                <h2 class="development-h2">Game Development</h2>
-                <div class="skill-links">
-                    <a class="skill-card" href="/skills/system-architecture/" style="--card-bg: url('/skills/system-architecture/uml.png');">
-                        <h3>System Architecture</h3>
-                    </a>
-                    <a class="skill-card" href="/skills/game-graphics/" style="--card-bg: url('/skills/game-graphics/cube.gif');">
-                        <h3>Game Graphics</h3>
-                    </a>
+            <a class="skill-card card-feel" href="/skills/game-feel/" style="--card-visual: url('/skills/game-feel/doomed.gif');">
+                <div class="skill-card__content">
+                    <h2>Game Feel</h2>
                 </div>
-            </div>
+            </a>
+
+            <a class="skill-card card-architecture" href="/skills/system-architecture/" style="--card-visual: url('/skills/system-architecture/uml.png');">
+                <div class="skill-card__content">
+                    <h2>System Architecture</h2>
+                </div>
+            </a>
+
+            <a class="skill-card card-graphics" href="/skills/game-graphics/" style="--card-visual: url('/skills/game-graphics/cube.gif');">
+                <div class="skill-card__content">
+                    <h2>Game Graphics</h2>
+                </div>
+            </a>
         </section>
     </main>
 
