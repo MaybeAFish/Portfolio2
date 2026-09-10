@@ -1,6 +1,6 @@
 .side-navigation {
   position: sticky;
-  top: calc(var(--header-height) + 12px);
+  top: calc(var(--header-height));
   z-index: 20;
   width: 100%;
   margin-bottom: 2rem;

@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
+
   const placeholder = document.getElementById("header-placeholder");
+
   if (!placeholder) return;
 
   const response = await fetch("/general/header/header.html");
@@ -7,21 +9,28 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const normalizePath = path => path.replace(/\/$/, "") || "/";
   const currentPath = normalizePath(window.location.pathname);
-  const isAllProjectsSelected = currentPath === "/" || currentPath === "/projects";
+
+  const isAllProjectsSelected =
+    currentPath === "/" || currentPath === "/projects";
 
   const trigger = placeholder.querySelector(".projects-nav-trigger");
+
   if (trigger) {
     trigger.textContent = "Projects";
     trigger.setAttribute("aria-label", "Projects");
 
     if (isAllProjectsSelected) {
       trigger.classList.add("active");
+    } else if (currentPath.startsWith("/projects/")) {
+      trigger.classList.add("subpage");
     }
   }
 
   const dropdownLinks = placeholder.querySelectorAll(".dropdown-content a");
+
   dropdownLinks.forEach(link => {
     const linkPath = normalizePath(new URL(link.href).pathname);
+
     if (linkPath === currentPath) {
       link.classList.add("active");
     }
@@ -29,8 +38,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   placeholder.querySelectorAll("nav a").forEach(link => {
     const linkPath = normalizePath(new URL(link.href).pathname);
+
     if (linkPath === currentPath) {
       link.classList.add("active");
+    } else if (
+      linkPath !== "/" &&
+      currentPath.startsWith(linkPath + "/")
+    ) {
+      link.classList.add("subpage");
     }
   });
+
 });

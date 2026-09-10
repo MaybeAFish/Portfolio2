@@ -74,6 +74,12 @@ nav a::after {
   pointer-events: none;
 }
 
+/* Subpage small underline */
+nav a.subpage::after {
+  width: 10%;
+  background-color: var(--standout-color-cyan);
+}
+
 nav a:hover {
   color: var(--standout-color-green);
 }
