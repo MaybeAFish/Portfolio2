@@ -70,13 +70,22 @@ nav a::after {
   );
   border-radius: 0 0 999px 999px; /* bottom curve now */
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
-  transition: width 0.3s ease, opacity 0.3s ease;
+  transition:
+    width 0.3s ease,
+    opacity 0.3s ease;
   pointer-events: none;
 }
 
 /* Subpage small underline */
 nav a.subpage::after {
   width: 10%;
+  background-color: var(--standout-color-cyan);
+}
+
+.dropdown-content a.subpage::after,
+.dropdown-content a.active::after,
+.dropdown-content a.selected::after {
+  width: 100%;
   background-color: var(--standout-color-cyan);
 }
 

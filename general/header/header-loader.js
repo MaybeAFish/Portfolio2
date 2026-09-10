@@ -33,6 +33,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (linkPath === currentPath) {
       link.classList.add("active");
+    } else if (
+      linkPath !== "/" &&
+      currentPath.startsWith(linkPath + "/")
+    ) {
+      link.classList.add("active");
     }
   });
 
