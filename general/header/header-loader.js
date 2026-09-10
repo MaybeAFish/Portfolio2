@@ -7,34 +7,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const normalizePath = path => path.replace(/\/$/, "") || "/";
   const currentPath = normalizePath(window.location.pathname);
-  const projectOptions = [
-    { path: "/", label: "Projects" },
-    { path: "/projects/tetris", label: "Tetris" },
-    { path: "/projects/engine", label: "Engine" },
-    { path: "/projects/doomed", label: "Doomed" }
-  ];
-
-  const activeProject = projectOptions.find(option => currentPath === option.path) ||
-    projectOptions.find(option => currentPath.startsWith(option.path + "/")) ||
-    projectOptions[0];
+  const isAllProjectsSelected = currentPath === "/" || currentPath === "/projects";
 
   const trigger = placeholder.querySelector(".projects-nav-trigger");
-  const projectLinks = placeholder.querySelectorAll(".dropdown-content a");
-
   if (trigger) {
-    trigger.textContent = activeProject.label;
-    trigger.setAttribute("aria-label", `Projects: ${activeProject.label}`);
-    if (activeProject.path !== "/projects/") {
+    trigger.textContent = "Projects";
+    trigger.setAttribute("aria-label", "Projects");
+
+    if (isAllProjectsSelected) {
       trigger.classList.add("active");
     }
   }
 
-  projectLinks.forEach(link => {
+  const dropdownLinks = placeholder.querySelectorAll(".dropdown-content a");
+  dropdownLinks.forEach(link => {
     const linkPath = normalizePath(new URL(link.href).pathname);
-    if (linkPath === activeProject.path) {
-      link.classList.add("active");
-    }
-    if (activeProject.path === "/projects/" && linkPath === "/projects/") {
+    if (linkPath === currentPath) {
       link.classList.add("active");
     }
   });
