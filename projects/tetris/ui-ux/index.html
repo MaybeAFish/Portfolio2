@@ -12,12 +12,13 @@
     <script src="/general/header/header-loader.js"></script>
 
     <main>
-      <section>
-        <aside
-          class="side-navigation"
-          data-component="/projects/tetris/tetris-navigation.html">
-        </aside>
+      <nav
+        class="side-navigation"
+        aria-label="Tetris Airconsole project navigation"
+        data-component="/projects/tetris/tetris-navigation.html">
+      </nav>
 
+      <section>
         <div>
           <img class="side-navigation-media" src="/projects/tetris/ui-ux/main-screen.png">
 
@@ -38,13 +39,13 @@
                   Built a carousel for navigating the gamemodes.
                 </li>
                 <li>
-                  Pre-emptive access to the controls screen while the game is still counting down.
+                  Implemented pre-emptive access to the controls screen while the game is still counting down.
                 </li>
                 <li>
                   Proposed and added non-hosts being able to view their own best score/time in the leaderboard screen.
                 </li>
                 <li>
-                  Feedback when you have no leaderboard entry.
+                  Implemented feedback when you have no leaderboard entry.
                 </li>
               </ul>
             </li>
@@ -53,7 +54,7 @@
               Screen:
               <ul>
                 <li>
-                  Feedback when you have too many or too few players for a gamemode.
+                  Implemented feedback when you have too many or too few players for a gamemode.
                 </li>
               </ul>
             </li>
@@ -66,18 +67,18 @@
               Controller:
               <ul>
                 <li>Made sure every button reacts the exact same way when pressed.</li>
-                <li>The settings menu transition when opening/closing it.</li>
-                <li>Various feedback animations when opening the leaderboard.</li>
-                <li>Consistent rounding to .00 instead of .000 for time-based results.</li>
-                <li>Various resultscreen UI bugfixes.</li>
+                <li>Created the settings menu transition when opening/closing it.</li>
+                <li>Implemented various feedback animations when opening the leaderboard.</li>
+                <li>Implemented consistent rounding to .00 instead of .000 for time-based results.</li>
+                <li>Fixed various resultscreen UI bugs.</li>
               </ul>
             </li>
             <li>
               Screen:
               <ul>
-                <li>Background UI mask gliding in and out when switching between lobby/leaderboard/match.</li>
+                <li>Created the background UI mask gliding in and out when switching between lobby/leaderboard/match.</li>
                 <li>Created the animation that plays when switching between game modes.</li>
-                <li>"Double" and "Triple" feedback popups when clearing two or three lines at once.</li>
+                <li>Implemented "DOUBLE" and "TRIPLE" feedback popups when clearing two or three lines at once.</li>
               </ul>
             </li>
           </ul>

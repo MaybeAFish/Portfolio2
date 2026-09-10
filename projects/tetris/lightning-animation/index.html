@@ -12,12 +12,13 @@
     <script src="/general/header/header-loader.js"></script>
 
     <main>
-      <section>
-        <aside
-          class="side-navigation"
-          data-component="/projects/tetris/tetris-navigation.html">
-        </aside>
+      <nav
+        class="side-navigation"
+        aria-label="Tetris Airconsole project navigation"
+        data-component="/projects/tetris/tetris-navigation.html">
+      </nav>
 
+      <section>
         <div>
           <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
             <source src="/projects/tetris/lightning-animation/battle.mp4" type="video/webm" />
@@ -43,7 +44,7 @@
               with the effect originating from the relevant cleared line and ending at each opponents' playingfields' garbage column's top most empty cell + amount of cells being sent.
             </li>
             <li>
-              Then, I calculated a parabolic trajectory of the line between those two points. I made sure the parabole's maximum was calculated lower at larger distances, otherwise the animation would reach out of bounds.
+              Then, I calculated a parabolic trajectory of the line between those two points. I made sure the parabole's maximum was calculated lower at larger distances, otherwise the animation would sometimes reach out of bounds.
             </li>
             <li>
               Afterwards I created an instance of the line shader for each garbage being sent, and animated its keyframes
