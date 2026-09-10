@@ -1,32 +1,317 @@
+/* =========================================================
+   RIDDLE CAROUSEL
+   ========================================================= */
+
 .riddles-carousel {
-    margin-top: 24px;
+  --carousel-accent: var(--standout-color-green);
+
+  position: relative;
+  width: min(100%, 900px);
+  margin: 0 auto 80px;
 }
 
-.riddle-text {
-    max-width: 720px;
-    margin: 20px auto;
-    padding: 24px;
-    background: var(--main-background-color);
-    border-radius: 12px;
-    color: var(--text-color);
-    line-height: 1.6;
+/* Track */
+
+.riddles-carousel .carousel-track {
+  position: relative;
+  width: 100%;
+  height: clamp(300px, 38vw, 440px);
+  overflow: hidden;
 }
 
-.riddle-text + p {
-    margin-bottom: 16px;
+/* Slides */
+
+.riddles-carousel .carousel-slide {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: min(72vw, 700px);
+  min-height: 260px;
+
+  box-sizing: border-box;
+
+  padding: 32px;
+
+  transform:
+    translate(-50%, -50%)
+    translateX(var(--slide-offset, 0px))
+    scale(var(--slide-scale, 0.72));
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  background: var(--supporting-background-color);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+
+  transition:
+    transform 0.45s ease,
+    opacity 0.35s ease,
+    filter 0.35s ease;
+
+  overflow: hidden;
 }
 
-.riddle-carousel details {
-    margin-top: 10px;
+/* Previous + next */
+
+.riddles-carousel .carousel-slide.is-prev,
+.riddles-carousel .carousel-slide.is-next {
+  visibility: visible;
+
+  opacity: 0.35;
+  filter: saturate(0.7);
+
+  cursor: pointer;
+  pointer-events: auto;
+
+  --slide-scale: 0.68;
 }
 
-.riddles-carousel details summary {
-    display: inline-block;
-    cursor: pointer;
-    color: var(--standout-color-green);
+.riddles-carousel .carousel-slide.is-prev {
+  --slide-offset: clamp(-430px, -32vw, -220px);
+}
+
+.riddles-carousel .carousel-slide.is-next {
+  --slide-offset: clamp(220px, 32vw, 430px);
+}
+
+/* Active */
+
+.riddles-carousel .carousel-slide.is-active {
+  visibility: visible;
+
+  opacity: 1;
+
+  --slide-offset: 0px;
+  --slide-scale: 1;
+
+  z-index: 2;
+
+  pointer-events: auto;
+
+  border-color: color-mix(
+    in srgb,
+    var(--carousel-accent) 55%,
+    white 10%
+  );
+}
+
+/* Riddle text */
+
+.riddles-carousel .riddle-text {
+  max-width: 620px;
+
+  margin-bottom: 24px;
+
+  color: var(--text-color);
+
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  line-height: 1.8;
+}
+
+/* "What am I?" */
+
+.riddles-carousel .carousel-slide > p {
+  margin: 0 0 18px;
+
+  color: white;
+
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-weight: bold;
+}
+
+/* Answer */
+
+.riddles-carousel details {
+  color: var(--text-color);
+
+  font-size: 0.95rem;
+}
+
+.riddles-carousel summary {
+  color: var(--standout-color-green);
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.riddles-carousel summary:hover {
+  color: var(--standout-color-cyan);
 }
 
 .riddles-carousel details p {
-    margin-top: 12px;
-    margin-bottom: 0;
+  margin: 10px 0 0;
+}
+
+/* =========================================================
+   RIDDLE CONTROLS
+   ========================================================= */
+
+.riddles-carousel .carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 22px;
+
+  margin-top: 12px;
+}
+
+/* Arrows */
+
+.riddles-carousel .carousel-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+
+  padding: 0;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.riddles-carousel .carousel-button svg {
+  width: 30px;
+  height: 30px;
+
+  stroke: currentColor;
+  fill: none;
+
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.riddles-carousel .carousel-button:hover,
+.riddles-carousel .carousel-button:focus-visible {
+  color: var(--standout-color-green);
+  transform: scale(1.08);
+}
+
+.riddles-carousel .carousel-button:active {
+  color: var(--standout-color-cyan);
+  transform: scale(0.96);
+}
+
+/* Dots */
+
+.riddles-carousel .carousel-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+}
+
+.riddles-carousel .carousel-dot {
+  width: 14px;
+  height: 14px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.42);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.riddles-carousel .carousel-dot:hover,
+.riddles-carousel .carousel-dot:focus-visible {
+  background: var(--standout-color-green);
+
+  transform: scale(1.15);
+}
+
+.riddles-carousel .carousel-dot.active {
+  background: var(--standout-color-cyan);
+
+  transform: scale(1.35);
+
+  box-shadow:
+    0 0 0 4px rgba(33, 193, 255, 0.18);
+}
+
+/* Mobile */
+
+@media (max-width: 680px) {
+
+  .riddles-carousel .carousel-track {
+    height: clamp(320px, 70vw, 420px);
+  }
+
+  .riddles-carousel .carousel-slide {
+    width: 82vw;
+    min-height: 280px;
+    padding: 24px;
+  }
+
+  .riddles-carousel .carousel-slide.is-prev {
+    --slide-offset: -62vw;
+  }
+
+  .riddles-carousel .carousel-slide.is-next {
+    --slide-offset: 62vw;
+  }
+
+  .riddles-carousel .carousel-slide.is-prev,
+  .riddles-carousel .carousel-slide.is-next {
+    --slide-scale: 0.65;
+  }
+
+  .riddles-carousel .riddle-text {
+    line-height: 1.65;
+  }
+
+  .riddles-carousel .carousel-controls {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+
+  .riddles-carousel .carousel-track {
+    height: 380px;
+  }
+
+  .riddles-carousel .carousel-slide {
+    width: 88vw;
+    padding: 20px;
+  }
+
+  .riddles-carousel .carousel-slide.is-prev {
+    --slide-offset: -68vw;
+  }
+
+  .riddles-carousel .carousel-slide.is-next {
+    --slide-offset: 68vw;
+  }
 }

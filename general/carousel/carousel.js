@@ -1,85 +1,262 @@
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".carousel").forEach(setupCarousel);
+  document.querySelectorAll(".slideshow").forEach(setupSlideshow);
 });
 
-function setupCarousel(carousel) {
-  if (carousel.querySelector(".carousel-controls")) return;
+function setupSlideshow(slideshow) {
+  if (slideshow.querySelector(".slideshow-controls")) return;
 
-  const track = carousel.querySelector(".carousel-track");
+  const track = slideshow.querySelector(".slideshow-track");
+
   if (!track) return;
 
-  const slides = Array.from(track.querySelectorAll(".carousel-slide"));
+  const slides = Array.from(
+    track.querySelectorAll(".slideshow-slide")
+  );
+
   if (!slides.length) return;
 
   let currentSlide = 0;
-  const controls = document.createElement("div");
-  controls.className = "carousel-controls";
 
-  const previousButton = createButton("Previous slide", "\u276e");
-  const nextButton = createButton("Next slide", "\u276f");
-  previousButton.className = "carousel-button prev";
-  nextButton.className = "carousel-button next";
+  /* -------------------------
+     Controls
+  ------------------------- */
+
+  const controls = document.createElement("div");
+  controls.className = "slideshow-controls";
+
+  const previousButton = createArrowButton(
+    "Previous slide",
+    "prev"
+  );
+
+  const nextButton = createArrowButton(
+    "Next slide",
+    "next"
+  );
+
   const dots = document.createElement("div");
-  dots.className = "carousel-dots";
+  dots.className = "slideshow-dots";
   dots.setAttribute("role", "tablist");
+  dots.setAttribute("aria-label", "Slides");
 
   slides.forEach((slide, index) => {
-    const dot = createButton(`Go to slide ${index + 1}`, "");
-    dot.className = "carousel-dot";
+    const dot = document.createElement("button");
+
+    dot.type = "button";
+    dot.className = "slideshow-dot";
+
+    dot.setAttribute(
+      "aria-label",
+      `Go to slide ${index + 1}`
+    );
+
+    dot.setAttribute("aria-selected", "false");
     dot.setAttribute("role", "tab");
-    dot.addEventListener("click", () => goToSlide(index));
+
+    dot.addEventListener("click", () => {
+      goToSlide(index);
+    });
+
     dots.appendChild(dot);
   });
 
-  controls.append(previousButton, dots, nextButton);
-  carousel.appendChild(controls);
+  controls.append(
+    previousButton,
+    dots,
+    nextButton
+  );
 
-  function updateCarousel(behavior = "smooth") {
-    track.scrollTo({
-      left: currentSlide * track.clientWidth,
-      behavior,
+  slideshow.appendChild(controls);
+
+  /* -------------------------
+     Update slideshow
+  ------------------------- */
+
+  function updateSlideshow() {
+    const totalSlides = slides.length;
+
+    slides.forEach((slide, index) => {
+      let difference = index - currentSlide;
+
+      /*
+       * Make the slideshow wrap around.
+       *
+       * Example with 5 slides:
+       * 0 -> -1 becomes previous
+       * 4 -> +1 becomes next
+       */
+      if (difference > totalSlides / 2) {
+        difference -= totalSlides;
+      }
+
+      if (difference < -totalSlides / 2) {
+        difference += totalSlides;
+      }
+
+      const isActive = difference === 0;
+      const isPrevious = difference === -1;
+      const isNext = difference === 1;
+
+      slide.classList.toggle(
+        "is-active",
+        isActive
+      );
+
+      slide.classList.toggle(
+        "is-prev",
+        isPrevious
+      );
+
+      slide.classList.toggle(
+        "is-next",
+        isNext
+      );
+
+      slide.setAttribute(
+        "aria-hidden",
+        String(!isActive)
+      );
+
+      /*
+       * Only the active and adjacent slides
+       * can be interacted with.
+       */
+      slide.style.zIndex = isActive
+        ? "2"
+        : isPrevious || isNext
+          ? "1"
+          : "0";
+
+      slide.onclick = null;
+
+      if (isPrevious || isNext) {
+        slide.onclick = () => {
+          goToSlide(index);
+        };
+      }
     });
-    dots.querySelectorAll(".carousel-dot").forEach((dot, index) => {
+
+    /* Update dots */
+    const dotElements =
+      dots.querySelectorAll(".slideshow-dot");
+
+    dotElements.forEach((dot, index) => {
       const active = index === currentSlide;
-      dot.classList.toggle("active", active);
-      dot.setAttribute("aria-selected", String(active));
+
+      dot.classList.toggle(
+        "active",
+        active
+      );
+
+      dot.setAttribute(
+        "aria-selected",
+        String(active)
+      );
+
+      dot.setAttribute(
+        "aria-current",
+        active ? "true" : "false"
+      );
     });
-    carousel.dataset.activeSlide = String(currentSlide);
-    carousel.dataset.category = slides[currentSlide].dataset.category || "default";
+
+    slideshow.dataset.activeSlide =
+      String(currentSlide);
+
+    slideshow.dataset.category =
+      slides[currentSlide].dataset.category ||
+      slideshow.dataset.category ||
+      "default";
   }
+
+  /* -------------------------
+     Navigation
+  ------------------------- */
 
   function goToSlide(index) {
-    currentSlide = (index + slides.length) % slides.length;
-    updateCarousel();
+    currentSlide =
+      (index + slides.length) %
+      slides.length;
+
+    updateSlideshow();
   }
+
+  previousButton.addEventListener(
+    "click",
+    () => {
+      goToSlide(currentSlide - 1);
+    }
+  );
+
+  nextButton.addEventListener(
+    "click",
+    () => {
+      goToSlide(currentSlide + 1);
+    }
+  );
+
+  /* -------------------------
+     Keyboard navigation
+  ------------------------- */
 
   function handleKeyboard(event) {
-    if (event.key === "ArrowRight") goToSlide(currentSlide + 1);
-    if (event.key === "ArrowLeft") goToSlide(currentSlide - 1);
-  }
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      goToSlide(currentSlide - 1);
+    }
 
-  function syncWithScroll() {
-    const newIndex = Math.round(track.scrollLeft / track.clientWidth);
-    if (newIndex !== currentSlide) {
-      currentSlide = newIndex;
-      updateCarousel("auto");
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      goToSlide(currentSlide + 1);
     }
   }
 
-  previousButton.addEventListener("click", () => goToSlide(currentSlide - 1));
-  nextButton.addEventListener("click", () => goToSlide(currentSlide + 1));
-  carousel.addEventListener("keydown", handleKeyboard);
-  track.addEventListener("scrollend", syncWithScroll);
-  window.addEventListener("resize", () => updateCarousel("auto"));
+  slideshow.addEventListener(
+    "keydown",
+    handleKeyboard
+  );
 
-  carousel.tabIndex = 0;
-  updateCarousel("auto");
+  slideshow.tabIndex = 0;
+
+  /* Initial state */
+  updateSlideshow();
 }
 
-function createButton(label, content) {
+
+/* -------------------------
+   Arrow button
+------------------------- */
+
+function createArrowButton(label, direction) {
   const button = document.createElement("button");
+
   button.type = "button";
-  button.setAttribute("aria-label", label);
-  button.textContent = content;
+
+  button.className =
+    `slideshow-button ${direction}`;
+
+  button.setAttribute(
+    "aria-label",
+    label
+  );
+
+  button.innerHTML =
+    direction === "prev"
+      ? `
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path d="M15 5l-7 7 7 7"/>
+        </svg>
+      `
+      : `
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path d="M9 5l7 7-7 7"/>
+        </svg>
+      `;
+
   return button;
 }
