@@ -10,18 +10,9 @@
   align-items: flex-end;
   justify-content: center;
   min-height: 260px;
-  padding: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 24px;
-  background: linear-gradient(
-    135deg,
-    rgba(11, 15, 22, 0.9),
-    rgba(17, 24, 35, 0.75)
-  );
-  color: var(--text-color);
-  text-decoration: none;
+  border: 1px solid var(--supporting-background-color);
+  border-radius: var(--border-radius);
   overflow: hidden;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
   transition:
     border-color 0.2s ease,
     box-shadow 0.3s ease;
@@ -55,9 +46,12 @@
   );
 }
 
-.skill-card > * {
+.skill-card h2 {
   position: relative;
   z-index: 1;
+  margin: 0 0 10px 0;
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+  line-height: 1.1;
 }
 
 .skill-card:hover {
@@ -72,37 +66,6 @@
   filter: brightness(0.92) saturate(1.15);
 }
 
-.card-mechanics {
-  background: linear-gradient(
-    135deg,
-    rgba(15, 39, 48, 0.92),
-    rgba(29, 75, 63, 0.82)
-  );
-}
-
-.card-feel {
-  background: linear-gradient(
-    135deg,
-    rgba(30, 24, 57, 0.92),
-    rgba(88, 61, 141, 0.8)
-  );
-}
-
-.card-architecture {
-  background: linear-gradient(
-    135deg,
-    rgba(12, 30, 46, 0.92),
-    rgba(23, 96, 122, 0.8)
-  );
-}
-
-.card-graphics {
-  background: linear-gradient(
-    135deg,
-    rgba(44, 25, 17, 0.92),
-    rgba(132, 72, 31, 0.78)
-  );
-}
 
 .skill-card__media {
   position: absolute;
@@ -130,11 +93,6 @@
   z-index: 1;
 }
 
-.skill-card h2 {
-  margin: 0;
-  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
-  line-height: 1.1;
-}
 
 @media (max-width: 760px) {
   .skill-grid {
