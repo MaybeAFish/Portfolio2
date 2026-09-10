@@ -39,10 +39,11 @@
 }
 .game-card span {
   position: absolute;
-  left: 16px;
+  text-align: center;
   bottom: 10px;
   font-size: 1.3rem;
   font-weight: bold;
+  width: 100%;
 }
 
 /* Hover stuff */

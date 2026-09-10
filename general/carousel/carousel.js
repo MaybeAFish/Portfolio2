@@ -1,16 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".slideshow").forEach(setupSlideshow);
+  document
+    .querySelectorAll(".mediacarousel, .textcarousel")
+    .forEach(setupCarousel);
 });
 
-function setupSlideshow(slideshow) {
-  if (slideshow.querySelector(".slideshow-controls")) return;
+function setupCarousel(carousel) {
+  if (carousel.querySelector(".carousel-controls")) return;
+  if (carousel.querySelector(".mediacarousel-controls")) return;
+  if (carousel.querySelector(".textcarousel-controls")) return;
 
-  const track = slideshow.querySelector(".slideshow-track");
+  const isMediaCarousel =
+    carousel.classList.contains("mediacarousel");
+
+  const prefix = isMediaCarousel
+    ? "mediacarousel"
+    : "textcarousel";
+
+  const track = carousel.querySelector(`.${prefix}-track`);
 
   if (!track) return;
 
   const slides = Array.from(
-    track.querySelectorAll(".slideshow-slide")
+    track.querySelectorAll(`.${prefix}-slide`)
   );
 
   if (!slides.length) return;
@@ -22,20 +33,23 @@ function setupSlideshow(slideshow) {
   ------------------------- */
 
   const controls = document.createElement("div");
-  controls.className = "slideshow-controls";
+  controls.className = `${prefix}-controls`;
 
   const previousButton = createArrowButton(
     "Previous slide",
-    "prev"
+    "prev",
+    prefix
   );
 
   const nextButton = createArrowButton(
     "Next slide",
-    "next"
+    "next",
+    prefix
   );
 
   const dots = document.createElement("div");
-  dots.className = "slideshow-dots";
+
+  dots.className = `${prefix}-dots`;
   dots.setAttribute("role", "tablist");
   dots.setAttribute("aria-label", "Slides");
 
@@ -43,7 +57,7 @@ function setupSlideshow(slideshow) {
     const dot = document.createElement("button");
 
     dot.type = "button";
-    dot.className = "slideshow-dot";
+    dot.className = `${prefix}-dot`;
 
     dot.setAttribute(
       "aria-label",
@@ -66,24 +80,21 @@ function setupSlideshow(slideshow) {
     nextButton
   );
 
-  slideshow.appendChild(controls);
+  carousel.appendChild(controls);
 
   /* -------------------------
-     Update slideshow
+     Update carousel
   ------------------------- */
 
-  function updateSlideshow() {
+  function updateCarousel() {
     const totalSlides = slides.length;
 
     slides.forEach((slide, index) => {
       let difference = index - currentSlide;
 
       /*
-       * Make the slideshow wrap around.
-       *
-       * Example with 5 slides:
-       * 0 -> -1 becomes previous
-       * 4 -> +1 becomes next
+       * Wrap around so the first and last
+       * slides remain adjacent.
        */
       if (difference > totalSlides / 2) {
         difference -= totalSlides;
@@ -117,16 +128,15 @@ function setupSlideshow(slideshow) {
         String(!isActive)
       );
 
-      /*
-       * Only the active and adjacent slides
-       * can be interacted with.
-       */
       slide.style.zIndex = isActive
         ? "2"
         : isPrevious || isNext
           ? "1"
           : "0";
 
+      /*
+       * Only the side slides are clickable.
+       */
       slide.onclick = null;
 
       if (isPrevious || isNext) {
@@ -137,8 +147,9 @@ function setupSlideshow(slideshow) {
     });
 
     /* Update dots */
+
     const dotElements =
-      dots.querySelectorAll(".slideshow-dot");
+      dots.querySelectorAll(`.${prefix}-dot`);
 
     dotElements.forEach((dot, index) => {
       const active = index === currentSlide;
@@ -159,13 +170,8 @@ function setupSlideshow(slideshow) {
       );
     });
 
-    slideshow.dataset.activeSlide =
+    carousel.dataset.activeSlide =
       String(currentSlide);
-
-    slideshow.dataset.category =
-      slides[currentSlide].dataset.category ||
-      slideshow.dataset.category ||
-      "default";
   }
 
   /* -------------------------
@@ -177,22 +183,8 @@ function setupSlideshow(slideshow) {
       (index + slides.length) %
       slides.length;
 
-    updateSlideshow();
+    updateCarousel();
   }
-
-  previousButton.addEventListener(
-    "click",
-    () => {
-      goToSlide(currentSlide - 1);
-    }
-  );
-
-  nextButton.addEventListener(
-    "click",
-    () => {
-      goToSlide(currentSlide + 1);
-    }
-  );
 
   /* -------------------------
      Keyboard navigation
@@ -210,29 +202,44 @@ function setupSlideshow(slideshow) {
     }
   }
 
-  slideshow.addEventListener(
+  previousButton.addEventListener(
+    "click",
+    () => {
+      goToSlide(currentSlide - 1);
+    }
+  );
+
+  nextButton.addEventListener(
+    "click",
+    () => {
+      goToSlide(currentSlide + 1);
+    }
+  );
+
+  carousel.addEventListener(
     "keydown",
     handleKeyboard
   );
 
-  slideshow.tabIndex = 0;
+  carousel.tabIndex = 0;
 
   /* Initial state */
-  updateSlideshow();
+
+  updateCarousel();
 }
 
 
-/* -------------------------
-   Arrow button
-------------------------- */
+/* =========================================================
+   ARROW BUTTON
+   ========================================================= */
 
-function createArrowButton(label, direction) {
+function createArrowButton(label, direction, prefix) {
   const button = document.createElement("button");
 
   button.type = "button";
 
   button.className =
-    `slideshow-button ${direction}`;
+    `${prefix}-button ${direction}`;
 
   button.setAttribute(
     "aria-label",
