@@ -2,7 +2,7 @@
   --mediacarousel-accent: var(--standout-color-green);
 
   position: relative;
-  margin: 0 auto 80px;
+  margin: 0 auto 10px;
   box-sizing: border-box;
 }
 

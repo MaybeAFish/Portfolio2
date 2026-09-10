@@ -1,6 +1,6 @@
 .game {
   width: min(1180px, calc(100% - 32px));
-  margin: 0 auto;
+  margin: auto;
 }
 
 .game-iframe-container {

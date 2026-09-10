@@ -1,0 +1,85 @@
+.mechanics-comparison {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    margin: 2rem 0 3rem;
+}
+
+.mechanics-column {
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+}
+
+.mechanics-column h3 {
+    margin-top: 0;
+}
+
+.mechanics-image-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.mechanics-image-grid img {
+    display: block;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.mechanics-column p {
+    margin-bottom: 0;
+}
+
+/* Narrative has one wider image */
+.mechanics-column.narrative .mechanics-image-grid img {
+    width: 360px;
+    height: 180px;
+}
+
+.mechanics-showcase {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0 3rem;
+}
+
+.mechanic-card {
+    padding: 1rem;
+    background-color: var(--supporting-background-color);
+    border-radius: 10px;
+}
+
+.mechanic-card h3 {
+    margin: 1rem 0 0.5rem;
+}
+
+.mechanic-card p {
+    margin: 0;
+}
+
+@media (max-width: 800px) {
+    .mechanics-image-grid {
+        flex-wrap: wrap;
+    }
+
+    .mechanics-showcase {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 450px) {
+    .mechanics-image-grid img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .mechanics-column.narrative .mechanics-image-grid img {
+        width: 280px;
+        height: 140px;
+    }
+}

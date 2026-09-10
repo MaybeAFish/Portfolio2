@@ -46,7 +46,6 @@
             <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 122.31"><defs><style>.cls-1{fill:currentColor;}.cls-1,.cls-2{fill-rule:evenodd;}.cls-2{fill:var(--main-background-color);}</style></defs><title>linkedin-app</title><path class="cls-1" d="M27.75,0H95.13a27.83,27.83,0,0,1,27.75,27.75V94.57a27.83,27.83,0,0,1-27.75,27.74H27.75A27.83,27.83,0,0,1,0,94.57V27.75A27.83,27.83,0,0,1,27.75,0Z"/><path class="cls-2" d="M49.19,47.41H64.72v8h.22c2.17-3.88,7.45-8,15.34-8,16.39,0,19.42,10.2,19.42,23.47V98.94H83.51V74c0-5.71-.12-13.06-8.42-13.06s-9.72,6.21-9.72,12.65v25.4H49.19V47.41ZM40,31.79a8.42,8.42,0,1,1-8.42-8.42A8.43,8.43,0,0,1,40,31.79ZM23.18,47.41H40V98.94H23.18V47.41Z"/></svg>
             <p>LinkedIn</p>
           </a>    
-                  
 
           <button class="underline-hover social-label" id="copy-email" type="button">
             <svg width="33" height="25" viewBox="0 0 33 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,92 +59,80 @@
     </section>
 
 
-    
-
     <!-- MY WORKK!!! -->
     <main class="projects">
-      <!-- the 3 most amazing pieces -->
-      <h2>Best Projects</h2>
+      <section>
+        <h1>My Best Projects</h1>
+      </section>
 
-      <h1 style="margin-bottom: 0;">Tetris Airconsole</h1>
-      <p style="text-align: center;">A multiplayer Tetris® game designed to be played in cars.</p>
+      <article class="project-showcase">
+        <h1>Doomed</h1>
 
-      <div class="mediacarousel" data-category="development">
-        <div class="mediacarousel-track" aria-label="Tetris showcase">
+        <div class="mediacarousel" data-category="doomed" aria-label="Doomed project gallery">
+          <div class="mediacarousel-track">
 
-          <div class="mediacarousel-slide">
-            <img
-              src="/projects/tetris/tetris.jpg"
-              alt="Tetris Airconsole gameplay"
-            />
-          </div>
-          <div class="mediacarousel-slide">
-            <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
-              <source
-                src="/projects/tetris/lightning-animation/battle.mp4"
-                type="video/mp4"
-              />
-            </video>
-          </div>
-          <div class="mediacarousel-slide">
-            <img
-              src="/projects/tetris/multiplayer-stability/airconsole.webp"
-              alt="Tetris Airconsole multiplayer"
-            />
-          </div>
-          <div class="mediacarousel-slide">
-            <img
-              src="/projects/tetris/ui-ux/main-screen.png"
-              alt="Tetris Airconsole user interface"
-            />
-          </div>
+            <div class="mediacarousel-slide">
+              <img src="/projects/doomed/doomed.png" alt="Doomed game cover" />
+            </div>
+            <div class="mediacarousel-slide">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="/projects/doomed/doomed.mp4" type="video/mp4" />
+              </video>
+            </div>
 
+          </div>
         </div>
-      </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-      <a class="project-card" href="/projects/doomed/">
-        <div class="project-media">
-          <!-- <video autoplay muted loop playsinline preload="metadata">
-            <source src="/projects/doomed/doomed.mp4" type="video/webm" />
-          </video> -->
-        </div>
-        <div class="project-info">
-          <h3>Doomed</h3>
+        <div class="project-showcase-information">
           <p>A first-person boomer shooter inspired by DOOM.</p>
+          <a class="fancy-button" href="/projects/doomed/">View project</a>
         </div>
-      </a>
+      </article>
 
-      <a class="project-card" href="/projects/tetris/">
-        <div class="project-media">
-          <img src="/projects/tetris/tetris.jpg" alt="Tetris Airconsole">
-        </div>
-        <div class="project-info">
-          <h3>Tetris Airconsole</h3>
-          <p>A multiplayer Tetris® game designed to be played in cars.</p>
-        </div>
-      </a>
+      <article class="project-showcase">
+        <h1>Tetris Airconsole</h1>
 
-      <a class="project-card" href="/projects/engine/">
-        <div class="project-media">
-          <img src="/projects/engine/engine.png" alt="Vulkan Game Engine">
+        <div class="mediacarousel" data-category="tetris" aria-label="Tetris Airconsole project gallery">
+          <div class="mediacarousel-track" aria-label="Tetris showcase">
+            <div class="mediacarousel-slide">
+              <img src="/projects/tetris/tetris.jpg" alt="Tetris Airconsole gameplay" />
+            </div>
+            <div class="mediacarousel-slide">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="/projects/tetris/lightning-animation/battle.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="mediacarousel-slide">
+              <img src="/projects/tetris/multiplayer-stability/airconsole.webp" alt="Tetris Airconsole multiplayer" />
+            </div>
+            <div class="mediacarousel-slide">
+              <img src="/projects/tetris/ui-ux/main-screen.png" alt="Tetris Airconsole user interface" />
+            </div>
+          </div>
         </div>
-        <div class="project-info">
-          <h3>Vulkan Game Engine</h3>
-          <p>A low-level Vulkan graphics engine with a lot of focus on performance and modular architecture.</p>
+
+        <div class="project-showcase-information">
+          <p>A multiplayer Tetris® game designed to be played in cars. My contributions included multiplayer stability, UI & UX implementation, and implementing a lightning animation.</p>
+          <a class="fancy-button" href="/projects/tetris/">View project</a>
         </div>
-      </a>
+      </article>
+
+      <article class="project-showcase">
+        <h1>Vulkan Game Engine</h1>
+
+        <div class="mediacarousel" data-category="engine" aria-label="Game engine project gallery">
+          <div class="mediacarousel-track">
+            <div class="mediacarousel-slide">
+              <img src="/projects/engine/engine.png" alt="Vulkan game engine project" />
+            </div>
+          </div>
+        </div>
+
+        <div class="project-showcase-information">
+          <p>A low-level Vulkan graphics engine with a lot of focus on performance and modular code & system architecture.</p>
+          <a class="fancy-button" href="/projects/engine/">View project</a>
+        </div>
+      </article>
     </main>
 
     <!-- GAME -->
