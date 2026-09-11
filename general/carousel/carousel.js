@@ -23,8 +23,43 @@ function setupCarousel(carousel) {
   const slides = Array.from(
     track.querySelectorAll(`.${prefix}-slide`)
   );
-
   if (!slides.length) return;
+
+  /* -------------------------
+     Media loading placeholders
+  ------------------------- */
+
+  if (isMediaCarousel) {
+    slides.forEach((slide) => {
+      const media = slide.querySelector("img, video");
+
+      if (!media) return;
+
+      const markLoaded = () => {
+        slide.classList.add("is-loaded");
+      };
+
+      if (media.tagName === "IMG") {
+        if (media.complete) {
+          markLoaded();
+        } else {
+          media.addEventListener("load", markLoaded, {
+            once: true
+          });
+        }
+      }
+
+      if (media.tagName === "VIDEO") {
+        if (media.readyState >= 2) {
+          markLoaded();
+        } else {
+          media.addEventListener("loadeddata", markLoaded, {
+            once: true
+          });
+        }
+      }
+    });
+  }
 
   let currentSlide = 0;
 

@@ -100,11 +100,3 @@ section {
   margin: 0 auto 120px;
   padding: 0 28px;
 }
-
-/* When shit won't load */
-img {
-  background: var(--supporting-background-color);
-}
-video {
-  background: var(--supporting-background-color);
-}
