@@ -22,30 +22,178 @@
 
       <section>
         <div>
-          <img class="side-navigation-media" src="/projects/doomed/stylization/shaders.png" alt="Doomed game cover">
+          <img class="side-navigation-media" src="/projects/doomed/stylization/startscreen/after.png" alt="Startscreen after">
 
           <h1>Stylization</h1>
 
-          <p>The game was lacking the following:</p>
+          <p>When we received the game, it was lacking the following:</p>
           <ul>
+            <li>Clarity</li>
             <li>Visual identity</li>
             <li>Cohecency</li>
-            <li>Clarity</li>
           </ul>
 
-          <!-- before after lights, fog, shaders, outline boil -->
-          <!-- HUD -->
-          <!-- Settings? -->
+          <p> 
+            I decided to challenge myself on these problems by iterating on the HUD, improving the game's visibility and developing a visual style for the game itself. 
+          </p>
 
-          <h2>bap</h2>
+          <br>
+          <h2>Improving clarity</h2>
+          <p>
+            One of the first things I worked on was the HUD. The original HUD communicated a lot of information, 
+            but not all of it was useful to the player. 
+          </p>
           <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
-            <source src="/projects/doomed/stylization/DashFeedback.mp4" type="video/mp4" />
+            <source src="/projects/doomed/stylization/HUD0.mp4" type="video/mp4" />
+          </video>
+          <p>
+            You immediately spawned into the game with every weapon and ability,
+            alongside a mana system, a random score, and a timer. 
+            This made the HUD very busy before the player had even had a chance to understand the game. 
+          </p>
+          <p>
+            I decided to remove the timer and score because they added information without contributing 
+            much to the experience.
+          </p>
+          <p>
+            I'd even argue that the timer in particular was worsening the experience, because it felt like it 
+            made the player
+            feel as if you were supposed to speedrun it. It's a boomer shooter, which is supposed to 
+            be a game where you boom and shoot (dont laugh). I wanted the player to have time to appreciate 
+            their kills and explore the environment rather than immediately feeling pressured to finish asap.
+          </p>
+          <p>And the score was just visual noise.</p>
+
+          <p>
+            I replaced the mana system with the already existing ammo and we changed the progression structure 
+            so the player would unlock weapons and abilities throughout the game. 
+            This meant the HUD no longer needed to communicate every possible ability and weapon from the moment the player spawned.
+          </p>
+
+          <p>This resulted in my first iteration of the hud:</p>
+          <img class="side-navigation-media" src="/projects/doomed/stylization/HUD1.png" alt="First HUD iteration">
+
+
+          <br>
+          <h2>Visibility</h2>
+          <p>After reducing the amount of information on screen, I started working on a different kind of clarity: visibility.</p>
+          <img class="side-navigation-media" src="/projects/doomed/stylization/Clarity.jpg" alt="Comparison showing improved visibility">
+          <p>
+            The game was extremely dark, and unfortunately this wasn't helping either the gameplay or the visual presentation. 
+            Important objects, enemies and environmental details were all hard to understand. 
+            During one of the playtests I held, I even noticed someone trying to shoot a dark statue thinking it was an enemy.
+          </p>
+          <p>
+            I wanted Doomed to remain dark and gloomy, 
+            but the game could achieve that atmosphere in other ways without sacrificing its readability.
+          </p>
+
+
+          <br>
+          <h2>Iterating on the HUD</h2>
+          <p>
+            With the visibility improved, I returned to the HUD and continued iterating on its 
+            layout and feedback.
+          </p>
+
+          <p>
+            During playtesting, I discovered that players often didn't realise that the melee was available to them. 
+            I suggested making the melee ability visible directly in the HUD. My team agreed.
+          </p>
+          <p>
+            So I decided to place the movement and ability information together on the left side of the HUD. This created a better 
+            visual balance, otherwise most information would be concentrated on the right side of the 
+            screen.
+          </p>
+          <p>And more importantly, I added the keybinds underneath them. People would otherwise have to check random buttons to figure the keybinds out or give up on these abilities.</p>
+
+          <img class="side-navigation-media" src="/projects/doomed/stylization/HUD2.png" alt="Latest HUD upgrade">
+
+          <p>
+            The original dash icon was also a random placeholder. I had created custom .svg icons for both the dash and the new melee icon.
+          </p>
+          <p>
+            This was a completely new workflow for me at the time, but it gave the HUD a more consistent visual language.
+          </p>
+          <p>Here are my first sketches, made in Canva. I had quickly noticed that line-art didn't really fit in to our hud.</p>
+          <img class="side-navigation-media" src="/projects/doomed/stylization/sketch.png" alt="Line art dash">
+          <img class="side-navigation-media" src="/projects/doomed/stylization/sketch2.png" alt="Line art melee">
+          <p>Filling those icons made more sense for the fill animation.</p>
+          <p>And aside from the filling animation, I had also created feedback animations to communicate that the player has two dashes available, as well as when one of those charges is restored.</p>
+
+          <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata"> 
+            <source src="/projects/doomed/stylization/HUD3.mp4" type="video/mp4"> 
           </video>
 
-          <h2>bap</h2>
+          <p>
+            And finally, I added an ability icon, a pizza timer, and a right-click icon to the HUD.
+            This UI will only appear when the currently equipped weapon actually has access to that ability.
+          </p>
+          <p>This one just made sense:</p>
           <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
             <source src="/projects/doomed/stylization/AbilityFeedback.mp4" type="video/mp4" />
           </video>
+
+          <br>
+          <h2>Visual identity</h2>
+          <p>
+            I was basically fixing a bunch of tiny visual problems at a time. But once the HUD and readability were
+             in a better place, I started looking at the bigger visual problem. 
+          </p>
+          <p>
+            I spoke with a teacher who has, give or take, a gazillion years of game development experience 
+            and has played more boomer shooters than my age. 
+          </p>
+          <p>
+            He gave me some feedback, telling me that Doomed could benefit from having its own art style. 
+            This brought me back to the same problem I had identified earlier with visual identity.
+          </p>
+          <p>
+            I had already been doing shader research, so I started experimenting with ways to give the existing assets 
+            a more coherent look without having to replace all of the project's art. 
+          </p>
+
+          <img class="side-navigation-media" src="/projects/doomed/stylization/shaders.png" alt="Last shaders iteration">
+          <img class="side-navigation-media" src="/projects/doomed/stylization/material.png" alt="Shaders material">
+
+          <p>
+            I developed a cel shader that I applied individually to ALL materials. This encouraged assets to 
+            follow a consistent combination of albedo, normal, and ORH maps rather than relying on a single post-process 
+            effect over the entire scene which wouldn't be performant for such an expensive shader. Forcing the assets 
+            to only use these 3 maps also created a greater visual identity to the game, as some models that used more than those three texture maps would otherwise have a lot more detail than others. 
+          </p>
+          <p>
+            But to be honest, a lot of the models are asset flips, and either didn't have a normal map, didnt have an ORH map, 
+            or were relying on other maps. You can sometimes notice this while crossing different sections in the map with assets from different publishers.
+          </p>
+          <p>My system would work substantially better if it was designed around our own assets, that would use the same set and style of albedos and normals.</p>
+          <p>Despite that, I had also developed some outline shaders, together with a boil effect version that is applied on the viewmodel, enemies and interactables. These outlines are used as an overlay shader, and would make models pop instead of blending together while creating unreadable noise. I believe all of these shaders to have made great improvements on the game's visual identity.</p>
+
+          <img class="side-navigation-media" src="/projects/doomed/doomed.png" alt="Result">
+
+          <br>
+          <h2>Experimentation</h2>
+          <p>
+            The final result didn't come from the first try. There was quite a bit of experimentation 
+            involved in finding a style that worked for both the game's intended atmosphere and its gameplay.
+          </p>
+          <img class="side-navigation-media" src="/projects/doomed/stylization/experimentation/0.png" alt="Experimentation 1">
+          <img class="side-navigation-media" src="/projects/doomed/stylization/experimentation/1.png" alt="Experimentation 2">
+          <img class="side-navigation-media" src="/projects/doomed/stylization/experimentation/2.png" alt="Experimentation 3">
+          <img class="side-navigation-media" src="/projects/doomed/stylization/experimentation/3.png" alt="Experimentation 4">
+          <img class="side-navigation-media" src="/projects/doomed/stylization/experimentation/4.png" alt="Experimentation 5">
+          <img class="side-navigation-media" src="/projects/doomed/stylization/experimentation/5.png" alt="Experimentation 6">
+          <img class="side-navigation-media" src="/projects/doomed/stylization/experimentation/6.png" alt="Experimentation 7">
+          <img class="side-navigation-media" src="/projects/doomed/stylization/experimentation/7.png" alt="Experimentation 8">
+
+
+          <br>
+          <h2>Startscreen</h2>
+          <p>As a bonus because you've read my entire case study (you didn't just scroll right?), I tried making the startscreen more cinematic. Including a new name because I didn't really like "Abyssal Surge":</p>
+          <p>Before:</p>
+          <img class="side-navigation-media" src="/projects/doomed/stylization/startscreen/before.png" alt="Startscreen before">
+          <p>After:</p>
+          <img class="side-navigation-media" src="/projects/doomed/stylization/startscreen/after.png" alt="Startscreen after">
 
         </div>
       </section>
