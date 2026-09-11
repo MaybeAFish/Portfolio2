@@ -5,8 +5,9 @@
   font-size: 1.2rem;
   font-weight: bold;
   color: #f0f0f0;
-  background-color: #111;
-  border: 2px solid #333;
+  background: black;
+  border: 2px solid var(--supporting-background-color);
+
   border-radius: 0.6rem;
   text-align: center;
   text-decoration: none;

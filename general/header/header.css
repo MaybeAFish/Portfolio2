@@ -8,7 +8,7 @@
   left: 0;
   width: 100%;
   height: var(--header-height);
-  z-index: 110;
+  z-index: 300;
 
   display: flex;
   justify-content: center;
@@ -26,28 +26,29 @@ nav {
 
 .nav-container {
   display: flex;
-  gap: 10px;
-  padding: 8px 24px;
+  gap: clamp(4px, 0.9vw, 10px);
+  padding: clamp(6px, 0.9vw, 8px) clamp(12px, 2vw, 24px);
 
   justify-content: center;
   width: fit-content;
 
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.7);
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(2px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 999px;
 }
 
 nav a {
   text-decoration: none;
-  color: #ccc;
+  color: var(--text-color);
   font-weight: bold;
   padding-bottom: 4px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px 14px;
+  padding: clamp(6px, 0.8vw, 8px) clamp(10px, 1.6vw, 14px);
+  font-size: clamp(0.72rem, 0.95vw + 0.15rem, 1rem);
 
   position: relative;
   display: inline-block;
@@ -118,14 +119,3 @@ nav a.selected::after {
   background-color: var(--standout-color-green);
 }
 
-@media (max-width: 768px) {
-  .nav-container {
-    gap: 4px;
-    padding: 6px 12px;
-  }
-
-  nav a {
-    padding: 6px 10px;
-    font-size: 14px;
-  }
-}

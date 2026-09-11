@@ -8,6 +8,11 @@
   margin-bottom: 5rem;
 }
 
+.project-showcase h1 {
+  margin-bottom: 1rem;
+}
+
+
 .project-showcase-information {
   width: min(620px, 100%);
   margin: 0 auto;
@@ -15,7 +20,7 @@
 }
 
 .project-showcase-information p {
-  margin: 0 0 1.4rem;
+  margin: 0 0 1rem;
   color: var(--text-color-muted);
   line-height: 1.6;
 }
