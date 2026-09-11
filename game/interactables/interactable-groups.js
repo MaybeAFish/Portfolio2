@@ -7,99 +7,99 @@ import { DoorInteractable } from './interactable-implementations/door-interactab
 
 const interactableHeight = 3;
 export const GameInteractables = {
-  "Get to know me": [
+  "Featured projects": [
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(0, interactableHeight, -4),
-      templateUrl: '/projects/tetris.html',
+      templateUrl: '/game/projects/cosmos-intruders.html',
       options: { color: 'rgb(231, 76, 60)', icon: '/game/map/about.png' },
-      name: 'About Me'
+      name: 'Cosmos Intruders'
     },
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(30, interactableHeight, 17),
-      templateUrl: '/projects/tetris.html',
+      templateUrl: '/game/projects/samurai-brush.html',
       options: { color: 'rgb(243, 156, 18)', icon: '/game/map/album.png' },
-      name: 'Album'
+      name: 'Samurai Brush'
     },
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(27, interactableHeight, -12),
-      templateUrl: '/projects/tetris.html',
+      templateUrl: '/game/projects/arcane-fending.html',
       options: { color: 'rgb(241, 196, 15)', icon: '/game/map/fav-games.png' },
-      name: 'Favourite Games'
+      name: 'Arcane Fending'
     },
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(40, interactableHeight, -8.7),
-      templateUrl: '/projects/tetris.html',
+      templateUrl: '/game/projects/copper-mayhem.html',
       options: { color: 'rgb(247, 243, 38)', icon: '/game/map/watch.png' },
-      name: 'Watch Me Play'
+      name: 'Copper Mayhem'
     },
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(-17, interactableHeight, -24),
-      templateUrl: '/projects/tetris.html',
+      templateUrl: '/game/projects/monogame-game-editor.html',
       options: { color: 'rgb(24, 243, 184)', icon: '/game/map/music.png' },
-      name: 'Music'
+      name: 'Monogame Game Editor'
     },
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(100, interactableHeight, 15),
-      templateUrl: '/projects/tetris.html',
+      templateUrl: '/game/projects/motion-virtual-physiotherapy.html',
       options: { color: 'rgb(32, 202, 211)', icon: '/game/map/recipes.png' },
-      name: 'Recipes'
+      name: 'Motion'
     },
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(23, interactableHeight, 42),
-      templateUrl: '/projects/tetris.html',
+      templateUrl: '/game/projects/cosmos-intruders.html',
       options: { color: 'rgb(24, 110, 167)', icon: '/game/map/bucket.png' },
-      name: 'Bucketlist'
+      name: 'Cosmos Intruders'
     },
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(0, interactableHeight, -40),
-      templateUrl: '/projects/tetris.html',
+      templateUrl: '/game/projects/samurai-brush.html',
       options: { color: 'rgb(150, 28, 198)', icon: '/game/map/happy.png' },
-      name: 'What I Like'
+      name: 'Samurai Brush'
     },
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(0, interactableHeight, 40),
-      templateUrl: '/projects/tetris.html',
+      templateUrl: '/game/projects/arcane-fending.html',
       options: { color: 'rgb(199, 100, 241)', icon: '/game/map/annoy.png' },
-      name: 'What Annoys Me'
+      name: 'Arcane Fending'
     }
   ],
-  "My art": [
+  "Extra prototypes": [
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(-24, interactableHeight, 25),
-      templateUrl: '/projects/tetris.html',
+      templateUrl: '/game/projects/copper-mayhem.html',
       options: { color: 'rgb(175, 101, 244)', icon: '/game/map/riddles.gif' },
-      name: 'Riddles'
+      name: 'Copper Mayhem'
     },
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(-33, interactableHeight, 15),
-      templateUrl: '/projects/tetris.html',
+      templateUrl: '/game/projects/monogame-game-editor.html',
       options: { color: 'rgb(241, 122, 204)', icon: '/game/map/pixelart.gif' },
-      name: 'Pixelart'
+      name: 'Monogame Game Editor'
     },
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(-45, interactableHeight, 30),
-      templateUrl: '/projects/tetris.html',
+      templateUrl: '/game/projects/motion-virtual-physiotherapy.html',
       options: { color: 'rgb(243, 236, 120)', icon: '/game/map/models.gif' },
-      name: 'Models'
+      name: 'Motion'
     },
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(-49, interactableHeight, 35),
-      templateUrl: '/projects/tetris.html',
+      templateUrl: '/game/projects/samurai-brush.html',
       options: { color: 'rgb(248, 185, 126)', icon: '/game/map/textures.gif' },
-      name: 'Textures'
+      name: 'Samurai Brush'
     }
   ],
   "Teleports": [
@@ -118,39 +118,39 @@ export const GameInteractables = {
       options: { color: 'cyan', icon: '/game/map/teleport.png', }
     },
   ],
-  "Other": [
+  "More work": [
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(-110, interactableHeight, 45),
-      templateUrl: '/projects/tetris.html',
+      templateUrl: '/game/projects/arcane-fending.html',
       options: { color: 'rgb(129, 255, 196)', icon: '/game/map/say-something.png' },
-      name: 'Say Something'
+      name: 'Arcane Fending'
     },
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(-130, interactableHeight, 50),
-      templateUrl: '/projects/tetris.html',
+      templateUrl: '/game/projects/copper-mayhem.html',
       options: { color: 'rgb(107, 245, 255)', icon: '/game/map/vote.png' },
-      name: 'Vote'
+      name: 'Copper Mayhem'
     },
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(0, interactableHeight, 15),
-      templateUrl: '/projects/tetris.html',
+      templateUrl: '/game/projects/monogame-game-editor.html',
       options: { color: 'rgb(255, 255, 255)', icon: '/game/map/contact.png' },
-      name: 'Contact'
+      name: 'Monogame Game Editor'
     }
   ]
 };
 
 export const TutorialInteractables = {
-  "Get close to me,": [
+  "Get close to this": [
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(0, -3, -4),
-      templateUrl: '/about/intro/intro.html',
+      templateUrl: '/game/projects/motion-virtual-physiotherapy.html',
       options: { color: 'rgb(231, 76, 60)', icon: '/game/map/about.png' },
-      name: 'Press',
+      name: 'Motion',
       worldMapName: 'and then press [E].'
     },
   ],
