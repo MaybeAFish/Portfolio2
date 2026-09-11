@@ -22,9 +22,58 @@
 
       <section>
         <div>
-          <img class="side-navigation-media" src="/projects/doomed/doomed.png" alt="Doomed game cover">
+          <div class="video-container">
+            <iframe src="https://www.youtube-nocookie.com/embed/gjlrUUUJr_U?si=0h-VxNtHE2-qKugN&amp;start=137" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
 
           <h1>Horde Mode</h1>
+
+          <p>
+            Near the end of the project, we decided to add a Horde Mode to Doomed.
+            Another team member had originally taken on the task, but ran into enough
+            problems that we were ok with leaving it unfinished.
+          </p>
+          <p>
+            With very little time left before the showcase, I tried working on it anyways, and I managed 
+            to make all of the functionality for the game mode in roughly two days.
+          </p>
+
+
+          <br>
+          <h2>The game loop</h2>
+          <p>
+            The goal is simply: survive increasingly difficult rounds of
+            enemies.
+          </p>
+          <ul>
+            <li>The round starts</li>
+            <li>After a short duration, enemies start spawning into the arena</li>
+            <li>The player must kill all enemies as prompted by the UI</li>
+            <li>The player occasionally gains a new weapon</li>
+            <li>Repeat until death</li>
+          </ul>
+
+          <p>
+            I had included quest UI in the top-left that keeps track of the
+            remaining enemies. This gives the player a visible objective without having
+            to constantly search the arena to figure out whether the round is finished.
+          </p>
+
+          <br>
+          <h2>Reflection/Leftover ideas</h2>
+          <p>If I had more time for the mode, I would've created the following:</p>
+          <ul>
+            <li>A system with deadly terrain, (like lava, or Fortnite's storm), that would force the player to traverse the horde mode map. Currently, the player is only really told to stand around the same area.</li>
+            <li>Weapon ability drops across different rounds. Currently, only the weapons themselves drop while the game already has an entire ability system in place.</li>
+            <li>A better system for regaining ammo, like landing headshots for the pistol maybe, or enforcing ability usage (enemies drop more ammo while under a status effect).</li>
+            <li>Design up to 100 rounds. I had only done 10, with the last one being basically impossible so that players during the showcase wouldn't be able to see that I had only designed 10...</li>
+            <li>Somehow allow the player to use map objects creatively to kill the enemies.</li>
+            <li>A better, more appropiate spawning area for the golem boss, as he felt out of place outside of his usual arena.</li>
+            <li>A shop. Maybe, instead of enemies dropping ammo, and rounds dropping weapons, the player could use coins to purchase weapons and ammo and attachments and abilities.</li>
+          </ul>
+
+          <br>
+          <img class="side-navigation-media" src="/projects/doomed/horde-mode/pablo.jpg" alt="Pablo">
 
         </div>
       </section>
