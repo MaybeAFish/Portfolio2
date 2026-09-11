@@ -7,7 +7,7 @@ import { DoorInteractable } from './interactable-implementations/door-interactab
 
 const interactableHeight = 3;
 export const GameInteractables = {
-  "Featured projects": [
+  "School Projects": [
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(0, interactableHeight, -4),
@@ -38,48 +38,13 @@ export const GameInteractables = {
     },
     {
       type: OverlayInteractable,
-      position: new THREE.Vector3(-17, interactableHeight, -24),
-      templateUrl: '/game/projects/monogame-game-editor.html',
-      options: { color: 'rgb(24, 243, 184)', icon: '/game/map/music.png' },
-      name: 'Monogame Game Editor'
-    },
-    {
-      type: OverlayInteractable,
       position: new THREE.Vector3(100, interactableHeight, 15),
       templateUrl: '/game/projects/motion-virtual-physiotherapy.html',
       options: { color: 'rgb(32, 202, 211)', icon: '/game/map/recipes.png' },
       name: 'Motion'
     },
-    {
-      type: OverlayInteractable,
-      position: new THREE.Vector3(23, interactableHeight, 42),
-      templateUrl: '/game/projects/cosmos-intruders.html',
-      options: { color: 'rgb(24, 110, 167)', icon: '/game/map/bucket.png' },
-      name: 'Cosmos Intruders'
-    },
-    {
-      type: OverlayInteractable,
-      position: new THREE.Vector3(0, interactableHeight, -40),
-      templateUrl: '/game/projects/samurai-brush.html',
-      options: { color: 'rgb(150, 28, 198)', icon: '/game/map/happy.png' },
-      name: 'Samurai Brush'
-    },
-    {
-      type: OverlayInteractable,
-      position: new THREE.Vector3(0, interactableHeight, 40),
-      templateUrl: '/game/projects/arcane-fending.html',
-      options: { color: 'rgb(199, 100, 241)', icon: '/game/map/annoy.png' },
-      name: 'Arcane Fending'
-    }
   ],
-  "Extra prototypes": [
-    {
-      type: OverlayInteractable,
-      position: new THREE.Vector3(-24, interactableHeight, 25),
-      templateUrl: '/game/projects/copper-mayhem.html',
-      options: { color: 'rgb(175, 101, 244)', icon: '/game/map/riddles.gif' },
-      name: 'Copper Mayhem'
-    },
+  "Personal projects": [
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(-33, interactableHeight, 15),
@@ -87,19 +52,21 @@ export const GameInteractables = {
       options: { color: 'rgb(241, 122, 204)', icon: '/game/map/pixelart.gif' },
       name: 'Monogame Game Editor'
     },
+  ],
+  "Personal projects/gamejams": [
     {
       type: OverlayInteractable,
-      position: new THREE.Vector3(-45, interactableHeight, 30),
-      templateUrl: '/game/projects/motion-virtual-physiotherapy.html',
-      options: { color: 'rgb(243, 236, 120)', icon: '/game/map/models.gif' },
-      name: 'Motion'
+      position: new THREE.Vector3(-110, interactableHeight, 45),
+      templateUrl: '/game/projects/dont-pop-the-balloon.html',
+      options: { color: 'rgb(129, 255, 196)', icon: '/game/map/say-something.png' },
+      name: 'DONT pop the balloon'
     },
     {
       type: OverlayInteractable,
-      position: new THREE.Vector3(-49, interactableHeight, 35),
-      templateUrl: '/game/projects/samurai-brush.html',
-      options: { color: 'rgb(248, 185, 126)', icon: '/game/map/textures.gif' },
-      name: 'Samurai Brush'
+      position: new THREE.Vector3(0, interactableHeight, 15),
+      templateUrl: '/game/projects/monogame-game-editor.html',
+      options: { color: 'rgb(255, 255, 255)', icon: '/game/map/contact.png' },
+      name: 'It aint all about you!'
     }
   ],
   "Teleports": [
@@ -117,29 +84,6 @@ export const GameInteractables = {
       sceneName: 'tutorial',
       options: { color: 'cyan', icon: '/game/map/teleport.png', }
     },
-  ],
-  "More work": [
-    {
-      type: OverlayInteractable,
-      position: new THREE.Vector3(-110, interactableHeight, 45),
-      templateUrl: '/game/projects/arcane-fending.html',
-      options: { color: 'rgb(129, 255, 196)', icon: '/game/map/say-something.png' },
-      name: 'Arcane Fending'
-    },
-    {
-      type: OverlayInteractable,
-      position: new THREE.Vector3(-130, interactableHeight, 50),
-      templateUrl: '/game/projects/copper-mayhem.html',
-      options: { color: 'rgb(107, 245, 255)', icon: '/game/map/vote.png' },
-      name: 'Copper Mayhem'
-    },
-    {
-      type: OverlayInteractable,
-      position: new THREE.Vector3(0, interactableHeight, 15),
-      templateUrl: '/game/projects/monogame-game-editor.html',
-      options: { color: 'rgb(255, 255, 255)', icon: '/game/map/contact.png' },
-      name: 'Monogame Game Editor'
-    }
   ]
 };
 
