@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Player Experience – My Skills</title>
   <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/skills/game-feel/skill.css">
+  <link rel="stylesheet" href="/skills/player-experience/skill.css">
   <link rel="stylesheet" href="/skills/skills-detail.css">
 </head>
 <body>
@@ -20,35 +20,188 @@
     </nav>
 
     <section>
-      <div>
-        <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
-          <source src="/projects/doomed/doomed.mp4" type="video/mp4" />
-        </video>
+      <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
+        <source src="/projects/doomed/combat/melee.mp4" type="video/mp4" />
+      </video>
 
-        <h1>Player Experience</h1>
+      <h1>Player Experience</h1>
+      <p>In the context of games, the player experience (PE) is how the player feels, thinks or reacts while playing the game.</p>
 
-        <!-- arcane fending -->
-        <!-- motion viusal therapy -->
+      <p>
+        How PE can be analyzed is a different story.
+        Game designers don't agree on a universal model for handling a game's player experience. Look up "Player Experience" in your search engine, and under images, you will find like 20 different frameworks.
+      </p>
+      <p>That said, I don't fully agree on any of them either.</p>
+      <p>I've made the following presentation to express my take on it: </p>
+
+      <div class="pdf-section">
+        <h2>How to analyze the player experience of any game</h2>
+        <button class="fancy-button" onclick="loadPDF(this, '/skills/player-experience/player-exp.pdf')">View PDF here</button>
+      </div>
+      <script src="/cv/load-pdf.js"></script>
+
+      <br>
+      <p>This knowledge could be obvious af, or it could be completely wrong. I dont know as I made this for fun.</p>
+      <p>
+        Something I do know for certain is that analyzing the player experience is very time-consuming as it usually takes many iterations and playtests to 
+        understand if and why your system sucks. Especially when different systems are dependant on one another and that 
+        players respond widely different from eachother.
+      </p>
+      <p>
+        This means that depending on the team size, 
+        Game designers must be very selective on which systems they want to analyze in depth.
+      </p>
+      <p>
+        These are some of the player
+        experience problems I personally chose to investigate and improve.
+      </p>
 
 
+      <br>
+      <h2>Doomed</h2>
+      <div class="experience-grid">
+        <article class="experience-card">
+          <div class="experience-media">
+            <video autoplay muted loop playsinline>
+              <source src="/projects/doomed/combat/melee.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="experience-content">
+            <h4>Melee</h4>
+            <p>
+              Melee attacks initially lacked any weight and feedback.
+              I improved the timing, animation, sound, damage system and enemy knockback so that hits felt
+              more consistent and impactful.
+            </p>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <div class="experience-media">
+            <video autoplay muted loop playsinline>
+              <source src="/projects/doomed/combat/slowmotion.webm" type="video/mp4">
+            </video>
+          </div>
+          <div class="experience-content">
+            <h4>Weapon Swapping</h4>
+            <p>
+              I added a slow motion effect for weaponswapping. But during playtests, I noticed that experienced players would try using the
+              number keys instead of the weapon wheel. I added 1-4 weapon switching because
+              it better matched how players actually wanted to swap between their weapons.
+            </p>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <div class="experience-media">
+            <video autoplay muted loop playsinline>
+              <source src="/projects/doomed/combat/emergent.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="experience-content">
+            <h4>Projectiles</h4>
+            <p>
+              Enemy projectiles could originally pass through walls and kill players without
+              giving them a reasonable opportunity to understand wtf happened. I explored
+              reflecting projectiles off the environment instead, which ended up being way more fun to play versus.
+            </p>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <div class="experience-media">
+            <video autoplay muted loop playsinline>
+              <source src="/projects/doomed/combat/reload.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="experience-content">
+            <h4>Reloading</h4>
+            <p>
+              Playtests revealed frustration when players unexpectedly had to manually reload before
+              they could continue fighting. I changed the reload behaviour so weapons would automatically reload whenever it made sense.
+            </p>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <div class="experience-media">
+            <video autoplay muted loop playsinline>
+              <source src="/projects/doomed/doomed.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="experience-content">
+            <h4>Onboarding</h4>
+            <p>
+              I adjusted enemy placement, spacing and tutorial prompts so players learned
+              movement and combat mechanics in a better more deliberate way.
+            </p>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <div class="experience-media">
+            <video autoplay muted loop playsinline>
+              <source src="/projects/doomed/stylization/AbilityFeedback.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="experience-content">
+            <h4>Ability Readability</h4>
+            <p>
+              Players had no clue how the abilities worked. I implemented ability learning, added VFX around the weapons and created HUD elements to make it more clear.
+            </p>
+          </div>
+        </article>
+      </div>
 
 
-        <!-- MECHANICS, DYNAMICS AESTHETICS -->
-<!-- 
-        <p>Refining timing, motion, sound, and feedback until every interaction feels immediate.</p>
-      
-        <p>zie mechanics hier.</p>
-        <p>dynamics = hoe reageren mensen erop. ze rushen of spelen ze sloom</p>
-        <p>aesthetics = shaders, en mijn pixelart games</p>
+      <br>
+      <h2>Tetris Airconsole</h2>
+      <div class="experience-simple">
+        <img
+          class="side-navigation-media" 
+          src="/projects/tetris/multiplayer-stability/airconsole.webp"
+          alt="Tetris Airconsole multiplayer stability"
+          loading="lazy"
+        >
 
-        <p>I've made a Play of the Game system for a Karaoke game</p>
-        <p>I wrote a research paper, it will appear here when NDA expires</p> -->
+        <div>
+          <p>
+            During interal playtests, players encountered confusing situations when someone
+            disconnected, reconnected, or joined at an unexpected moment. These situations
+            could interrupt the game or leave players unsure about what was happening.
+          </p>
 
-
-
-
-<!-- Doomed, I made it so  -->
+          <p>
+            I treated these as player experience problems rather than technical
+            problems. I designed and proposed the desired behaviour to the Creative Director
+            before we'd start discussing the details, including reconnect timers, pausing behaviour, multiple
+            disconnected players and joining during different game states.
+          </p>
         </div>
+      </div>
+
+
+      <br>
+      <h2>Karaoke Game</h2>
+
+      <div class="experience-simple karaoke-experience">
+        <img class="side-navigation-media" src="/skills/game-mechanics/my-secondary-mechanics/karaoke.png">
+
+        <p>
+          I designed a Play of the Game system for a karaoke game by performing the following steps:
+        </p>
+
+        <ol>
+          <li>Identifying the different motivations people might enjoy while playing karaoke.</li>
+          <li>Determining which in-game recorded events could realistically represent those motivations.</li>
+          <li>Determining the weights of those events.</li>
+          <li>Determining how the weights should be used when calculating what the moment should be.</li>
+          <li>Implementing it, and then tons of playtesting to make some number adjustments.</li>
+        </ol>
+
+        <p>Research is powerful</p>
+      </div>
     </section>
   </main>
 

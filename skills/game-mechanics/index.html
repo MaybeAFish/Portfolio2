@@ -170,42 +170,28 @@
 
 
         <br><br>
-        <h2>idk</h2>
         <p>
-          Creating good and fun mechanics takes a lot of creativity and refinement.
+          Creating fun mechanics takes a lot of creativity and refinement.
           It gets very difficult sometimes, but it's a process that I really enjoy.
         </p>
 
-        <!-- My belief on creating game mechanics -->
-        <!-- there are multiple ways to create game mechanics   -->
-
-        <!-- what i do, define as many things i know for certain. will the game be 2, 2,5 or 3d? will the game have what theme -->
-        <!-- the next important step is creating the  -->
-
        <p>
-          When designing game mechanics, it's important to design them while thinking
-          of the bigger system, otherwise known as game loops.
+          When designing game mechanics, I think it's important to design them while considering
+          how they fit within the larger systems of the game. These mechanics aren't isolated, but often work together to form a game loop.
         </p>
-
-
-
-
-
 
         <br><br>
         <h2>Game Loops</h2>
-
-        <!-- game loops are ... -->
-        <p>
-          I believe that every game has atleast one game loop. 
-        </p>
+        <p> I believe every game has at least one game loop: a repeating sequence of actions that keeps the player engaged and 
+        drives the entire game's experience.</p>
+        
         <ul>
           <li>
             In Tetris,
             <ul>
               <li>The player receives a tetromino</li>
-              <li>The player places the tetromino</li>
-              <li>The tetromino is evaluated</li>
+              <li>The player positions and places the tetromino</li>
+              <li>The game evaluates the resulting board</li>
               <li>Repeat</li>
             </ul>
           </li>
@@ -213,51 +199,57 @@
             In VALORANT,
             <ul>
               <li>The round begins</li>
-              <li>a</li>
-              <li>Repeat until win/loss</li>
+              <li>Players make decisions and interact with the opposing team</li>
+              <li>Players fight for an objective</li>
+              <li>The round ends when a wincondition is reached</li>
+              <li>Repeat</li>
             </ul>
           </li>
           <li>
             In Life is Strange,
             <ul>
-              <li>The player is presented with a new narrative</li>
-              <li>The player may walk around and observe</li>
-              <li>The player is</li>
-              <li>Repeat until win/loss</li>
+              <li>The player is presented with a new part of the narrative</li>
+              <li>The player may explore the environment and interact with characters or objects</li>
+              <li>The player makes decisions that influence the experience</li>
+              <li>The story progresses</li>
+              <li>Repeat</li>
             </ul>
           </li>
         </ul>
 
-
-
-        <p>I've designed game loops before abc:</p>
+        <p> I have also designed game loops myself. In this example, I designed the combat loop for a turn-based match-3 system: </p>
         <video class="side-navigation-media" autoplay muted loop playsinline>
           <source src="/skills/game-mechanics/loops/samurai.mp4" type="video/mp4">
         </video>
         <ul>
-          <li>The player is prompted with a Quick Time Event (QTE)</li>
-          <li>The player receives moves</li>
-          <li>The player uses those moves in a match-3 field</li>
-          <li>The player decides which enemy to attack, dealing damage based on</li>
+          <li>The player is prompted with a Quick Time Event (QTE) to earn moves</li>
+          <li>The player uses those moves in a match-3 field to accumulate damage</li>
+          <li>The player decides which enemy to attack to use the damage on</li>
           <li>The enemy(s) strike back</li>
-          <li>Repeat until either party wins/loses</li>
+          <li>Repeat</li>
         </ul>
 
-<!-- https://www.skeletoncodemachine.com/p/core-game-loop -->
-        <!-- A core game loop is the repeating chain of actions, rules, and feedback that a player experiences while playing -->
-        <!-- <p>Shaping progression, pacing, rewards, and bottlenecks so players stay engaged from first second to final objective.</p> -->
-        
-<!-- formal elements -->
-<!-- https://www.google.com/search?q=game+design+formal+elements&ie=UTF-8 -->
-
-        <!-- Horde mode doomed -->
-        <!-- INFECTED puzzels? -->
-<!-- 8 kinds of fun? talk about the fun somewhere? -->
-
-        <!-- horde mode game loop -->
+        <br>
+        <h3>Doomed's Horde Mode</h3>
         <div class="video-container">
           <iframe src="https://www.youtube-nocookie.com/embed/gjlrUUUJr_U?si=0h-VxNtHE2-qKugN&amp;start=137" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
+        <ul>
+          <li>The round starts</li>
+          <li>After a short duration, enemies start spawning into the arena</li>
+          <li>The player must kill all enemies as prompted by the UI</li>
+          <li>The player occasionally gains a new weapon</li>
+          <li>Repeat until death</li>
+        </ul>
+
+
+
+
+        <!-- INFECTED puzzels? -->
+        <!-- 8 kinds of fun? talk about the fun somewhere? -->
+      <!-- formal elements -->
+      <!-- https://www.google.com/search?q=game+design+formal+elements&ie=UTF-8 -->
+
 
       </div>
     </section>

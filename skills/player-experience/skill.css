@@ -1,0 +1,170 @@
+
+
+.pdf-section {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  background-color: var(--supporting-background-color);
+
+  height: auto;
+  min-height: 0;
+}
+
+
+
+/* ================================
+   PLAYER EXPERIENCE
+   ================================ */
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+
+  width: 100%;
+  margin: 1.5rem 0 1rem;
+}
+
+
+/* ================================
+   DOOMED CARDS
+   ================================ */
+
+.experience-card {
+  display: grid;
+  grid-template-columns: 45% 55%;
+
+  min-height: 230px;
+
+  overflow: hidden;
+
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 10px;
+}
+
+.experience-media {
+  width: 100%;
+  height: 100%;
+  min-height: 230px;
+
+  background: #3b3b3b;
+  overflow: hidden;
+}
+
+.experience-media video,
+.experience-media img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.experience-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 1.4rem;
+}
+
+.experience-content h4 {
+  margin: 0 0 0.7rem;
+
+  font-size: 1.25rem;
+}
+
+.experience-content p {
+  margin: 0;
+
+  line-height: 1.55;
+}
+
+
+/* ================================
+   LINKS
+   ================================ */
+
+.experience-link {
+  display: inline-block;
+
+  margin: 0.5rem 0 2.5rem;
+
+  color: #47cbd2;
+
+  font-weight: bold;
+  text-decoration: none;
+
+  transition: filter 0.15s ease;
+}
+
+.experience-link:hover {
+  filter: brightness(1.2);
+}
+
+
+/* ================================
+   TETRIS / NORMAL SECTIONS
+   ================================ */
+
+.experience-simple {
+  margin-top: 1.5rem;
+}
+
+
+.experience-simple p {
+  line-height: 1.65;
+}
+
+.experience-simple blockquote {
+  margin: 1.5rem 0;
+
+  padding: 1rem 1.25rem;
+
+  border-left: 3px solid #47cbd2;
+  background: #2a2a2a;
+  border-radius: 0 6px 6px 0;
+
+  font-style: italic;
+}
+
+.experience-simple ol {
+  padding-left: 1.5rem;
+}
+
+.experience-simple li {
+  margin-bottom: 0.6rem;
+
+  line-height: 1.55;
+}
+
+
+/* ================================
+   MOBILE
+   ================================ */
+
+@media (max-width: 900px) {
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .experience-card {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-media {
+    height: 220px;
+    min-height: 0;
+  }
+
+  .experience-content {
+    padding: 1.25rem;
+  }
+}
+
