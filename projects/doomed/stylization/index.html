@@ -34,7 +34,7 @@
           </ul>
 
           <p> 
-            I decided to challenge myself on these problems by iterating on the HUD, improving the game's visibility and developing a visual style for the game itself. 
+            I wanted to challenge myself on these problems by iterating on the HUD, improving the game's visibility and designing a new visual style for the game. 
           </p>
 
           <br>
@@ -115,11 +115,11 @@
           <p>
             This was a completely new workflow for me at the time, but it gave the HUD a more consistent visual language.
           </p>
-          <p>Here are my first sketches, made in Canva. I had quickly noticed that line-art didn't really fit in to our hud.</p>
+          <p>Here are my first sketches, made in Canva.</p>
           <img class="side-navigation-media" src="/projects/doomed/stylization/sketch.png" alt="Line art dash">
           <img class="side-navigation-media" src="/projects/doomed/stylization/sketch2.png" alt="Line art melee">
-          <p>Filling those icons made more sense for the fill animation.</p>
-          <p>And aside from the filling animation, I had also created feedback animations to communicate that the player has two dashes available, as well as when one of those charges is restored.</p>
+          <p>I had quickly noticed that line-art didn't really fit in to our hud. Filling those icons made more sense for the already existing fill animation representing your dash charge timer.</p>
+          <p>And aside from the filling animation, I had created two "chevrons", each indicating a charge to communicate that the player has two dashes available, as well as some feedback when one of those charges is restored.</p>
 
           <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata"> 
             <source src="/projects/doomed/stylization/HUD3.mp4" type="video/mp4"> 
@@ -129,7 +129,6 @@
             And finally, I added an ability icon with a pizza timer and a right-click icon to the HUD.
             This UI will only appear when the currently equipped weapon actually has access to that ability.
           </p>
-          <p>This one just made sense:</p>
           <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
             <source src="/projects/doomed/stylization/AbilityFeedback.mp4" type="video/mp4" />
           </video>
@@ -159,15 +158,17 @@
           <p>
             I developed a cel shader that I applied individually to ALL materials. This encouraged assets to 
             follow a consistent combination of albedo, normal, and ORH maps rather than relying on a single post-process 
-            effect over the entire scene which wouldn't be performant for such an expensive shader. Forcing the assets 
-            to only use these 3 maps also created a greater visual identity to the game, as some models that used more than those three texture maps would otherwise have a lot more detail than others. 
+            effect over the entire scene which wouldn't be performant or look as good. Forcing the assets 
+            to only use these 3 maps also created a greater visual identity to the game, as some models that used more than those three texture maps would otherwise have a lot more detail than other assets. 
           </p>
           <p>
             But to be honest, a lot of the models are asset flips, and either didn't have a normal map, didnt have an ORH map, 
-            or were relying on other maps. You can sometimes notice this while crossing different sections in the map with assets from different publishers.
+            or were relying on other maps. These models would look off next to the rest of the environment. You can sometimes notice this while crossing different sections in the map with assets from different publishers.
           </p>
-          <p>My system would work substantially better if it was designed around our own assets, that would use the same set and style of albedos and normals.</p>
-          <p>Despite that, I had also developed some outline shaders, together with a boil effect version that is applied on the viewmodel, enemies and interactables. These outlines are used as an overlay shader, and would make models pop instead of blending together while creating unreadable noise. I believe all of these shaders to have made great improvements on the game's visual identity.</p>
+          <p>My system would work substantially better if it was designed around our own assets, that would use the same sets and style of albedos and normals.</p>
+          <p>Aside from the cel shaders, I had also developed some outline shaders, together with a boil effect version that is applied on the viewmodel, enemies and interactables. These outlines are used as an overlay shader, and would make models pop instead of blending together while creating unreadable noise.</p> 
+
+          <p>Despite the inconsistent shader usage between assets from different publishers, I believe these shaders to have made great improvements on the game's visual identity.</p>
 
           <img class="side-navigation-media" src="/projects/doomed/doomed.png" alt="Result">
 
@@ -189,7 +190,7 @@
 
           <br>
           <h2>Startscreen</h2>
-          <p>As a bonus because you've read my entire case study (you didn't just scroll right?), I tried making the startscreen more cinematic. Including a new name because I didn't really like "Abyssal Surge":</p>
+          <p>As a bonus because you've read my entire case study (you didn't just scroll, right?), I tried making the startscreen more cinematic. I also thought of a new name because we didn't really like "Abyssal Surge":</p>
           <p>Before:</p>
           <img class="side-navigation-media" src="/projects/doomed/stylization/startscreen/before.webp" alt="Startscreen before">
           <p>After:</p>
