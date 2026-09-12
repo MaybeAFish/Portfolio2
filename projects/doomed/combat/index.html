@@ -65,7 +65,7 @@
           <p>I then had a cooler idea. Instead of simply making the projectiles disappear, I experimented with having them reflect off the environment.</p>
 
           <video class="side-navigation-media" loop muted autoplay playsinline preload="metadata"> 
-            <source src="/projects/doomed/combat/emergent.webm" type="video/webm"> 
+            <source src="/projects/doomed/combat/emergent.mp4" type="video/webm"> 
           </video>
 
           <p>This created some really interesting emergent behaviour. A projectile could remain dangerous for a short while even after the player had already succesfully dodged the initial projectile's trajectory.</p>
@@ -76,7 +76,7 @@
           <h2>Abilities</h2>
           <p>One of my design arguments was to remove the mana system and make abilities consume ammo instead.</p>
           <p>Mana was an additional resource that wasn't really contributing anything meaningful to the experience. It felt overcomplicated as it meant the player had to keep track of another number while the weapons' ammo already felt sufficient.</p>
-          <p>As a team, we decided to couple abilities to weapons. Each weapon would have its own right-click ability, which the player could unlock by collecting a corresponding rune (ability learning).</p>
+          <p>As a team, we decided to couple abilities to weapons. Each weapon would have its own right-click ability, which the player could unlock by collecting a corresponding rune (ability learning). This way, it would feel logical in a gameplay sense that the abilities would cost ammo.</p>
           <p>I implemented this ability learning system and also suggested giving each weapon a visual VFX aura. My idea was to make it immediately understandable which weapons already had an active ability associated with them.</p>
           <p>VFXs not made by me, only positioned them.</p>
           <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata"> 
@@ -97,7 +97,7 @@
             <li>
               Shotgun + Void
               <p>Void was designed as a powerful one-time burst with a long cooldown. The shotgun already had limited ammo and was more situational (close range), 
-                making it a good match for an ability that the player saves for an important moment.</p>
+                making it a great match for an ability that the player saves for an important moment.</p>
             </li>
             <li>
               Minigun + Flames
@@ -110,7 +110,7 @@
               Rifle + Shock
               <p>
                 The rifle is the "bread-and-butter" weapon and is likely to be used the most during combat. Shock was designed around a relatively low cooldown and low cost, which encourages frequent use as it's very cost-efficient.
-                It felt right putting the most frequently used ability on the most frequently used weapon. Especially because it was the only combination left..
+                It felt right putting the most frequently used ability on the most frequently used weapon. Especially considering it was the only combination left..
               </p>
             </li>
           </ul>
@@ -122,7 +122,7 @@
           <h2>Reload behaviour</h2>
           <p>During playtests, I noticed that players were getting slightly frustrated with the gunplay, but couldn't really explain why. I realized after a while that their behaviour alone was enough to deduce what made the combat frustrating.</p>
           <p>I had zero knowledge about boomer shooters when I started this project, aside from pregnancy tests being able to run DOOM for some reason. 
-          But I quickly learned that their gunplay relies heavily on minimizing unnecessary downtime. When you aren't able to shoot in your shooting game, I.E. unexpected reload behaviour, then it's understandable that playtesters got frustrated.</p>
+          But I quickly learned that their gunplay relies heavily on minimizing unnecessary downtime. When you aren't able to SHOOT in your SHOOTING game, I.E. unexpected reload behaviour, then it's understandable that playtesters got frustrated.</p>
           <p>That's why I implemented the following reload behaviours, which are obvious as hell in hindsight:</p>
           <ul> 
             <li>Whenever shooting or using an ability would reduce the weapon's magazine to 0 ammo, reload.</li>

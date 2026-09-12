@@ -13,7 +13,7 @@
   padding: clamp(6px, 0.9vw, 8px) clamp(12px, 2vw, 24px);
   justify-content: center;
   width: fit-content;
-  max-width: calc(100% - 20px);
+  max-width: 100%;
   margin: 0 auto;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.7);
   background: rgba(255, 255, 255, 0.08);
@@ -21,6 +21,8 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 999px;
   overflow-x: auto;
+  box-sizing: border-box;
+  justify-content: flex-start;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
