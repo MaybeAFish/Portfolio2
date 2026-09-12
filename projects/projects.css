@@ -1,3 +1,11 @@
 @import "/projects/home-styling/profile-banner.css";
 @import "/projects/home-styling/project-cards.css";
 @import "/projects/home-styling/the-underground.css";
+
+
+.section-title {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--text-color);
+    text-shadow: 0 0 2px var(--standout-color-cyan);
+}
