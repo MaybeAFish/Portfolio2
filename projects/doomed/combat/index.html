@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doomed – Combat</title>
+    
+    <link rel="stylesheet" href="/styles.css"/>
+    <link rel="stylesheet" href="/projects/project-page"/>
+  </head>
+
+  <body>  
+    <div id="header-placeholder"></div>
+    <script src="/general/header/header-loader.js"></script>
+
+    <main>
+      <nav
+        class="side-navigation"
+        aria-label="Doomed project navigation"
+        data-component="/projects/doomed/doomed-navigation.html">
+      </nav>
+
+      <section>
+        <div>
+          <img class="side-navigation-media" src="/projects/doomed/doomed.png" alt="Doomed game cover">
+          <h1>Combat</h1>
+          <p>A large part of my work on Doomed was improving how combat felt. Most systems were already functional when we received the project, but a handful of them lacked the consistency and responsiveness needed to make combat feel satisfying.</p> 
+
+          <h2>Melee</h2>
+          <p>The game already had a melee attack, but it wasn't in a particularly good state. The animation was buggy, there was no sound, and there was very little impact feedback beyond the basic hit reaction. </p>
+          <p>The damage was also relatively low, while the game could seemingly randomly switch between the gun-waving animation and the knife animation used for executions.</p>
+          <video class="side-navigation-media" loop muted autoplay playsinline preload="metadata"> 
+            <source src="/projects/doomed/combat/oldmelee.webm" type="video/webm"> 
+          </video>
+
+          <p>The execute mechanic itself was also percentage-based. During a playtest, one player accidentally discovered this by dealing roughly 2000 damage to the Golem boss.</p>
+
+          <p>I reworked the melee system to make it faster, more consistent with a better looking stab animation, and impact feedback by knocking the enemy back slightly.</p>
+          <p>I also changed the execute from a percentage-based damage value to a flat amount. This made the behaviour more predictable and prevented situations where the mechanic could produce tons of damage. </p>
+          <p>To give the attack more audio feedback, I added seven different grunts that would play semi-randomely when casting, and added a sound effect on hit.</p>
+          <video class="side-navigation-media" loop controls playsinline preload="metadata">
+            <source src="/projects/doomed/combat/melee.webm" type="video/mp4" />
+          </video>
+          <p>Looking back, the melee could still use some additional VFX. Blood, particles, or, in this case, bones lol.</p>
+
+
+          <br>
+          <h2>Weapon switching</h2>
+          <p>I added a slow-motion effect when switching weapons through the weapon wheel.</p>
+          <video class="side-navigation-media" loop autoplay muted playsinline preload="metadata">
+            <source src="/projects/doomed/combat/slowmotion.webm" type="video/mp4" />
+          </video>
+          <p>During playtesting, I noticed that players who were familiar with boomer shooters almost immediately tried using the number keys. Because of that, I also implemented 1-4 key weapon switching.</p>
+          <p>But after adding that, the weapon wheel became absolete. Every playtester would unpromptedly prefer using it over the weapon wheel. The weaponwheel was cool and functional, but it was slower and less convenient for the way the players actually want to play.</p>
+
+
+          <br>
+          <h2>Enemy projectiles</h2>
+          <p>Enemy projectiles used to pass through walls, which absolutely sucked because it felt impossible to see it coming which would confuse players as they randomely died.</p>
+          <p>I first fixed this by making projectiles despawn when their centre point reached a wall. This solved the technical problem, but introduced a new gameplay problem considering projectiles could disappear in ways that felt inconsistent from the player's perspective.</p>
+          <video class="side-navigation-media" loop muted autoplay playsinline preload="metadata"> 
+            <source src="/projects/doomed/combat/oldprojectiles.webm" type="video/webm"> 
+          </video>
+
+          <p>I then had a cooler idea. Instead of simply making the projectiles disappear, I experimented with having them reflect off the environment.</p>
+
+          <video class="side-navigation-media" loop muted autoplay playsinline preload="metadata"> 
+            <source src="/projects/doomed/combat/emergent.webm" type="video/webm"> 
+          </video>
+
+          <p>This created some really interesting emergent behaviour. A projectile could remain dangerous for a short while even after the player had already succesfully dodged the initial trajectory.</p>
+          <p>I liked that the mechanic was difficult to predict without feeling frustrating. It also made the environment itself part of the combat. It made those artillery enemies much more dynamic and more fun to deal with.</p>
+
+
+          <br>
+          <h2>Abilities</h2>
+          <p>One of my design arguments was to remove the mana system and make abilities consume ammo instead.</p>
+          <p>Mana was an additional resource that wasn't really contributing anything meaningful to the experience. It felt overcomplicated as it meant the player had to keep track of another number while the weapons' ammo already felt sufficient.</p>
+          <p>As a team, we decided to couple abilities to weapons. Each weapon would have its own right-click ability, which the player could unlock by collecting a corresponding rune (ability learning).</p>
+          <p>I implemented this ability learning system and also suggested giving each weapon a visual VFX aura. The idea was to make it immediately clear which weapons already had an active ability associated with them.</p>
+          <p>These VFXs were not made by me.</p>
+          <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata"> 
+            <source src="/projects/doomed/combat/aura.webm" type="video/webm"> 
+          </video>
+
+
+          <br>
+          <h3>Matching weapons with abilities</h3>
+          <p>I also decided on which ability should belong to which weapon. I wanted each combination to give the weapon a reason to exist within the overall combat loop.</p>
+          <ul>
+            <li>
+              Pistol + Frost
+              <p>Frost was intended to be the strongest crowd-control ability. 
+              The pistol is also the weapon players have the least reason to use once they have access to the other, stronger and more fun weapons. 
+              Giving it the strongest ability creates an incentive to occasionally switch back to it.</p>
+            </li>
+            <li>
+              Rifle + Shock
+              <p>
+                The rifle is the "bread-and-butter" weapon and is likely to be used the most during combat. Shock was designed around a relatively low cooldown and low cost, which encourages frequent use as it's very cost-efficient.
+                Putting the most frequently used ability on the most frequently used weapon made sense.
+              </p>
+            </li>
+            <li>
+              Shotgun + Void
+              <p>Void was designed as a powerful one-time burst with a long cooldown. The shotgun already had limited ammo and was more situational (close range), 
+                making it a good match for an ability that the player saves for an important moment.</p>
+            </li>
+            <li>
+              Minigun + Flames
+              <p>
+                Flames was the only ability without a cooldown. Instead, it consumed ammo the fastest because each flame projectile costs an ammo.
+                Since the minigun has 100 ammo, the combination already naturally supports the fantasy of firing a minigun into a big horde of enemies.
+              </p>
+            </li>
+          </ul>
+          <p>The ability system could still use more polish. Specifically, the ability projectiles should visibly originate from the weapon barrel, 
+          and it could also make good use of a short casting animation so it feels more connected to the held weapons.
+          </p>
+
+          <br>
+          <h2>Reload behaviour</h2>
+          <p>During playtests, I noticed that players were getting slightly frustrated with the gunplay, but couldn't really explain why. I realized after a while that their behaviour alone was enough to deduce what made the combat frustrating.</p>
+          <p>I had zero knowledge about boomer shooters when I started this project, aside from pregnancy tests being able to run DOOM for some reason. 
+          But I quickly learned that their gunplay relies heavily on minimizing unnecessary downtime. When you aren't able to shoot in your shooting game, I.E. unexpected reload behaviour, then it's understandable that playtesters got frustrated.</p>
+          <p>That's why I implemented the following reload behaviours, which are obvious as hell in hindsight:</p>
+          <ul> 
+            <li>Whenever shooting or using an ability would reduce the weapon's magazine to 0 ammo, reload.</li>
+            <li>When switching to a weapon whose magazine is empty, reload.</li> 
+            <li>When receiving ammo while holding a weapon with an empty magazine, reload.</li> 
+            <li>When finishing a melee attack while holding a weapon with an empty magazine, reload.</li>
+          </ul>
+
+        </div>
+      </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="/general/footer/footer-loader.js"></script>
+    <script src="/general/component-loader.js"></script>
+  </body>
+</html>
