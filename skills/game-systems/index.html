@@ -20,27 +20,57 @@
     </nav>
 
     <section>
-      <img class="side-navigation-media" src="/skills/game-systems/uml.png" alt="UML">
-      <h1>System Architecture</h1>
-      <p>I have designed systems.</p>
+      <video class="side-navigation-media" autoplay muted loop controls playsinline preload="metadata">
+        <source src="/skills/game-systems/my-systems/minigames.mp4" type="video/mp4" />
+      </video>
+      <h1>Game Systems</h1>
+      <p>A game system is comprised of multiple game mechanics.</p>
+      <p>Examples of game systems are movement, combat, shops, crafting, quests, dialogue, enemy AI, loot, multiplayer, etc etc etc.</p>
+<!-- card ui van de examples? -->
+      <p>I have designed various game systems:</p>
 
-      <script src="/general/carousel/carousel.js"></script>
-      <div class="mediacarousel" data-category="asdf" aria-label="Doomed project gallery">
-        <div class="mediacarousel-track">
+      <br>
+      <h2>Karaoke Play of the Game</h2>
+      <p>I designed a system that identifies the most memorable 15 seconds of a player's performance. 
+      Different moments throughout the song were given different weights based on how entertaining or significant they were, 
+      with the highest-scoring segment being replayed at the end of the session.</p>
+      <p>Gameplay under NDA</p>
+      <img class="side-navigation-media" src="/skills/game-systems/my-systems/karaoke.png" loading="lazy">
 
-          <div class="mediacarousel-slide">
-            balls
-            <img src="/projects/doomed/doomed.png" alt="Doomed game cover" />
-          </div>
+      <br>
+      <h2>Controls system</h2>
+      <p>I designed the controls system for the ice hiker. A system which rotates the camera when the mouse is moved, 
+      lets the camera collide with terrain using raycasts, and lets the player move in the direction the camera is looking at.</p>
+      <p>I designed it this way, because I wanted the player to look at the face of the character without the camera being difficult to control.</p>
+      <video class="side-navigation-media" autoplay muted loop controls playsinline preload="metadata">
+        <source src="/skills/game-systems/my-systems/camera.mp4" type="video/mp4" />
+      </video>
+
+      <br>
+      <h2>Animation system</h2>
+      <p>I also designed an animation system for the Ice Hiker, which allows for any mechanic that wants to play an animation to play 
+      depending on how much weight that animation has. If the animation a mechanic wants to play has more weight than the currently playing one, 
+      it will hold priority. 
+      </p>
+      <img class="side-navigation-media" src="/skills/game-systems/my-systems/animation-controller.gif" loading="lazy">
 
 
-        </div>
-      </div>
+      <br>
+      <h2>Minigame system</h2>
+      <p>I designed a minigame system which worked differently compared to the default exercise system.
+      </p>
+      <video class="side-navigation-media" autoplay muted loop controls playsinline preload="metadata">
+        <source src="/skills/game-systems/my-systems/minigames.mp4" type="video/mp4" />
+      </video>
 
+      <br>
+      <a
+        class="fancy-button"
+        href="/skills/game-loops/"
+        rel="noopener noreferrer">
+        Game Loops
+      </a>
 
-        <!-- animation system  ice hiker -->
-<!-- eyeball system -->
-        <!-- in my very first ever project, i managed to create a fairly complex system where eyeball enemies would quickly hide behind meatshields-->
     </section>
   </main>
 

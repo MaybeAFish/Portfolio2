@@ -28,7 +28,7 @@
         <h1>Game Mechanics</h1>
         <p>
           Game mechanics are the most important part of any game.
-          They are the rules and systems that define what players can do.
+          They are the rules that define what players can do.
           Some completely warp how the game is played, while others expand
           upon that experience.
         </p>
@@ -132,40 +132,93 @@
         </p>
         
         <br><br>
-        <h2>Core mechanics I've designed & implemented</h2>
-        <p>Moving Elara around with a hairdryer:</p>
+        <h1>Core mechanics I've designed & implemented</h1>
+        <h2>Moving Elara around with a hairdryer</h2>
+        <p>I designed a game around the theme "Bubbles". The core gameplay loop of my game involved playing around the hairdryer as your only tool to move Elara.</p>
         <video class="side-navigation-media" autoplay muted loop playsinline>
           <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
         </video>
 
         <br>
-        <p>Avoiding environmental hazards:</p>
+        <h2>Environmental hazards</h2>
+        <p>For a space invaders type game, I designed semi-random hazards such as asteroids, supernovas or solar rays.</p>
+        <p>I consider this a core mechanic because they directly participate during the entire core gameplay loop as 
+        they are just as important to dodge as normal enemies.</p>
         <video class="side-navigation-media" autoplay muted loop playsinline>
           <source src="/skills/game-mechanics/my-core-mechanics/hazards.mp4" type="video/mp4">
         </video>
 
+
         <br>
-        <p>VR Physiotherapy gamified exercises:</p>
+        <h2>Procedural dungeon generation</h2>
+        <p>I used delauney triangulation to decide on potential room positions. Spawned those rooms randomely based on a seed. Pushed them together as close as possible in a grid. And used the a* algorithm to force hallways between them.</p>
+        <p>I consider this a game mechanic instead of a game system, because it's a bunch of algorithms and processes that produce a singular -mechanic- (a dungeon).</p>
+        <script src="/general/carousel/carousel.js"></script>
+        <div class="mediacarousel" data-category="asdf" aria-label="Doomed project gallery">
+          <div class="mediacarousel-track">
+
+            <div class="mediacarousel-slide">
+              <img src="/skills/game-mechanics/my-core-mechanics/delauney/image1.png" alt="Delauney" />
+            </div>
+            <div class="mediacarousel-slide">
+              <img src="/skills/game-mechanics/my-core-mechanics/delauney/image2.png" alt="Delauney" />
+            </div>
+            <div class="mediacarousel-slide">
+              <img src="/skills/game-mechanics/my-core-mechanics/delauney/image3.png" alt="Delauney" />
+            </div>
+            <div class="mediacarousel-slide">
+              <img src="/skills/game-mechanics/my-core-mechanics/delauney/card.gif" alt="Delauney" />
+            </div>
+          </div>
+        </div>
+
+
+        <br>
+        <h2>VR physiotherapy exercisebar</h2>
+        <p>I designed an exercisebar which could support various types of exercises in VR.</p>
+        <p></p>
         <video class="side-navigation-media" autoplay muted loop playsinline>
           <source src="/skills/game-mechanics/my-core-mechanics/exercise.mp4" type="video/mp4">
         </video>
 
         <br><br>
-        <h2>Secondary mechanics I've designed & implemented</h2>
-        <p>VR Physiotherapy minigames:</p>
+        <h1>Secondary mechanics I've designed & implemented</h1>
+        <br>
+        <h2>VR Physiotherapy bow minigame</h2>
+        <p>I designed a mechanic where your left controller is the bow, and your right controller is your hand grabbing on to a piece of string. The farther you pull back (good posture), the stronger your shot.</p>
+        <p>Looking back, I should've probably made a feature where you could swap the bow to your other hand.</p>
         <video class="side-navigation-media" autoplay muted loop playsinline>
-          <source src="/skills/game-mechanics/my-secondary-mechanics/minigames.mp4" type="video/mp4">
+          <source src="/skills/game-mechanics/my-secondary-mechanics/bow.mp4" type="video/mp4">
         </video>
 
         <br>
-        <p>Buying and combining items to become a stronger samurai:</p>
+        <h2>Hiding eyeballs</h2>
+        <p>Eyeball enemies that hide from the player by using meatshields at reasonable distance while trying their best to respect other eyeball enemies.</p>
+        <p>
+          If there aren't any meatshields left, they would for some reason gather the courage to rush towards the player. 
+          This was the very first game I had ever made; 
+          Had I designed this today, I would've made them scatter instead, 
+          and then fly away from the player if the player gets too close while respecting the boundaries of the game (not fly offscreen).
+        </p>
+        <div class="mediacarousel" data-category="asdf" aria-label="Doomed project gallery">
+          <div class="mediacarousel-track">
+            <div class="mediacarousel-slide">
+              <img src="/skills/game-mechanics/my-secondary-mechanics/eyeballs.gif" alt="Eyeballs gif" />
+            </div>
+            <div class="mediacarousel-slide">
+              <video class="side-navigation-media" autoplay muted loop playsinline>
+                <source src="/skills/game-mechanics/my-secondary-mechanics/eyeballs.webm" type="video/webm">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <h2>Buying and combining items to become a stronger samurai</h2>
+        <p>You could combine items by match-3'ing them to make the item stronger. Upgrading the gloves allowed the player to reach further on the board.</p>
         <video class="side-navigation-media" autoplay muted loop playsinline>
           <source src="/skills/game-mechanics/my-secondary-mechanics/combining.mp4" type="video/mp4">
         </video>
-
-        <br>
-        <p>Karaoke Play of the Game (Gameplay under NDA):</p>
-        <img class="side-navigation-media" src="/skills/game-mechanics/my-secondary-mechanics/karaoke.png" loading="lazy">
 
 
         <br><br>
@@ -174,81 +227,17 @@
           It gets very difficult sometimes, but it's a process that I really enjoy.
         </p>
 
-       <p>
+        <p>
           When designing these game mechanics, I think it's important to design them while considering
-          how they fit within the larger systems of the game. No mechanic is isolated, they work together to form a game loop.
+          how they fit within the larger systems of the game: Game systems/Game loops. No mechanic is isolated, they work together.
         </p>
+        <a
+          class="fancy-button"
+          href="/skills/game-systems/"
+          rel="noopener noreferrer">
+          Game Systems
+        </a>
 
-        <br><br>
-        <h2>Game Loops</h2>
-        <p> I believe every game has at least one game loop: a repeating sequence of actions that keeps the player engaged and 
-        drives the entire game's experience.</p>
-        
-        <ul>
-          <li>
-            In Tetris,
-            <ul>
-              <li>The player receives a tetromino</li>
-              <li>The player positions and places the tetromino</li>
-              <li>The game evaluates the resulting board</li>
-              <li>Repeat</li>
-            </ul>
-          </li>
-          <li>
-            In VALORANT,
-            <ul>
-              <li>The round begins</li>
-              <li>Players make decisions and interact with the opposing team</li>
-              <li>Players fight for an objective</li>
-              <li>The round ends when a wincondition is reached</li>
-              <li>Repeat</li>
-            </ul>
-          </li>
-          <li>
-            In Life is Strange,
-            <ul>
-              <li>The player is presented with a new part of the narrative</li>
-              <li>The player may explore the environment and interact with characters or objects</li>
-              <li>The player makes decisions that influence the experience</li>
-              <li>The story progresses</li>
-              <li>Repeat</li>
-            </ul>
-          </li>
-        </ul>
-
-        <br>
-        <p>Here are some game loops I've designed:</p>
-
-        <br>
-        <h3>Turn-based match-3 game</h3>
-        <video class="side-navigation-media" autoplay muted loop playsinline>
-          <source src="/skills/game-mechanics/loops/samurai.mp4" type="video/mp4">
-        </video>
-        <ul>
-          <li>The player is prompted with a Quick Time Event (QTE) to earn moves</li>
-          <li>The player uses those moves in a match-3 field to accumulate damage</li>
-          <li>The player decides which enemy to attack to use the damage on</li>
-          <li>The enemy(s) strike back</li>
-          <li>Repeat</li>
-        </ul>
-
-        <br>
-        <h3>Doomed's Horde Mode</h3>
-        <div class="video-container">
-          <iframe src="https://www.youtube-nocookie.com/embed/gjlrUUUJr_U?si=0h-VxNtHE2-qKugN&amp;start=137" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <ul>
-          <li>The round starts</li>
-          <li>After a short duration, enemies start spawning into the arena</li>
-          <li>The player must kill all the enemies</li>
-          <li>The player occasionally gains a new weapon</li>
-          <li>Repeat</li>
-        </ul>
-
-        <!-- INFECTED puzzels? -->
-        <!-- 8 kinds of fun? -->
-        <!-- formal elements -->
-        <!-- https://www.google.com/search?q=game+design+formal+elements&ie=UTF-8 -->
 
 
       </div>
@@ -258,5 +247,6 @@
   <div id="footer-placeholder"></div>
   <script src="/general/footer/footer-loader.js"></script>
   <script src="/general/component-loader.js"></script>
+  <script src="/general/carousel/carousel.js"></script>
 </body>
 </html>
