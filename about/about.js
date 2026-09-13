@@ -109,8 +109,28 @@ function initialiseEyeball() {
     mouseY = e.clientY;
     updateEyeball(mouseX, mouseY);
   });
-  window.addEventListener("scroll", () => updateEyeball(mouseX, mouseY));
-  window.addEventListener("resize", () => updateEyeball(mouseX, mouseY));
+
+  document.addEventListener("touchstart", (e) => {
+    mouseX = e.touches[0].clientX;
+    mouseY = e.touches[0].clientY;
+    updateEyeball(mouseX, mouseY);
+  }, { passive: true });
+
+  document.addEventListener("touchmove", (e) => {
+    mouseX = e.touches[0].clientX;
+    mouseY = e.touches[0].clientY;
+    updateEyeball(mouseX, mouseY);
+  }, { passive: true });
+
+  window.addEventListener("scroll", () => {
+    updateEyeball(mouseX, mouseY);
+  });
+
+  window.addEventListener("resize", () => {
+    updateEyeball(mouseX, mouseY);
+  });
+
+  updateEyeball(mouseX, mouseY);
 }
 
 // function logAnimations() {
