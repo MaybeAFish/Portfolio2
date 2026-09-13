@@ -1,334 +1,94 @@
-document.addEventListener("DOMContentLoaded", () => {
-  document
-    .querySelectorAll(".mediacarousel, .textcarousel")
-    .forEach(setupCarousel);
-});
+  // Swiping
+  let pointerStartX = 0;
+  let pointerStartY = 0;
+  let isDragging = false;
+  let gestureDirection = null;
 
-function setupCarousel(carousel) {
-  if (carousel.querySelector(".carousel-controls")) return;
-  if (carousel.querySelector(".mediacarousel-controls")) return;
-  if (carousel.querySelector(".textcarousel-controls")) return;
+  carousel.addEventListener("pointerdown", (e) => {
+    if (e.pointerType === "mouse") return;
 
-  const isMediaCarousel =
-    carousel.classList.contains("mediacarousel");
+    pointerStartX = e.clientX;
+    pointerStartY = e.clientY;
+    isDragging = true;
+    gestureDirection = null;
 
-  const prefix = isMediaCarousel
-    ? "mediacarousel"
-    : "textcarousel";
-
-  const track = carousel.querySelector(`.${prefix}-track`);
-
-  if (!track) return;
-
-  const slides = Array.from(
-    track.querySelectorAll(`.${prefix}-slide`)
-  );
-  if (!slides.length) return;
-
-  /* -------------------------
-     Media loading placeholders
-  ------------------------- */
-
-  if (isMediaCarousel) {
-    slides.forEach((slide) => {
-      const media = slide.querySelector("img, video");
-
-      if (!media) return;
-
-      const markLoaded = () => {
-        slide.classList.add("is-loaded");
-      };
-
-      if (media.tagName === "IMG") {
-        if (media.complete) {
-          markLoaded();
-        } else {
-          media.addEventListener("load", markLoaded, {
-            once: true
-          });
-        }
-      }
-
-      if (media.tagName === "VIDEO") {
-        if (media.readyState >= 2) {
-          markLoaded();
-        } else {
-          media.addEventListener("loadeddata", markLoaded, {
-            once: true
-          });
-        }
-      }
-    });
-  }
-
-  let currentSlide = 0;
-
-  /* -------------------------
-     Controls
-  ------------------------- */
-
-  const controls = document.createElement("div");
-  controls.className = `${prefix}-controls`;
-
-  const previousButton = createArrowButton(
-    "Previous slide",
-    "prev",
-    prefix
-  );
-
-  const nextButton = createArrowButton(
-    "Next slide",
-    "next",
-    prefix
-  );
-
-  const dots = document.createElement("div");
-
-  dots.className = `${prefix}-dots`;
-  dots.setAttribute("role", "tablist");
-  dots.setAttribute("aria-label", "Slides");
-
-  slides.forEach((slide, index) => {
-    const dot = document.createElement("button");
-
-    dot.type = "button";
-    dot.className = `${prefix}-dot`;
-
-    dot.setAttribute(
-      "aria-label",
-      `Go to slide ${index + 1}`
-    );
-
-    dot.setAttribute("aria-selected", "false");
-    dot.setAttribute("role", "tab");
-
-    dot.addEventListener("click", () => {
-      goToSlide(index);
-    });
-
-    dots.appendChild(dot);
+    carousel.setPointerCapture(e.pointerId);
   });
 
-  controls.append(
-    previousButton,
-    dots,
-    nextButton
-  );
+  carousel.addEventListener("pointermove", (e) => {
+    if (!isDragging) return;
 
-  carousel.appendChild(controls);
+    const deltaX = e.clientX - pointerStartX;
+    const deltaY = e.clientY - pointerStartY;
 
-  /* -------------------------
-     Update carousel
-  ------------------------- */
+    // Wait until the gesture has a clear direction
+    if (!gestureDirection) {
+      if (Math.abs(deltaX) < 10 && Math.abs(deltaY) < 10) {
+        return;
+      }
 
-  function updateCarousel() {
-    const totalSlides = slides.length;
+      gestureDirection =
+        Math.abs(deltaX) > Math.abs(deltaY)
+          ? "horizontal"
+          : "vertical";
+    }
+
+    // Once vertical scrolling starts, let Safari handle it
+    if (gestureDirection === "vertical") {
+      return;
+    }
+
+    // Horizontal gesture: stop the page from moving
+    e.preventDefault();
+
+    // Move carousel immediately while dragging
+    const dragProgress = deltaX / carousel.offsetWidth;
 
     slides.forEach((slide, index) => {
       let difference = index - currentSlide;
 
-      /*
-       * Wrap around so the first and last
-       * slides remain adjacent.
-       */
-      if (difference > totalSlides / 2) {
-        difference -= totalSlides;
+      if (difference > slides.length / 2) {
+        difference -= slides.length;
       }
 
-      if (difference < -totalSlides / 2) {
-        difference += totalSlides;
+      if (difference < -slides.length / 2) {
+        difference += slides.length;
       }
 
-      const isActive = difference === 0;
-      const isPrevious = difference === -1;
-      const isNext = difference === 1;
-
-      slide.classList.toggle(
-        "is-active",
-        isActive
-      );
-
-      slide.classList.toggle(
-        "is-prev",
-        isPrevious
-      );
-
-      slide.classList.toggle(
-        "is-next",
-        isNext
-      );
-
-      slide.setAttribute(
-        "aria-hidden",
-        String(!isActive)
-      );
-
-      slide.style.zIndex = isActive
-        ? "2"
-        : isPrevious || isNext
-          ? "1"
-          : "0";
-
-      /*
-       * Only the side slides are clickable.
-       */
-      slide.onclick = null;
-
-      if (isPrevious || isNext) {
-        slide.onclick = () => {
-          goToSlide(index);
-        };
+      if (difference === 0) {
+        slide.style.transform =
+          `translateX(${dragProgress * 100}%)`;
       }
     });
+  });
 
-    /* Update dots */
+  carousel.addEventListener("pointerup", (e) => {
+    if (!isDragging) return;
 
-    const dotElements =
-      dots.querySelectorAll(`.${prefix}-dot`);
+    const deltaX = e.clientX - pointerStartX;
 
-    dotElements.forEach((dot, index) => {
-      const active = index === currentSlide;
+    isDragging = false;
 
-      dot.classList.toggle(
-        "active",
-        active
-      );
+    if (gestureDirection !== "horizontal") {
+      gestureDirection = null;
+      return;
+    }
 
-      dot.setAttribute(
-        "aria-selected",
-        String(active)
-      );
-
-      dot.setAttribute(
-        "aria-current",
-        active ? "true" : "false"
-      );
-    });
-
-    carousel.dataset.activeSlide =
-      String(currentSlide);
-  }
-
-  /* -------------------------
-     Navigation
-  ------------------------- */
-
-  function goToSlide(index) {
-    currentSlide =
-      (index + slides.length) %
-      slides.length;
-
-    updateCarousel();
-  }
-
-
-  // Swiping
-  let touchStartX = 0;
-  let touchStartY = 0;
-
-  carousel.addEventListener("touchstart", (e) => {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-  }, { passive: true });
-
-  carousel.addEventListener("touchend", (e) => {
-    const touchEndX = e.changedTouches[0].clientX;
-    const touchEndY = e.changedTouches[0].clientY;
-
-    const deltaX = touchEndX - touchStartX;
-    const deltaY = touchEndY - touchStartY;
-
-    // Ignore mostly-vertical swipes
-    if (Math.abs(deltaX) < Math.abs(deltaY)) return;
-
-    // Minimum swipe distance
-    if (Math.abs(deltaX) < 50) return;
-
-    if (deltaX < 0) {
-      goToSlide(currentSlide + 1);
+    if (Math.abs(deltaX) >= 50) {
+      if (deltaX < 0) {
+        goToSlide(currentSlide + 1);
+      } else {
+        goToSlide(currentSlide - 1);
+      }
     } else {
-      goToSlide(currentSlide - 1);
-    }
-  }, { passive: true });
-
-  /* -------------------------
-     Keyboard navigation
-  ------------------------- */
-
-  function handleKeyboard(event) {
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      goToSlide(currentSlide - 1);
+      updateCarousel();
     }
 
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      goToSlide(currentSlide + 1);
-    }
-  }
+    gestureDirection = null;
+  });
 
-  previousButton.addEventListener(
-    "click",
-    () => {
-      goToSlide(currentSlide - 1);
-    }
-  );
-
-  nextButton.addEventListener(
-    "click",
-    () => {
-      goToSlide(currentSlide + 1);
-    }
-  );
-
-  carousel.addEventListener(
-    "keydown",
-    handleKeyboard
-  );
-
-  carousel.tabIndex = 0;
-
-  /* Initial state */
-
-  updateCarousel();
-}
-
-
-/* =========================================================
-   ARROW BUTTON
-   ========================================================= */
-
-function createArrowButton(label, direction, prefix) {
-  const button = document.createElement("button");
-
-  button.type = "button";
-
-  button.className =
-    `${prefix}-button ${direction}`;
-
-  button.setAttribute(
-    "aria-label",
-    label
-  );
-
-  button.innerHTML =
-    direction === "prev"
-      ? `
-        <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path d="M15 5l-7 7 7 7"/>
-        </svg>
-      `
-      : `
-        <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path d="M9 5l7 7-7 7"/>
-        </svg>
-      `;
-
-  return button;
-}
+  carousel.addEventListener("pointercancel", () => {
+    isDragging = false;
+    gestureDirection = null;
+    updateCarousel();
+  });

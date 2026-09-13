@@ -1,2 +1,7 @@
 @import "/general/carousel/media-carousel.css";
 @import "/general/carousel/text-carousel.css";
+
+.mediacarousel,
+.textcarousel {
+  touch-action: pan-y;
+}
