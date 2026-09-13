@@ -79,6 +79,7 @@
 
 .game-hover-favourites {
   display: flex;
+  justify-content: center;
   gap: 10px;
 }
 .game-hover-favourites figure {
