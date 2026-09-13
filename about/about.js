@@ -35,8 +35,6 @@ window.addEventListener("scroll", () => {
 // SPECIFIC SHIZZLE
 function initialiseGameCharacters() {
   const preview = document.querySelector(".hover-preview");
-  let activeCard = null;
-  let touchStartY = 0;
 
   function positionPreview(event) {
     const margin = 18;
@@ -53,91 +51,41 @@ function initialiseGameCharacters() {
       window.innerHeight - previewRect.height - margin,
     );
 
-    preview.style.setProperty("--preview-left", `${Math.max(margin, left)}px`);
-    preview.style.setProperty("--preview-top", `${Math.max(margin, top)}px`);
-  }
+    preview.style.setProperty(
+      "--preview-left",
+      `${Math.max(margin, left)}px`,
+    );
 
-  function closePreview() {
-    activeCard = null;
-    preview.classList.remove("is-visible");
+    preview.style.setProperty(
+      "--preview-top",
+      `${Math.max(margin, top)}px`,
+    );
   }
 
   document.querySelectorAll(".game-card").forEach((card) => {
     const previewTemplate = card.querySelector(".game-hover");
 
-    if (!previewTemplate) {
-      return;
-    }
+    if (!previewTemplate) return;
 
-    // Desktop hover
     card.addEventListener("pointerenter", (event) => {
-      if (event.pointerType === "mouse") {
-        preview.innerHTML = previewTemplate.innerHTML;
-        preview.classList.add("is-visible");
-      }
+      if (event.pointerType !== "mouse") return;
+
+      preview.innerHTML = previewTemplate.innerHTML;
+      preview.classList.add("is-visible");
     });
 
     card.addEventListener("pointermove", (event) => {
-      if (event.pointerType === "mouse") {
-        positionPreview(event);
-      }
+      if (event.pointerType !== "mouse") return;
+
+      positionPreview(event);
     });
 
     card.addEventListener("pointerleave", (event) => {
-      if (event.pointerType === "mouse") {
-        closePreview();
-      }
-    });
+      if (event.pointerType !== "mouse") return;
 
-    // Touch
-    card.addEventListener("pointerdown", (event) => {
-      if (event.pointerType === "touch") {
-        touchStartY = event.clientY;
-      }
-    });
-
-    card.addEventListener("click", (event) => {
-      if (event.pointerType !== "touch") {
-        return;
-      }
-      // If the user was scrolling, don't open the preview.
-      if (Math.abs(event.clientY - touchStartY) > 10) {
-        closePreview();
-        return;
-      }
-
-      if (activeCard === card) {
-        closePreview();
-        return;
-      }
-
-      activeCard = card;
-      preview.innerHTML = previewTemplate.innerHTML;
-      preview.classList.add("is-visible");
-
-      // Put it somewhere sensible on mobile.
-      const rect = card.getBoundingClientRect();
-      preview.style.setProperty(
-        "--preview-left",
-        `${Math.max(12, Math.min(rect.left, window.innerWidth - preview.offsetWidth - 12))}px`
-      );
-      preview.style.setProperty(
-        "--preview-top",
-        `${Math.min(rect.bottom + 12, window.innerHeight - preview.offsetHeight - 12)}px`
-      );
+      preview.classList.remove("is-visible");
     });
   });
-
-  // scrolling always closes the touch preview.
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (activeCard) {
-        closePreview();
-      }
-    },
-    { passive: true },
-  );
 }
 function initialiseEyeball() {
   const eyeball = document.querySelector(".eyeball");
