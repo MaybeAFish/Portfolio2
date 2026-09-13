@@ -22,7 +22,7 @@
 
       <section>
         <img class="side-navigation-media" src="/projects/tetris/tetris.jpg">
-        <video style="height: 600px;" class="side-navigation-media" autoplay loop controls preload="metadata">
+        <video id="skoda-video" style="height: 600px;" class="side-navigation-media" autoplay loop controls preload="metadata">
           <source src="/projects/tetris/Skoda.mp4" type="video/mp4" />
         </video>
 
@@ -90,5 +90,8 @@
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
     <script src="/general/component-loader.js"></script>
+    <script>
+      document.getElementById("skoda-video").volume = 0.25;
+    </script>
   </body>
 </html>

@@ -209,6 +209,7 @@
   transform: scale(1.15);
 }
 
+.mediacarousel-dot:active,
 .mediacarousel-dot.active {
   background: var(--standout-color-cyan);
   transform: scale(1.35);

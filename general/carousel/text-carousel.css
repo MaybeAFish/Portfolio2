@@ -1,5 +1,5 @@
 .textcarousel {
-  --textcarousel-accent: var(--standout-color-green);
+  --textcarousel-accent: var(--standout-color-cyan);
 
   position: relative;
   margin: 0 auto 80px;
@@ -126,9 +126,7 @@
 
 .textcarousel-slide summary {
   color: var(--standout-color-green);
-
   cursor: pointer;
-
   transition: color 0.2s ease;
 }
 
@@ -234,6 +232,7 @@
   transform: scale(1.15);
 }
 
+.textcarousel-dot:active,
 .textcarousel-dot.active {
   background: var(--standout-color-cyan);
   transform: scale(1.35);
