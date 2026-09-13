@@ -7,7 +7,6 @@
 }
 
 /* Track */
-
 .textcarousel-track {
   position: relative;
   width: 100%;
@@ -16,7 +15,6 @@
 }
 
 /* Slides */
-
 .textcarousel-slide {
   position: absolute;
   top: 50%;
@@ -56,8 +54,7 @@
   overflow: hidden;
 }
 
-/* Previous / next */
-
+/* Previous/next */
 .textcarousel-slide.is-prev,
 .textcarousel-slide.is-next {
   visibility: visible;
@@ -78,7 +75,6 @@
 }
 
 /* Active */
-
 .textcarousel-slide.is-active {
   visibility: visible;
   opacity: 1;
@@ -97,7 +93,6 @@
 }
 
 /* Riddle content */
-
 .textcarousel .riddle-text {
   width: 100%;
   max-width: 620px;
@@ -121,7 +116,6 @@
 }
 
 /* Answer */
-
 .textcarousel-slide details {
   color: var(--text-color);
   font-size: 0.95rem;
@@ -143,7 +137,6 @@
 }
 
 /* Controls */
-
 .textcarousel-controls {
   display: flex;
   align-items: center;
@@ -154,7 +147,6 @@
 }
 
 /* Arrows */
-
 .textcarousel-button {
   display: inline-flex;
   align-items: center;
@@ -198,7 +190,6 @@
 }
 
 /* Dots */
-
 .textcarousel-dots {
   display: flex;
   align-items: center;
@@ -237,14 +228,11 @@
   transform: scale(1.35);
 }
 
-/* Keyboard focus */
 
 .textcarousel:focus-visible {
   outline: 3px solid white;
   outline-offset: 4px;
 }
-
-/* Mobile */
 
 @media (max-width: 680px) {
   .textcarousel-track {
@@ -296,8 +284,6 @@
   }
 }
 
-/* Very small screens */
-
 @media (max-width: 420px) {
   .textcarousel-track {
     height: 380px;
@@ -317,8 +303,6 @@
     --textcarousel-offset: 62vw;
   }
 }
-
-/* Reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
   .textcarousel-slide,

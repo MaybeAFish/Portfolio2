@@ -221,6 +221,36 @@ function setupCarousel(carousel) {
     updateCarousel();
   }
 
+
+  // Swiping
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  carousel.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  carousel.addEventListener("touchend", (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+
+    // Ignore mostly-vertical swipes
+    if (Math.abs(deltaX) < Math.abs(deltaY)) return;
+
+    // Minimum swipe distance
+    if (Math.abs(deltaX) < 50) return;
+
+    if (deltaX < 0) {
+      goToSlide(currentSlide + 1);
+    } else {
+      goToSlide(currentSlide - 1);
+    }
+  }, { passive: true });
+
   /* -------------------------
      Keyboard navigation
   ------------------------- */
