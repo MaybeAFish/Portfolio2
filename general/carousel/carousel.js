@@ -1,94 +1,304 @@
-  // Swiping
-  let pointerStartX = 0;
-  let pointerStartY = 0;
-  let isDragging = false;
-  let gestureDirection = null;
+document.addEventListener("DOMContentLoaded", () => {
+  document
+    .querySelectorAll(".mediacarousel, .textcarousel")
+    .forEach(setupCarousel);
+});
 
-  carousel.addEventListener("pointerdown", (e) => {
-    if (e.pointerType === "mouse") return;
+function setupCarousel(carousel) {
+  if (carousel.querySelector(".carousel-controls")) return;
+  if (carousel.querySelector(".mediacarousel-controls")) return;
+  if (carousel.querySelector(".textcarousel-controls")) return;
 
-    pointerStartX = e.clientX;
-    pointerStartY = e.clientY;
-    isDragging = true;
-    gestureDirection = null;
+  const isMediaCarousel =
+    carousel.classList.contains("mediacarousel");
 
-    carousel.setPointerCapture(e.pointerId);
-  });
+  const prefix = isMediaCarousel
+    ? "mediacarousel"
+    : "textcarousel";
 
-  carousel.addEventListener("pointermove", (e) => {
-    if (!isDragging) return;
+  const track = carousel.querySelector(`.${prefix}-track`);
 
-    const deltaX = e.clientX - pointerStartX;
-    const deltaY = e.clientY - pointerStartY;
+  if (!track) return;
 
-    // Wait until the gesture has a clear direction
-    if (!gestureDirection) {
-      if (Math.abs(deltaX) < 10 && Math.abs(deltaY) < 10) {
-        return;
+  const slides = Array.from(
+    track.querySelectorAll(`.${prefix}-slide`)
+  );
+  if (!slides.length) return;
+
+  /* -------------------------
+     Media loading placeholders
+  ------------------------- */
+
+  if (isMediaCarousel) {
+    slides.forEach((slide) => {
+      const media = slide.querySelector("img, video");
+
+      if (!media) return;
+
+      const markLoaded = () => {
+        slide.classList.add("is-loaded");
+      };
+
+      if (media.tagName === "IMG") {
+        if (media.complete) {
+          markLoaded();
+        } else {
+          media.addEventListener("load", markLoaded, {
+            once: true
+          });
+        }
       }
 
-      gestureDirection =
-        Math.abs(deltaX) > Math.abs(deltaY)
-          ? "horizontal"
-          : "vertical";
-    }
+      if (media.tagName === "VIDEO") {
+        if (media.readyState >= 2) {
+          markLoaded();
+        } else {
+          media.addEventListener("loadeddata", markLoaded, {
+            once: true
+          });
+        }
+      }
+    });
+  }
 
-    // Once vertical scrolling starts, let Safari handle it
-    if (gestureDirection === "vertical") {
-      return;
-    }
+  let currentSlide = 0;
 
-    // Horizontal gesture: stop the page from moving
-    e.preventDefault();
+  /* -------------------------
+     Controls
+  ------------------------- */
 
-    // Move carousel immediately while dragging
-    const dragProgress = deltaX / carousel.offsetWidth;
+  const controls = document.createElement("div");
+  controls.className = `${prefix}-controls`;
+
+  const previousButton = createArrowButton(
+    "Previous slide",
+    "prev",
+    prefix
+  );
+
+  const nextButton = createArrowButton(
+    "Next slide",
+    "next",
+    prefix
+  );
+
+  const dots = document.createElement("div");
+
+  dots.className = `${prefix}-dots`;
+  dots.setAttribute("role", "tablist");
+  dots.setAttribute("aria-label", "Slides");
+
+  slides.forEach((slide, index) => {
+    const dot = document.createElement("button");
+
+    dot.type = "button";
+    dot.className = `${prefix}-dot`;
+
+    dot.setAttribute(
+      "aria-label",
+      `Go to slide ${index + 1}`
+    );
+
+    dot.setAttribute("aria-selected", "false");
+    dot.setAttribute("role", "tab");
+
+    dot.addEventListener("click", () => {
+      goToSlide(index);
+    });
+
+    dots.appendChild(dot);
+  });
+
+  controls.append(
+    previousButton,
+    dots,
+    nextButton
+  );
+
+  carousel.appendChild(controls);
+
+  /* -------------------------
+     Update carousel
+  ------------------------- */
+
+  function updateCarousel() {
+    const totalSlides = slides.length;
 
     slides.forEach((slide, index) => {
       let difference = index - currentSlide;
 
-      if (difference > slides.length / 2) {
-        difference -= slides.length;
+      /*
+       * Wrap around so the first and last
+       * slides remain adjacent.
+       */
+      if (difference > totalSlides / 2) {
+        difference -= totalSlides;
       }
 
-      if (difference < -slides.length / 2) {
-        difference += slides.length;
+      if (difference < -totalSlides / 2) {
+        difference += totalSlides;
       }
 
-      if (difference === 0) {
-        slide.style.transform =
-          `translateX(${dragProgress * 100}%)`;
+      const isActive = difference === 0;
+      const isPrevious = difference === -1;
+      const isNext = difference === 1;
+
+      slide.classList.toggle(
+        "is-active",
+        isActive
+      );
+
+      slide.classList.toggle(
+        "is-prev",
+        isPrevious
+      );
+
+      slide.classList.toggle(
+        "is-next",
+        isNext
+      );
+
+      slide.setAttribute(
+        "aria-hidden",
+        String(!isActive)
+      );
+
+      slide.style.zIndex = isActive
+        ? "2"
+        : isPrevious || isNext
+          ? "1"
+          : "0";
+
+      /*
+       * Only the side slides are clickable.
+       */
+      slide.onclick = null;
+
+      if (isPrevious || isNext) {
+        slide.onclick = () => {
+          goToSlide(index);
+        };
       }
     });
-  });
 
-  carousel.addEventListener("pointerup", (e) => {
-    if (!isDragging) return;
+    /* Update dots */
 
-    const deltaX = e.clientX - pointerStartX;
+    const dotElements =
+      dots.querySelectorAll(`.${prefix}-dot`);
 
-    isDragging = false;
+    dotElements.forEach((dot, index) => {
+      const active = index === currentSlide;
 
-    if (gestureDirection !== "horizontal") {
-      gestureDirection = null;
-      return;
-    }
+      dot.classList.toggle(
+        "active",
+        active
+      );
 
-    if (Math.abs(deltaX) >= 50) {
-      if (deltaX < 0) {
-        goToSlide(currentSlide + 1);
-      } else {
-        goToSlide(currentSlide - 1);
-      }
-    } else {
-      updateCarousel();
-    }
+      dot.setAttribute(
+        "aria-selected",
+        String(active)
+      );
 
-    gestureDirection = null;
-  });
+      dot.setAttribute(
+        "aria-current",
+        active ? "true" : "false"
+      );
+    });
 
-  carousel.addEventListener("pointercancel", () => {
-    isDragging = false;
-    gestureDirection = null;
+    carousel.dataset.activeSlide =
+      String(currentSlide);
+  }
+
+  /* -------------------------
+     Navigation
+  ------------------------- */
+
+  function goToSlide(index) {
+    currentSlide =
+      (index + slides.length) %
+      slides.length;
+
     updateCarousel();
-  });
+  }
+
+  /* -------------------------
+     Keyboard navigation
+  ------------------------- */
+
+  function handleKeyboard(event) {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      goToSlide(currentSlide - 1);
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      goToSlide(currentSlide + 1);
+    }
+  }
+
+  previousButton.addEventListener(
+    "click",
+    () => {
+      goToSlide(currentSlide - 1);
+    }
+  );
+
+  nextButton.addEventListener(
+    "click",
+    () => {
+      goToSlide(currentSlide + 1);
+    }
+  );
+
+  carousel.addEventListener(
+    "keydown",
+    handleKeyboard
+  );
+
+  carousel.tabIndex = 0;
+
+  /* Initial state */
+
+  updateCarousel();
+}
+
+
+/* =========================================================
+   ARROW BUTTON
+   ========================================================= */
+
+function createArrowButton(label, direction, prefix) {
+  const button = document.createElement("button");
+
+  button.type = "button";
+
+  button.className =
+    `${prefix}-button ${direction}`;
+
+  button.setAttribute(
+    "aria-label",
+    label
+  );
+
+  button.innerHTML =
+    direction === "prev"
+      ? `
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path d="M15 5l-7 7 7 7"/>
+        </svg>
+      `
+      : `
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path d="M9 5l7 7-7 7"/>
+        </svg>
+      `;
+
+  return button;
+}
