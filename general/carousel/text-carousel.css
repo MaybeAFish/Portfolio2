@@ -6,6 +6,8 @@
   box-sizing: border-box;
 }
 
+/* Track */
+
 .textcarousel-track {
   position: relative;
   width: 100%;
@@ -20,8 +22,8 @@
   top: 50%;
   left: 50%;
 
-  width: min(72vw, 700px);
-  min-height: 260px;
+  width: min(68vw, 760px);
+  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -55,13 +57,12 @@
 }
 
 /* Previous / next */
+
 .textcarousel-slide.is-prev,
 .textcarousel-slide.is-next {
   visibility: visible;
-
   opacity: 0.35;
   filter: saturate(0.7);
-
   cursor: pointer;
   pointer-events: auto;
 
@@ -77,16 +78,15 @@
 }
 
 /* Active */
+
 .textcarousel-slide.is-active {
   visibility: visible;
-
   opacity: 1;
 
   --textcarousel-offset: 0px;
   --textcarousel-scale: 1;
 
   z-index: 2;
-
   pointer-events: auto;
 
   border-color: color-mix(
@@ -97,10 +97,12 @@
 }
 
 /* Riddle content */
+
 .textcarousel .riddle-text {
+  width: 100%;
   max-width: 620px;
 
-  margin-bottom: 24px;
+  margin: 0 0 24px;
 
   color: var(--text-color);
 
@@ -109,6 +111,7 @@
 }
 
 .textcarousel-slide > p {
+  width: 100%;
   margin: 0 0 18px;
 
   color: white;
@@ -127,6 +130,7 @@
 .textcarousel-slide summary {
   color: var(--standout-color-green);
   cursor: pointer;
+
   transition: color 0.2s ease;
 }
 
@@ -146,7 +150,6 @@
   justify-content: center;
 
   gap: 22px;
-
   margin-top: 12px;
 }
 
@@ -159,11 +162,9 @@
 
   width: 48px;
   height: 48px;
-
   padding: 0;
 
   color: rgba(255, 255, 255, 0.82);
-
   background: transparent;
   border: none;
 
@@ -180,7 +181,6 @@
 
   stroke: currentColor;
   fill: none;
-
   stroke-width: 2.8;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -210,7 +210,6 @@
 .textcarousel-dot {
   width: 14px;
   height: 14px;
-
   padding: 0;
 
   border: none;
@@ -253,22 +252,23 @@
   }
 
   .textcarousel-slide {
-    width: 82vw;
-    min-height: 280px;
+    width: 76vw;
+    height: 100%;
     padding: 24px;
   }
 
   .textcarousel-slide.is-prev {
-    --textcarousel-offset: -62vw;
+    --textcarousel-offset: -58vw;
   }
 
   .textcarousel-slide.is-next {
-    --textcarousel-offset: 62vw;
+    --textcarousel-offset: 58vw;
   }
 
   .textcarousel-slide.is-prev,
   .textcarousel-slide.is-next {
     --textcarousel-scale: 0.65;
+    opacity: 0.3;
   }
 
   .textcarousel .riddle-text {
@@ -277,8 +277,26 @@
 
   .textcarousel-controls {
     gap: 16px;
+    margin-top: 10px;
+  }
+
+  .textcarousel-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .textcarousel-button svg {
+    width: 31px;
+    height: 31px;
+  }
+
+  .textcarousel-dot {
+    width: 14px;
+    height: 14px;
   }
 }
+
+/* Very small screens */
 
 @media (max-width: 420px) {
   .textcarousel-track {
@@ -286,16 +304,17 @@
   }
 
   .textcarousel-slide {
-    width: 88vw;
+    width: 82vw;
+    height: 100%;
     padding: 20px;
   }
 
   .textcarousel-slide.is-prev {
-    --textcarousel-offset: -68vw;
+    --textcarousel-offset: -62vw;
   }
 
   .textcarousel-slide.is-next {
-    --textcarousel-offset: 68vw;
+    --textcarousel-offset: 62vw;
   }
 }
 
