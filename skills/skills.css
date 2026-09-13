@@ -55,8 +55,11 @@
 }
 
 .skill-card:hover {
-  border-color: rgba(255, 255, 255, 0.28);
+  border-color: var(--standout-color-green);
   box-shadow: 0 24px 52px rgba(0, 0, 0, 0.24);
+}
+.skill-card:active {
+  border-color: var(--standout-color-cyan);
 }
 
 .skill-card:hover::before,
