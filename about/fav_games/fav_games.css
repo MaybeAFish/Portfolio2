@@ -110,3 +110,15 @@
     width: 70px;
   }
 }
+@media (hover: none) {
+  .game-card {
+    cursor: pointer;
+  }
+
+  .game-card.is-selected::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(33, 33, 33, 0.85);
+  }
+}
