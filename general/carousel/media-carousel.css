@@ -288,12 +288,16 @@
   }
 }
 
-/* Reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
   .mediacarousel-slide,
   .mediacarousel-button,
   .mediacarousel-dot {
     transition: none;
+  }
+}
+@media (max-width: 600px) {
+  .mediacarousel-dots {
+    display: none;
   }
 }
