@@ -1,35 +1,11 @@
-const sections = document.querySelectorAll("[data-section]");
-Promise.all(
-  [...sections].map(async (slot) => {
-    const sectionName = slot.dataset.section;
-    const response = await fetch(`/about/${sectionName}/${sectionName}.html`);
+document.addEventListener("DOMContentLoaded", () => {
+  document
+    .querySelectorAll(".mediacarousel, .textcarousel")
+    .forEach(setupCarousel);
 
-    if (response.ok) {
-      slot.innerHTML = await response.text();
-      slot
-        .querySelectorAll(".mediacarousel, .textcarousel")
-        .forEach(setupCarousel);
-    }
-
-    if (sectionName === "fav_games") {
-      initialiseGameCharacters();
-    }
-    if (sectionName === "art") {
-      initialiseEyeball();
-    }
-  }),
-).then(() => {
-  const savedScroll = sessionStorage.getItem("about-scroll");
-
-  if (savedScroll !== null) {
-    window.scrollTo(0, Number(savedScroll));
-  }
+  initialiseGameCharacters();
+  initialiseEyeball();
 });
-
-window.addEventListener("scroll", () => {
-  sessionStorage.setItem("about-scroll", String(window.scrollY));
-});
-
 
 
 // SPECIFIC SHIZZLE
