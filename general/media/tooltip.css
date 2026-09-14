@@ -1,6 +1,5 @@
 .tooltip {
     position: relative;
-    display: inline-block;
     cursor: help;
     border-bottom: 1px dotted var(--standout-color-green);
 }
@@ -15,7 +14,7 @@
 
     z-index: 10;
     width: 280px;
-    max-width: min(280px, 90vw);
+    max-width: 90vw;
 
     padding: 10px 14px;
     background: var(--main-background-color);
