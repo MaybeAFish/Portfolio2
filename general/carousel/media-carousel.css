@@ -296,8 +296,3 @@
     transition: none;
   }
 }
-@media (max-width: 600px) {
-  .mediacarousel-dots {
-    display: none;
-  }
-}
