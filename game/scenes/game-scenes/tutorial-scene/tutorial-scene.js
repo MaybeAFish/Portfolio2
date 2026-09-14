@@ -51,9 +51,9 @@ export class TutorialScene extends Scene {
 
     loader.updateLoadingScreen('Creating tutorial zones...', 30);
     this.tutorialZones = [
-      new GifTutorialZone(this.scene, new THREE.Vector3(0, -5, 0), new THREE.Vector3(25, 20, 25), '/game/scenes/game-scenes/tutorial-scene/tutorial-wasd.gif', this.rapierWorld),
+      new GifTutorialZone(this.scene, new THREE.Vector3(0, 5, 0), new THREE.Vector3(10, 10, 10), '/game/scenes/game-scenes/tutorial-scene/tutorial-wasd.gif', this.rapierWorld),
 
-      new GifTutorialZone(this.scene, new THREE.Vector3(0, -5, -40), new THREE.Vector3(30, 20, 30), '/game/scenes/game-scenes/tutorial-scene/tutorial-camera.gif', this.rapierWorld),
+      new GifTutorialZone(this.scene, new THREE.Vector3(0, 10, -42), new THREE.Vector3(30, 20, 42), '/game/scenes/game-scenes/tutorial-scene/tutorial-camera.gif', this.rapierWorld),
 
       new GifTutorialZone(this.scene, new THREE.Vector3(50, 0, -50), new THREE.Vector3(30, 40, 30), '/game/scenes/game-scenes/tutorial-scene/tutorial-jump.gif', this.rapierWorld),
 
