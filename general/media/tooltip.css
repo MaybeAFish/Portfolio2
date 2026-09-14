@@ -40,3 +40,21 @@
     visibility: visible;
     transform: translateX(-50%) translateY(0);
 }
+
+
+/* Constraining inside screen */
+.tooltip.tooltip-left::after {
+    left: 0;
+    transform: translateX(0) translateY(-5px);
+}
+.tooltip.tooltip-left:hover::after {
+    transform: translateX(0) translateY(0);
+}
+.tooltip.tooltip-right::after {
+    left: auto;
+    right: 0;
+    transform: translateX(0) translateY(-5px);
+}
+.tooltip.tooltip-right:hover::after {
+    transform: translateX(0) translateY(0);
+}
