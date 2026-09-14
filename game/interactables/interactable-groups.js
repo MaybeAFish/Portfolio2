@@ -47,30 +47,30 @@ export const GameInteractables = {
   "Personal projects": [
     {
       type: OverlayInteractable,
-      position: new THREE.Vector3(-33, interactableHeight, 15),
+      position: new THREE.Vector3(-33, interactableHeight, 12),
       templateUrl: '/game/projects/INFECTED.html',
-      options: { color: 'rgb(241, 122, 204)', icon: '/game/map/pixelart.gif' },
+      options: { color: 'rgb(241, 122, 204)', icon: '/game/map/textures.gif' },
       name: 'INFECTED'
     },
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(-33, interactableHeight, 15),
       templateUrl: '/game/projects/monogame-game-editor.html',
-      options: { color: 'rgb(241, 122, 204)', icon: '/game/map/pixelart.gif' },
+      options: { color: 'rgb(241, 122, 204)', icon: '/game/map/riddles.gif' },
       name: 'Monogame Game Editor'
     },
     {
       type: OverlayInteractable,
-      position: new THREE.Vector3(-33, interactableHeight, 15),
+      position: new THREE.Vector3(-33, interactableHeight, 17),
       templateUrl: '/game/projects/portfolio.html',
       options: { color: 'rgb(241, 122, 204)', icon: '/game/map/pixelart.gif' },
       name: 'Portfolio'
     },
     {
       type: OverlayInteractable,
-      position: new THREE.Vector3(-33, interactableHeight, 15),
+      position: new THREE.Vector3(-33, interactableHeight, 20),
       templateUrl: '/game/projects/ledgeloop.html',
-      options: { color: 'rgb(241, 122, 204)', icon: '/game/map/pixelart.gif' },
+      options: { color: 'rgb(241, 122, 204)', icon: '/game/map/bucket.png' },
       name: 'Ledgeloop'
     },
   ],
