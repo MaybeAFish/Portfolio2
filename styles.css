@@ -13,6 +13,7 @@
 @import "general/dropdown.css";
 @import "general/underline-hover.css";
 @import "general/button.css";
+@import "general/media/tooltip.css";
 @import "general/side-nav/side-nav.css";
 
 :root {
