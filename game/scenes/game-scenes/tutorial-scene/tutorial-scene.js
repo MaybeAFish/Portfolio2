@@ -53,9 +53,9 @@ export class TutorialScene extends Scene {
     this.tutorialZones = [
       new GifTutorialZone(this.scene, new THREE.Vector3(0, 5, 0), new THREE.Vector3(10, 10, 10), '/game/scenes/game-scenes/tutorial-scene/tutorial-wasd.gif', this.rapierWorld),
 
-      new GifTutorialZone(this.scene, new THREE.Vector3(10, 10, -42), new THREE.Vector3(50, 20, 46), '/game/scenes/game-scenes/tutorial-scene/tutorial-camera.gif', this.rapierWorld),
+      new GifTutorialZone(this.scene, new THREE.Vector3(10, 10, -50), new THREE.Vector3(50, 20, 50), '/game/scenes/game-scenes/tutorial-scene/tutorial-camera.gif', this.rapierWorld),
 
-      new GifTutorialZone(this.scene, new THREE.Vector3(50, 0, -50), new THREE.Vector3(30, 40, 30), '/game/scenes/game-scenes/tutorial-scene/tutorial-jump.gif', this.rapierWorld),
+      new GifTutorialZone(this.scene, new THREE.Vector3(50, 4, -50), new THREE.Vector3(8, 8, 40), '/game/scenes/game-scenes/tutorial-scene/tutorial-jump.gif', this.rapierWorld),
 
       new GifTutorialZone(this.scene, new THREE.Vector3(80, 0, -50), new THREE.Vector3(10, 40, 10), '/game/scenes/game-scenes/tutorial-scene/tutorial-double-jump.gif', this.rapierWorld),
 

@@ -105,7 +105,7 @@ export const TutorialInteractables = {
   "Interactables": [
     {
       type: OverlayInteractable,
-      position: new THREE.Vector3(2, 1.3, -15),
+      position: new THREE.Vector3(1.5, 1.3, -12),
       templateUrl: '/game/projects/the-underground.html',
       options: { color: 'rgb(231, 76, 60)', icon: '/game/map/about.png' },
       name: 'The Underground',
@@ -114,7 +114,7 @@ export const TutorialInteractables = {
     {
       type: ChangeSceneInteractable,
       name: 'Leave Tutorial Cave',
-      position: new THREE.Vector3(10, -3, 6),
+      position: new THREE.Vector3(75, 5, 30),
       sceneName: 'game',
       options: { color: 'cyan', icon: '/game/map/teleport.png', }
     },
