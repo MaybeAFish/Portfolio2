@@ -35,39 +35,13 @@ export class TutorialMap extends BaseMap {
     const groundY = 0;
 
 
-    // ROCKY FLOOR
-    const groundRocks = [
-      [
-        [-15, -0.45, -15],
-        [31, 0.55, 31],
-        [-0.02, 0.15, 0.02]
-      ],
-      [
-        [15, -0.45, -15],
-        [31, 0.55, 31],
-        [0.01, -0.20, -0.02]
-      ],
-      [
-        [-15, -0.45, 15],
-        [31, 0.55, 31],
-        [-0.01, 0.30, 0.01]
-      ],
-      [
-        [15, -0.45, 15],
-        [31, 0.55, 31],
-        [0.02, -0.10, -0.02]
-      ]
-    ];
-    for (const [position, scale, rotation] of groundRocks) {
-      this.createRock(
-        scene,
-        new THREE.Vector3(...position),
-        new THREE.Vector3(...scale),
-        new THREE.Euler(...rotation),
-        this.groundRockMaterial
-      );
-    }
-
+    // FLOOR PLANE
+    this.addBox(
+      scene,
+      new THREE.Vector3(200, 1, 200),
+      new THREE.Vector3(0, -0.5, 0),
+      0x555555
+    );
 
     // FLOWERS
     for (let x = -3; x <= 3; x += 1) {
@@ -85,12 +59,13 @@ export class TutorialMap extends BaseMap {
       }
     }
 
-    // MOUNTAIN ENTRANCE
+    // SECTION 1 MOUNTAIN ENTRANCE
     const rockPositions = [
       [ 22, -38],
       [ 36, -28],
       [ 42, -15],
       [ 40,  -2],
+      [ 41,  10],
       [ 40,  18],
       [ 30,  30],
       [ 15,  37],
@@ -109,6 +84,7 @@ export class TutorialMap extends BaseMap {
       [11, 12, 12],
       [14, 11, 11],
       [12, 13, 14],
+      [11, 8, 16],
       [15, 11, 12],
       [11, 13, 15],
       [14, 12, 12],
@@ -125,6 +101,73 @@ export class TutorialMap extends BaseMap {
     for (let i = 0; i < rockPositions.length; i++) {
       const [x, z] = rockPositions[i];
       const [sx, sy, sz] = rockScales[i];
+
+      this.createRock(
+        scene,
+        new THREE.Vector3(x, sy * 0.5, z),
+        new THREE.Vector3(sx, sy, sz),
+        new THREE.Euler(0, 0, 0)
+      );
+    }
+
+
+    // SECTION 2 CAMERA
+    const rock2Positions = [
+      [-18, -55],
+      [-10, -66],
+      [  4, -74],
+      [ 18, -76],
+      [ 36, -86],
+    ];
+
+    const rock2Scales = [
+      [14, 12, 16],
+      [13, 11, 15],
+      [15, 12, 14],
+      [14, 13, 16],
+      [17, 14, 18],
+    ];
+
+    for (let i = 0; i < rock2Positions.length; i++) {
+      const [x, z] = rock2Positions[i];
+      const [sx, sy, sz] = rock2Scales[i];
+
+      this.createRock(
+        scene,
+        new THREE.Vector3(x, sy * 0.5, z),
+        new THREE.Vector3(sx, sy, sz),
+        new THREE.Euler(0, 0, 0)
+      );
+    }
+
+
+    // SECTION 3 JUMP
+    // JUMP OBSTACLE
+    this.addBox(
+      scene,
+      new THREE.Vector3(6, 3, 24),
+      new THREE.Vector3(58, 1.5, -53),
+      0x555555
+    );
+
+    // SECTION ROCKS
+    const rock3Positions = [
+      [57, -80],
+      [81, -70],
+      [92, -53],
+      [100, -31],
+    ];
+
+    const rock3Scales = [
+      [14, 12, 16],
+      [16, 13, 14],
+      [15, 12, 17],
+      [17, 14, 15],
+    ];
+
+    for (let i = 0; i < rock3Positions.length; i++) {
+      const [x, z] = rock3Positions[i];
+      const [sx, sy, sz] = rock3Scales[i];
 
       this.createRock(
         scene,
