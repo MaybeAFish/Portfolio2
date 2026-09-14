@@ -1,7 +1,7 @@
 .testimonial-grid {
     display: grid;
     max-height: 500px;
-    padding: 4px;
+    padding: 4px 4px 0 0;
     gap: 4px;
 
     overflow-y: auto;
