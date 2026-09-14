@@ -1,5 +1,6 @@
 .tooltip {
     position: relative;
+    display: inline-block;
     cursor: help;
     border-bottom: 1px dotted var(--standout-color-green);
 }
