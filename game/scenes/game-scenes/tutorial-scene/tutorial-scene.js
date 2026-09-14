@@ -46,19 +46,18 @@ export class TutorialScene extends Scene {
     loader.updateLoadingScreen('Loading player...', 10);
     this.player = new Player(this.rapierWorld, this.scene);
 
-
     loader.updateLoadingScreen('Loading map...', 20);
     this.map = new TutorialMap(this.rapierWorld);
 
     loader.updateLoadingScreen('Creating tutorial zones...', 30);
     this.tutorialZones = [
-      new GifTutorialZone(this.scene, new THREE.Vector3(0, -5, 0), new THREE.Vector3(25, 20, 25), 'Use WASD to move', '/game/scenes/game-scenes/tutorial-scene/tutorial-wasd.gif', this.rapierWorld),
+      new GifTutorialZone(this.scene, new THREE.Vector3(0, -5, 0), new THREE.Vector3(25, 20, 25), '/game/scenes/game-scenes/tutorial-scene/tutorial-wasd.gif', this.rapierWorld),
 
-      new GifTutorialZone(this.scene, new THREE.Vector3(0, -5, -40), new THREE.Vector3(30, 20, 30), 'Grab to rotate camera', '/game/scenes/game-scenes/tutorial-scene/tutorial-camera.gif', this.rapierWorld),
+      new GifTutorialZone(this.scene, new THREE.Vector3(0, -5, -40), new THREE.Vector3(30, 20, 30), '/game/scenes/game-scenes/tutorial-scene/tutorial-camera.gif', this.rapierWorld),
 
-      new GifTutorialZone(this.scene, new THREE.Vector3(50, 0, -50), new THREE.Vector3(30, 40, 30), 'Press spacebar to jump', '/game/scenes/game-scenes/tutorial-scene/tutorial-jump.gif', this.rapierWorld),
+      new GifTutorialZone(this.scene, new THREE.Vector3(50, 0, -50), new THREE.Vector3(30, 40, 30), '/game/scenes/game-scenes/tutorial-scene/tutorial-jump.gif', this.rapierWorld),
 
-      new GifTutorialZone(this.scene, new THREE.Vector3(80, 0, -50), new THREE.Vector3(10, 40, 10), 'Jump again whilst mid-air', '/game/scenes/game-scenes/tutorial-scene/tutorial-double-jump.gif', this.rapierWorld),
+      new GifTutorialZone(this.scene, new THREE.Vector3(80, 0, -50), new THREE.Vector3(10, 40, 10), '/game/scenes/game-scenes/tutorial-scene/tutorial-double-jump.gif', this.rapierWorld),
 
       // new ArrowTutorialZone(this.scene, new THREE.Vector3(20, -8, 0), new THREE.Vector3(10, 6, 10), new THREE.Vector3(30, 3, 0), this.rapierWorld),
 
@@ -100,6 +99,7 @@ export class TutorialScene extends Scene {
 
     this.isLoaded = true;
 
+    this.player.setPosition(0, 200, 0);
     await new Promise(r => setTimeout(r, 100));// Delay so player can see whatsup
     loader.hideLoadingScreen();
     this.showTutorialUI();
@@ -168,12 +168,10 @@ export class TutorialScene extends Scene {
 
 
 
-export function showTutorialBox(text, imageUrl = null) {
+export function showTutorialBox(imageUrl = null) {
   const box = document.getElementById('tutorial-box');
-  const textEl = document.getElementById('tutorial-text');
   const imgEl = document.getElementById('tutorial-image');
 
-  textEl.textContent = text;
 
   if (imageUrl) {
     imgEl.src = '';

@@ -39,8 +39,14 @@ export class Player extends Character {
     );
     this.characterCollider = this.world.createCollider(this.colliderDesc);
 
-    this.characterCollider.setTranslation({ x: 0, y: 5, z: 0 }, true);
+    this.characterCollider.setTranslation({ x: 0, y: 0, z: 0 }, true);
     this.controller = this.world.createCharacterController(0.01);
+    this.controller.enableAutostep(
+      1.0, // max step height
+      0.2, // min width
+      true // include dynamic bodies
+    );
+    this.groundedGraceTime = 0;
     // this.debugCapsule = this.createCapsuleDebugMesh(
     //   this.charHeight - 2 * this.charRadius,
     //   this.charRadius
@@ -71,11 +77,15 @@ export class Player extends Character {
 
     // Mesh animations
     if (!this.isGrounded) {
-      this.playAnimation(this.velocity.y > 0 ? 'jumping' : 'falling', 0.15);
+      if (this.velocity.y > 0.1) {
+        this.playAnimation('jumping', 0.15);
+      } else if (this.velocity.y < -0.2) {
+        this.playAnimation('falling', 0.5);
+      }
     } else if (this.velocity.length() > 1) {
-      this.playAnimation('walk');
+      this.playAnimation('walk', 0.15);
     } else {
-      this.playAnimation('idle', 0.1);
+      this.playAnimation('idle', 0.3);
     }
 
     // Audio
@@ -138,7 +148,13 @@ export class Player extends Character {
     this.controller.computeColliderMovement(this.characterCollider, desired, RAPIER.QueryFilterFlags['EXCLUDE_SENSORS']);
     const corrected = this.controller.computedMovement();
     this.isGrounded = this.controller.computedGrounded();
+    if (this.isGrounded) {
+      this.groundedGraceTime = 0.2;
+    } else {
+      this.groundedGraceTime -= delta;
+    }
 
+    this.isGrounded = this.isGrounded || this.groundedGraceTime > 0;
     // If moving up but got blocked vertically, zero Y velocity
     if (this.velocity.y > 0 && Math.abs(corrected.y) < Math.abs(this.velocity.y * delta * 0.5)) {
       this.velocity.y = 0;

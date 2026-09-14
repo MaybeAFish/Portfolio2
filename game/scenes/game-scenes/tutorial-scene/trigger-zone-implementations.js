@@ -7,10 +7,10 @@ import { showTutorialBox, hideTutorialBox } from './tutorial-scene.js';
 
 // 1. Zone that shows a GIF in tutorial box
 export class GifTutorialZone extends TutorialTriggerZone {
-  constructor(scene, position, size, text, gifUrl, rapierWorld) {
+  constructor(scene, position, size, gifUrl, rapierWorld) {
     super(scene, position, size, 
     () => {
-      showTutorialBox(text, gifUrl);
+      showTutorialBox(gifUrl);
     }, 
     () => {
       hideTutorialBox();

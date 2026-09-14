@@ -76,6 +76,7 @@ export class GameScene extends Scene {
     await this.map.load(this.scene);
 
     this.isLoaded = true;
+    this.player.setPosition(0, 5, 0);
 
     await new Promise(r => setTimeout(r, 100));// Delay so player can see whatsup
     loader.hideLoadingScreen();

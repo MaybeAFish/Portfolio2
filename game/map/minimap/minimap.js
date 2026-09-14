@@ -57,7 +57,6 @@ export class Minimap {
   }
 
   dispose() {
-    console.log("penis")
     for (const { wrapper } of this.iconElements) {
       if (wrapper && wrapper.parentNode) {
         wrapper.parentNode.removeChild(wrapper);

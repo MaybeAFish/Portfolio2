@@ -48,9 +48,30 @@ export const GameInteractables = {
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(-33, interactableHeight, 15),
+      templateUrl: '/game/projects/INFECTED.html',
+      options: { color: 'rgb(241, 122, 204)', icon: '/game/map/pixelart.gif' },
+      name: 'INFECTED'
+    },
+    {
+      type: OverlayInteractable,
+      position: new THREE.Vector3(-33, interactableHeight, 15),
       templateUrl: '/game/projects/monogame-game-editor.html',
       options: { color: 'rgb(241, 122, 204)', icon: '/game/map/pixelart.gif' },
       name: 'Monogame Game Editor'
+    },
+    {
+      type: OverlayInteractable,
+      position: new THREE.Vector3(-33, interactableHeight, 15),
+      templateUrl: '/game/projects/portfolio.html',
+      options: { color: 'rgb(241, 122, 204)', icon: '/game/map/pixelart.gif' },
+      name: 'Portfolio'
+    },
+    {
+      type: OverlayInteractable,
+      position: new THREE.Vector3(-33, interactableHeight, 15),
+      templateUrl: '/game/projects/ledgeloop.html',
+      options: { color: 'rgb(241, 122, 204)', icon: '/game/map/pixelart.gif' },
+      name: 'Ledgeloop'
     },
   ],
   "Personal projects/gamejams": [
@@ -61,22 +82,15 @@ export const GameInteractables = {
       options: { color: 'rgb(129, 255, 196)', icon: '/game/map/say-something.png' },
       name: 'DONT pop the balloon'
     },
-    {
-      type: OverlayInteractable,
-      position: new THREE.Vector3(0, interactableHeight, 15),
-      templateUrl: '/game/projects/monogame-game-editor.html',
-      options: { color: 'rgb(255, 255, 255)', icon: '/game/map/contact.png' },
-      name: 'It aint all about you!'
-    }
   ],
   "Teleports": [
-    {
-      type: TeleportInteractable,
-      name: 'To Sky Island',
-      position: new THREE.Vector3(10, 3, 10),
-      targetPosition: new THREE.Vector3(100, 50, -20),
-      options: { color: 'cyan', icon: '/game/map/teleport.png', }
-    },
+    // {
+    //   type: TeleportInteractable,
+    //   name: 'To Sky Island',
+    //   position: new THREE.Vector3(10, 3, 10),
+    //   targetPosition: new THREE.Vector3(100, 50, -20),
+    //   options: { color: 'cyan', icon: '/game/map/teleport.png', }
+    // },
     {
       type: ChangeSceneInteractable,
       name: 'Go To Tutorial Cave',
@@ -88,38 +102,20 @@ export const GameInteractables = {
 };
 
 export const TutorialInteractables = {
-  "Get close to this": [
+  "Interactables": [
     {
       type: OverlayInteractable,
       position: new THREE.Vector3(0, -3, -4),
-      templateUrl: '/game/projects/motion-virtual-physiotherapy.html',
+      templateUrl: '/game/projects/the-underground.html',
       options: { color: 'rgb(231, 76, 60)', icon: '/game/map/about.png' },
-      name: 'Motion',
-      worldMapName: 'and then press [E].'
-    },
-  ],
-  "Teleports": [
-    {
-      type: TeleportInteractable,
-      name: 'Pass through the wall',
-      position: new THREE.Vector3(30, -3, 60),
-      targetPosition: new THREE.Vector3(100, 50, -20),
-      options: { color: 'cyan', icon: '/game/map/teleport.png', }
+      name: 'The Underground',
+      worldMapName: 'The Underground'
     },
     {
       type: ChangeSceneInteractable,
       name: 'Leave Tutorial Cave',
       position: new THREE.Vector3(10, -3, 6),
       sceneName: 'game',
-      options: { color: 'cyan', icon: '/game/map/teleport.png', }
-    },
-  ],
-  "Doors": [
-    {
-      type: DoorInteractable,
-      name: 'Big Beefy Door',
-      position: new THREE.Vector3(10, -3, 100),
-      targetPosition: new THREE.Vector3(100, 50, -30),
       options: { color: 'cyan', icon: '/game/map/teleport.png', }
     },
   ],

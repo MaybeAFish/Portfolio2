@@ -13,7 +13,7 @@ export class FallOffHint {
 
     // Create the div
     this.div = document.createElement('div');
-    this.div.textContent = "Let's try not falling off the map! 😊";
+    this.div.textContent = "Let's try not falling off the map! :P";
     this.div.style.position = 'fixed';
     this.div.style.top = '50%';
     this.div.style.left = '50%';
