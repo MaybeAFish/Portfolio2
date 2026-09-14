@@ -5,6 +5,7 @@
   width: 100%;
   margin-bottom: 1rem;
   box-sizing: border-box;
+  pointer-events: none;
 }
 
 .side-navigation-section {
@@ -25,6 +26,7 @@
   justify-content: flex-start;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  pointer-events: auto;
 }
 
 .side-navigation-media {
