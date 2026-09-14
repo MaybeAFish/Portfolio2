@@ -12,7 +12,7 @@ export class Player extends Character {
 
     this.viewPitch = 0;
     this.viewYaw = 0;
-    this.offset = new THREE.Vector3(0, 10, -15); // third-person offset camera
+    this.offset = new THREE.Vector3(0, 2.5, -5.5); // third-person offset camera
 
     this.velocity = new THREE.Vector3(); // total velocity
     this.speed = 220; // Units per second
@@ -41,11 +41,11 @@ export class Player extends Character {
 
     this.characterCollider.setTranslation({ x: 0, y: 5, z: 0 }, true);
     this.controller = this.world.createCharacterController(0.01);
-    this.debugCapsule = this.createCapsuleDebugMesh(
-      this.charHeight - 2 * this.charRadius,
-      this.charRadius
-    );
-    this.scene.add(this.debugCapsule);
+    // this.debugCapsule = this.createCapsuleDebugMesh(
+    //   this.charHeight - 2 * this.charRadius,
+    //   this.charRadius
+    // );
+    // this.scene.add(this.debugCapsule);
 
     this.meshOffset = new THREE.Vector3();
   }
@@ -90,8 +90,8 @@ export class Player extends Character {
     this.prevGrounded = this.isGrounded;
 
     // Debug
-    const pos = this.characterCollider.translation();
-    this.debugCapsule.position.set(pos.x, pos.y - (this.charHeight - 2 * this.charRadius) / 2, pos.z);
+    // const pos = this.characterCollider.translation();
+    // this.debugCapsule.position.set(pos.x, pos.y - (this.charHeight - 2 * this.charRadius) / 2, pos.z);
   }
 
   input(delta) {
@@ -168,20 +168,21 @@ export class Player extends Character {
     );
 
 
-    const arrow = new THREE.ArrowHelper(
-      this.velocity.clone().normalize(),
-      this.mesh.position.clone(),
-      this.velocity.length() * 0.1,
-      0x00ff00
-    );
-    this.scene.add(arrow);
-    setTimeout(() => {
-      arrow.children.forEach(child => {
-        if (child.geometry) child.geometry.dispose();
-        if (child.material) child.material.dispose();
-      });
-      this.scene.remove(arrow);
-    }, 5000);
+    // debug arrow line behind 
+    // const arrow = new THREE.ArrowHelper(
+    //   this.velocity.clone().normalize(),
+    //   this.mesh.position.clone(),
+    //   this.velocity.length() * 0.1,
+    //   0x00ff00
+    // );
+    // this.scene.add(arrow);
+    // setTimeout(() => {
+    //   arrow.children.forEach(child => {
+    //     if (child.geometry) child.geometry.dispose();
+    //     if (child.material) child.material.dispose();
+    //   });
+    //   this.scene.remove(arrow);
+    // }, 5000);
   }
 
   handleLookAround() {
@@ -204,7 +205,10 @@ export class Player extends Character {
       .applyAxisAngle(new THREE.Vector3(0, 1, 0), this.viewYaw);
 
     camera.position.copy(this.mesh.position).add(rotatedOffset);
-    camera.lookAt(this.mesh.position);
+
+    const lookTarget = this.mesh.position.clone();
+    lookTarget.y += 2.0;
+    camera.lookAt(lookTarget);
   }
 
   lerpAngle(a, b, t) {
