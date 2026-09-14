@@ -24,4 +24,6 @@
 #tutorial-box img {
   height: 200px;
   width: 200px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }

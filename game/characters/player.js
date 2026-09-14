@@ -10,9 +10,9 @@ export class Player extends Character {
     this.world = rapierWorld;
     this.scene = scene;
 
-    this.viewPitch = 0;
+    this.viewPitch = 0.4;
     this.viewYaw = 0;
-    this.offset = new THREE.Vector3(0, 2.5, -5.5); // third-person offset camera
+    this.offset = new THREE.Vector3(0, 2, -5); // third-person offset camera
 
     this.velocity = new THREE.Vector3(); // total velocity
     this.speed = 220; // Units per second
@@ -127,14 +127,6 @@ export class Player extends Character {
     this.velocity.x *= damping;
     this.velocity.z *= damping;
   }
-
-
-
-
-
-
-
-
 
   applyVelocityAndCollisions(delta) {
     const desired = new RAPIER.Vector3(

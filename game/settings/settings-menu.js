@@ -42,10 +42,6 @@ export class SettingsMenu {
       });
     });
 
-    document.addEventListener('fullscreenchange', () => {
-      setTimeout(() => this.updateFullscreenButton(), 0);
-    });
-
     this.handleVisualTab();
     this.handleAudioTab();
     this.handleControlsTab();
@@ -244,19 +240,11 @@ export class SettingsMenu {
 
     if (document.fullscreenElement) {
       await document.exitFullscreen();
-      this.fullscreenButton.textContent = 'Fullscreen [F]';
     } else if (document.documentElement.requestFullscreen) {
       await document.documentElement.requestFullscreen();
-      this.fullscreenButton.textContent = 'Exit Fullscreen [F]';
     }
 
     this.fullscreenTogglePending = false;
-  }
-
-  updateFullscreenButton() {
-    this.fullscreenButton.textContent = document.fullscreenElement
-      ? 'Exit Fullscreen [F]'
-      : 'Fullscreen [F]';
   }
 
   open() {
