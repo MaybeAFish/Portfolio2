@@ -111,7 +111,6 @@ export class SettingsMenu {
       { id: 'interact-key', binding: 'interact' },
       { id: 'map-key', binding: 'map' },
       { id: 'settings-key', binding: 'settings' },
-      { id: 'fullscreen-key', binding: 'fullscreen' },
     ];
 
     const rebinding = { active: null };

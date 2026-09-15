@@ -119,7 +119,6 @@
               <label>Interact: <input type="text" id="interact-key" readonly></label>
               <label>Open/Close World Map: <input type="text" id="map-key" readonly></label>
               <label>Open/Close Settings: <input type="text" id="settings-key" readonly></label>
-              <label>Toggle Fullscreen: <input type="text" id="fullscreen-key" readonly></label>
 
             </div>
             <div id="accessibility-tab" class="tab-content">
@@ -179,14 +178,6 @@
       const launchSound = new Audio('/game/sounds/ui/play-game-button.mp3');
       launchSound.volume = 0.8;
       launchSound.play().catch(() => {});
-
-      if (document.documentElement.requestFullscreen) {
-        try {
-          await document.documentElement.requestFullscreen();
-        } catch {
-          // Continue launching when fullscreen is unavailable or denied.
-        }
-      }
 
       await startGame();
     });
