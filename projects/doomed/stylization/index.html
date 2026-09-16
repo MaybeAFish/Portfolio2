@@ -37,46 +37,10 @@
             I wanted to challenge myself on these problems by iterating on the HUD, improving the game's visibility and designing a new visual style for the game. 
           </p>
 
-          <br>
-          <h2>Improving clarity</h2>
-          <p>
-            One of the first things I worked on was the HUD. The original HUD communicated a lot of information, 
-            but not all of it was useful to the player. 
-          </p>
-          <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
-            <source src="/projects/doomed/stylization/HUD0.mp4" type="video/mp4" />
-          </video>
-          <p>
-            You immediately spawned into the game with every weapon and ability,
-            alongside a mana system, a random score, and a timer. 
-            This made the HUD very busy before the player even had a chance to understand the game. 
-          </p>
-          <p>
-            I decided to remove the timer and score because they added information without contributing 
-            much to the experience.
-          </p>
-          <p>
-            I'd even argue that the timer in particular was worsening the experience, because it felt like it 
-            made the player
-            feel as if you were supposed to speedrun it. It's a boomer shooter, which is supposed to 
-            be a game where you boom and shoot (I know). I wanted the player to have time to appreciate 
-            their kills and explore the environment rather than immediately feeling pressured to finish asap.
-          </p>
-          <p>And the score was just visual noise.</p>
-
-          <p>
-            I replaced the mana system with the already existing ammo and we changed the progression structure 
-            so the player would unlock weapons and abilities throughout the game. 
-            This meant the HUD no longer needed to communicate every possible ability and weapon from the moment the player spawned.
-          </p>
-
-          <p>This resulted in my first iteration of the hud:</p>
-          <img class="side-navigation-media" src="/projects/doomed/stylization/HUD1.png" alt="First HUD iteration">
-
 
           <br>
-          <h2>Visibility</h2>
-          <p>After reducing the amount of information on screen, I started working on a different kind of clarity: visibility.</p>
+          <h2>Scene clarity</h2>
+          <p>One of the first things I worked on was making the game scene clearer.</p>
           <img class="side-navigation-media" src="/projects/doomed/stylization/Clarity.jpg" alt="Comparison showing improved visibility">
           <p>
             The game was extremely dark, and unfortunately this wasn't helping either the gameplay or the visual presentation. 
@@ -90,22 +54,68 @@
 
 
           <br>
-          <h2>Iterating on the HUD</h2>
+          <h2>First HUD iteration</h2>
           <p>
-            With the visibility improved, I returned to the HUD and continued iterating on its 
+            Afterwards, I started working on the HUD. The original HUD communicated a lot of information, 
+            but not all of it was useful to the player. 
+          </p>
+          <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
+            <source src="/projects/doomed/stylization/HUD0.mp4" type="video/mp4" />
+          </video>
+          <h3>My design reasoning:</h3>
+          <p>
+            You immediately spawned into the game with every weapon and ability,
+            alongside a mana system, a random score, and a timer. 
+            This made the HUD very busy before the player even had a chance to understand the game. 
+          </p>
+
+          <p>
+            I decided to remove the timer and score because they added information without contributing 
+            much to the experience. The score was just visual noise, but I'd argue that the timer in aprticular was worsening 
+            the experience substantially more.
+          </p>
+
+          <p>
+            The timer made it feel as if the player was supposed to speedrun the game. Boomer shooters aren't a genre where I have much familiarity with, so I went 
+            searching online to figure out which feeling and experience our players want to get out of the game. 
+            After finding an online thread with the title: "What gives you fun in boomer shooters?", the top comment entailed: 
+          </p>
+
+          <p>
+            "It gives me fun to explore the levels, after I cleared an area,of enemies, I'm checking out the cool architecture, the decorations, try to interact with the environment, and look for secrets."
+          </p>     
+
+          <p>
+            I wanted the player to have time to appreciate 
+            their kills and explore the environment rather than immediately feeling pressured to finish asap.
+          </p>
+
+          <p>
+            I had also replaced the mana system with the already existing ammo and we changed the progression structure 
+            so the player would unlock weapons and abilities gradually throughout the game. 
+            This meant the HUD no longer needed to communicate every possible ability and weapon from the moment the player spawned.
+          </p>
+
+          <p>These decisions resulted in my first iteration of the hud:</p>
+          <img class="side-navigation-media" src="/projects/doomed/stylization/HUD1.png" alt="First HUD iteration">
+
+
+          <br>
+          <h2>Second HUD iteration</h2>
+          <p>
+            After working on some combat mechanics, I returned to the HUD and continued iterating on its 
             layout and feedback.
           </p>
 
           <p>
             During playtesting, I discovered that players often didn't realise that the melee was available to them. 
-            I suggested making the melee ability visible directly in the HUD. My team agreed.
           </p>
           <p>
-            So I decided to place the movement and ability information together on the left side of the HUD. This created a better 
+            So, I decided to make the melee ability directly visible in the HUD. I put it on the left side, and moved the dash ability UI with it. I believe that this created a better 
             visual balance, otherwise most information would be concentrated on the right side of the 
             screen.
           </p>
-          <p>And more importantly, I added the keybinds underneath them. People would otherwise have to check random buttons to figure the keybinds out or give up on these abilities.</p>
+          <p>And, most importantly, I added the keybinds underneath them. People would otherwise have to check random buttons to figure the keybinds out or give up on these abilities.</p>
 
           <img class="side-navigation-media" src="/projects/doomed/stylization/HUD2.png" alt="Latest HUD upgrade">
 
