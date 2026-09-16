@@ -20,31 +20,18 @@
     </nav>
 
     <section>
-      <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
-        <source src="/projects/doomed/combat/melee.mp4" type="video/mp4" />
-      </video>
-
+      <br>
       <h1>Player Experience</h1>
-      <p>In the context of games, the player experience (PE) is how the player feels, thinks or reacts while playing the game.</p>
+      <p>The player experience (PX) is how the player feels, thinks or reacts while playing the game.</p>
 
       <p>
-        Analyzing this experience properly is a very time-consuming task, as it usually takes many iterations and playtests to 
-        understand if and why a game system sucks. It's also very difficult because evaluating the player experience requires the viewpoint of players, 
-        but players aren't game designers.
-        They could be conflating one system's problems for the one you're testing, or they could be explaining the wrong reasons 
-        why something is fun or frustrating. 
+        Playtests are very valuable to determine this experience, but feedback from players doesn't always explain the underlying problem. 
+        Players can accurately describe what feels frustrating or satisfying while being mistaken about why it happens. 
+        Thus I use both player behaviour and their feedback as evidence, before investigating why the systems and interactions could be causing that experience. 
       </p>
-      <p>
-        But since it takes a lot of resources to explore the player experience, it means that Game designers must be very 
-        selective on which systems they want to analyze in depth (depending on team size).
-      </p>
-      <p>
-        These are some of the player
-        experience problems I personally chose to investigate and improve:
-      </p>
-
 
       <br>
+      <h1>Player Experience Investigations</h1>
       <h2>Doomed</h2>
       <div class="experience-grid">
         <article class="experience-card">
@@ -175,13 +162,13 @@
         <img class="side-navigation-media" src="/skills/game-systems/my-systems/karaoke.png" loading="lazy">
 
         <p>
-          I designed a Play of the Game system for a karaoke game by performing the following steps:
+          I designed an extensive Play of the Game system while keeping the player experience in mind. I did this by performing the following steps:
         </p>
 
         <ol>
           <li>Identifying the different motivations people might enjoy while playing karaoke.</li>
           <li>Determining which in-game recorded events could realistically represent those motivations.</li>
-          <li>Determining the weights of those events.</li>
+          <li>Determining the weights of those events by surveying the target audience.</li>
           <li>Determining how the weights should be used when calculating what the moment should be.</li>
           <li>Implementing it, and then tons of playtesting to make some number adjustments.</li>
         </ol>
