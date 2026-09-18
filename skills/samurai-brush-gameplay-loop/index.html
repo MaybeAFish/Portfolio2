@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samurai Brush Gameplay Loop – Amine El Hammdaoui</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+    <div id="header-placeholder"></div>
+    <script src="/general/header/header-loader.js"></script>
+
+    <main>
+
+        <nav
+            class="side-navigation"
+            aria-label="Skills navigation"
+            data-component="/skills/skills-navigation.html">
+        </nav>
+
+        <section>
+            <div class="skill-hero">
+
+                <video
+                    class="skill-hero__media"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    aria-hidden="true">
+                    <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
+                </video>
+
+                <div class="skill-hero__overlay"></div>
+
+                <h1>Samurai Brush Gameplay Loop</h1>
+                Turn-based match-3 game
+      <ul>
+        <li>The player is prompted with a Quick Time Event (QTE) to earn moves</li>
+        <li>The player uses those moves in a match-3 field to accumulate damage</li>
+        <li>The player decides which enemy to attack to use the damage on</li>
+        <li>The enemy(s) strike back</li>
+        <li>Repeat</li>
+      </ul>
+
+
+        <br>
+        <h2>Combining items to become a stronger samurai</h2>
+        <p>You could combine items by match-3'ing them to make the item stronger. In the video, the gloves are upgraded which allow the player to reach further on the board.</p>
+        <video class="side-navigation-media" autoplay muted loop playsinline>
+          <source src="/skills/game-mechanics/my-secondary-mechanics/combining.mp4" type="video/mp4">
+        </video>
+
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="/general/component-loader.js"></script>
+
+</body>
+</html>

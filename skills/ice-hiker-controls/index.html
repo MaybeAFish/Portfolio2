@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ice Hiker Controls System – Amine El Hammdaoui</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+    <div id="header-placeholder"></div>
+    <script src="/general/header/header-loader.js"></script>
+
+    <main>
+
+        <nav
+            class="side-navigation"
+            aria-label="Skills navigation"
+            data-component="/skills/skills-navigation.html">
+        </nav>
+
+        <section>
+            <div class="skill-hero">
+
+                <video
+                    class="skill-hero__media"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    aria-hidden="true">
+                    <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
+                </video>
+
+                <div class="skill-hero__overlay"></div>
+
+                <h1>The Ice Hiker Controls System</h1>
+
+                <!-- first person controls,  would make the player not understand what is happening. -->
+      <br>
+      <h2>Controls system</h2>
+      <p>I designed the controls system for the ice hiker. A system which rotates the camera when the mouse is moved, 
+      lets the camera collide with terrain using raycasts, and lets the player move in the direction the camera is looking at.</p>
+      <p>I designed it this way, because I wanted the player to look at the face of the character without the camera being difficult to control.</p>
+      <video class="side-navigation-media" autoplay muted loop controls playsinline preload="metadata">
+        <source src="/skills/game-systems/my-systems/camera.mp4" type="video/mp4" />
+      </video>
+
+      <br>
+      <h2>Animation system</h2>
+      <p>I also designed an animation system for the Ice Hiker, which allows for any mechanic that wants to play an animation to play 
+      depending on how much weight that animation has. If the animation a mechanic wants to play has more weight than the currently playing one, 
+      it will hold priority. 
+      </p>
+      <img class="side-navigation-media" src="/skills/game-systems/my-systems/animation-controller.gif" loading="lazy">
+
+
+      <p>my playtestr esults & how i used them:</p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="/general/component-loader.js"></script>
+
+</body>
+</html>

@@ -1,27 +1,43 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gameplay Mechanics – My Skills</title>
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/skills/game-mechanics/skill.css">
-  <link rel="stylesheet" href="/skills/skills-detail.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Explanation for Game Mechanics, Systems & Loops – Amine El Hammdaoui</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
+
 <body>
-  <div id="header-placeholder"></div>
-  <script src="/general/header/header-loader.js"></script>
 
-  <main>
-    <nav
-      class="side-navigation"
-      aria-label="Skills navigation"
-      data-component="/skills/skills-navigation.html">
-    </nav>
+    <div id="header-placeholder"></div>
+    <script src="/general/header/header-loader.js"></script>
 
-    <section>
-      <div>
-        <br>
+    <main>
+
+        <nav
+            class="side-navigation"
+            aria-label="Skills navigation"
+            data-component="/skills/skills-navigation.html">
+        </nav>
+
+        <section>
+            <div class="skill-hero">
+
+                <video
+                    class="skill-hero__media"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    aria-hidden="true">
+                    <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
+                </video>
+
+                <div class="skill-hero__overlay"></div>
+
+                <h1>My Explanation for Game Mechanics, Systems & Loops</h1>
+
         <h1>Game Mechanics</h1>
         <p>
           Game mechanics are the most important part of any game.
@@ -29,8 +45,7 @@
           Some completely warp how the game is played, while others expand
           upon that experience.
         </p>
-
-        <!-- <br>
+<br>
         <p>
           There are many ways to define/categorize game mechanics. One useful
           framework, made by game designer Charmie Kim, separates a game's
@@ -115,98 +130,71 @@
               League's worldbuilding and characters improve the game feel in different ways.
             </p>
           </div>
-        </div> -->
-
-        <br>
-        <h1>Core mechanics I've designed & implemented</h1>
-        <h2>Moving Elara around with a hairdryer</h2>
-        <p>I designed a game around the theme "Bubbles". The core gameplay loop of my game involved playing around the hairdryer as your only tool to move Elara.</p>
-        <video class="side-navigation-media" autoplay muted loop playsinline>
-          <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
-        </video>
-
-        <br>
-        <h2>Environmental hazard</h2>
-        <p>For a space invaders type game, I designed various semi-random hazard mechanics such as asteroids, supernovas or solar rays.</p>
-        <video class="side-navigation-media" autoplay muted loop playsinline>
-          <source src="/skills/game-mechanics/my-core-mechanics/hazards.mp4" type="video/mp4">
-        </video>
-
-        <br>
-        <h2>VR physiotherapy exercisebar</h2>
-        <p>I designed an exercisebar which could support various types of exercises in VR.</p>
-        <p></p>
-        <video class="side-navigation-media" autoplay muted loop playsinline>
-          <source src="/skills/game-mechanics/my-core-mechanics/exercise.mp4" type="video/mp4">
-        </video>
-
-        <br><br>
-        <h1>Secondary mechanics I've designed & implemented</h1>
-        <br>
-        <h2>VR Physiotherapy realistic bow</h2>
-        <p>I designed a mechanic where your left controller is the bow, and your right controller is your hand grabbing on to a piece of string. The farther you pull back (good posture), the stronger your shot.</p>
-        <p>Looking back, I should've probably made a feature where you could swap between hands for left-handed people.</p>
-        <video class="side-navigation-media" autoplay muted loop playsinline>
-          <source src="/skills/game-mechanics/my-secondary-mechanics/bow.mp4" type="video/mp4">
-        </video>
-
-        <br>
-        <h2>Hiding eyeballs</h2>
-        <p>I designed a mechanic which made the eyeball enemies hide from the player by positioning themselves between meatshields and the player.</p>
-        <p>
-          If there aren't any meatshields left, the eyeballs would seemingly gather the courage to rush towards the player. 
-          This was the very first game I had ever made; 
-          Had I designed this today, I would've made them scatter instead 
-          and then fly away from the player if they get too close to keep the idea that they're nonconfrontational enemies.
-        </p>
-        <div class="mediacarousel" data-category="asdf" aria-label="Doomed project gallery">
-          <div class="mediacarousel-track">
-            <div class="mediacarousel-slide">
-              <img src="/skills/game-mechanics/my-secondary-mechanics/eyeballs.gif" alt="Eyeballs gif" />
-            </div>
-            <div class="mediacarousel-slide">
-              <video class="side-navigation-media" autoplay muted loop playsinline>
-                <source src="/skills/game-mechanics/my-secondary-mechanics/eyeballs.webm" type="video/webm">
-              </video>
-            </div>
-          </div>
         </div>
-
-        <br>
-        <h2>Combining items to become a stronger samurai</h2>
-        <p>You could combine items by match-3'ing them to make the item stronger. In the video, the gloves are upgraded which allow the player to reach further on the board.</p>
-        <video class="side-navigation-media" autoplay muted loop playsinline>
-          <source src="/skills/game-mechanics/my-secondary-mechanics/combining.mp4" type="video/mp4">
-        </video>
-
-
         <br>
         <p>
           Creating fun mechanics takes a lot of creativity and refinement.
-          It gets very difficult sometimes, but it's a process that I really enjoy.
+          It gets very difficult sometimes, but that makes the process also that much more enjoyable for me.
         </p>
+
 
         <p>
           When designing these game mechanics, I think it's important to design them while considering
           how they fit within the larger systems of the game. 
           No mechanic should be designed in isolation because they work together in either Game Systems or Game Loops.
         </p>
-        <a
-          class="fancy-button"
-          href="/skills/game-systems/"
-          rel="noopener noreferrer">
-          Game Systems
-        </a>
+
+      <h1>Game Systems</h1>
+      <p>A game system is comprised of multiple game mechanics. 
+      Some examples of game systems are movement, combat, shops, crafting, quests, dialogue, an enemy, multiplayer, etc.</p>
 
 
 
-      </div>
-    </section>
-  </main>
 
-  <div id="footer-placeholder"></div>
-  <script src="/general/footer/footer-loader.js"></script>
-  <script src="/general/component-loader.js"></script>
-  <script src="/general/carousel/carousel.js"></script>
+
+                <br>
+      <h1>Game Loops</h1>
+      <p>I believe that every game has at least one game loop: a repeating sequence of actions that keeps the player engaged which 
+      drives the entire game's experience.</p>
+
+      <ul>
+        <li>
+          In Tetris,
+          <ul>
+            <li>The player receives a tetromino</li>
+            <li>The tetromino is placed</li>
+            <li>The game evaluates the resulting board</li>
+            <li>Repeat</li>
+          </ul>
+        </li>
+        <li>
+          In VALORANT,
+          <ul>
+            <li>Preparation time</li>
+            <li>The barrier drops</li>
+            <li>A combat system happens</li>
+            <li>The round ends when a wincondition is reached</li>
+            <li>Repeat</li>
+          </ul>
+        </li>
+        <li>
+          In Life is Strange,
+          <ul>
+            <li>The player is presented with new narrative</li>
+            <li>The player may explore the environment and interact with characters or objects</li>
+            <li>The player makes decisions that influence the experience</li>
+            <li>The story progresses</li>
+            <li>Repeat</li>
+          </ul>
+        </li>
+      </ul>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="/general/component-loader.js"></script>
+
 </body>
 </html>
