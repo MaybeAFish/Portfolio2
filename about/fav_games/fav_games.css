@@ -27,6 +27,7 @@
     transform 0.4s ease,
     filter 0.4s ease;
 }
+
 .game-card:hover img {
   transform: scale(1.06);
   filter: brightness(0.8);
@@ -96,6 +97,44 @@
   font-size: 0.8rem;
   color: var(--text-color-muted);
   text-align: center;
+}
+
+/* League of Legendz */
+.game-hover-rank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding-top: 10px;
+    border-top: 1px solid var(--standout-color-green);
+}
+.game-hover-rank img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+}
+.game-hover-rank div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.game-hover-rank strong {
+    font-size: 0.9rem;
+}
+.game-hover-rank span {
+    font-size: 0.8rem;
+    color: var(--text-color-muted);
+}
+.game-hover-rank .never-surrender {
+    width: auto;
+    height: 55px;
+    object-fit: contain;
+}
+.game-subinformation-divider {
+    border-left: 1px solid var(--standout-color-green);
+    height: 55px;
+    margin: 0 10px;
 }
 
 @media (max-width: 600px) {

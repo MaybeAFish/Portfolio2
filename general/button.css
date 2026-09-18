@@ -31,6 +31,7 @@
   box-shadow: 0 0 20px var(--standout-color-cyan);
   border-color: var(--standout-color-cyan);
   color: var(--standout-color-cyan);
+  transform: scale(0.97);
 }
 
 .fancy-button span {

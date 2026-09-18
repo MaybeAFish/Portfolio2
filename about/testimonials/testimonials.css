@@ -25,11 +25,12 @@
 }
 
 .testimonial-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
     border-color: var(--standout-color-green);
 }
 .testimonial-card:active {
     border-color: var(--standout-color-cyan);
+    transform: translateY(-1px);
 }
 
 

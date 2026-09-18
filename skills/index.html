@@ -13,50 +13,389 @@
 
     <main>
         <section>
-            <!-- <div class="pdf-section">
-                <h2>My Definitions of Game Mechanics, Systems & Loops</h2>
-                <button class="fancy-button" onclick="loadPDF(this, '/skills/definitions.pdf')">View PDF</button>
+            <h1>My Game Design Skills</h1>
+
+            <!-- Filters -->
+            <div class="skill-filters">
+                <button class="skill-filter is-active" data-filter="all">
+                    All
+                </button>
+
+                <button class="skill-filter" data-filter="player-experience">
+                    Player Experience
+                </button>
+
+                <button class="skill-filter" data-filter="pacing">
+                    Pacing
+                </button>
+
+                <button class="skill-filter" data-filter="game-mechanics">
+                    Game Mechanics
+                </button>
+
+                <button class="skill-filter" data-filter="game-systems">
+                    Game Systems
+                </button>
+
+                <button class="skill-filter" data-filter="game-loops">
+                    Game Loops
+                </button>
+
             </div>
-            <script src="/cv/load-pdf.js"></script> -->
 
-            <!-- <h1>My Strongest Skill</h1> -->
-
-
-
-            <h1>Specialized Skills</h1>
+            <h1>WIP</h1>
             <div class="skill-grid">
-                <a class="skill-card" href="/skills/game-mechanics/">
-                    <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
-                        <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
-                    </video>
-                    <h2>Game Mechanics</h2>
-                </a>
-
-                <a class="skill-card" href="/skills/game-systems/">
-                    <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
-                        <source src="/skills/game-systems/my-systems/minigames.mp4" type="video/mp4">
-                    </video>
-                    <h2>Game Systems</h2>
-                </a>
-
-                <a class="skill-card" href="/skills/game-loops/">
-                    <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
-                        <source src="/skills/game-loops/loops/samurai.mp4" type="video/mp4">
-                    </video>
-                    <h2>Game Loops</h2>
-                </a>
-
-                <a class="skill-card" href="/skills/player-experience/">
+                <a
+                    class="skill-card"
+                    href="/skills/design-thinking/doomed-onboarding/"
+                    data-skills="design-thinking player-experience pacing"
+                >
                     <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
                         <source src="/projects/doomed/combat/melee.mp4" type="video/mp4">
                     </video>
-                    <h2>Player Experience</h2>
+
+                    <div class="skill-card__overlay"></div>
+
+                    <div class="skill-card__content">
+                        <div class="skill-card__tags">
+                            <span>Game Mechanics</span>
+                            <span>Player Experience</span>
+                            <span>Pacing</span>
+                        </div>
+
+                        <h2>League of Legends Rune Concept: Pick Your Poison</h2>
+                    </div>
                 </a>
+
+
+                <a
+                    class="skill-card"
+                    href="/skills/design-thinking/doomed-onboarding/"
+                    data-skills="design-thinking player-experience pacing"
+                >
+                    <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
+                        <source src="/projects/doomed/combat/melee.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="skill-card__overlay"></div>
+
+                    <div class="skill-card__content">
+                        <div class="skill-card__tags">
+                            <span>Player Experience</span>
+                            <span>Pacing</span>
+                        </div>
+
+                        <h2>Designing Doomed's Gradual Learning</h2>
+                    </div>
+                </a>
+
+
+                <a
+                    class="skill-card"
+                    href="/skills/game-mechanics/grapple-movement/"
+                    data-skills="game-mechanics player-experience"
+                >
+                    <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
+                        <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="skill-card__overlay"></div>
+
+                    <div class="skill-card__content">
+                        <div class="skill-card__tags">
+                            <span>Game Mechanics</span>
+                            <span>Game Systems</span>
+                        </div>
+
+                        <h2>Hairdryer Movement System</h2>
+                    </div>
+                </a>
+
+
+                <a
+                    class="skill-card"
+                    href="/skills/game-systems/doomed-ability-costs/"
+                    data-skills="game-mechanics game-systems player-experience"
+                >
+                    <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
+                        <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="skill-card__overlay"></div>
+
+                    <div class="skill-card__content">
+                        <div class="skill-card__tags">
+                            <span>Game Systems</span>
+                            <span>Game Loops</span>
+                            <span>Player Experience</span>
+                        </div>
+
+                        <h2>Designing & Creating VR Physiotherapy Minigames</h2>
+                    </div>
+                </a>
+
+
+
+                <a
+                    class="skill-card"
+                    href="/skills/game-systems/karaoke-play-of-the-game/"
+                    data-skills="game-systems design-thinking player-experience pacing"
+                >
+                    <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
+                        <source src="/projects/doomed/combat/melee.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="skill-card__overlay"></div>
+
+                    <div class="skill-card__content">
+                        <div class="skill-card__tags">
+                            <span>Game Systems</span>
+                            <span>Player Experience</span>
+                        </div>
+
+                        <h2>Designing a Karaoke "Play of the Game" System</h2>
+                    </div>
+                </a>
+
+
+
+                <a
+                    class="skill-card"
+                    href="/skills/game-systems/karaoke-play-of-the-game/"
+                    data-skills="game-systems design-thinking player-experience pacing"
+                >
+                    <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
+                        <source src="/projects/doomed/combat/melee.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="skill-card__overlay"></div>
+
+                    <div class="skill-card__content">
+                        <div class="skill-card__tags">
+                            <span>Game Mechanics</span>
+                            <span>Game Systems</span>
+                        </div>
+
+                        <h2>Environmental Hazards</h2>
+                    </div>
+                </a>
+
+
+                <a
+                    class="skill-card"
+                    href="/skills/game-systems/tetris-disconnect-recovery/"
+                    data-skills="game-systems design-thinking player-experience pacing"
+                >
+                    <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
+                        <source src="/skills/game-systems/my-systems/minigames.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="skill-card__overlay"></div>
+
+                    <div class="skill-card__content">
+                        <div class="skill-card__tags">
+                            <span>Game Systems</span>
+                            <span>Player Experience</span>
+                        </div>
+
+                        <h2>Designing Multiplayer Stability for Tetris</h2>
+                    </div>
+                </a>
+
+
+
+                
+
+
+                <a
+                    class="skill-card"
+                    href="/skills/game-systems/doomed-ability-costs/"
+                    data-skills="game-mechanics game-systems player-experience"
+                >
+                    <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
+                        <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="skill-card__overlay"></div>
+
+                    <div class="skill-card__content">
+                        <div class="skill-card__tags">
+                            <span>Game Loops</span>
+                        </div>
+
+                        <h2>Samurai Brush Gameplay Loop</h2>
+                    </div>
+                </a>
+
+
+
+                <a
+                    class="skill-card"
+                    href="/skills/game-systems/doomed-ability-costs/"
+                    data-skills="game-mechanics game-systems player-experience"
+                >
+                    <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
+                        <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="skill-card__overlay"></div>
+
+                    <div class="skill-card__content">
+                        <div class="skill-card__tags">
+                            <span>Game Systems</span>
+                        </div>
+
+                        <h2>The Ice Hiker Controls System</h2>
+                    </div>
+                </a>
+
+
+
+                <a
+                    class="skill-card"
+                    href="/skills/game-systems/doomed-ability-costs/"
+                    data-skills="game-mechanics game-systems player-experience"
+                >
+                    <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
+                        <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="skill-card__overlay"></div>
+
+                    <div class="skill-card__content">
+                        <div class="skill-card__tags">
+                            <span>Game Mechanics</span>
+                            <span>Game Systems</span>
+                            <span>Game Loops</span>
+                        </div>
+
+                        <h2>Designing Frog To It's Primary Gameplay Loop</h2>
+                    </div>
+                </a>
+
+
+
+                <a
+                    class="skill-card"
+                    href="/skills/game-systems/doomed-ability-costs/"
+                    data-skills="game-mechanics game-systems player-experience"
+                >
+                    <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
+                        <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="skill-card__overlay"></div>
+
+                    <div class="skill-card__content">
+                        <div class="skill-card__tags">
+                            <span>Game Systems</span>
+                        </div>
+
+                        <h2>Procedural Generation using Delauney Triangulation</h2>
+                    </div>
+                </a>
+
+
+                <a
+                    class="skill-card"
+                    href="/skills/game-systems/doomed-ability-costs/"
+                    data-skills="game-mechanics game-systems player-experience"
+                >
+                    <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
+                        <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="skill-card__overlay"></div>
+
+                    <div class="skill-card__content">
+                        <div class="skill-card__tags">
+                            <span>Game Loops</span>
+                            <span>Player Experience</span>
+                        </div>
+
+                        <h2>Designing Doomed's HUD</h2>
+                    </div>
+                </a>
+
+
+                <a
+                    class="skill-card"
+                    href="/skills/game-loops/doomed-horde-mode/"
+                    data-skills="game-loops game-systems pacing player-experience"
+                >
+                    <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
+                        <source src="/skills/game-loops/loops/samurai.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="skill-card__overlay"></div>
+
+                    <div class="skill-card__content">
+                        <div class="skill-card__tags">
+                            <span>Game Loops</span>
+                            <span>Game Systems</span>
+                            <span>Pacing</span>
+                        </div>
+
+                        <h2>Building Doomed's Horde Mode</h2>
+                    </div>
+                </a>
+
+
+
+                <a
+                    class="skill-card"
+                    href="/skills/game-systems/doomed-ability-costs/"
+                    data-skills="game-mechanics game-systems player-experience"
+                >
+                    <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
+                        <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="skill-card__overlay"></div>
+
+                    <div class="skill-card__content">
+                        <div class="skill-card__tags">
+                            <span>Game Mechanics</span>
+                            <span>Game Systems</span>
+                            <span>Game Loops</span>
+                        </div>
+
+                        <h2>My Explanation for Game Mechanics, Systems & Loops</h2>
+                    </div>
+                </a>
+
+
+                <a
+                    class="skill-card"
+                    href="/skills/game-systems/doomed-ability-costs/"
+                    data-skills="game-mechanics game-systems player-experience"
+                >
+                    <video class="skill-card__media" autoplay muted loop playsinline aria-hidden="true">
+                        <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="skill-card__overlay"></div>
+
+                    <div class="skill-card__content">
+                        <h2>Designing this Portfolio</h2>
+                    </div>
+                </a>
+                <!-- I'm aware this doesnt have any tags, and thus is hard to find as you have to scroll all the way to the bottom.-->
             </div>
+
+
+            <div class="skills-empty">
+                <h2>No articles found</h2>
+                <p>Try selecting a different skill.</p>
+            </div>
+
+
+
         </section>
     </main>
 
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
+    <script src="/skills/skills.js"></script>
 </body>
 </html>
