@@ -124,15 +124,11 @@
 .skill-card__tags {
     justify-content: center;
     display: flex;
+    flex-wrap: wrap;
 
+  gap: 5px;
 }
 
-.skill-card__content h2 {
-    margin: 0;
-    width: 100%;
-    z-index: 1;
-    text-align: center;
-}
 .skill-card__tags span {
   border: 1px solid var(--supporting-background-color);
   border-radius: 999px;
@@ -140,6 +136,12 @@
   padding: 6px 12px;
   font-size: 0.8rem;
   backdrop-filter: blur(4px);
+}
+.skill-card__content h2 {
+    margin: 0;
+    width: 100%;
+    z-index: 1;
+    text-align: center;
 }
 .skill-card__content:has(h2:only-child) {
     justify-content: flex-end;
