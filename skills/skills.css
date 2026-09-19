@@ -65,7 +65,6 @@
   box-shadow: 0 5px 30px var(--supporting-background-color);
   transform: translateY(-4px);
 }
-
 .skill-card:active {
   border-color: var(--standout-color-cyan);
   transform: translateY(-1px);
@@ -76,7 +75,7 @@
 }
 
 /* MEDIA */
-.skill-card__media {
+.skill-card-media {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -92,13 +91,13 @@
     filter 0.4s ease;
 }
 
-.skill-card:hover .skill-card__media {
+.skill-card:hover .skill-card-media {
   opacity: 0.72;
   filter: brightness(0.74) saturate(1.1);
   transform: scale(1.12);
 }
 
-.skill-card__overlay {
+.skill-card-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -110,26 +109,26 @@
 }
 
 /* CONTENT */
-.skill-card__content {
-    height: 100%;
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
+.skill-card-content {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.skill-card__tags {
-    justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
+.skill-card-tags {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
 
   gap: 5px;
 }
 
-.skill-card__tags span {
+.skill-card-tags span {
   border: 1px solid var(--supporting-background-color);
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.25);
@@ -137,17 +136,15 @@
   font-size: 0.8rem;
   backdrop-filter: blur(4px);
 }
-.skill-card__content h2 {
-    margin: 0;
-    width: 100%;
-    z-index: 1;
-    text-align: center;
+.skill-card-content h2 {
+  margin: 0;
+  width: 100%;
+  z-index: 1;
+  text-align: center;
 }
-.skill-card__content:has(h2:only-child) {
-    justify-content: flex-end;
+.skill-card-content:has(h2:only-child) {
+  justify-content: flex-end;
 }
-
-
 
 /* EMPTY */
 .skills-empty {
@@ -165,15 +162,6 @@
 .skills-empty p {
   margin: 0;
   color: var(--text-color-muted);
-
-}
-
-/* ACCESSIBILITY */
-
-.skill-filter:focus-visible,
-.skill-card:focus-visible {
-  outline: 2px solid var(--standout-color-cyan);
-  outline-offset: 3px;
 }
 
 @media (max-width: 760px) {

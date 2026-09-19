@@ -6,7 +6,7 @@
 @import "general/carousel/carousel.css";
 @import "general/header/header.css";
 @import "general/footer/footer.css";
-@import "general/media/pdf.css";
+@import "general/media/pdf/pdf.css";
 @import "general/hero.css";
 
 @import "general/scrollbar.css";
@@ -14,7 +14,6 @@
 @import "general/underline-hover.css";
 @import "general/button.css";
 @import "general/media/tooltip.css";
-@import "general/media/pdf/pdf.css";
 @import "general/side-nav/side-nav.css";
 
 :root {

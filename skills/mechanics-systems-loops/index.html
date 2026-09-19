@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Explanation for Game Mechanics, Systems & Loops – Amine El Hammdaoui</title>
+    <title>How I Define Game Mechanics, Systems & Loops – Amine El Hammdaoui</title>
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/skills/skills-detail.css">
 </head>
 
 <body>
@@ -14,28 +15,20 @@
     <script src="/general/header/header-loader.js"></script>
 
     <main>
+      <nav
+          class="side-navigation"
+          aria-label="Skills navigation"
+          data-component="/skills/skills-navigation.html">
+      </nav>
 
-        <nav
-            class="side-navigation"
-            aria-label="Skills navigation"
-            data-component="/skills/skills-navigation.html">
-        </nav>
-
-        <section>
-            <div class="skill-hero">
-
-                <video
-                    class="side-navigation-media"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    aria-hidden="true">
-                    <source src="/skills/game-mechanics/my-core-mechanics/hairdryer.mp4" type="video/mp4">
-                </video>
-
-
-                <h1>My Explanation for Game Mechanics, Systems & Loops</h1>
+      <section>
+        <div class="pdf-wrapper">
+            <div class="pdf-section">
+                <h1>How I Define Game Mechanics, Systems & Loops</h1>
+                <button class="fancy-button" onclick="loadPDF(this, '/skills/mechanics-systems-loops/definitions.pdf')">View PDF</button>
+            </div>
+        </div>
+        <script src="/general/media/pdf/load-pdf.js"></script>
 
         <h1>Game Mechanics</h1>
         <p>
@@ -44,13 +37,12 @@
           Some completely warp how the game is played, while others expand
           upon that experience.
         </p>
-<br>
         <p>
           There are many ways to define/categorize game mechanics. One useful
           framework, made by game designer Charmie Kim, separates a game's
           mechanics into four layers:
         </p>
-        <img class="side-navigation-media" src="/skills/game-mechanics/diagram.svg">
+        <img class="side-navigation-media" src="/skills/mechanics-systems-loops/game-mechanics/diagram.svg">
         <ul>
           <li>
             Core mechanic(s) are 
@@ -72,125 +64,138 @@
           As an example, here is how I would fit a few mechanics from League of Legends
           into this framework:
         </p>
-        <div class="mechanics-comparison">
-          <div class="mechanics-column">
-            <h3>LoL's core mechanics</h3>
-            <div class="mechanics-image-grid">
-              <img src="/skills/game-mechanics/league/core/moving.png" alt="Moving" loading="lazy">
-              <img src="/skills/game-mechanics/league/core/attacking.webp" alt="Attacking" loading="lazy">
-              <img src="/skills/game-mechanics/league/core/abilities.webp" alt="Abilities" loading="lazy">
-              <img src="/skills/game-mechanics/league/core/damage.png" alt="Damage/Health" loading="lazy">
-            </div>
+        <h2>LoL's core mechanics:</h2>
 
-            <p>
-              Moving, attacking, using abilities, and taking/dealing damage are
-              examples of interactions that repeatedly form the game's core combat loop.
-            </p>
+        <div class="content-grid content-grid-4">
+          <div>
+              <img src="/skills/mechanics-systems-loops/game-mechanics/league/core/moving.png" alt="Moving">
+              <h3>Moving</h3>
           </div>
 
-          <div class="mechanics-column">
-            <h3>Some of LoL's secondary mechanics</h3>
-            <div class="mechanics-image-grid">
-              <img src="/skills/game-mechanics/league/secondary/recalling.jpg" alt="Recalling" loading="lazy">
-              <img src="/skills/game-mechanics/league/secondary/wards.webp" alt="Warding" loading="lazy">
-              <img src="/skills/game-mechanics/league/secondary/ping.jpg" alt="Ping and communication" loading="lazy">
-              <img src="/skills/game-mechanics/league/secondary/dragon.jpg" alt="Dragon objective" loading="lazy">
-            </div>
-
-            <p>
-              Recalling, warding, pinging, and taking objectives support
-              the core gameplay while giving it strategic depth.
-            </p>
+          <div>
+              <img src="/skills/mechanics-systems-loops/game-mechanics/league/core/attacking.webp" alt="Attacking">
+              <h3>Attacking</h3>
           </div>
 
-          <div class="mechanics-column">
-            <h3>LoL's progression mechanics</h3>
-            <div class="mechanics-image-grid">
-              <img src="/skills/game-mechanics/league/progression/items.webp" alt="Gold and items" loading="lazy">
-              <img src="/skills/game-mechanics/league/progression/level-up.webp" alt="Leveling up" loading="lazy">
-              <img src="/skills/game-mechanics/league/progression/role-quest.jpg" alt="Role quest progression" loading="lazy">
-              <img src="/skills/game-mechanics/league/progression/super-minions.jpg" alt="Objective-based pressure" loading="lazy">
-            </div>
-
-            <p>
-              Items, leveling up, role quests, and map pressure create a layer of
-              progression in a way that's meaningful for the rest of the game.
-            </p>
+          <div>
+              <img src="/skills/mechanics-systems-loops/game-mechanics/league/core/abilities.webp" alt="Abilities">
+              <h3>Abilities</h3>
           </div>
 
-          <div class="mechanics-column narrative">
-            <h3>LoL's narrative layer</h3>
-            <div class="mechanics-image-grid">
-              <img src="/skills/game-mechanics/league/narrative/runeterra.jpg" alt="Runeterra map overview" loading="lazy">
-              <img src="/skills/game-mechanics/league/narrative/ekko.webp" alt="Characters" loading="lazy">
-            </div>
-
-            <p>
-              League's worldbuilding and characters improve the game feel in different ways.
-            </p>
+          <div>
+              <img src="/skills/mechanics-systems-loops/game-mechanics/league/core/damage.png" alt="Damage/Health">
+              <h3>Taking/dealing damage</h3>
           </div>
         </div>
-        <br>
-        <p>
-          Creating fun mechanics takes a lot of creativity and refinement.
-          It gets very difficult sometimes, but that makes the process also that much more enjoyable for me.
-        </p>
+
+        <h2>Some of LoL's secondary mechanics:</h2>
+        <div class="content-grid content-grid-4">
+          <div>
+              <img src="/skills/mechanics-systems-loops/game-mechanics/league/secondary/recalling.jpg" alt="Recalling">
+              <h3>Recalling</h3>
+          </div>
+
+          <div>
+              <img src="/skills/mechanics-systems-loops/game-mechanics/league/secondary/wards.webp" alt="Warding">
+              <h3>Warding</h3>
+          </div>
+
+          <div>
+              <img src="/skills/mechanics-systems-loops/game-mechanics/league/secondary/ping.jpg" alt="Pings">
+              <h3>Pings</h3>
+          </div>
+
+          <div>
+              <img src="/skills/mechanics-systems-loops/game-mechanics/league/secondary/dragon.jpg" alt="Dragon objective">
+              <h3>Dragons</h3>
+          </div>
+        </div>
+
+        <h2>LoL's progression mechanics:</h2>
+        <div class="content-grid content-grid-4">
+          <div>
+              <img src="/skills/mechanics-systems-loops/game-mechanics/league/progression/items.webp" alt="Gold and items">
+              <h3>Items</h3>
+          </div>
+
+          <div>
+              <img src="/skills/mechanics-systems-loops/game-mechanics/league/progression/level-up.webp" alt="Leveling up">
+              <h3>Levelling up</h3>
+          </div>
+
+          <div>
+              <img src="/skills/mechanics-systems-loops/game-mechanics/league/progression/role-quest.jpg" alt="Role quest progression">
+              <h3>Role quests</h3>
+          </div>
+
+          <div>
+              <img src="/skills/mechanics-systems-loops/game-mechanics/league/progression/super-minions.jpg" alt="Objective-based pressure">
+              <h3>Map pressure</h3>
+          </div>
+        </div>
+
+        <h2>LoL's narrative layer:</h2>
+        <div class="content-grid content-grid-2">
+          <div>
+              <img src="/skills/mechanics-systems-loops/game-mechanics/league/narrative/runeterra.jpg" alt="Runeterra map overview">
+              <h3>The world</h3>
+          </div>
+
+          <div>
+              <img src="/skills/mechanics-systems-loops/game-mechanics/league/narrative/ekko.webp" alt="Characters">
+              <h3>Its characters</h3>
+          </div>
+        </div>
 
 
         <p>
           When designing these game mechanics, I think it's important to design them while considering
-          how they fit within the larger systems of the game. 
-          No mechanic should be designed in isolation because they work together in either Game Systems or Game Loops.
+          how they fit within the larger systems of the game.
         </p>
 
-      <h1>Game Systems</h1>
-      <p>A game system is comprised of multiple game mechanics. 
-      Some examples of game systems are movement, combat, shops, crafting, quests, dialogue, an enemy, multiplayer, etc.</p>
+        <br>
+        <h1>Game Systems</h1>
+        <p>A game system is comprised of multiple game mechanics. 
+        Some examples of game systems are movement, combat, shops, crafting, quests, dialogue, an enemy, multiplayer, etc.</p>
 
+        <br>
+        <h1>Game Loops</h1>
+        <p>Almost every game has at least one game loop: a repeating sequence of actions that keeps the player engaged which 
+        drives the entire game's experience.</p>
 
+        <ul>
+          <li>
+            In Tetris,
+            <ul>
+              <li>The player receives a tetromino</li>
+              <li>The tetromino is placed</li>
+              <li>The game evaluates the resulting board</li>
+              <li>Repeat</li>
+            </ul>
+          </li>
+          <li>
+            In VALORANT,
+            <ul>
+              <li>Preparation time</li>
+              <li>The barrier drops</li>
+              <li>A combat system happens</li>
+              <li>The round ends when a wincondition is reached</li>
+              <li>Repeat</li>
+            </ul>
+          </li>
+          <li>
+            In Life is Strange,
+            <ul>
+              <li>The player is presented with new narrative</li>
+              <li>The player may explore the environment and interact with characters or objects</li>
+              <li>The player makes decisions that influence the experience</li>
+              <li>The story progresses</li>
+              <li>Repeat</li>
+            </ul>
+          </li>
+        </ul>
 
-
-
-                <br>
-      <h1>Game Loops</h1>
-      <p>I believe that every game has at least one game loop: a repeating sequence of actions that keeps the player engaged which 
-      drives the entire game's experience.</p>
-
-      <ul>
-        <li>
-          In Tetris,
-          <ul>
-            <li>The player receives a tetromino</li>
-            <li>The tetromino is placed</li>
-            <li>The game evaluates the resulting board</li>
-            <li>Repeat</li>
-          </ul>
-        </li>
-        <li>
-          In VALORANT,
-          <ul>
-            <li>Preparation time</li>
-            <li>The barrier drops</li>
-            <li>A combat system happens</li>
-            <li>The round ends when a wincondition is reached</li>
-            <li>Repeat</li>
-          </ul>
-        </li>
-        <li>
-          In Life is Strange,
-          <ul>
-            <li>The player is presented with new narrative</li>
-            <li>The player may explore the environment and interact with characters or objects</li>
-            <li>The player makes decisions that influence the experience</li>
-            <li>The story progresses</li>
-            <li>Repeat</li>
-          </ul>
-        </li>
-      </ul>
-
-            </div>
-        </section>
-
+      </section>
     </main>
 
     <div id="footer-placeholder"></div>
