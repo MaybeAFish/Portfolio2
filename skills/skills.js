@@ -78,13 +78,18 @@ filters.forEach((filter) => {
         const selectedFilter = filter.dataset.filter;
 
         if (selectedFilter === "all") {
+            const isCurrentlyActive = filter.classList.contains("is-active");
+
             filters.forEach((button) => {
                 button.classList.remove("is-active");
                 button.setAttribute("aria-pressed", "false");
             });
 
-            filter.classList.add("is-active");
-            filter.setAttribute("aria-pressed", "true");
+            // Only activate All if it wasn't already active
+            if (!isCurrentlyActive) {
+                filter.classList.add("is-active");
+                filter.setAttribute("aria-pressed", "true");
+            }
         } else {
             const allFilter = document.querySelector(
                 '.skill-filter[data-filter="all"]'
@@ -107,8 +112,8 @@ filters.forEach((filter) => {
             );
 
             if (activeSpecificFilters.length === 0) {
-                allFilter.classList.add("is-active");
-                allFilter.setAttribute("aria-pressed", "true");
+                allFilter.classList.remove("is-active");
+                allFilter.setAttribute("aria-pressed", "false");
             }
         }
 

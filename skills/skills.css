@@ -149,17 +149,12 @@
 
 
 
-/* EMPTY STATE */
-
+/* EMPTY */
 .skills-empty {
   display: none;
-  margin-top: 20px;
-  padding: 50px 20px;
+  margin-top: 50px;
   text-align: center;
-  border: 1px solid var(--supporting-background-color);
-  border-radius: var(--border-radius);
 }
-
 .skills-empty.is-visible {
   display: block;
 }
@@ -167,10 +162,10 @@
 .skills-empty h2 {
   margin: 0 0 8px;
 }
-
 .skills-empty p {
   margin: 0;
-  color: var(--muted-text-color, #a5a5a5);
+  color: var(--text-color-muted);
+
 }
 
 /* ACCESSIBILITY */

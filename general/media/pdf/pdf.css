@@ -4,14 +4,30 @@
   border: none;
 }
 
+.pdf-wrapper {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  align-items: center;
+}
+
 .pdf-section {
   width: 100%;
   box-sizing: border-box;
+
   padding: 1.5rem;
   border-radius: 10px;
   text-align: center;
-  background-color: var(--supporting-background-color);
 
-  height: auto;
-  min-height: 0;
+  background-color: var(--supporting-background-color);
+}
+
+@media (max-width: 600px) {
+  .pdf-wrapper {
+    padding: 1rem 0.5rem;
+    gap: 1.5rem;
+  }
 }
