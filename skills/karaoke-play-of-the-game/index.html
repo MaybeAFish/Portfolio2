@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Designing a Karaoke "Play of the Game" System – Amine El Hammdaoui</title>
+    <title>Finding the most "Fun" 15 seconds of a Karaoke Performance – Amine El Hammdaoui</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
 
@@ -22,55 +22,38 @@
         </nav>
 
         <section>
+            <h1>Finding the most "Fun" 15 seconds of a Karaoke Performance</h1>
+            <h2>Karaoke Play of the Game</h2>
+            <p>I designed a system that identifies the most memorable 15 seconds of a player or group's performance. 
+            Different moments throughout the song were given different weights based on how entertaining or significant they were, 
+            with the highest-scoring segment being replayed at the end of the session.</p>
+            <p>The system had to respect special edge cases such as when the game is paused, or when someone has a terrible internet connection.</p>
+            <p>Gameplay under NDA</p>
+            <img class="side-navigation-media" src="/skills/karaoke-play-of-the-game/karaoke.png" loading="lazy">
+            <p>
+                I did this by performing the following steps:
+            </p>
 
-                <video
-                    class="side-navigation-media"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    aria-hidden="true">
-                    <source src="/projects/doomed/combat/melee.mp4" type="video/mp4">
-                </video>
+            <ol>
+            <li>Identifying the different motivations people might enjoy while playing karaoke.</li>
+            <li>Determining which in-game recorded events could realistically represent those motivations.</li>
+            <li>Determining the weights of those events by surveying the target audience.</li>
+            <li>Determining how the weights should be used when calculating what the moment should be.</li>
+            <li>Implementing it, and then tons of playtesting to make some number adjustments.</li>
+            </ol>
+            my reasoning for this order
+
+            <p>Research is OP</p>
+
+            <p>First iteration looked pretty different, i had designed the weights like this:</p>
+            image
+            <p>This system sucked, as my research paper showed players liked a whole bunch of different stuff about karaoke. 
+            My first iteration would only allow extremes to happen which people didn't seem to like. But it's also true that you can't and shouldn't try to please everyone,</p>
+
+            <p>UML:</p>
+            <img class="side-navigation-media" src="/skills/karaoke-play-of-the-game/uml2.png" loading="lazy">
 
 
-                <h1>Designing a Karaoke "Play of the Game" System</h1>
-      <br>
-      <h1>Game Systems I've designed & implemented</h1>
-      <h2>Karaoke Play of the Game</h2>
-      <p>I designed a system that identifies the most memorable 15 seconds of a player or group's performance. 
-      Different moments throughout the song were given different weights based on how entertaining or significant they were, 
-      with the highest-scoring segment being replayed at the end of the session.</p>
-      <p>The system had to respect special edge cases such as when the game is paused, or when someone has a terrible internet connection.</p>
-      <p>Gameplay under NDA</p>
-      <img class="side-navigation-media" src="/skills/game-systems/my-systems/karaoke.png" loading="lazy">
-
-
-
-
-    <br>
-      <h2>Karaoke Game</h2>
-
-      <div class="experience-simple karaoke-experience">
-        <img class="side-navigation-media" src="/skills/game-systems/my-systems/karaoke.png" loading="lazy">
-
-        <p>
-          I designed an extensive Play of the Game system while keeping the player experience in mind. I did this by performing the following steps:
-        </p>
-
-        <ol>
-          <li>Identifying the different motivations people might enjoy while playing karaoke.</li>
-          <li>Determining which in-game recorded events could realistically represent those motivations.</li>
-          <li>Determining the weights of those events by surveying the target audience.</li>
-          <li>Determining how the weights should be used when calculating what the moment should be.</li>
-          <li>Implementing it, and then tons of playtesting to make some number adjustments.</li>
-        </ol>
-        <p>Reasoning for this volgorde:</p>
-
-        <p>Research is OP</p>
-      </div>
-
-            </div>
         </section>
 
     </main>
