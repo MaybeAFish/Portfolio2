@@ -26,94 +26,162 @@
                 <h1>League of Legends Rune Concept</h1>
 
                 <p>
-                    I would like for Time Warp Tonic to receive a rework, as I believe its value is too niche and difficult for players to understand, 
-                    limiting the Inspiration Tree's potential from offering more interesting strategic choice(s).
-                </p>
-                <p>
-                    Biscuit Delivery sit in the exact same row, which already provide players with 
-                    more immediately understandable benefits of early-game sustain.
+                    I designed a rework for Time Warp Tonic, as I believe its value is too niche and difficult for players to understand, 
+                    limiting the Inspiration tree's potential from offering more interesting strategic choice(s).
                 </p>
 
-                <p>That's why I'd want to rework Time Warp Tonic into:</p>
+                <br>
+                <h2>My design goals & constraints:</h2>
+                <ul>
+                    <li>I want this rune to remain a potion-based rune, as it would fit naturally between the other consumable runes: Biscuit Delivery and Triple Tonic.</li>
+                    <li>I want to make this rune entirely early game focused. Not only because the current Time Warp Tonic is already established as a near-early game exclusive rune, but also because the Triple Tonic and Biscuit Delivery runes are already covering the early-mid game transition. And designing consumable(s) for the mid-late game is pretty difficult as inventory space is limited.</li>
+                    <li>Rather than an advantage that's difficult to perceive, I want to create an advantage that's easier to gauge with clear player choices & strategic depth. I want to achieve this by warping an already established system, similar to other runes in the Inspriation tree like Hextech Flashtraption.</li>
+                    <li>I want the player choice of this rune to come in the form of a benefit/drawback system. I find such systems underrepresented in League, but I know that they (can) work, as Magical Footwear is a fairly respected rune in the same tree which denies players from buying their boots early.</li>
+                </ul>
+
+                <p>Using these goals & constraints, I designed:</p>
+                <!-- ---------- -->
+                <br>
                 <h1>"Pick Your Poison"</h1>
+                <h2>Rune description:</h2>
+                <p style="color: var(--standout-color-cyan)">"Choose between two potions at 3 min, then again 2 min later, and once more 2 min after that. Each potion offers a combat benefit at the cost of a drawback."</p>
 
-                <p style="font-weight: bold;">When picking this rune, the player would receive two potions at minute 3. The player then chooses which one they want to drink.</p>
+                <h2>Functionality:</h2>
+
+                <p>> When picking this rune, the player would receive a choice between two potions at minute 3. This choice manifests itself by hijacking the player's inventory where potion 1 is forced in slots 1, 3 & 5. While potion 2 is forced in slots 2, 4 & 6. The player's inventory and item stats are still in tact, but the player can't interact with their inventory item actives until they drink or sell one of the presented potions.</p>
+
+                <p>> The player then chooses whether they want to drink potion 1, drink potion 2, or sell it for 5g. Doing any of these actions immediately return the player's access to their inventory with appropiate SFX and/or VFX feedback.</p>
 
                 <p>
-                    Each potion provides a combat benefit and a combat drawback, meaning the player has to adapt their choice based on 
+                    > Each potion provides a combat benefit and a combat drawback, meaning the player has to adapt their choice based on 
                     their current situation to get the most value out of this rune.
                 </p>
 
-                <p>After choosing a potion, the player receives another pair of potions two minutes later. After choosing from that pair, they receive one final pair two minutes after that.</p>
+                <p>> After picking a potion, the player receives another pair of potions two minutes later. And after choosing from that pair, they receive one final pair two minutes after that.</p>
+                
+                <p>> To prevent players from saving their potions (too) conservatively, the player has 1 minute to drink a potion, or the game will decide for them (either randomely, or always the first in slot).</p>
 
+                <!-- ---------- -->
+                <br>
                 <h2>Potion concepts:</h2>
                 <ul>
                     <li>
-                        First set of potions
+                        First potion choice (levels 3-4, min ~3:05)
                         <ul>
                             <li>
-                                Apple Juice: Increase damage (10%) but reduce healing received (-80%) for 30s.
-                                <br><br>
-                                Apple Juice thought process:
-                                <br><br>
-                                Considering you receive the first potion pair at minute 3, it'd mean mean that the reduced 
-                                healing should be balanced around healing/sec numbers, as that is the primary source of healing for all champions in the earlygame. 
-                                However, I don't consider making the -80% antihealing specific for healing/sec as that would cause problems; Briar wouldn't have any drawbacks considering she 
-                                already has no heal/sec in her kit. 
-                                <br><br>
-                                Another problem could be the fountain. If you were to recall while 
-                                under this potion's effect, you might have a hard time regenning health before you could walk back to base. 
-                                That's why I would also suggest giving the fountain "pure healing", similar to it's already "pure damage" mechanic. 
-                                "Pure healing" would ignore grievous wounds effects, healing the player like normal. I am aware that giving the fountain "pure healing" 
-                                could influence champion balancing with global ults that have bought greavous wounds (I.E. Karthus), which at the same time could reduce player frustration. However, if giving the fountain pure healing isn't an option, I would consider changing the -80% antiheal effect to be specific to selfhealing.
-                                <br><br>
-                                It's also worth nothing that junglers could use this potion to make their clear potentially 2-4 seconds faster without any drawback, 
-                                (as most of the time, they don't really care about the reduced healing), but most junglers would then have to give up either Cosmic Insight (-13.73s on smite), or cash back (200g–1000g).</p>
+                                Apple Juice: "Increases damage by 10% but reduces healing received by -80% for 30s."
                             </li>
                             <li>
-                                Orange Juice: Increased healing (50%) but reduced damage output (-10%) for 30s.
-                                <p>This would be the more safe option, and simply count as a better potion (50g), but less considering it's 30s, and even less considering it's -10% debuff. The increased healing would result in x healing for avg champ</p>
+                                Orange Juice: "Increases healing by 50% but reduces your damage by -10% for 30s."
                             </li>
                         </ul>
                     </li>
 
                     <li>
-                        Second set of potions
+                        Second potion choice (levels 4-6, min ~5:10)
                         <ul>
-                            <li>Cranberry Juice: Increased Ability Haste (30) but increased ability mana cost? ().</li>
-                            <li>Watermelon Juice: x, but reduced ability haste (30).</li>
+                            <li>
+                                Watermelon Juice: "Increase Ability Haste by 10 but decreases attack speed by 20%."
+
+                            </li>
+                            <li>
+                                Pomegranate Juice: "Increases attack speed by 20%, but reduced ability haste by 10."
+                            </li>
                         </ul>
                     </li>
 
                     <li>
-                        Third set of potions
+                        Third potion choice (levels 5-7, min ~7:15)
                         <ul>
-                            <li>Mango Juice: .</li>
-                            <li>Ananas Juice: .</li>
+                            <li>
+                                Mango Juice: "Increases your movement speed by 20 but reduces your resistances by 20 for 30s."
+                            </li>
+                            <li>Ananas Juice: "Increases your resistances by 20 but reduces your movement speed by 20 for 30s."</li>
                         </ul>
                     </li>
                 </ul>
 
 
-                <h2>My design thinking:</h2>
-
+                <br>
+                <h2>Other design decisions</h2>
                 <ul>
-                    <li>I wanted it to be another potion rune, as it would fit naturally between the other consumable runes: Biscuit Delivery and Triple Tonic.</li>
-                    <li>Rather than relying on an advantage that's difficult to perceive, I wanted to create an understandable player choice that adds strategic depth, similar to other runes in the Inspriation tree like Hextech Flashtraption.</li>
+                    <li>
+                        I was brainstorming the potential for toplaners to create counterplay for themselves in difficult or even impossible matchups. 
+                        I also wanted something to be played around, no matter if it's you or the enemy that's using it. For enemies, each 30s timer is a window of opportunity to abuse the potion's drawback or respect the potion's benefit. But the player drinking the potions will always be able to drink it more favourably.
+                    </li>
                     <li>I decided on three sets of potions. Not only because receiving choices (can) make something more fun and engaging, but also because it would match the other runes in the same row, which both provide three consumables.</li>
+                    <li>I'm aware that this concept might be too complex for a medium-sized rune. To compensate, I kept the individual potion effects simple and focused on straightforward stat changes, allowing the complexity to come from the player's choices rather than from understanding each potion (complexity budgeting).</li>
+                    <li>I tried designing potions that didn't overlap too much with Biscuits or Tonics, such as a gold, adaptive force or max health driven potion. I also decided not to do anything with mana (or energy), as I personally believe runes should be spread as wide as possible regarding availability to encourage creative player choice.</li>
+                </ul>
+
+                <br>
+                <h2>Potion reasoning</h2>
+                <ul>
+                    <li>
+                        Apple Juice thought process:
+                        <ul>
+                            <li>This potion would be an option for players that need some extra damage in an early fight, and are willing to sacrifice their own early game sustainability to get it.</li>
+                            <li>The average base health regen of all champions is 6.8 at level 3, which would regenerate 40 health over the span of 30 seconds. Not counting any lifesteal doran items, healing runes, or healing abilities, this potion will reduce the average champion's healing for atleast 30 health.</li>
+                            <li>
+                                Considering you receive the first potion pair at minute 3, it'd mean mean that the reduced 
+                                healing should be balanced around these health regen numbers, as that is the primary source of healing for all champions in the earlygame. 
+                                However, I don't consider making the -80% antihealing specific for health regen as that would cause problems; A lot of champions' 
+                                earlygames also rely on lifesteal starter items, and Briar wouldn't receive any drawbacks considering she 
+                                already has no base health regen in her kit.
+                            </li>
+                            <li>
+                                Another problem could be the fountain. If you were to recall while 
+                                under this potion's effect, you might have a hard time regenerating health before you could walk back to base. 
+                                That's why I would also suggest giving the fountain "pure healing", similar to it's already "pure damage" mechanic. 
+                                "Pure healing" would ignore grievous wounds effects, healing the player like normal. However, I am aware that giving the fountain "pure healing" 
+                                could influence champion balancing with global ults that have bought greavous wounds (I.E. Karthus). So if giving the fountain pure healing isn't an option, I would consider changing the -80% antiheal effect to be specific to selfhealing.
+                            </li>
+                            <li>
+                                It's also worth nothing that junglers could use this potion to increase their clear speed by potentially 2-4 seconds faster without any drawback, 
+                                (as most of the time, they don't really care about the reduced healing), but most junglers would then have to give up either Cosmic Insight (-13.73s on smite), or cash back (200g–1000g). Assuming the trend persists of the Inspiration tree being primarily used as a secondary tree for junglers.</p>
+                            </li>
+
+                        </ul>
+                    </li>
                 </ul>
 
 
-                <h2>Rune description:</h2>
-                <p>All of this needs to be clearly communicated to the player.</p>
-                <p>I counted the words of every rune in the inspiration true (in english translation), and used that count to understand</p>
-                <p></p>
+                                <br><br>
+                                Orange Juice thought process:
+                                <br><br>
+                                This potion would be an option for players that are looking for some sustain in a difficult matchup, and are willing to sacrifice their own damage output to get it.
+                                <br><br>
+                                Using the same numbers from earlier, this potion would heal for atleast 20 extra health on average, 
+                                not counting other forms of sustain such as red/refillable potions, lifesteal, healing runes, or healing abilities. 
+                                <br><br>
+                                Orange juice could create some high-level strategic decisions when using your other forms of sustain. 
+                                You might be in need of a potion at 2:45, but you could consider waiting until 3:00 before popping the potion to gather an extra 50%. 
+                                You could imagine similar situations for using your healing abilities (like vladimir Q) or runes (Fleet footwork) effectively.
+                                <br><br>
+                                It's important to take in mind that the -10% damage debuff would reduce lifesteal and omnivamp when balancing the numbers of this potion.
 
-                <!-- I want to avoid any gold buffs with this rune, because of Triple Tonic's gold potion -->
-                <!-- I also want to avoid any mana buffs -->
-                <!-- However, I realized a mana DEBUFF could be a potential fun mechanic for some of the potions. -->
-                <!-- I was thinking about Arena's double mana augment, but in return providing more damage based on mana -->
 
+
+                                <br><br>
+                                Cranberry Juice thought process:
+                                <br><br>
+                                Not only did I feel like making this set of potions safer, because
+
+
+                                <br><br>
+                                Watermelon Juice thought process:
+                                <br><br>
+                                <br><br>
+
+
+                                <br><br>
+                                Mango Juice thought process:
+                                <br><br>
+
+
+                                <br><br>
+                                Ananas Juice thought process:
+                                <br><br>
 
                 <!-- <p>Animated video of how it would look, including understandable description of the rune: wip</p> -->
 
