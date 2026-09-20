@@ -35,9 +35,13 @@ function applyFilters() {
 }
 
 function saveSkillsState() {
-    const activeFilters = [...filters]
+    let activeFilters = [...filters]
         .filter((button) => button.classList.contains("is-active"))
         .map((button) => button.dataset.filter);
+
+    if (activeFilters.length === 0) {
+        activeFilters = ["all"];
+    }
 
     sessionStorage.setItem(FILTERS_KEY, JSON.stringify(activeFilters));
     sessionStorage.setItem(SCROLL_KEY, window.scrollY);
@@ -53,6 +57,10 @@ function restoreSkillsState() {
 
     if (savedFilters) {
         const activeFilters = JSON.parse(savedFilters);
+
+        if (activeFilters.length === 0) {
+            activeFilters = ["all"];
+        }
 
         filters.forEach((filter) => {
             const isActive = activeFilters.includes(filter.dataset.filter);

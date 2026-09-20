@@ -82,8 +82,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.48;
-  filter: brightness(0.58) saturate(1.05);
+  opacity: 0.5;
   transform: scale(1.06);
   transition:
     transform 0.4s ease,
@@ -92,8 +91,7 @@
 }
 .skill-card:hover .skill-card-media {
     opacity: 0.9;
-    filter: brightness(0.95) saturate(1.1);
-    transform: scale(1.26);
+    transform: scale(1.15);
 }
 
 .skill-card-overlay {
@@ -101,16 +99,16 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(4, 6, 10, 0.06) 0%,
-    rgba(4, 6, 10, 0.2) 28%,
-    rgba(4, 6, 10, 0.92) 100%
+    rgba(4, 6, 10, 0.2) 50%,
+    rgba(4, 6, 10, 0.5) 70%,
+    rgba(4, 6, 10, 0.95) 100%
   );
 }
 .skill-card:hover .skill-card-overlay {
     background: linear-gradient(
         180deg,
-        rgba(4, 6, 10, 0.01) 0%,
-        rgba(4, 6, 10, 0.28) 28%,
+        rgba(4, 6, 10, 0) 50%,
+        rgba(4, 6, 10, 0.5) 70%,
         rgba(4, 6, 10, 0.95) 100%
     );
 }
