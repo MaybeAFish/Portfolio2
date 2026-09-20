@@ -158,7 +158,6 @@
 /* EMPTY */
 .skills-empty {
   display: none;
-  margin-top: 50px;
   text-align: center;
 }
 .skills-empty.is-visible {
