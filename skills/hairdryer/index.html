@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Designing the Core Gameplay around the Theme: "Bubbles" – Amine El Hammdaoui</title>
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/skills/skills-detail.css">
 </head>
 
 <body>
@@ -23,14 +24,88 @@
 
         <section>
             <h1>Designing the Core Gameplay around the Theme: "Bubbles"</h1>
-                <p>I designed a game around the theme "Bubbles" for the GGJ 2025. The core gameplay loop of my game involved playing around the hairdryer as your only tool to move Elara.</p>
-                <video class="side-navigation-media" autoplay muted loop playsinline>
-                    <source src="/skills/hairdryer/hairdryer.mp4" type="video/mp4">
-                </video>
-                
+            <p>
+                I participated in the 2025 Global Game Jam (GGJ). The GGJ is an event where participants have to create a game in a weekend based on a certain   theme. The theme of this jam was 'Bubbles'. 
+            </p>
+
+            <br>
+            <h2>DONT Pop The Balloon</h2>
+            <p>
+                I developed a puzzle-platformer where you play as a hairdryer. Your goal is to guide a girl named Elara, trapped inside a floating bubble, to safety by pushing her bubble through a dangerous underwater environment. The player must navigate around spikes, open doors and bait piranhas away from Elara's fragile bubble. If it pops, she'll drown. The bubble slowly loses air over time but can be replenished by collecting air bubbles.
+            </p>
 
 
+            <video class="side-navigation-media" autoplay muted loop playsinline>
+                <source src="/skills/hairdryer/hairdryer.mp4" type="video/mp4">
+            </video>
+
+
+            <br><br>
+            <h2>Designing the core mechanic</h2>
+            <p>The first thing I did was brainstorm a core mechanic. The only design constraint I set for myself at the time, was that I wanted a non-traditional movement mechanic in the context of a puzzle game.</p>
+
+            <p>I managed to find an old video I posted in our gamejam's Discord, with the caption "No clue what obstacles ill implement but i thinks this'll be the core mechanic of my game"</p>
+            <video class="side-navigation-media" autoplay controls muted loop playsinline>
+                <source src="/skills/hairdryer/development.webm" type="video/webm">
+            </video>
+            <br>
+            <p>After that, all of my ideas developed around the core mechanic like this:</p>
+            <ul>
+                <li>I wanted the player's only control to be the hairdryer</li>
+                <li>Unity's default background colour made me feel as if I'm underwater, so I made that the context of the game</li>
+                <li>The bubble needed a reason to be moved, so I decided it should contain something precious</li>
+                <li>I figured that it'd be fun if you had a resource to manage, and I came up with the amount of air in your bubble</li>
+                <li>I added those little bubble generators as I was thinking about "bubbles in subnautica"</li>
+                <li>Only then did I start adding the terrain, spikes, puzzles, doors and piranhas.</li>
+                <li>Some game feel stuff (bubble stretching and rotating) and some pixelart + models + animations later, and it was finished</li>
+            </ul>
+
+
+            <br><br>
+            <h2>Onboarding</h2>
+            <p>I designed a logical learning curve for the game. I tried designing the levels in a way which forced the player to learn the main mechanic first, before experiencing some tension while manouvering around the terrain. I then created some calmness with puzzles, before finally increasing the tension once again with more and dangerously positioned piranhas.</p>
+            <div class="content-grid content-grid-4">
+                <div>
+                    <img src="/skills/hairdryer/onboarding1.webp" alt="Moving">
+                    <h3>The main mechanic</h3>
+                </div>
+
+                <div>
+                    <img src="/skills/hairdryer/onboarding2.webp" alt="Attacking">
+                    <h3>Terrain</h3>
+                </div>
+
+                <div>
+                    <img src="/skills/hairdryer/onboarding3.webp" alt="Abilities">
+                    <h3>Puzzles</h3>
+                </div>
+
+                <div>
+                    <img src="/skills/hairdryer/onboarding4.webp" alt="Damage/Health">
+                    <h3>Piranhas</h3>
+                </div>
             </div>
+
+
+            <br><br>
+            <h2>No UI challenge</h2>
+            <p>I tried challenging myself to design this game without any UI. I hoped the player will eventually randomly try to click, and notice the hairdryer show lines of air coming out of it. I made the hairdryer always look towards Elara, to insinuate the hairdryer having something to do with Elara/The bubble she's in. I also made the water completely gray while dying, and I made the player lose their control of the hairdryer as it slowly sinks in the ocean. And finally, I communicated the bubble's air amount by decreasing the bubble size (as opposed to showing it in UI elements).</p>
+            <video class="side-navigation-media" autoplay controls muted loop playsinline>
+                <source src="/skills/hairdryer/dying.webm" type="video/webm">
+            </video>
+
+
+
+
+            <br>
+            <a
+                class="fancy-button"
+                href="https://maybeafish.itch.io/dont-pop-the-balloon"
+                target="_blank"
+                rel="noopener noreferrer">
+                Play in browser on itch.io
+            </a>
+
         </section>
 
     </main>
