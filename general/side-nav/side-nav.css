@@ -88,14 +88,14 @@
 }
 .side-navigation a:active,
 .side-navigation a[aria-current="page"],
+.side-navigation a.underline-hover:active,
 .side-navigation a.underline-hover[aria-current="page"] {
   color: var(--standout-color-cyan);
 }
 .side-navigation a:active::after,
 .side-navigation a[aria-current="page"]::after,
+.side-navigation a.underline-hover:active::after,
 .side-navigation a.underline-hover[aria-current="page"]::after {
   width: 100%;
   background-color: var(--standout-color-cyan);
 }
-
-
