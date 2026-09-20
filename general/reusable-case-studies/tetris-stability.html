@@ -1,0 +1,81 @@
+<p>
+            I designed and handled multiplayer edge cases that made the game resilient when players 
+            performed actions such as disconnecting or rejoining mid-session.
+          </p>
+          <p>
+            Whenever I'd discover a new edge-case scenario, I'd propose a solution for the desired behaviour 
+            to the Creative Director before we'd start discussing the details.
+          </p>
+
+
+          <br>
+          <h2>Edge cases I've handled</h2>
+          <ul>
+            <li>
+              Marathon player disconnects:
+              <ul>
+                <li>Pauses the game if you're playing alone.</li>
+                <li>Pauses your playingfield if one other person is playing with you, without disrupting the second player's game. The disconnectee's playingfield will show a 20-second timeout to reconnect before KO'ing.</li>
+              </ul>
+            </li>
+
+            <li>
+              Marathon player reconnects:
+              <ul>
+                <li>Resumes the game if you were playing alone.</li>
+                <li>Resumes your playingfield if someone else was playing with you.</li>
+              </ul>
+            </li>
+
+            <li>
+              Battle player disconnects:
+              <ul>
+                <li>Pauses the entire game for everyone, and shows a 10s timer on the disconnectee's playingfield. If the 10s timer passes, the game resumes and the disconnectee's playingfield shows "DISCONNECTED".</li>
+                <li>If multiple people disconnect, the game ensures all affected players' timers have passed before resuming the game.</li>
+              </ul>
+            </li>
+
+            <li>
+              Battle player reconnects:
+              <ul>
+                <li>If the player survives long enough to reconnect, the player can continue playing.</li>
+              </ul>
+            </li>
+
+            <li>
+              Joining as a new player when the host has the leaderboard screen open:
+              <ul>
+                <li>The controller updates their global and friends' rankings accordingly based on which state the host has selected.</li>
+              </ul>
+            </li>
+
+            <li>
+              Joining as a new player while an existing game is in progress:
+              <ul>
+                <li>The controller will tell the player to wait their turn.</li>
+              </ul>
+            </li>
+
+            <li>
+              Joining as a new player while the game is in it's resultscreen:
+              <ul>
+                <li>The controller will tell the player to wait their turn.</li>
+                <li>
+                  Specifically in the marathon mode (where only 1-2 players are allowed because of the big playingfields), 
+                  the host won't be allowed to restart the game if the new player exceeds the 2 player limit.
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+
+          <br>
+          <p>
+            I discovered most of these edge cases by remaining an observer during internal playtests. When someone
+            disconnected, reconnected, or joined at an unexpected moment, I would notice how it would interrupt the game or leave players unsure about 
+            what was happening.
+          </p>
+          <p>
+            Handling these situations properly matters a lot for players. If the behaviour ends up looking stupid or buggy, 
+            if it wasn't clear who the disconnectee is, or if the disconnectee would gain an unfair advantage, players would get frustrated.
+          </p>
