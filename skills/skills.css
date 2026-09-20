@@ -90,11 +90,10 @@
     opacity 0.4s ease,
     filter 0.4s ease;
 }
-
 .skill-card:hover .skill-card-media {
-  opacity: 0.72;
-  filter: brightness(0.74) saturate(1.1);
-  transform: scale(1.12);
+    opacity: 0.9;
+    filter: brightness(0.95) saturate(1.1);
+    transform: scale(1.26);
 }
 
 .skill-card-overlay {
@@ -106,6 +105,14 @@
     rgba(4, 6, 10, 0.2) 28%,
     rgba(4, 6, 10, 0.92) 100%
   );
+}
+.skill-card:hover .skill-card-overlay {
+    background: linear-gradient(
+        180deg,
+        rgba(4, 6, 10, 0.01) 0%,
+        rgba(4, 6, 10, 0.28) 28%,
+        rgba(4, 6, 10, 0.95) 100%
+    );
 }
 
 /* CONTENT */
@@ -141,6 +148,10 @@
   width: 100%;
   z-index: 1;
   text-align: center;
+  transition: color 0.25s ease;
+}
+.skill-card:hover .skill-card-content h2 {
+    color: var(--text-color);
 }
 .skill-card-content:has(h2:only-child) {
   justify-content: flex-end;
