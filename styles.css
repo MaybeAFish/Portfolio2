@@ -7,6 +7,7 @@
 @import "general/header/header.css";
 @import "general/footer/footer.css";
 @import "general/media/pdf/pdf.css";
+@import "general/media/grid.css";
 @import "general/hero.css";
 
 @import "general/scrollbar.css";
