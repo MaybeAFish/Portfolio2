@@ -24,9 +24,11 @@
 
         <section>
             <h1>League of Legends Rune Concept: "Pick Your Poison"</h1>
+            <img class="side-navigation-media" style="max-height: 600px; " src="/skills/pick-your-poison/PickYourPoison.webp" alt="Pick Your Poison">
 
+            <br>
             <p>
-                I designed a rework for Time Warp Tonic because its value is both difficult to understand and difficult to defend against the other choices in the same row. Its 40% immediate healing can be valuable during the very first stage of laning, but after the first recall, Biscuit Delivery can provide comparable sustain while also granting up to 90 permanent maximum health.
+                I designed a rework for Time Warp Tonic because I find its value both difficult to understand and difficult to defend against the other choices in the same row. Its 40% immediate healing can be valuable during the very first stages of laning, but after the first recall, Biscuit Delivery can provide comparable sustain while also granting up to 90 permanent maximum health.
             </p>
             <!-- <div class="content-grid content-grid-2">
                 <div>
@@ -45,10 +47,10 @@
             <h2>My design goals & constraints:</h2>
             <ul>
                 <li>I want this rune to remain a potion-based rune, as it would fit naturally between the other consumable runes: Biscuit Delivery and Triple Tonic.</li>
-                <li>I want to make this rune entirely early game focused. Not only because Time Warp Tonic is already established as an early game exclusive rune, but also because designing consumables for the mid-late game is pretty difficult as inventory space is limited.</li>
-                <li>I want this rune to have a high skill ceiling, as high skill ceiling runes are often the most fun runes to use, and also result in very interesting gameplay.</li>
+                <li>I want to keep this rune entirely early game focused. Not only because Time Warp Tonic is already established as an early game exclusive rune, but also because designing consumables for the mid-late game is pretty difficult as inventory space is limited.</li>
+                <li>I want this rune to have a high skill ceiling, as I find high skill ceiling runes to often result in fun and interesting gameplay.</li>
                 <li>This rune exists in the "Inspiration" tree, which is mostly defined by creativity and unique tools. I want to make a rune that fits this theme by warping an already established system, similar to other runes in this tree like Hextech Flashtraption or Unsealed Spellbook.</li>
-                <li>I want the player choice of this rune to come in the form of a benefit/drawback system. I find such systems underrepresented in League, but I know that they can work, as Magical Footwear is a fairly respected rune in the same tree which denies players from buying their boots early.</li>
+                <li>I want this rune's player choice to come in the form of a benefit/drawback system. I find such systems underrepresented in League, but I know that they can work, as Magical Footwear is a fairly respected rune in the same tree which denies players from buying their boots early.</li>
             </ul>
 
             <p>Using these goals & constraints, I designed:</p>
@@ -69,12 +71,12 @@
 
             <h2>Functionality:</h2>
 
-            <p>> When picking this rune, the player would receive a choice between two potions at minute 3. The two available potions temproarily occupy alternating inventory slots, making them the only usable item actives until the player drinks or sells one. The player's existing items and stats remain unchanged.</p>
+            <p>> When picking this rune, the player would receive a choice between two potions at minute 3. The two available potions temporarily occupy alternating inventory slots, making them the only usable item actives until the player drinks or sells one. The player's existing items and stats remain unchanged.</p>
 
-            <p>> The player then chooses whether they want to drink potion 1, drink potion 2, or sell the choice for 5g. Doing any of these actions immediately return the player's access to their inventory with appropriate SFX and/or small VFX feedback.</p>
+            <p>> The player then chooses whether they want to drink potion 1, drink potion 2, or sell the choice for 5g. Performing any of these actions will immediately return the player's access to their inventory with appropriate SFX and/or small VFX feedback.</p>
 
             <p>
-                > Each potion provides a combat benefit and a combat drawback, meaning the player has to adapt their choice based on 
+                > Each potion provides a benefit and a drawback, meaning the player has to adapt their choice based on 
                 their current situation to get the most value out of this rune.
             </p>
 
@@ -130,25 +132,23 @@
                     <ul>
                         <li>This also solved the gameplay problem of a player having occupied 5-6 inventory slots, meaning there wouldn't be enough space to place the potions.</li>
                         <li>I still ended up allowing for the choices to be sold in base. That way, if a player wants to buy something and has absolutely no usecase for popping either potion; They can sell it to regain access to their inventory. This works similar to biscuits.</li>
-                        <li>I was thinking of a high level play where players could purposefully hide their inventories from observant opponents, but that might be frustrating to play against at higher ranks, so it might be best if the potion choice is only manifested in your hotbar's inventory.</li>
-                        <li>I don't think this inventory occupying system could work in a lategame potion system, as players will have very important item actives by then which should be immediately clickable at all times.</li>
+                        <li>I was thinking of a high level play where players could purposefully hide their inventories from observant opponents, but that might be frustrating to play against at higher ranks, so it might be best if the potion choice is only manifested in your hotbar's inventory, not on the inventory presented in the tab menu.</li>
+                        <li>I don't think this inventory occupying system could work in a late game potion system, as players will have very important item actives by then which should be immediately clickable at all times.</li>
                     </ul>
                 </li>
-                <li></li>
-                <li>I don't think this inventory occupying system could work in the lategame, as players will have very important item actives by then which should be immediately clickable.</li>
                 <li>
-                    I was brainstorming the potential for toplaners to create counterplay for themselves in difficult or even impossible matchups. 
+                    I was brainstorming the potential for top laners to create counterplay for themselves in difficult or even impossible matchups. 
                     I also wanted something to be played around, no matter if it's you or the enemy that's using it. If your enemy has Pick Your Poison, each 30s timer would be a window of opportunity to abuse the potion's drawback or respect the potion's benefit. But the player drinking the potions will of course always be able to drink it more favourably.
                 </li>
                 <li>I decided on three sets of potions. Not only because receiving more choices can make something more fun and engaging, but also because it would match the other runes in the same row, which both provide three consumables.</li>
-                <li>I gave the player 30s to make each decision, before the game decides for them. Had it been, lets say, 5 seconds; There would've been problems and restrict the potential skill ceiling of this rune:
+                <li>I gave the player 30s to make each decision, before the game decides for them. Had it been, let's say, 5 seconds; There would've been problems and restrict the potential skill ceiling of this rune:
                     <ul>
                         <li>Players who receive a potion choice while in base, wouldn't have a respectable window of opportunity to make use of the selected potion.</li>
-                        <li>Players who experience occasional lagg spikes could miss the timing of popping the potion.</li>
+                        <li>Players who experience occasional lag spikes could miss the timing of popping the potion.</li>
                         <li>Players could purposefully pick a potion as early or as late as possible for any number of reasons, such as making use of the Ananas juice's gold amplifier more efficiently.</li>
                     </ul>
                 </li>
-                <li>The statistics of this rune could be really fun to read and understand, as there might be champion mains who unexpectedly drink potion X over potion Y. Overall, if there's a potion that's heavily preferred over the other, it could be balanced appropiately by using the win/pickrate of that particular potion (as opposed to only looking at the entire rune's winrate).</li>
+                <li>The statistics of this rune could be really fun to read and understand, as there might be champion mains who unexpectedly drink potion X over potion Y. Overall, if there's a potion that's heavily preferred over the other, it could be balanced appropriately by using the win/pickrate of that particular potion (as opposed to only looking at the entire rune's winrate).</li>
                 <li>I tried designing potions that didn't overlap too much with Biscuits or Tonics, such as a lumpsum gold bonus, adaptive force or max health driven potion. I also decided not to do anything with mana (or energy), as I personally believe rune availability should be spread as wide when possible across the champion roster to encourage creative player choices.</li>
                 <li>I'm aware that the structure of this rune can be considered complex for a medium-sized rune. I tried leaning towards the maximum allowed complexity budget that I would personally consider allowed. To compensate, I kept the individual potion effects simple and focused on (mostly) straightforward stat changes, allowing the complexity to come from the player's gameplay choices rather than from understanding each potion.</li>
                 <li>It's very much possible that this rune is useless in some games. I designed it for scenarios where the player expects combat heavy fights in the early game (which isn't something that happens in every game), no matter if the player's fighting chance is higher or lower compared to the enemy.</li>
@@ -172,7 +172,7 @@
                         <li>
                             Another edge case could be fountain healing. If you were to recall while 
                             under this potion's effect, you might have a hard time regenerating health before you could walk back to base. 
-                            That's why I would also suggest giving the fountain "pure healing", similar to it's already "pure damage" mechanic. 
+                            That's why I would also suggest giving the fountain "pure healing", similar to its already "pure damage" mechanic. 
                             "Pure healing" would ignore grievous wounds effects, healing the player like normal. However, I am aware that giving the fountain "pure healing" 
                             could influence champion balancing with global ults that have bought grievous wounds (i.e. Karthus). So if giving the fountain pure healing isn't an option, I would consider changing the antiheal effect to be specific to selfhealing.
                         </li>
@@ -181,7 +181,7 @@
                             (as junglers often care less about staying healthy during their clears), but most junglers would then have to give up either Cosmic Insight (-13.73s on smite), or cash back (200g–1000g). Assuming the trend persists of the Inspiration tree being primarily used as a secondary tree for junglers.
                         </li>
                         <li>To discourage players from popping a potion while under this effect, I had the idea to add a barf SFX, but if players would understand why their character barfed remains to be tested.</li>
-                        <li>ADCs should avoid this potion when they have a healing support or if either the ADC or Support has the Heal summoner spell available. This also makes me consider adding The greavous wounds symbol while under the effect to communicate to the support that their healing abilities will be weaker.</li>
+                        <li>ADCs should avoid this potion when they have a healing support or if either the ADC or Support has the Heal summoner spell available. This also makes me consider adding The grievous wounds symbol while under the effect to communicate to the support that their healing abilities will be weaker.</li>
 
                     </ul>
                 </li>
@@ -194,7 +194,7 @@
                         <li>This potion would be an option for players that are looking for some sustain in a difficult matchup, and are willing to sacrifice their own damage output to get it.</li>
                         <li>In a way, this potion works similar to Time Warp Tonic, as it amplifies the healing from drinking potions.</li>
                         <li>
-                            Using the same numbers from earlier, this potion would heal ~30 extra health for base health/regen, and heal an extra 72 when using a potion while under it's effect. 
+                            Using the same numbers from earlier, this potion would heal ~30 extra health for base health/regen, and heal an extra 72 when using a potion while under its effect. 
                             Not counting other forms of sustain such as lifesteal, healing runes, heal summoner spell, or healing abilities.</li>
                         <li>
                             Orange juice could create some high-level strategic decisions when using your other forms of sustain. 
@@ -214,7 +214,7 @@
                     <ul>
                         <li>The Mango Juice would be an option for players that want some extra abilities in an extended fight, and are willing to sacrifice their attack speed to cast them.</li>
                         <li>The Pomegranate Juice would be an option for players that need an extra few auto attacks in a fight, and are willing to sacrifice their abilities to do so.</li>
-                        <li>According to the League wiki, 2 ability haste == 1 attack speed in gold value. However, this is much different in the earlygame, where auto attacks are a bigger chunk of any champion's damage dealt. The early game is also a time where abilities are weaker and cost a bigger budget of your mana, making the haste worth less and the attack speed worth more.</li>
+                        <li>According to the League wiki, 2 ability haste == 1 attack speed in gold value. However, this is much different in the early game, where auto attacks are a bigger chunk of any champion's damage dealt. The early game is also a time where abilities are weaker and cost a bigger budget of your mana, making the haste worth less and the attack speed worth more.</li>
                         <li>
                             I wanted both of these potions to be slightly safer choices compared to the other sets of choices, simply as an intermission between the two more lane defining options.
                         </li>
@@ -231,7 +231,7 @@
                     <ul>
                         <li>This potion would be an option for players that either need to get to lane/objective/camp/gank quicker, or want to have more success dodging or running away from someone, and are willing to sacrifice their durability to do so.</li>
                         <li>This potion is pretty flexible, because movement speed is simply useful for many different situations.</li>
-                        <li>Reducing your resistances at this stage of the game can be pretty detrimental, as assasins often have some lethality at this stage of the game.</li>
+                        <li>Reducing your resistances at this stage of the game can be pretty detrimental, as assassins often have some lethality at this stage of the game.</li>
                     </ul>
                 </li>
                 <li>
@@ -254,7 +254,6 @@
 
             <br>
             <!-- <h2>How it looks in game:</h2> -->
-            <img class="side-navigation-media" style="max-height: 600px; " src="/skills/pick-your-poison/PickYourPoison.webp" alt="Pick Your Poison">
 
 
         </section>
