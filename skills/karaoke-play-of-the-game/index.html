@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finding the most Entertaining 15 seconds of a Karaoke Performance – Amine El Hammdaoui</title>
+    <title>Finding the most Fun 15 seconds of a Karaoke Performance – Amine El Hammdaoui</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
 
@@ -22,37 +22,80 @@
         </nav>
 
         <section>
-            <h1>Finding the most Entertaining 15 seconds of a Karaoke Performance</h1>
+            <h1>Finding the most Fun 15 seconds of a Karaoke Performance</h1>
             <h2>Karaoke Play of the Game</h2>
             <p>I designed a system that identifies the most memorable 15 seconds of a player or group's performance. 
-            Different moments throughout the song were given different weights based on how entertaining or significant they were, 
+            Dozens of different moments throughout the song were given different weights based on how entertaining or significant they were, 
             with the highest-scoring segment being replayed at the end of the session.</p>
             <p>The system had to respect special edge cases such as when the game is paused, or when someone has a terrible internet connection.</p>
             <p>Gameplay under NDA</p>
-            <img class="side-navigation-media" src="/skills/karaoke-play-of-the-game/karaoke.png" loading="lazy">
-            <p>
-                I did this by performing the following steps:
-            </p>
-<!-- Use numbers. op veel plekken nummers gebruiken.  play of the game zou x hoeveelheid tijd duren om in te laden, maar nu duurt dat Y -->
+            <img class="side-navigation-media" src="/skills/karaoke-play-of-the-game/karaoke.png" loading="eager">
+
+
+            <br><br>
+            <h2>Research</h2>
+            <p>I came up with the following steps to handle this task:</p>
+
             <ol>
-            <li>Identifying the different motivations people might enjoy while playing karaoke.</li>
-            <li>Determining which in-game recorded events could realistically represent those motivations.</li>
-            <li>Determining the weights of those events by surveying the target audience.</li>
-            <li>Determining how the weights should be used when calculating what the moment should be.</li>
-            <li>Implementing it, and then tons of playtesting to make some number adjustments.</li>
+                <li>
+                    Identify the different motivations the target audience might have for enjoying karaoke.
+                    <p>Reasoning: "Fun" is subjective, so I first needed to understand what different players actually value in a karaoke experience.</p>
+                </li>
+                <li>
+                    Determine which recorded in-game events could realistically represent those motivations.
+                    <p>Reasoning: Once I knew what players found enjoyable, I needed measurable events that could act as indicators for those experiences.</p>
+                </li>
+                <li>
+                    Determine the weights of those events by surveying the target audience.
+                    <p>Reasoning: Not every event contributes equally to the experience, so I used player feedback to determine how much each event should influence the final moment.</p>
+                </li>
+                <li>
+                    Determine how these weights should be combined when calculating the most fun moment.
+                    <p>Reasoning: A single event could not always represent the most enjoyable part of a performance, so the system needed to combine multiple events into one final score.</p>
+                </li>
+                <li>
+                    Implement the weighted events and replay the highest-scoring moment at the end of the session.
+                    <p>Reasoning: This needs to be done to playtest and tune the previous two steps.</p>
+                </li>
+                <li>
+                    Hold playtests and make balancing adjustments.
+                    <p>Reasoning: The initial weights were based on research, but playtesting was necessary to find cases where the system produced unintuitive or uninteresting results.</p>
+                </li>
             </ol>
-            my reasoning for this order
 
             <p>Research is OP</p>
 
-            <p>First iteration looked pretty different, i had designed the weights like this:</p>
-            image
-            <p>This system sucked, as my research paper showed players liked a whole bunch of different stuff about karaoke. 
-            My first iteration would only allow extremes to happen which people didn't seem to like. But it's also true that you can't and shouldn't try to please everyone,</p>
+            <br>
+            <h2>First iteration</h2>
+            <p>My first iteration worked pretty different (step 4). I had different "fun" defining moments:</p>
+            <ul> 
+                <li>The best part of a song, which was used as a backup if nothing interesting happened.</li>
+                <li>Audience's favourite, which is when the audience would use the cheer button.</li>
+                <li>Loudest moment.</li> 
+                <li>Best individual performance.</li> 
+                <li>Worst individual performance.</li>
+                <li>Best group performance.</li>
+                <li>Worst group performance.</li>
+                <li>High performance contrast, which is when two players had a high difference in scores.</li>
+            </ul>
+            <p>The peak of each of these moments were attempted to be calculated throughout the song:</p>
+            <img class="side-navigation-media" src="/skills/karaoke-play-of-the-game/karaoke2.png" loading="lazy">
+            <br>
+            <p>However, this system sucked. As my research had already showed, the target audience likes karaoke for a wide variety of reasons.</p>
+            <p>This means that if we only looked at the most extreme moment of a song, you wouldn't represent everyones fun properly. The image shows a moment with the "worst individual performance" having the most score, but in most cases, a group would want the best individual performance + audience cheered to replay instead.</p>
+            <p>That's how I ended up with the latest iteration, where multiple identifiers can contribute simultaneously to the highest weighted, most fun 15s of a karaoke session.</p>
+            
+            <p>You might've noticed the list of identifiable moments to be different, which has the following reasons:</p>
+            <ul> 
+                <li>Good and bad performances were combined to simplify the already very complex system, as they both touched on the same type of moments. If a group sings well, it will automatically show up as a higher weight considering only the strongest singer's score (which differs for every single line) will end up mattering.</li>
+                <li>This also removes the possibility for a "high performance contrast", because a group would from now on be considered as a monolith when calculating the score.</li>
+                <li>The "best part of a song" would be needlessly complex to calculate. I initially had the idea to calculate the part of a song that was cheered on the most as "the best part of a song", but that would be a lot of data to save when its a category which only ends up mattering when literally nothing was done, but in that case, you might as well not replay anything.</li>
+            </ul>
 
-            <p>UML:</p>
+            <br>
+            <h2>UML</h2>
+            <p>I have also designed the technical side of the system:</p>
             <img class="side-navigation-media" src="/skills/karaoke-play-of-the-game/uml2.png" loading="lazy">
-
 
         </section>
 
