@@ -34,7 +34,7 @@
                 <h2>My design goals & constraints:</h2>
                 <ul>
                     <li>I want this rune to remain a potion-based rune, as it would fit naturally between the other consumable runes: Biscuit Delivery and Triple Tonic.</li>
-                    <li>I want to make this rune entirely early game focused. Not only because the current Time Warp Tonic is already established as a near-early game exclusive rune, but also because the Triple Tonic and Biscuit Delivery runes are already covering the early-mid game transition. And designing consumables for the mid-late game is pretty difficult as inventory space is limited.</li>
+                    <li>I want to make this rune entirely early game focused. Not only because Time Warp Tonic is already established as a near-early game exclusive rune, but also because the Triple Tonic and Biscuit Delivery runes are already covering the early/early-mid game transition. And designing consumables for the mid-late game is pretty difficult as inventory space is limited.</li>
                     <li>Rather than an advantage that's difficult to perceive, I want to create an advantage that's easier to gauge with clear player choices & strategic depth. I want to achieve this by warping an already established system, similar to other runes in the Inspiration tree like Hextech Flashtraption.</li>
                     <li>I want the player choice of this rune to come in the form of a benefit/drawback system. I find such systems underrepresented in League, but I know that they can work, as Magical Footwear is a fairly respected rune in the same tree which denies players from buying their boots early.</li>
                 </ul>
@@ -44,12 +44,12 @@
                 <br>
                 <h1>"Pick Your Poison"</h1>
                 <h2>Rune short description (hover):</h2>
-                <p>"Choose between two potions at 3 min, then again 2 min later, and once more 2 min after that. Each potion offers a combat benefit at the cost of a drawback."</p>
+                <p>"Choose between two potions at 3 min, then again 2 min later, and once more 2 min after that. Each potion offers a benefit at the cost of a drawback."</p>
 
                 <h2>Rune long description (selected):</h2>
                 <p>
                     "Choose between Apple Juice and Orange Juice at 3 minutes. After drinking one, choose between Mango Juice and Pomegranate Juice 2 
-                    minutes later. After drinking one of those, choose between Watermelon Juice and Ananas Juice 2 minutes later. 
+                    minutes later. After drinking one of those, choose one final time between Watermelon Juice and Ananas Juice 2 minutes later. 
                     <br><br>
                     Each juice grants both a benefit and a drawback for 30 seconds. 
                     You have 30 seconds to make each choice before one of the 
@@ -82,7 +82,7 @@
                                 Apple Juice: "Increases damage by 10% but reduces healing received by 80% for 30s."
                             </li>
                             <li>
-                                Orange Juice: "Increases healing by 50% but reduces your damage by 10% for 30s."
+                                Orange Juice: "Increases healing received by 50% but reduces your damage by 10% for 30s."
                             </li>
                         </ul>
                     </li>
@@ -91,7 +91,7 @@
                         Second potion choice (levels 4-6, min 5:00-6:00)
                         <ul>
                             <li>
-                                Mango Juice: "Increases ability haste by 15 but decreases attack speed by 30% for 30s."
+                                Mango Juice: "Increases ability haste by 30 but decreases attack speed by 15% for 30s."
                             </li>
                             <li>
                                 Pomegranate Juice: "Increases attack speed by 30%, but decreases ability haste by 15 for 30s."
@@ -103,9 +103,9 @@
                         Third potion choice (levels 5-7, min 7:00-8:30)
                         <ul>
                             <li>
-                                Watermelon Juice: "Increases your movement speed by 30 but reduces your armor & magic resist by 15 for 30s."
+                                Watermelon Juice: "Increases your movement speed by 40 but reduces your armor & magic resist by 15 for 30s."
                             </li>
-                            <li>Ananas Juice: "Increases all gold gained to 120% (max gain 300g) but reduces your movement speed by 15 for 30s."</li>
+                            <li>Ananas Juice: "Increases all gold gained by 20% (max gain 300g) but reduces your movement speed by 15 for 30s."</li>
                         </ul>
                     </li>
                 </ul>
@@ -117,6 +117,7 @@
                     <li>I made every juice represented by either red/pinkish fruit, or orange/yellow fruit. This way, they would be slightly easier to differentiate in the player's inventory during fights.</li>
                     <li>I made the decision for potions to fully occupy the player's inventory to force the player to drink the "poison". This also solved the gameplay problem of a player having occupied 5-6 inventory slots, meaning there wouldn't be enough space to place the potions.</li>
                     <li>I still ended up allowing for the choices to be sold in base. That way, if a player wants to buy something and has absolutely no usecase for popping either potion; They can sell it to regain access to their inventory. This works similar to biscuits.</li>
+                    <li>I don't think this inventory occupying system could work in the lategame, as players will have very important item actives by then which should be immediately clickable.</li>
                     <li>
                         I was brainstorming the potential for toplaners to create counterplay for themselves in difficult or even impossible matchups. 
                         I also wanted something to be played around, no matter if it's you or the enemy that's using it. If your enemy has Pick Your Poison, each 30s timer would be a window of opportunity to abuse the potion's drawback or respect the potion's benefit. But the player drinking the potions will of course always be able to drink it more favourably.
@@ -185,7 +186,7 @@
                         <ul>
                             <li>The Mango Juice would be an option for players that want some extra abilities in an extended fight, and are willing to sacrifice their attack speed to cast them.</li>
                             <li>The Pomegranate Juice would be an option for players that need an extra few auto attacks in a fight, and are willing to sacrifice their abilities to do so.</li>
-            
+                            <li>In gold value, 2 ability haste == 1 attack speed. However, this is much different in the earlygame, where auto attacks are a bigger chunk of any champion's damage dealt and when abilities are weaker/cost a chunk of your mana, making the haste worth less and the attack speed worth more.</li>
                             <li>
                                 I wanted both of these potions to be slightly safer choices compared to the other sets of choices, simply as an intermission between the two more lane defining options.
                             </li>
