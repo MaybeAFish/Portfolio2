@@ -38,7 +38,7 @@
                 <li>I want this rune to remain a potion-based rune, as it would fit sitting next to Biscuit Delivery and Triple Tonic.</li>
                 <li>I want to keep this rune entirely early game focused, as consumables compete for limited inventory space in the mid to late game.</li>
                 <li>This rune exists in the "Inspiration" tree, which is mostly defined by creativity and unique tools. I want to make a rune that fits this theme by warping an already established system, similar to other runes in this tree like Hextech Flashtraption, Magical Footwear or Unsealed Spellbook.</li>
-                <li>The reason someone would want to pick this rune must differ enough from Biscuit Delivery (sustain) or Triple Tonic (small semi-early powerspikes).</li>
+                <li>The reason to pick this rune must differ from Biscuit Delivery's sustain or Triple Tonic's power windows.</li>
             </ul>
 
             <p>Using these goals & constraints, I designed:</p>
@@ -52,18 +52,19 @@
 
             <h2>Functionality:</h2>
             <p>> At minute 3, the player receives a choice between two juices. The two available juices temporarily occupy alternating inventory slots, making them the only usable item actives until the player drinks or sells one.</p>
+
             <p>> The player then chooses whether they want to drink juice 1, drink juice 2, or sell either juice for 5g. Performing any of these actions will immediately return the player's access to their inventory.</p>
             <p>
                 > Each juice provides a buff and a drawback, meaning the player has to adapt their choice based on 
                 their current situation to get the most value out of this rune.
             </p>
-            <p>> At minute 6, the player receives another choice of two other juices.</p>
+            <p>> At minute 5, the player receives another choice of two other juices.</p>
             <p>> To prevent players from saving their juices too conservatively, the player has 30 seconds to drink a juice, or the game will decide for them (the first from the pair).</p>
 
 
             <br>
             <h1>Juice concepts:</h1>
-            <p>Every choice offers either a combat juice or a tempo juice, with each option carrying a drawback that matters to the other juice's playstyle.</p>
+            <p>Every choice offers both a combat juice and a tempo juice, with each option carrying a drawback that matters to the other juice's playstyle.</p>
             <ul>
                 <li>
                     <strong>First choice (levels 3-4, min 3:00-3:30)</strong>
@@ -90,8 +91,8 @@
 
 
             <br>
-            <h2>Design thinking</h2>
-            <p>I wanted Pick Your Poison to be chosen by players who want to temporarily cater their power in either combat or tempo. This rune will be especially good if the player's playstyle varies from game to game. For the player to make the correct choice, they must assess both the benefit and the drawback simultaneously which can change massively from moment to moment.</p>
+            <h2>My design thinking</h2>
+            <p>I wanted Pick Your Poison to be chosen by players who want to temporarily cater their power in either combat or tempo. This rune will be especially good if the player's playstyle varies from game to game. For the player to make the correct choice, they must assess both the benefit and the drawback simultaneously which can change massively depending on any given situation.</p>
 
 
             <ul>
@@ -105,7 +106,7 @@
                     </ul>
                 </li>
                 <li>
-                    I wanted something that can be played around, no matter if it's you or the enemy that's using it. Each 60s timer allows for a window of opportunity to abuse the potion's drawback or respect the potion's buff. But the player drinking the potions will of course always be able to drink it more favourably.
+                    I want my trade-off system to be something that can be played around, no matter if it's you or the enemy that's using it. Each juice has a window of opportunity to abuse the potion's drawback or respect the potion's buff. But the player drinking the potions will of course always be able to drink it more favourably.
                 </li>
                 <li>I gave the player 30s to make each decision so that players sitting in base would have a respectable timer to use the potion so they can actually benefit from the chosen juice.
                 </li>
@@ -114,13 +115,15 @@
             <br>
             <h2>Problems left to solve</h2>
             <ul>
-                <li>It must be evaluated if this rune's complexity budget exceeds what's allowed for a normal rune. Will players understand the rune quick enough after trying it once? If not, there can be done multiple things to fix it: 
+                <li>It must be evaluated if this rune's complexity budget exceeds what's allowed for a normal rune. Will players understand the rune quick enough after trying it once? If not, something must be done to fix it, such as: 
                     <ol>
-                        <li>Reduce the available choices from 2 to 1, and make the chosen juice last for longer.</li>
-                        <li>Remove the trade-off mechanic.</li>
-                        <li>Rework this concept into a keystone rune for the Inspiration tree.</li>
+                        <li>Reducing the available choices from 2 to 1, and balancing around it.</li>
+                        <li>Removing the trade-off mechanic.</li>
+                        <li>Reworking this normal rune into a keystone rune.</li>
                     </ol>
                 </li>
+                <li>It must also be evaluated if this rune will remain situational as intended, or if players discover the mathematically superior/default juice for specific champions. I particularly worry about the 40 out of combat movement speed possible being used by roam supports in an unhealthy way.</li> 
+
             </ul>
 
 
