@@ -38,7 +38,7 @@
                 <li>I want this rune to remain a potion-based rune, as it would fit sitting next to Biscuit Delivery and Triple Tonic.</li>
                 <li>I want to keep this rune entirely early game focused, as consumables compete for limited inventory space in the mid to late game.</li>
                 <li>This rune exists in the "Inspiration" tree, which is mostly defined by creativity and unique tools. I want to make a rune that fits this theme by warping an already established system, similar to other runes in this tree like Hextech Flashtraption, Magical Footwear or Unsealed Spellbook.</li>
-                <li>I want this rune to have a distinct reason for being chosen over Biscuit Delivery or Triple Tonic.</li>
+                <li>The reason someone would want to pick this rune must differ enough from Biscuit Delivery (sustain) or Triple Tonic (small semi-early powerspikes).</li>
             </ul>
 
             <p>Using these goals & constraints, I designed:</p>
@@ -47,182 +47,95 @@
             <h1>Pick Your Poison</h1>
             <h2>Description:</h2>
             <p>
-                "Choose between two juices at 3 minutes, then twice more every 2 minutes. Each juice grants a buff at the cost of a drawback."
+                "Choose between two juices at 3 minutes, then once more at 5 minutes. Each juice grants a buff at the cost of a drawback."
             </p>
 
             <h2>Functionality:</h2>
-
-            <p>> When picking this rune, the player would receive a choice between two juices at minute 3. The two available juices temporarily occupy alternating inventory slots, making them the only usable item actives until the player drinks or sells one.</p>
-            <p>> The player then chooses whether they want to drink juice 1, drink juice 2, or sell the choice for 5g. Performing any of these actions will immediately return the player's access to their inventory.</p>
+            <p>> At minute 3, the player receives a choice between two juices. The two available juices temporarily occupy alternating inventory slots, making them the only usable item actives until the player drinks or sells one.</p>
+            <p>> The player then chooses whether they want to drink juice 1, drink juice 2, or sell either juice for 5g. Performing any of these actions will immediately return the player's access to their inventory.</p>
             <p>
                 > Each juice provides a buff and a drawback, meaning the player has to adapt their choice based on 
                 their current situation to get the most value out of this rune.
             </p>
-            <p>> After picking a juice, the player receives another juice choice two minutes later. And after choosing from that pair, they receive one final choice two minutes after that.</p>
-            <p>> To prevent players from saving their juices too conservatively, the player has 30 seconds to drink a juice, or the game will decide for them (the first in slot).</p>
+            <p>> At minute 6, the player receives another choice of two other juices.</p>
+            <p>> To prevent players from saving their juices too conservatively, the player has 30 seconds to drink a juice, or the game will decide for them (the first from the pair).</p>
 
 
             <br>
             <h1>Juice concepts:</h1>
+            <p>Every choice offers either a combat juice or a tempo juice, with each option carrying a drawback that matters to the other juice's playstyle.</p>
             <ul>
                 <li>
-                    First choice (levels 3-4, min 3:00-3:30)
+                    <strong>First choice (levels 3-4, min 3:00-3:30)</strong>
                     <ul>
                         <li>
-                            Apple Juice: "Increases damage by 10% but reduces healing received by 40% for 30s."
+                            Apple Juice: "Reduces your damage taken by 15% but reduces your movement speed by 15 for 60s."
                         </li>
                         <li>
-                            Orange Juice: "Increases healing received by 60% but reduces your damage by 5% for 30s."
-                        </li>
-                    </ul>
-                </li>
-                <br>
-
-                <li>
-                    Second choice (levels 4-6, min 5:00-6:00)
-                    <ul>
-                        <li>
-                            Mango Juice: "Increases ability haste by 30 but decreases attack speed by 15% for 30s."
-                        </li>
-                        <li>
-                            Pomegranate Juice: "Increases attack speed by 30%, but decreases ability haste by 15 for 30s."
+                            Orange Juice: "Reduces your recall time by 5s but increases your damage taken by 15% for 60s."
                         </li>
                     </ul>
                 </li>
                 <br>
                 <li>
-                    Third choice (levels 5-7, min 7:00-8:30)
+                    <strong>Second choice (levels 4-6, min 5:00-5:30)</strong>
                     <ul>
                         <li>
-                            Watermelon Juice: "Increases your movement speed by 40 but reduces your armor & magic resist by 10 for 30s."
+                            Watermelon Juice: "Increases your damage dealt by 10% but reduces your minion damage by 20% for 60s."
                         </li>
-                        <li>Pineapple Juice: "Increases all gold gained by 20% (max gain 300g) but reduces your movement speed by 10 for 30s."</li>
+                        <li>Pineapple Juice: "Increases your out of combat movement speed by 40 but reduces your damage dealt by 10% for 60s."</li>
                     </ul>
                 </li>
             </ul>
 
 
             <br>
-            <h2>Design decisions & thoughts</h2>
+            <h2>Design thinking</h2>
+            <p>I wanted Pick Your Poison to be chosen by players who want to temporarily cater their power in either combat or tempo. This rune will be especially good if the player's playstyle varies from game to game. For the player to make the correct choice, they must assess both the benefit and the drawback simultaneously which can change massively from moment to moment.</p>
+
+
             <ul>
-                <li>I made every juice represented by either red or yellow fruit to make them slightly easier to differentiate during fights.</li>
+                <li>I made every juice represented by either red (combat) or yellow (tempo) fruit to make them slightly easier to differentiate during fights.</li>
                 <li>I call them "juices", as that differentiates my rune from Triple Tonic's "elixers", and Biscuit Delivery's "biscuits".</li>
-                <li>I made the decision for potions to occupy the player's inventory.</li>
+                <li>I made the decision for potions to occupy the player's inventory in alternating slots.</li>
                     <ul>
-                        <li>This solved the gameplay problem of a player having occupied 5-6 inventory slots, meaning there wouldn't be enough space to place the potions.</li>
+                        <li>This solved the gameplay problem of a player not having enough inventory slots available for the choice to be presented. Had I made the juices wait in a queue until there is enough inventory space, it would create UX problems regarding the 30s timer to pop one.</li>
                         <li>I still ended up allowing for the choices to be sold in base. That way, if a player really wants to buy something and has absolutely no usecase for popping either potion; They can sell it to regain access to their inventory. This works similar to biscuits.</li>
                         <li>The tab menu will remain to show the player's actual inventory.</li>
                     </ul>
                 </li>
                 <li>
-                    I wanted something that can be played around, no matter if it's you or the enemy that's using it. Each 30s timer allows for a window of opportunity to abuse the potion's drawback or respect the potion's buff. But the player drinking the potions will of course always be able to drink it more favourably.
+                    I wanted something that can be played around, no matter if it's you or the enemy that's using it. Each 60s timer allows for a window of opportunity to abuse the potion's drawback or respect the potion's buff. But the player drinking the potions will of course always be able to drink it more favourably.
                 </li>
-                <li>I decided on three sets of potions. Not only because receiving more choices can make something more fun and engaging, but also because it would match the other runes in the same row, which both provide three consumables.</li>
-                <li>I gave the player 30s to make each decision so that players sitting in base would have a respectable timer to use the potion when they can actually benefit from it.
+                <li>I gave the player 30s to make each decision so that players sitting in base would have a respectable timer to use the potion so they can actually benefit from the chosen juice.
                 </li>
             </ul>
 
             <br>
-            <h2>Potions and numbers reasoning</h2>
+            <h2>Problems left to solve</h2>
             <ul>
-                <li>
-                    Apple Juice thought process:
-                    <ul>
-                        <li>This potion would be an option for players that need some extra damage in an early fight, and are willing to sacrifice their own early game sustainability to get it.</li>
-                        <li>I estimated the average base health regen of all champions to be ~6.8 at level 3, which would regenerate 40 health over the span of 30 seconds.</li>
-                        <li>
-                            Considering you receive the first potion pair at minute 3, it'd mean that the reduced 
-                            healing should be balanced around health regen numbers and potions, as that is the primary source of healing for most champions in the early game. 
-                            However, I don't consider making the antihealing specific for health regen as that would cause problems; A lot of champions' 
-                            early game sustain rely mostly on lifesteal starter items, and Briar wouldn't receive any drawbacks considering she 
-                            already has no base health regen in her kit.
-                        </li>
-                        <li>
-                            Another edge case could be fountain healing. If you were to recall while 
-                            under this potion's effect, you might have a hard time regenerating health before you could walk back to base. 
-                            That's why I would also suggest giving the fountain "pure healing", similar to its already "pure damage" mechanic. 
-                            "Pure healing" would ignore grievous wounds effects, healing the player like normal. However, I am aware that giving the fountain "pure healing" 
-                            could influence champion balancing with global ults that have bought grievous wounds (i.e. Karthus). So if giving the fountain pure healing isn't an option, I would consider changing the antiheal effect to be specific to selfhealing.
-                        </li>
-                        <li>
-                            It's also worth noting that junglers could use this potion to increase their clear speed by a couple extra seconds without any drawback 
-                            (as junglers often care less about staying healthy during their clears), but most junglers would then have to give up either Cosmic Insight (-13.73s on smite), or cash back (200g–1000g). Assuming the trend persists of the Inspiration tree being primarily used as a secondary tree for junglers.
-                        </li>
-                        <li>To discourage players from popping a potion while under this effect, I had the idea to add a barf SFX, but if players would understand why their character barfed remains to be tested.</li>
-                        <li>ADCs should avoid this potion when they have a healing support or if either the ADC or Support has the Heal summoner spell available. This also makes me consider adding The grievous wounds symbol while under the effect to communicate to the support that their healing abilities will be weaker.</li>
-
-                    </ul>
-                </li>
-
-
-
-                <li>
-                    Orange Juice thought process:
-                    <ul>
-                        <li>This potion would be an option for players that are looking for some sustain in a difficult matchup, and are willing to sacrifice their own damage output to get it.</li>
-                        <li>In a way, this potion works similar to Time Warp Tonic, as it amplifies the healing from drinking potions.</li>
-                        <li>
-                            Using the same numbers from earlier, this potion would heal ~30 extra health for base health/regen, and heal an extra 72 when using a potion while under its effect. 
-                            Not counting other forms of sustain such as lifesteal, healing runes, heal summoner spell, or healing abilities.</li>
-                        <li>
-                            Orange juice could create some high-level strategic decisions when using your other forms of sustain. 
-                            You might be in need of a potion at 2:45, but you could consider waiting until 3:00 before popping the potion to gain that extra healing. 
-                            You could imagine similar situations for using your healing abilities (like vladimir Q) or runes (Fleet footwork) effectively.
-                        </li>
-                        <li>
-                            It's important to take in mind that the damage debuff would reduce lifesteal and omnivamp when balancing the numbers of this potion.
-                        </li>
-
-                    </ul>
-                </li>
-
-
-                <li>
-                    Mango & Pomegranate Juices thought process:
-                    <ul>
-                        <li>The Mango Juice would be an option for players that want some extra abilities in an extended fight, and are willing to sacrifice their attack speed to cast them.</li>
-                        <li>The Pomegranate Juice would be an option for players that need an extra few auto attacks in a fight, and are willing to sacrifice their abilities to do so.</li>
-                        <li>According to the League wiki, 2 ability haste == 1 attack speed in gold value. However, this is much different in the early game, where auto attacks are a bigger chunk of any champion's damage dealt. The early game is also a time where abilities are weaker and cost a bigger budget of your mana, making the haste worth less and the attack speed worth more.</li>
-                        <li>
-                            I wanted both of these potions to be slightly safer choices compared to the other sets of choices, simply as an intermission between the two more lane defining options.
-                        </li>
-                        <li>
-                            There are champions that heavily value one of these stats over the other, such as mages picking mango, and attack-heavy ADCs picking Pomegranate. Despite that, there are quite a few champions that might contemplate which one they'd want for the current situation, such as Jax, Diana, Katarina, Ezreal, Lucian, and more. 
-                        </li>
-
-                    </ul>
-                </li>
-
-
-                <li>
-                    Watermelon Juice thought process:
-                    <ul>
-                        <li>This potion would be an option for players that either need to get to lane/objective/camp/gank quicker, or want to have more success dodging or running away from someone, and are willing to sacrifice their durability to do so.</li>
-                        <li>This potion is pretty flexible, because movement speed is simply useful for many different situations.</li>
-                        <li>Reducing your resistances at this stage of the game can be pretty detrimental, as assassins often have some lethality at this stage of the game.</li>
-                    </ul>
-                </li>
-                <li>
-                    Pineapple Juice thought process:
-                    <ul>
-                        <li>This potion would be an option for players who know that they will generate a bunch of gold soon, and are willing to sacrifice their movement to be able to generate it.</li>
-                        <li>
-                            I wanted this last set of potions to be very difficult to pick between.
-                        </li>
-                        <li>Picking Pineapple might seem the overall more consistent option, but the player has to consider if the movement speed loss could potentially reduce the gold they'd gain, in a similar way when people decide to pick/not pick Magical Footwear.</li>
-                        <li>I consider this potion especially fun, because it's a fun challenge to maximize your gold gained during the next 30 seconds.</li>
-                        <li>Every non-support player gains 61.2 gold passively over 30s. To reach the maximum of 300g, you would have to gain an extra (1500g - 61.2g) during the next 30s.</li>
-                        <li>This potion might not be picked as often on supports, as their gold generated is lower on average.</li>
-                        <li>This potion could be balanced around making it more consistent, so increasing the gold percentage but decreasing the gold cap.</li>
-                        <li>Selling items obviously shouldn't count towards gold gained, that would otherwise be a disaster when undoing bought items.</li>
-                    </ul>
+                <li>It must be evaluated if this rune's complexity budget exceeds what's allowed for a normal rune. Will players understand the rune quick enough after trying it once? If not, there can be done multiple things to fix it: 
+                    <ol>
+                        <li>Reduce the available choices from 2 to 1, and make the chosen juice last for longer.</li>
+                        <li>Remove the trade-off mechanic.</li>
+                        <li>Rework this concept into a keystone rune for the Inspiration tree.</li>
+                    </ol>
                 </li>
             </ul>
 
 
             <br>
-            <!-- <h2>How it looks in game:</h2> -->
+            <h2>Darlings I've Killed:</h2>
+            <p>(Ideas I've abandoned)</p>
+            <p>I had the idea for Juice that increases all gold gained by 20% (with a max gain of 300g) but reduces movement speed by 10 for 30 seconds. I think it would be a really fun challenge to optimize your gold generated in the next 30 seconds, which could cause player behaviour where they might risk getting poked or slightly unoptimize their jungle timers only for a couple coins. I threw this idea in the trash because it seemed like a juice which Watermelon Juice would find difficult to compete with.</p>
+            <p>I initially decided on 3 choices, which I suspected to not only be more fun and engaging, but it would also align with the 3 biscuits from Biscuit Delivery, and the 3 elixers from Triple Tonic. this unfortunately increases the complexity budget for a rune that already has enough complexity as is.</p>
+            <p>I had an idea for a juice that removes 3 item slots from the player for an annoyingly long duration, in return for a lumpsum of gold. This seemed very difficult to balance and something that would create too many edge cases.</p>
 
+
+            <!-- Rune idea, keystone inspiration removes item slots 3, 4, 5 and 6. Periodically regain an item slot at 2:00, 6:00, 10:00, 14:00 and 16:00. For each item slot, gain 25g, 50g, 100g, 200g, 500g -->
+            <!-- Rune name: "Small pockets". but thats lame for a keystone. "idk" -->
+            <!-- Managing a tiny inventory in the early game seems interesting and can lead to fun gamelay decisions. -->
+            
 
         </section>
 
