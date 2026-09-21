@@ -103,25 +103,31 @@ filters.forEach((filter) => {
                 '.skill-filter[data-filter="all"]'
             );
 
-            allFilter.classList.remove("is-active");
-            allFilter.setAttribute("aria-pressed", "false");
+            const isCurrentlyActive = filter.classList.contains("is-active");
 
-            filter.classList.toggle("is-active");
+            if (isCurrentlyActive) {
+                // Deselect the current filter
+                filter.classList.remove("is-active");
+                filter.setAttribute("aria-pressed", "false");
 
-            filter.setAttribute(
-                "aria-pressed",
-                filter.classList.contains("is-active") ? "true" : "false"
-            );
+                const remainingActiveFilters = [...filters].filter(
+                    (button) =>
+                        button.dataset.filter !== "all" &&
+                        button.classList.contains("is-active")
+                );
 
-            const activeSpecificFilters = [...filters].filter(
-                (button) =>
-                    button.dataset.filter !== "all" &&
-                    button.classList.contains("is-active")
-            );
-
-            if (activeSpecificFilters.length === 0) {
+                // If this was the last filter, switch to All
+                if (remainingActiveFilters.length === 0) {
+                    allFilter.classList.add("is-active");
+                    allFilter.setAttribute("aria-pressed", "true");
+                }
+            } else {
+                // Select this filter and disable All
                 allFilter.classList.remove("is-active");
                 allFilter.setAttribute("aria-pressed", "false");
+
+                filter.classList.add("is-active");
+                filter.setAttribute("aria-pressed", "true");
             }
         }
 
