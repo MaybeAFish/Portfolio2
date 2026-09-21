@@ -36,10 +36,9 @@
             <h2>My design goals & constraints:</h2>
             <ul>
                 <li>I want this rune to remain a potion-based rune, as it would fit sitting next to Biscuit Delivery and Triple Tonic.</li>
-                <li>I want to keep this rune entirely early game focused, because it's pretty difficult to design consumables for the mid to late game as inventory space is limited.</li>
-                <li>I want this rune to have a high skill ceiling, as I find high skill ceiling runes to often result in fun and interesting gameplay.</li>
-                <li>This rune exists in the "Inspiration" tree, which is mostly defined by creativity and unique tools. I want to make a rune that fits this theme by warping an already established system, similar to other runes in this tree like Hextech Flashtraption or Unsealed Spellbook.</li>
-                <li>I want this rune's player choice to come in the form of a trade-off system. I find such systems underrepresented in League, but I know that they can work, as Magical Footwear is a fairly respected rune in the same tree which denies players from buying their boots early.</li>
+                <li>I want to keep this rune entirely early game focused, as consumables compete for limited inventory space in the mid to late game.</li>
+                <li>This rune exists in the "Inspiration" tree, which is mostly defined by creativity and unique tools. I want to make a rune that fits this theme by warping an already established system, similar to other runes in this tree like Hextech Flashtraption, Magical Footwear or Unsealed Spellbook.</li>
+                <li>I want this rune to have a distinct reason for being chosen over Biscuit Delivery or Triple Tonic.</li>
             </ul>
 
             <p>Using these goals & constraints, I designed:</p>
@@ -48,26 +47,26 @@
             <h1>Pick Your Poison</h1>
             <h2>Description:</h2>
             <p>
-                "Choose between two potions at 3 minutes, then twice more every 2 minutes. Each potion grants a buff at the cost of a drawback."
+                "Choose between two juices at 3 minutes, then twice more every 2 minutes. Each juice grants a buff at the cost of a drawback."
             </p>
 
             <h2>Functionality:</h2>
 
-            <p>> When picking this rune, the player would receive a choice between two potions at minute 3. The two available potions temporarily occupy alternating inventory slots, making them the only usable item actives until the player drinks or sells one.</p>
-            <p>> The player then chooses whether they want to drink potion 1, drink potion 2, or sell the choice for 5g. Performing any of these actions will immediately return the player's access to their inventory.</p>
+            <p>> When picking this rune, the player would receive a choice between two juices at minute 3. The two available juices temporarily occupy alternating inventory slots, making them the only usable item actives until the player drinks or sells one.</p>
+            <p>> The player then chooses whether they want to drink juice 1, drink juice 2, or sell the choice for 5g. Performing any of these actions will immediately return the player's access to their inventory.</p>
             <p>
-                > Each potion provides a buff and a drawback, meaning the player has to adapt their choice based on 
+                > Each juice provides a buff and a drawback, meaning the player has to adapt their choice based on 
                 their current situation to get the most value out of this rune.
             </p>
-            <p>> After picking a potion, the player receives another potion choice two minutes later. And after choosing from that pair, they receive one final choice two minutes after that.</p>
-            <p>> To prevent players from saving their potions too conservatively, the player has 30 seconds to drink a potion, or the game will decide for them (the first in slot).</p>
+            <p>> After picking a juice, the player receives another juice choice two minutes later. And after choosing from that pair, they receive one final choice two minutes after that.</p>
+            <p>> To prevent players from saving their juices too conservatively, the player has 30 seconds to drink a juice, or the game will decide for them (the first in slot).</p>
 
 
             <br>
-            <h1>Potion concepts:</h1>
+            <h1>Juice concepts:</h1>
             <ul>
                 <li>
-                    First potion choice (levels 3-4, min 3:00-3:30)
+                    First choice (levels 3-4, min 3:00-3:30)
                     <ul>
                         <li>
                             Apple Juice: "Increases damage by 10% but reduces healing received by 40% for 30s."
@@ -78,8 +77,9 @@
                     </ul>
                 </li>
                 <br>
+
                 <li>
-                    Second potion choice (levels 4-6, min 5:00-6:00)
+                    Second choice (levels 4-6, min 5:00-6:00)
                     <ul>
                         <li>
                             Mango Juice: "Increases ability haste by 30 but decreases attack speed by 15% for 30s."
@@ -91,7 +91,7 @@
                 </li>
                 <br>
                 <li>
-                    Third potion choice (levels 5-7, min 7:00-8:30)
+                    Third choice (levels 5-7, min 7:00-8:30)
                     <ul>
                         <li>
                             Watermelon Juice: "Increases your movement speed by 40 but reduces your armor & magic resist by 10 for 30s."
@@ -106,6 +106,7 @@
             <h2>Design decisions & thoughts</h2>
             <ul>
                 <li>I made every juice represented by either red or yellow fruit to make them slightly easier to differentiate during fights.</li>
+                <li>I call them "juices", as that differentiates my rune from Triple Tonic's "Elixers", and Biscuit Delivery's "biscuits".</li>
                 <li>I made the decision for potions to occupy the player's inventory.</li>
                     <ul>
                         <li>This solved the gameplay problem of a player having occupied 5-6 inventory slots, meaning there wouldn't be enough space to place the potions.</li>
