@@ -25,6 +25,7 @@
 
         <section>
             <h1>Making Physiotherapy Exercises Fun</h1>
+            <p>During my VR minor, I partnered up with Physiotherapy professionals to create a VR game designed for folks with lower back pain.</p>
             <p>
                 I designed and implemented interactive VR exercise systems and minigames
                 which focus on making physiotherapy more engaging. This was done using gamified feedback, streaks, leaderboards and minigames.
@@ -44,25 +45,19 @@
 
             <p>
                 Before starting an exercise, the player first measures their
-                head sway. This establishes a baseline difficulty that can
+                head sway. This establishes the desired "difficulty" that can
                 be used to evaluate their movement during the exercise.
             </p>
-            <div class="content-grid content-grid-2">
-                <div>
-                    <img src="/skills/vr-physiotherapy-exercises/headsway.webp" alt="VR head sway measurement interface" loading="lazy">
-                </div>
+            <img class="side-navigation-media" src="/skills/vr-physiotherapy-exercises/headsway.webp" alt="VR head sway measurement interface" loading="lazy">
 
-                <div>
-                    <img src="/skills/vr-physiotherapy-exercises/maps.webp" alt="VR physiotherapy environment selection" loading="lazy">
-                </div>
-            </div>
+
 
 
             <p>
-                I also implemented visual affordances around the player. The
-                pulsing balls indicate the direction of the required movement:
+                I also implemented visual affordances around the player. I added
+                pulsing balls which indicate the direction of the desired positions of each movement:
                 green for the left controller, blue for the right controller,
-                and pink for head movement. These colors are consistent with
+                and pink for your head. These colors are consistent with
                 the controller colors and movement illustrations used throughout
                 the experience.
             </p>
@@ -75,103 +70,86 @@
 
 
 
-            <h2>Passthrough Environment</h2>
+            <h2>Changing environments</h2>
             <p>
-                I implemented a passthrough environment that uses mixed reality
+                I implemented the ability to switch maps, including a passthrough environment that uses mixed reality
                 to keep the player's real surroundings visible while placing
                 the exercise interface and interactive elements in world space.
                 This provides an alternative to performing exercises inside a
-                completely virtual environment.
+                completely virtual environment for folk who would otherwise get motion sick.
             </p>
 
-            <div class="skill-media skill-media--contained">
-                <img
-                    src="/skills/vr-physiotherapy-exercises/maps.webp"
-                    alt="VR passthrough physiotherapy environment"
-                    loading="lazy">
-            </div>
+            <div class="content-grid content-grid-2">
+                <div>
+                    <img src="/skills/vr-physiotherapy-exercises/passthrough.webp" loading="lazy">
+                    <h3>Passthrough</h3>
+                </div>
 
                 <div>
-                    <h3>Research</h3>
-                    <p>
-                        Research into how passthrough and fully virtual
-                        environments can affect exercise performance.
-                    </p>
+                    <img src="/skills/vr-physiotherapy-exercises/maps.webp" loading="lazy">
+                    <h3>Environments UI</h3>
                 </div>
+            </div>
+
+            <p>I wanted the main map to look and feel like a calm physiotherapy environment. I modeled the base room before a more talented 3D artist took over:</p>
+            <img class="side-navigation-media" src="/skills/vr-physiotherapy-exercises/map1.png" loading="lazy">
+
+
+            <br>
+            <h2>Does the passthrough environment have better performance?</h2>
+            <p>
+                I suspected the passthrough environment to result in better exercise performance. So I decided that to be my topic for my research assignment:
+            </p>
 
             <div class="pdf-wrapper">
                 <div class="pdf-section">
+                    <h2>A Comparative Study of Passthrough and Virtual Environments in VR-Based Physiotherapy</h2>
                     <button class="fancy-button" onclick="loadPDF(this, '/skills/vr-physiotherapy-exercises/research.pdf')">View Research</button>
                 </div>
             </div>
             <script src="/general/media/pdf/load-pdf.js"></script>
 
 
-                <header class="skill-section-heading">
-                    <span class="skill-case-study__category">Minigames</span>
-                    <h2>Designing VR Physiotherapy Minigames</h2>
-                    <p>
-                        I also explored how traditional game mechanics could be
-                        adapted into exercises while still encouraging the intended
-                        physical movements.
-                    </p>
-                </header>
+            <h1>Designing VR Physiotherapy Minigames</h1>
+            <p>
+                I also explored how traditional game mechanics could be
+                adapted into exercises while still encouraging the intended
+                physical movements.
+            </p>
+
+            <h2>Archery Minigame</h2>
+            <p>
+                I designed an archery minigame where the player's left controller
+                represents a bow whose string can be pulled by grabbing it with the right controller.
+            </p>
+
+            <p>
+                Pulling the string farther increases the shot's
+                strength, encouraging the player to maintain a
+                straight posture while performing the movement.
+            </p>
+            <video class="side-navigation-media" autoplay muted loop playsinline>
+                <source
+                    src="/skills/vr-physiotherapy-exercises/bow.mp4"
+                    type="video/mp4">
+            </video>
+            <p>
+                Looking back, I would add a left-handed setting so
+                players could swap the bow and string-hand controls.
+            </p>
 
 
-                <article class="skill-case-study__feature">
-                    <div class="skill-case-study__feature-content">
-                        <h3>Sword Minigame</h3>
-                        <p>
-                            The player has to step outside their central position
-                            and reach toward targets to slash them with two swords.
-                            This turns the required physical movement into a
-                            simple game challenge.
-                        </p>
-                    </div>
+            <!-- al mijn pixelart grid. -->
 
-                    <div class="skill-media">
-                        <video autoplay muted loop playsinline>
-                            <source
-                                src="/skills/vr-physiotherapy-exercises/minigames.mp4"
-                                type="video/mp4">
-                        </video>
-                    </div>
-                </article>
+            <br>
+            <a
+                class="fancy-button"
+                href="https://www.meta.com/en-gb/experiences/motion-virtual-physiotherapy/24055028290798310/"
+                target="_blank"
+                rel="noopener noreferrer">
+                Download on the Meta Quest
+            </a>
 
-
-                <article class="skill-case-study__feature skill-case-study__feature--reverse">
-                    <div class="skill-case-study__feature-content">
-                        <h3>VR Physiotherapy Bow</h3>
-                        <p>
-                            I designed a bow mechanic where the left controller
-                            represents the bow and the right controller grabs
-                            the string.
-                        </p>
-
-                        <p>
-                            Pulling the string farther increases the shot's
-                            strength, encouraging the player to maintain a
-                            straight posture while performing the movement.
-                        </p>
-
-                        <div class="skill-case-study__note">
-                            <strong>Reflection</strong>
-                            <p>
-                                Looking back, I would add a handedness option so
-                                players could swap the bow and string-hand controls
-                                for left-handed use.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="skill-media">
-                        <video autoplay muted loop playsinline>
-                            <source
-                                src="/skills/vr-physiotherapy-exercises/bow.mp4"
-                                type="video/mp4">
-                        </video>
-                    </div>
-                </article>
 
         </section>
 
