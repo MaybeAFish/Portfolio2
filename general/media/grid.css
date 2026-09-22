@@ -38,7 +38,10 @@
     border-radius: var(--border-radius);
 }
 
-
+.content-grid:has(> :only-child) {
+    grid-template-columns: minmax(0, 600px);
+    justify-content: center;
+}
 
 
 @media (max-width: 800px) {

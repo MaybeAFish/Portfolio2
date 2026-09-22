@@ -33,9 +33,11 @@
 
 
             <h2>VR Physiotherapy Exercise Bar</h2>
-            <video class="side-navigation-media" autoplay muted loop playsinline>
-                <source src="/skills/vr-physiotherapy-exercises/exercise.mp4" type="video/mp4"/>
-            </video>
+            <div class="content-grid">
+                <video class="side-navigation-media" autoplay muted loop playsinline>
+                    <source src="/skills/vr-physiotherapy-exercises/exercise.mp4" type="video/mp4"/>
+                </video>
+            </div>
 
             <p>
                 I designed an exercise bar that could support multiple types of
@@ -46,16 +48,18 @@
             <p>
                 Before starting an exercise, the player first measures their
                 head sway. This establishes the desired "difficulty" that can
-                be used to evaluate their movement during the exercise.
+                be used to evaluate their movement during the exercises.
             </p>
-            <img class="side-navigation-media" src="/skills/vr-physiotherapy-exercises/headsway.webp" alt="VR head sway measurement interface" loading="lazy">
+            <div class="content-grid">
+                <img class="side-navigation-media" src="/skills/vr-physiotherapy-exercises/headsway.webp" alt="VR head sway measurement interface" loading="lazy">
+            </div>
 
 
 
 
             <p>
-                I also implemented visual affordances around the player. I added
-                pulsing balls which indicate the direction of the desired positions of each movement:
+                To make the shown movements clearer, I added
+                pulsing affordance balls which indicate the direction of the desired positions of each movement.
                 green for the left controller, blue for the right controller,
                 and pink for your head. These colors are consistent with
                 the controller colors and movement illustrations used throughout
@@ -92,8 +96,9 @@
             </div>
 
             <p>I wanted the main map to look and feel like a calm physiotherapy environment. I modeled the base room before a more talented 3D artist took over:</p>
-            <img class="side-navigation-media" src="/skills/vr-physiotherapy-exercises/map1.png" loading="lazy">
-
+            <div class="content-grid">
+                <img class="side-navigation-media" src="/skills/vr-physiotherapy-exercises/map1.png" loading="lazy">
+            </div>
 
             <br>
             <h2>Does the passthrough environment have better performance?</h2>
@@ -113,7 +118,7 @@
 
             <h1>Designing VR Physiotherapy Minigames</h1>
             <p>
-                I also explored how traditional game mechanics could be
+                I explored how traditional game mechanics could be
                 adapted into exercises while still encouraging the intended
                 physical movements.
             </p>
@@ -130,11 +135,13 @@
                 strength, encouraging the player to maintain a
                 straight posture while performing the movement.
             </p>
-            <video class="side-navigation-media" autoplay controls muted loop playsinline>
-                <source
-                    src="/skills/vr-physiotherapy-exercises/bow.mp4"
-                    type="video/mp4">
-            </video>
+            <div class="content-grid">
+                <video class="side-navigation-media" autoplay controls muted loop playsinline>
+                    <source
+                        src="/skills/vr-physiotherapy-exercises/bow.mp4"
+                        type="video/mp4">
+                </video>
+            </div>
             <p>
                 Looking back, I would add a left-handed setting so
                 players could swap the bow and string-hand controls.
@@ -145,17 +152,21 @@
             <p>
                 I designed a sword minigame where the player ought to stay near the center as much as possible while reaching for targets which fall to the ground.
             </p>
-            <video class="side-navigation-media" autoplay controls muted loop playsinline>
-                <source
-                    src="/skills/vr-physiotherapy-exercises/sword.webm"
-                    type="video/mp4">
-            </video>
+            <div class="content-grid">
+                <video class="side-navigation-media" autoplay controls muted loop playsinline>
+                    <source
+                        src="/skills/vr-physiotherapy-exercises/sword.webm"
+                        type="video/mp4">
+                </video>
+            </div>
 
             <br>
             <h1>Gamification</h1>
             <p>Aside from colours, VFX, SFX, maps and minigames, I also focused on focused on a streak system with the highest streaks available on the leaderboard.</p>
             <p>Implementing a leaderboard for exercise scores would become competitive in an unhealthy way we felt.</p>
-            <img class="side-navigation-media" src="/skills/vr-physiotherapy-exercises/streak.webp" loading="lazy">
+            <div class="content-grid">
+                <img class="side-navigation-media" src="/skills/vr-physiotherapy-exercises/streak.webp" loading="lazy">
+            </div>
             <p>Looking back, the UI would look more logical if the streak and leaderboard were put together considering their logic is connected. Also, your streak should probably start at "1" instead of "0" to give a fake feeling of jumpstarting your progression.</p>
 
 
