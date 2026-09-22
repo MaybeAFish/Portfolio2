@@ -23,24 +23,40 @@
 
         <section>
             <h1>Designing The Ice Hiker's Controls System</h1>
+
             <h2>Controls system</h2>
-            <p>I designed the controls system for the ice hiker. A system which rotates the camera when the mouse is moved, 
-            lets the camera collide with terrain using raycasts, and lets the player move in the direction the camera is looking at.</p>
-            <p>I designed it this way, because I wanted the player to look at the face of the character without the camera being difficult to control.</p>
-            <p>Had it been first person, the player would have a hard time orientating themselves while flying and swinging.</p>
+            <p>
+                I designed and implemented the controls system for the Ice Hiker. The system rotates the camera based on mouse movement,
+                uses raycasts to prevent the camera from clipping through terrain and moves the player in the direction
+                the camera is facing. The character would only look in the camera direction when the player performed an action.
+            </p>
+
+            <p>
+                I designed it this way because I wanted players to be able to see the character's face without making
+                the camera difficult to control. I verified this through A/B testing, where every player rated my system
+                higher than the previous version.
+            </p>
+
             <video class="side-navigation-media" autoplay muted loop controls playsinline preload="metadata">
                 <source src="/skills/ice-hiker-controls/camera.mp4" type="video/mp4" />
             </video>
-            <p>I had done an A/B test with 2 camera systems;</p>
-            <p>Looking back, the camera occasionally clips in an annoying way when the camera is close to terrain. The raycast when camera's colliding with terrain shouldve been much more sensitive so that this doesnt happen.</p>
+
+            <p>
+                Looking back, the camera occasionally clips through terrain in a distracting way. I believe that the raycast should
+                have been a "spherecast", which allows me to make the camera more sensitive to prevent potential clippings.
+            </p>
 
             <br>
+
             <h2>Animation system</h2>
-            <p>I also designed an animation system for the Ice Hiker, which allows for any mechanic to play an animation as long as that animations has a higher priority than the currently playing one.
+            <p>
+                I also designed and implemented a custom animation system for the Ice Hiker because Unity's Animator
+                Controller felt limited and difficult to scale. My system allowed movement mechanics to trigger
+                animations based on their priority, with a new animation playing whenever its priority was higher
+                than or equal to the currently playing one.
             </p>
+
             <img class="side-navigation-media" src="/skills/ice-hiker-controls/animation-controller.gif" loading="lazy">
-
-
         </section>
 
     </main>
