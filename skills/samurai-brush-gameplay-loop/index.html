@@ -23,32 +23,58 @@
         <section>
             <h1>Somehow Fitting Combat in a Match 3 Game</h1>
 
+            <p>
+                For my second game ever, I had to make a match-3 game. I found the idea of making a
+                traditional match-3 game boring, so I looked for a way to make the matching
+                itself part of a larger gameplay loop.
+            </p>
+
             <video class="side-navigation-media" autoplay muted controls loop playsinline>
                 <source src="/skills/samurai-brush-gameplay-loop/samurai.mp4" type="video/mp4">
             </video>
 
-            <br>
-            <h2>Gameplay loop</h2>
-            <ul>
-                <li>The player is prompted with a Quick Time Event (QTE) to earn moves</li>
-                <li>The player uses those moves in a match-3 field to accumulate damage</li>
-                <li>The player decides which enemy to attack to use the damage on</li>
-                <li>The enemy(s) strike back</li>
-                <li>Repeat</li>
-            </ul>
+            <br><br>
+            <h2>Turning Matches Into Attacks</h2>
+            <p>
+                I designed a combat system where the player's matches directly contribute to their
+                attacks.
+            </p>
 
+            <ol>
+                <li>The player completes a Quick Time Event (QTE) to earn moves.</li>
+                <li>The player uses those moves to make matches and accumulate damage.</li>
+                <li>The player chooses which enemy to use that damage against.</li>
+                <li>The enemies attack back.</li>
+                <li>Repeat.</li>
+            </ol>
 
             <br>
-            <h2>Combining items to become a stronger samurai</h2>
-            <p>After winning battles, the player could combine items by match-3'ing them to make the item stronger. Items could increase movementspeed during fights or allow the player to reach further on the board.</p>
+            <h2>Combining Items to Become a Stronger Samurai</h2>
+            <p>
+                After winning battles, I had the idea of the player buying items and match-3'ing them to become stronger.
+            </p>
+
+            <p>
+                These items could improve the player's abilities in future battles, such as increasing their
+                movement speed or allowing the player to reach further across the board.
+            </p>
+
             <video class="side-navigation-media" autoplay controls muted loop playsinline>
                 <source src="/skills/samurai-brush-gameplay-loop/combining.mp4" type="video/mp4">
             </video>
 
-            <p>Reflection: I should've used VFX to communicate that the accumulated match 3 score will be used as damage</p>
-            <p>Also, the enemies and attacks should've been paint/art related, it would fit the theme better considering its literally called "Samurai Brush"</p>
-            <p>Adding an attack animation with the brush would also help a ton with visual understanding.</p>
+            <br><br>
+            <h2>What I'd Change</h2>
+            <p>
+                The biggest problem was communicating how the match-3 board affected combat. I should
+                have designed an animation or VFX that made it clear that the accumulated match-3 score was being
+                converted into damage.
+            </p>
 
+            <p>
+                I also should have pushed the Samurai Brush theme further. The enemies and attacks had nothing to do with painting or samurais, despite the game's name being Samurai Brush. I also should have animated the samurai attacking the enemies with his brush. This would have made the
+                combat easier to understand and made the theme feel more connected to the mechanics.
+            </p>
         </section>
 
     </main>
