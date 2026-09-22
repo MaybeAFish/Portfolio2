@@ -1,0 +1,70 @@
+<h1>Making Doomed's Combat Feel Better</h1>
+<h2>Melee</h2>
+<p>The game already had a melee attack, but it wasn't in a particularly good state. The animation was buggy, there was no sound, and there was very little impact feedback beyond the basic enemy hit reaction.</p>
+<p>The damage was also very low, and the game would feel as if it randomly switches between the gun-waving animation and the knife animation used for executes.</p>
+<video class="side-navigation-media" loop muted autoplay playsinline preload="metadata"> 
+<source src="/projects/doomed/combat/oldmelee.webm" type="video/webm"> 
+</video>
+
+<p>The execute mechanic itself was also percentage-based. During a playtest, one player accidentally discovered this by dealing maybe ~2000 damage to the Golem boss.</p>
+<p>I reworked the melee system to make it faster, more consistent with a better looking stab animation, and impact feedback by knocking the enemy back slightly.</p>
+<p>I also changed the execute from a percentage-based damage value to a flat amount. This made the behaviour more predictable and prevented situations where the mechanic could produce TONS OF DAMAGE.</p>
+<p>To give the attack some more audio feedback, I added seven different grunts that would play semi-randomely when casting, and added a sound effect when the attack connects.</p>
+<video class="side-navigation-media" loop controls playsinline preload="metadata">
+<source src="/projects/doomed/combat/melee.mp4" type="video/mp4" />
+</video>
+<p>Looking back, I should've made an attempt at experimenting with different animations, 
+because boomer shooter players ended up suggesting to have an animation which would communicate more impact, like a strong punch. 
+And I think the melee could also have used some additional VFX. Blood, particles, or, in this case, bones. 
+I think connecting a melee in a game can (sometimes) allow for more VFX than connecting gunshots.
+</p>
+
+
+<br>
+<h2>Weapon Swapping Accessibility</h2>
+<p>I added a slow-motion effect when switching weapons through the weapon wheel.</p>
+<video class="side-navigation-media" loop autoplay muted playsinline preload="metadata">
+<source src="/projects/doomed/combat/slowmotion.webm" type="video/webm" />
+</video>
+<p>During playtesting, I noticed that players who were familiar with boomer shooters almost immediately tried using the number keys. Because of that, I also implemented 1-4 key weapon switching.</p>
+<p>But after adding that, the weapon wheel became absolete. Every playtester would unpromptedly prefer using the keys over the weapon wheel. The weaponwheel was cool and functional, but it was slower and less convenient for the way the players actually want to play.</p>
+
+
+<br>
+<h2>Enemy Projectiles</h2>
+<p>Enemy projectiles used to pass through walls, which absolutely sucked because it felt impossible to see it coming which would confuse players as they randomely died.</p>
+<p>I first fixed this by making projectiles despawn when their centre point reached a wall. This solved the frustration problem, but introduced a new gameplay problem considering projectiles could disappear in ways that felt inconsistent from the player's perspective.</p>
+<video class="side-navigation-media" loop muted autoplay playsinline preload="metadata"> 
+<source src="/projects/doomed/combat/oldprojectiles.webm" type="video/webm"> 
+</video>
+
+<p>I then had a cooler idea. Instead of simply making the projectiles disappear, I experimented with having them reflect off the environment.</p>
+
+<video class="side-navigation-media" loop muted autoplay playsinline preload="metadata"> 
+<source src="/projects/doomed/combat/emergent.mp4" type="video/mp4"> 
+</video>
+
+<p>This created some really interesting emergent behaviour. A projectile could remain dangerous for a short while even after the player had already succesfully dodged the initial projectile's trajectory.</p>
+<p>I liked that the mechanic was difficult to predict without feeling frustrating. It also made the environment itself part of the combat. It made those artillery enemies much more dynamic and more fun to deal with.</p>
+
+
+<br>
+<h2>Expected Reload behaviour</h2>
+<p>During playtests, I noticed that players were becoming frustrated with the gunplay, even though they couldn't clearly explain why. 
+By observing their behaviour, I realized that the frustrating was primarily caused by the need of additional inputs to reload, which interrupts the flow of combat.
+</p>
+
+<p>That's why I implemented the following reload behaviours:</p>
+<ul> 
+<li>Whenever shooting or using an ability would reduce the weapon's magazine to 0 ammo, reload.</li>
+<li>When switching to a weapon whose magazine is empty, reload.</li> 
+<li>When receiving ammo while holding a weapon with an empty magazine, reload.</li> 
+<li>When finishing a melee attack while holding a weapon with an empty magazine, reload.</li>
+<li>Added SFX when you had nothing in your mag to reload.</li>
+</ul>
+<video class="side-navigation-media" autoplay muted loop playsinline preload="metadata"> 
+<source src="/projects/doomed/combat/reload.mp4" type="video/mp4"> 
+</video>
+
+
+<!-- I also added some screenshake? -->

@@ -23,147 +23,17 @@
       <section>
         <div>
           <img class="side-navigation-media" src="/projects/doomed/doomed.png" alt="Doomed game cover">
-          <h1>Combat</h1>
-          <p>A large part of my work on Doomed was improving on the combat. Most systems were already functional, but a handful of them just didn't feel consistent or satisfying.</p> 
-
+          <p>A large part of my work on Doomed was improving on the combat. Most systems were functional, but they felt very difficult to understand and inconsistent or unsatisfying.</p> 
 
           <br>
-          <h2>Abilities</h2>
-          <p>One of my design arguments was to remove the mana system and make abilities consume ammo instead.</p>
-          <p>Mana was an additional resource that wasn't really contributing anything meaningful to the experience. It felt overcomplicated as it meant the player had to keep track of a resource which wasn't all that fun to manage.</p>
-          <p>So I decided to couple the abilities and weapons together. Each weapon would have its own right-click ability, which the player could unlock by collecting a corresponding rune (ability learning). 
-            This way, it would open up the possibility to make the abilities cost ammo instead.</p>
-          <p>I implemented this ability learning system and also suggested giving each weapon a visual VFX aura. My idea was to make it immediately understandable which weapons already had an active ability associated with them.</p>
-          <p>VFXs not made by me, only positioned them.</p>
-          <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata"> 
-            <source src="/projects/doomed/combat/aura.webm" type="video/webm"> 
-          </video>
+
+          <div data-component="/general/reusable-case-studies/doomed-onboarding.html"></div>
 
 
-          <br>
-          <h3>Matching weapons with abilities</h3>
-          <p>I also decided on which ability should belong to which weapon. I wanted each combination to give the weapon a reason to exist within the overall combat loop.</p>
-          <ul>
-            <li>
-              Pistol + Frost
-              <p>Frost was intended to be the strongest crowd-control ability. 
-              The pistol is also the weapon players have the least reason to use once they have access to the other, stronger and more fun weapons. 
-              Giving it the strongest ability creates an incentive to occasionally switch back to it.</p>
-            </li>
-            <li>
-              Shotgun + Void
-              <p>Void was designed as a powerful one-time burst with a long cooldown. The shotgun already had limited ammo and was more situational (close range), 
-                making it a great match for an ability that the player saves for an important moment.</p>
-            </li>
-            <li>
-              Minigun + Flames
-              <p>
-                Flames was the only ability without a cooldown. Instead, it consumed ammo the fastest because each flame projectile costs an ammo.
-                Since the minigun has 100 ammo, the combination already naturally supports the fantasy of firing a minigun into a big horde of enemies.
-              </p>
-            </li>
-            <li>
-              Rifle + Shock
-              <p>
-                The rifle is the "bread-and-butter" weapon and is likely to be used the most during combat. Shock was designed around a relatively low cooldown and low cost, which encourages frequent use as it's very cost-efficient.
-                It felt right putting the most frequently used ability on the most frequently used weapon. Especially considering it was the only combination left..
-              </p>
-            </li>
-          </ul>
-          <p>The ability system could still use more polish. Specifically, the ability projectiles should visibly originate from the weapon barrel, 
-          and it could also make good use of a short casting animation so it feels more connected to the held weapons.
-          </p>
+          <div data-component="/general/reusable-case-studies/doomed-combat.html"></div>
 
 
-          <br>
-          <h2>Melee</h2>
-          <p>The game already had a melee attack, but it wasn't in a particularly good state. The animation was buggy, there was no sound, and there was very little impact feedback beyond the basic enemy hit reaction.</p>
-          <p>The damage was also very low, and the game would feel as if it randomly switches between the gun-waving animation and the knife animation used for executes.</p>
-          <video class="side-navigation-media" loop muted autoplay playsinline preload="metadata"> 
-            <source src="/projects/doomed/combat/oldmelee.webm" type="video/webm"> 
-          </video>
-
-          <p>The execute mechanic itself was also percentage-based. During a playtest, one player accidentally discovered this by dealing maybe ~2000 damage to the Golem boss.</p>
-          <p>I reworked the melee system to make it faster, more consistent with a better looking stab animation, and impact feedback by knocking the enemy back slightly.</p>
-          <p>I also changed the execute from a percentage-based damage value to a flat amount. This made the behaviour more predictable and prevented situations where the mechanic could produce TONS OF DAMAGE.</p>
-          <p>To give the attack more audio feedback, I added seven different grunts that would play semi-randomely when casting, and added a sound effect when the attack connects.</p>
-          <video class="side-navigation-media" loop controls playsinline preload="metadata">
-            <source src="/projects/doomed/combat/melee.mp4" type="video/mp4" />
-          </video>
-          <p>Looking back, I should've made an attempt at experimenting with different animations, 
-            because boomer shooter players ended up suggesting to have an animation which would communicate more impact, like a strong punch. 
-            And I think the melee could also have used some additional VFX. Blood, particles, or, in this case, bones. 
-            I think connecting a melee in a game can (sometimes) allow for more VFX than connecting gunshots.
-          </p>
-
-
-          <br>
-          <h2>Weapon Swapping Accessibility</h2>
-          <p>I added a slow-motion effect when switching weapons through the weapon wheel.</p>
-          <video class="side-navigation-media" loop autoplay muted playsinline preload="metadata">
-            <source src="/projects/doomed/combat/slowmotion.webm" type="video/webm" />
-          </video>
-          <p>During playtesting, I noticed that players who were familiar with boomer shooters almost immediately tried using the number keys. Because of that, I also implemented 1-4 key weapon switching.</p>
-          <p>But after adding that, the weapon wheel became absolete. Every playtester would unpromptedly prefer using the keys over the weapon wheel. The weaponwheel was cool and functional, but it was slower and less convenient for the way the players actually want to play.</p>
-
-
-          <br>
-          <h2>Enemy Projectiles</h2>
-          <p>Enemy projectiles used to pass through walls, which absolutely sucked because it felt impossible to see it coming which would confuse players as they randomely died.</p>
-          <p>I first fixed this by making projectiles despawn when their centre point reached a wall. This solved the technical problem, but introduced a new gameplay problem considering projectiles could disappear in ways that felt inconsistent from the player's perspective.</p>
-          <video class="side-navigation-media" loop muted autoplay playsinline preload="metadata"> 
-            <source src="/projects/doomed/combat/oldprojectiles.webm" type="video/webm"> 
-          </video>
-
-          <p>I then had a cooler idea. Instead of simply making the projectiles disappear, I experimented with having them reflect off the environment.</p>
-
-          <video class="side-navigation-media" loop muted autoplay playsinline preload="metadata"> 
-            <source src="/projects/doomed/combat/emergent.mp4" type="video/mp4"> 
-          </video>
-
-          <p>This created some really interesting emergent behaviour. A projectile could remain dangerous for a short while even after the player had already succesfully dodged the initial projectile's trajectory.</p>
-          <p>I liked that the mechanic was difficult to predict without feeling frustrating. It also made the environment itself part of the combat. It made those artillery enemies much more dynamic and more fun to deal with.</p>
-
-
-          <br>
-          <h2>Expected Reload behaviour</h2>
-          <p>During playtests, I noticed that players were becoming frustrated with the gunplay, even though they couldn't clearly explain why. 
-            By observing their behaviour, I realized that the frustrating was primarily caused by the need of additional inputs to reload, which interrupts the flow of combat.
-          </p>
-
-          <p>That's why I implemented the following reload behaviours:</p>
-          <ul> 
-            <li>Whenever shooting or using an ability would reduce the weapon's magazine to 0 ammo, reload.</li>
-            <li>When switching to a weapon whose magazine is empty, reload.</li> 
-            <li>When receiving ammo while holding a weapon with an empty magazine, reload.</li> 
-            <li>When finishing a melee attack while holding a weapon with an empty magazine, reload.</li>
-            <li>Added SFX when you had nothing in your mag to reload.</li>
-          </ul>
-          <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata"> 
-            <source src="/projects/doomed/combat/reload.mp4" type="video/mp4"> 
-          </video>
-
-          <br>
-          <h2>Onboarding</h2>
-          <p>
-            I contributed to specific enemy placement to simplify the learning curve. The game immediately started off with 3 artillery enemies,
-            which are a significant level complexer compared to the skeleton enemies. The loadingscreen already had a cool looking bridge in place, so I decided
-            to implement that same bridge as the starting bridge of the game. I put a single skeleton near the end of this bridge, 
-            I put 2 skeletons and 1 artillery on the first island, and I put 3 skeletons and 2 artilleries on the third island.
-            This greatly improved the difficulty curve of the game.
-          </p>
-          <img class="side-navigation-media" src="/projects/doomed/doomed.png" alt="First skeleton">
-
-          <p>
-            I also proposed the idea to enlarge the distance between islands to force the player to learn the double jump and dash mechanics. Using the bridge skeleton, I made sure the player had to learn basic combat mechanics before they had to learn advanced movement.
-          </p>
-          <p>
-            The game already had UI info popups to explain mechanics like these, but I improved on them by placing their hitboxes more deliberate in locations where it was actually 
-            necessary to learn them. I made the popups last longer and I reduced the text inside them to be more concise.
-          </p>
-
-          <p>And finally, I strategically placed some map elements to nudge the player in the right direction (breadcrumbing) using already available assets like health pots and statues.</p>
-          <img class="side-navigation-media" src="/projects/doomed/combat/bread.webp" alt="Breadcrumbing">
+          
 
 
         </div>

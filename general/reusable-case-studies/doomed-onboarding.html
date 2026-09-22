@@ -1,0 +1,128 @@
+<h1>Making Doomed Easier to Learn</h1>
+<h2>Why was Doomed hard to learn at first?</h2>
+<p>I identified several problems with Doomed's initial combat system. It's biggest issue was the lack of gradual learning:</p>
+
+<video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
+    <source src="/projects/doomed/stylization/HUD0.mp4" type="video/mp4" />
+</video>
+
+<p>You spawned in the game with 4 weapons and 4 abilities. Deciding on the weapons was a quick decision, we made the player spawn only with the pistol while having them pick up the other weapons across all of the islands.</p>
+
+<!-- 
+<div class="content-grid content-grid-4">
+    <div>
+        <img src="/skills/mechanics-systems-loops/game-mechanics/league/core/moving.png" alt="Moving">
+        <h3>You spawn with 4 weapons</h3>
+    </div>
+
+    <div>
+        <img src="/skills/mechanics-systems-loops/game-mechanics/league/core/attacking.webp" alt="Attacking">
+        <h3>You spawn with 4 abilities</h3>
+    </div>
+
+    <div>
+        <img src="/skills/mechanics-systems-loops/game-mechanics/league/core/abilities.webp" alt="Abilities">
+        <h3>You immediately deal with enemies</h3>
+    </div>
+
+    <div>
+        <img src="/projects/doomed/" alt="Damage/Health">
+        <h3>Bomboclaat HUD</h3>
+    </div>
+</div> -->
+
+<p>The abilities however, required a bit more design thinking.</p>
+
+
+<br>
+<h2>Reworking Abilities</h2>
+<p>One of my design arguments was to remove the mana system and make abilities consume ammo instead.</p>
+<p>Mana was an additional resource that wasn't really contributing anything meaningful to the experience. It felt overcomplicated nor did it feel very fun to manage.</p>
+<p>Another problem was the amount of inputs the game had. Every single ability had it's own key.</p>
+<p>So I decided to couple the abilities and weapons together. Each weapon would have its own right-click ability, which the player could unlock by collecting a corresponding "rune". 
+This way, not only would 4 inputs be reduced to 1, it would also allow for abilities to cost ammo instead of mana which can lead to much more interesting gameplay decisions.</p>
+<p>I implemented this ability learning system and also suggested giving each weapon a VFX aura. My idea was to make it immediately understandable which weapons already had an active ability associated with them.</p>
+<p>VFXs not made by me, only positioned them.</p>
+<video class="side-navigation-media" autoplay muted loop playsinline preload="metadata"> 
+    <source src="/projects/doomed/combat/aura.webm" type="video/webm"> 
+</video>
+
+
+<br>
+<h3>Matching weapons with abilities</h3>
+<p>I also decided on which ability should belong to which weapon. I wanted each combination to give the weapon a reason to exist within the overall combat loop.</p>
+<ul>
+<li>
+    Pistol + Frost
+    <p>Frost was intended to be the strongest crowd-control ability. 
+    The pistol is also the weapon players have the least reason to use once they have access to the other, stronger and more fun weapons. 
+    Giving it the strongest ability creates an incentive to occasionally switch back to it.</p>
+</li>
+<li>
+    Shotgun + Void
+    <p>Void was designed as a powerful one-time burst with a long cooldown. The shotgun already had limited ammo and was more situational (close range), 
+    making it a great match for an ability that the player saves for an important moment.</p>
+</li>
+<li>
+    Minigun + Flames
+    <p>
+    Flames was the only ability without a cooldown. Instead, it consumed ammo the fastest because each flame projectile costs an ammo.
+    Since the minigun has 100 ammo, the combination already naturally supports the fantasy of firing a minigun into a big horde of enemies.
+    </p>
+</li>
+<li>
+    Rifle + Shock
+    <p>
+    The rifle is the "bread-and-butter" weapon and is likely to be used the most during combat. Shock was designed around a relatively low cooldown and low cost, which encourages frequent use as it's very cost-efficient.
+    It felt right putting the most frequently used ability on the most frequently used weapon. Especially considering it was the only combination left..
+    </p>
+</li>
+</ul>
+<p>The ability system could still use more polish. Specifically, the ability projectiles should visibly originate from the weapon barrel, 
+and it could also make good use of a short casting animation so it feels more connected to the held weapons.
+</p>
+
+
+
+
+
+
+<br>
+<h2>Onboarding</h2>
+<p>
+    I decided on various enemy placements to simplify the learning curve. The game immediately started off with 3 artillery enemies,
+    which are a significant level complexer compared to the skeleton enemies. Also, the current starter island didn't provide a strong enough sense of direction to the player.
+</p>
+
+<p>
+    The loadingscreen already had a cool looking bridge, so I decided
+    to implement that same bridge as the starter bridge of the game.
+</p>
+<ul>
+    <li>I put a single skeleton near the end of this bridge</li>
+    <li>I put 2 skeletons and 1 artillery on the first island</li>
+    <li>and I put 3 skeletons and 2 artilleries on the second island</li>
+</ul>
+<p>This greatly improved the difficulty curve of the game.</p>
+<div class="content-grid content-grid-2">
+    <div>
+        <img class="side-navigation-media" src="/projects/doomed/doomed.png" alt="First skeleton" loading="lazy">
+    </div>
+
+    <div>
+        <video class="side-navigation-media" autoplay muted controls loop playsinline preload="metadata"> 
+            <source src="/projects/doomed/doomed.webm" type="video/webm"> 
+        </video>
+    </div>
+</div>
+
+<p>
+I also proposed the idea to enlarge the distance between islands to force the player to learn the double jump and dash mechanics. Using the bridge skeleton, I made sure the player had to learn basic combat mechanics before they had to learn advanced movement.
+</p>
+<p>
+The game already had UI info popups to explain mechanics like these, but I improved on them by placing their hitboxes more deliberate in locations where it was actually 
+necessary to learn them. I made the popups last longer and I reduced the text inside them to be more concise.
+</p>
+
+<p>And finally, I strategically placed some map elements to nudge the player in the right direction (breadcrumbing) using already available assets like health pots and statues.</p>
+<img class="side-navigation-media" src="/projects/doomed/combat/bread.webp" alt="Breadcrumbing">

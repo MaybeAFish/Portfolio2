@@ -96,6 +96,9 @@ ul {
   flex-direction: column;
   gap: 0.5rem;
 }
+li {
+  font-size: 18px;
+}
 li > ol,
 li > ul {
   margin-top: 0.5rem;

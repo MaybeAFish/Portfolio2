@@ -11,12 +11,16 @@
 .content-grid-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-.content-grid-4 img {
+
+.content-grid-4 img,
+.content-grid-2 video {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
 }
-.content-grid-2 img {
+
+.content-grid-2 img,
+.content-grid-2 video {
     width: 100%;
     aspect-ratio: 5 / 3;
     object-fit: cover;

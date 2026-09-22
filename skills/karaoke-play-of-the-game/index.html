@@ -24,16 +24,16 @@
         <section>
             <h1>Finding the Most Fun 15 Seconds of a Karaoke Performance</h1>
             <h2>Karaoke Play of the Game</h2>
-            <p>I designed a system that identifies the most memorable 15 seconds of a player or group's performance. 
+            <p>I designed a system that identifies the most fun 15 seconds of a player or group's performance. 
             Dozens of different moments throughout the song were given different weights based on how entertaining or significant they were, 
             with the highest-scoring segment being replayed at the end of the session.</p>
-            <p>The system had to respect special edge cases such as when the game is paused, or when someone has a terrible internet connection.</p>
+            <p>The system had to respect special edge cases such as when the game is paused, or when one of the singers has a terrible internet connection.</p>
             <p>Gameplay under NDA</p>
             <img class="side-navigation-media" src="/skills/karaoke-play-of-the-game/karaoke.png" loading="eager">
 
 
             <br><br>
-            <h2>Research</h2>
+            <h2>My "Plan of Approach"</h2>
             <p>I came up with the following steps to handle this task:</p>
 
             <ol>
@@ -43,7 +43,7 @@
                 </li>
                 <li>
                     Determine which recorded in-game events could realistically represent those motivations.
-                    <p>Reasoning: Once I knew what players found enjoyable, I needed measurable events that could act as indicators for those experiences.</p>
+                    <p>Reasoning: Once I knew what players found enjoyable, I needed measurable events that could indicate those experiences.</p>
                 </li>
                 <li>
                     Determine the weights of those events by surveying the target audience.
@@ -51,10 +51,10 @@
                 </li>
                 <li>
                     Determine how these weights should be combined when calculating the most fun moment.
-                    <p>Reasoning: A single event could not always represent the most enjoyable part of a performance, so the system needed to combine multiple events into one final score.</p>
+                    <p>Reasoning: A single event could not always represent the most enjoyable part of a performance, so the system needed to combine multiple events into one final highlight somehow.</p>
                 </li>
                 <li>
-                    Implement the weighted events and replay the highest-scoring moment at the end of the session.
+                    Implement the weighted events and replay the chosen moment at the end of the karaoke session.
                     <p>Reasoning: This needs to be done to playtest and tune the previous two steps.</p>
                 </li>
                 <li>
@@ -82,14 +82,14 @@
             <img class="side-navigation-media" src="/skills/karaoke-play-of-the-game/karaoke2.png" loading="lazy">
             <br>
             <p>However, this system sucked. As my research had already showed, the target audience likes karaoke for a wide variety of reasons.</p>
-            <p>This means that if we only looked at the most extreme moment of a song, you wouldn't represent everyones fun properly. The image shows a moment with the "worst individual performance" having the most score, but in most cases, a group would want the best individual performance + audience cheered to replay instead.</p>
+            <p>This means that if we only looked at the most extreme moment of a song, you wouldn't represent everyones fun properly. The image shows a moment with the "worst individual performance" having the highest weight, but in most cases, a group would want the best individual performance + audience cheered to replay instead.</p>
             <p>That's how I ended up with the latest iteration, where multiple identifiers can contribute simultaneously to the highest weighted, most fun 15s of a karaoke session.</p>
             
             <p>You might've noticed the list of identifiable moments to be different, which has the following reasons:</p>
             <ul> 
-                <li>Good and bad performances were combined to simplify the already very complex system, as they both touched on the same type of moments. If a group sings well, it will automatically show up as a higher weight considering only the strongest singer's score (which differs for every single line) will end up mattering.</li>
-                <li>This also removes the possibility for a "high performance contrast", because a group would from now on be considered as a monolith when calculating the score.</li>
-                <li>The "best part of a song" would be needlessly complex to calculate. I initially had the idea to calculate the part of a song that was cheered on the most as "the best part of a song", but that would be a lot of data to save when its a category which only ends up mattering when literally nothing was done, but in that case, you might as well not replay anything.</li>
+                <li>Good and bad performances were combined to simplify the already very complex system, as they both touched on the same type of moments. If a group sings well, "Good performance" will automatically show up with a higher weight considering only the strongest singer's score (which differs for every single line) will end up mattering.</li>
+                <li>This also removes the possibility for a "High performance contrast", because a group would from now on be considered as a monolith when calculating the score.</li>
+                <li>The "Best part of a song" would be needlessly complex to calculate. I initially had the idea to calculate the part of a song that was cheered on the most as "the best part of a song", but that would be a lot of data to save when its a category which only ends up mattering when literally nothing was done, but in that case, you might as well not replay anything.</li>
             </ul>
 
             <br>
