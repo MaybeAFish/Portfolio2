@@ -23,52 +23,98 @@
 
         <section>
             <h1>Forcing the Player to Reposition in Interesting Ways</h1>
-            <p></p>
+            <p>
+                My first ever game for a school assignment was a Space Invaders inspired game called
+                Cosmos Intruders. I gave the player 2D movement, but quickly realized that
+                being able to move vertically didn't mean much if all the enemies stayed in front of them.
+            </p>
 
-            <h2>Environmental hazard</h2>
-            <p>The movement in Space invaders is traditionally single dimensional</p>
-            <p>I made it 2d...</p>
-            <p>... the player ended up having no reason to move in the y axis</p>
-            <p>I designed various semi-random hazard mechanics such as asteroids, supernovas or solar rays.</p>
+            <h2>Giving the Player a Reason to Move</h2>
+            <p>
+                I designed environmental hazards that would appear throughout each round, forcing the
+                player to constantly reconsider where they were standing.
+            </p>
+
+            <p>
+                Asteroids, solar rays and supernovas could come from different directions, meaning that
+                staying in one position was rarely safe for long.
+            </p>
+
             <video class="side-navigation-media" autoplay muted controls loop playsinline>
                 <source src="/skills/environmental-hazards/hazards.mp4" type="video/mp4">
             </video>
-<!-- space invaders was traditionally 1d. i made movement 2d but it felt stale you could just sit back, i added ammo regaining when close to enemies ( or their projectiles ), i made environmental hazards which come from every direction, and i added eyeball enemies hiding behind meatshields away from the player while they were high prio targets -->
 
-            <p>I made the asteroids always first in slot, as they fly the slowest and are easiest to understand.</p>
+            <p>
+                I made asteroids appear first because they move the slowest and are the easiest hazard
+                to understand. As the player progressed, more dangerous hazards were introduced.
+            </p>
 
-            <!-- <p>I made my space invaders game 2 dimensional insteade of 1 dimensional, where the player could also move in the y axis</p>
-            <p>-> This made the gameplay feel weird, making the player feel confused why they could move that way, as I decided all enemies should come from the top</p>
-            <p>My hazards gave reason for the player to move upwards. Player has 3 lives. No matter what hits you, takes a live away, which means you had to dodge themn o matter what</p> -->
-
-            <!-- <p>Dark Matter Clouds. I mage some not physically dangerous because ...</p> -->
-
-            <h1>Making Enemies Use Positioning to Survive</h1>
-            <!-- <p>After players learned the core mechanics, I wanted the next step to be to use their brains;</p> -->
+            <p>
+                I also designed dark matter clouds that would travel downwards and obscure the player's
+                vision. The visual-blocking part was never finished, but the idea was to create another
+                reason for the player to reposition in a way where they would suffer the least from these clouds.
+            </p>
 
             <br>
-            <h2>Hiding eyeballs</h2>
-            <p>I designed a mechanic which made the eyeball enemies hide from the player by positioning themselves between meatshields and the player.</p>
+            <h2>Making Ammo Reward Risky Positioning</h2>
             <p>
-                If there aren't any meatshields left, the eyeballs would seemingly gather the courage to rush towards the player. 
-                This was the very first game I had ever made; 
-                Had I designed this today, I would've made them scatter instead 
-                and then fly away from the player if they get too close to keep the idea that they're nonconfrontational enemies.
+                I also wanted the player's position to affect how they manage their ammo.
             </p>
-            <div class="mediacarousel" data-category="asdf" aria-label="Doomed project gallery">
+
+            <p>
+                The player regenerates ammo while staying close to enemies and their projectiles.
+                The longer they remain nearby, the more ammo they regain.
+            </p>
+
+            <p>
+                This meant that moving away from danger was not always the best option. Sometimes the
+                player has to deliberately stay close to enemies to recover resources, while still
+                being ready to reposition when the surrounding hazards make their position unsafe.
+            </p>
+
+
+            <br>
+            <h2>Making Enemies Use Positioning to Survive</h2>
+
+            <p>
+                I also designed the eyeball enemies around positioning rather than simply having them
+                chase the player.
+            </p>
+
+            <p>
+                Eyeballs are high-priority targets, but they try to stay behind meatshield enemies and
+                away from the player. They also consider the positions of nearby eyeballs, preventing
+                them from simply stacking on top of each other.
+            </p>
+            <p>
+                This prevented the player from simply moving upwards to immediately try to kill the high-prio threats to make the rest of the round too easy.
+            </p>
+
+
+            <div class="mediacarousel" data-category="asdf" aria-label="Eyeball enemy behaviour">
                 <div class="mediacarousel-track">
                     <div class="mediacarousel-slide">
-                        <img src="/skills/hiding-eyeballs/eyeballs.gif" alt="Eyeballs gif" />
+                        <img src="/skills/environmental-hazards/eyeballs.gif" alt="Eyeball enemies hiding behind meatshields">
                     </div>
                     <div class="mediacarousel-slide">
                         <video class="side-navigation-media" autoplay muted loop playsinline>
-                            <source src="/skills/hiding-eyeballs/eyeballs.webm" type="video/webm">
+                            <source src="/skills/environmental-hazards/eyeballs.webm" type="video/webm">
                         </video>
                     </div>
                 </div>
             </div>
 
+            <script src="/general/carousel/carousel.js"></script>
+
+
+            <p>
+                When there were no meatshields left, the eyeballs would rush towards the player.
+                I am less satisfied with this behaviour today. If I were to redesign it, I would
+                have them scatter and continue flying away from the player when they get too close,
+                keeping their non-confrontational behaviour consistent.
+            </p>
         </section>
+
 
     </main>
 
