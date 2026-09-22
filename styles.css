@@ -9,6 +9,8 @@
 @import "general/media/pdf/pdf.css";
 @import "general/media/grid.css";
 @import "general/hero.css";
+@import "general/media/art/grid.css";
+
 
 @import "general/scrollbar.css";
 @import "general/dropdown.css";
