@@ -19,7 +19,7 @@ export async function startGame() {
   const container = document.getElementById('game-container');
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
-  document.getElementById('character-select').style.display = 'none';
+  document.getElementById('play-game-button').style.display = 'none';
   document.getElementById('game-container').style.display = 'block';
   container.appendChild(renderer.domElement);
 

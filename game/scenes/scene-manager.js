@@ -1,4 +1,3 @@
-import { StartScene } from './start-scene.js';
 import { TutorialScene } from './game-scenes/tutorial-scene/tutorial-scene.js';
 import { GameScene } from './game-scenes/main-game-scene/game-scene.js';
 
@@ -17,7 +16,6 @@ export class SceneManager {
 
     this.currentScene = null;
     this.scenes = {
-      start: new StartScene(this.switchScene.bind(this)),
       tutorial: new TutorialScene(rapierWorld, camera),
       game: new GameScene(rapierWorld, camera),
     };

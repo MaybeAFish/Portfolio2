@@ -3,8 +3,6 @@ import { inputManager } from '../core/input-manager.js';
 import { renderer, sceneManager } from '../sketch.js';
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
 
-// For colorblindness:
-import { colorblindMatrices, ColorMatrixShader } from './color-blindness.js';
 import { EffectComposer, RenderPass, ShaderPass } from '../core/post-processing-loader.js';
 
 export class SettingsMenu {
@@ -14,8 +12,6 @@ export class SettingsMenu {
     this.menu = document.getElementById('settings-menu');
     this.button = document.getElementById('settings-button');
     this.button.addEventListener('click', () => this.open());
-    this.fullscreenButton = document.getElementById('fullscreen-button');
-    this.fullscreenButton.addEventListener('click', () => this.toggleFullscreen());
 
     // Closing
     this.closeBtn = document.getElementById('close-settings');
@@ -45,10 +41,20 @@ export class SettingsMenu {
     this.handleVisualTab();
     this.handleAudioTab();
     this.handleControlsTab();
-    this.handleAccessibilityTab();
   }
 
   handleVisualTab() {
+    // Fullscreen
+    this.fullScreen = document.getElementById('full-screen');
+    this.fullScreen.addEventListener('click', () => {
+      this.toggleFullscreen();
+    });
+    // Keep UI synced with actual browser fullscreen state
+    document.addEventListener('fullscreenchange', () => {
+      this.updateFullscreenUI();
+    });
+    this.updateFullscreenUI();
+
     // Show fps
     this.fpsToggle = document.getElementById('show-fps');
     this.fpsDisplay = document.getElementById('fps-display');
@@ -140,81 +146,6 @@ export class SettingsMenu {
     });
   }
 
-  handleAccessibilityTab() {
-    this.accessibilitySettings = {
-      subtitles: false,
-      textSize: 'normal',
-      colorblindMode: 'none',
-    };
-
-    const subtitlesCheckbox = document.getElementById('subtitles');
-    const textSizeSelect = document.getElementById('text-size');
-    const colorblindSelect = document.getElementById('colorblind-mode');
-
-    // Initialize from stored or default
-    subtitlesCheckbox.checked = this.accessibilitySettings.subtitles;
-    textSizeSelect.value = this.accessibilitySettings.textSize;
-    colorblindSelect.value = this.accessibilitySettings.colorblindMode;
-
-    subtitlesCheckbox.addEventListener('change', (e) => {
-      this.accessibilitySettings.subtitles = e.target.checked;
-      //
-    });
-
-    textSizeSelect.addEventListener('change', (e) => {
-      this.accessibilitySettings.textSize = e.target.value;
-
-      switch (e.target.value) {
-        case 'small':
-          document.documentElement.style.fontSize = '12px';
-          break;
-        case 'normal':
-          document.documentElement.style.fontSize = '16px';
-          break;
-        case 'large':
-          document.documentElement.style.fontSize = '20px';
-          break;
-        default:
-          document.documentElement.style.fontSize = '16px';
-      }
-    });
-
-
-    // Colorblindness
-    colorblindSelect.addEventListener('change', (e) => {
-      // Setup composer
-      const composer = new EffectComposer(renderer);
-      composer.addPass(new RenderPass(sceneManager.currentScene.scene, sceneManager.camera));
-
-      const colorMatrixPass = new ShaderPass(ColorMatrixShader);
-      composer.addPass(colorMatrixPass);
-
-      // Save for use in SettingsMenu
-      sceneManager.colorMatrixPass = colorMatrixPass;
-      sceneManager.composer = composer;
-      this.accessibilitySettings.colorblindMode = e.target.value;
-
-      const matArr = colorblindMatrices[this.accessibilitySettings.colorblindMode];
-      if (!matArr) {
-        // Disable filter
-        sceneManager.colorMatrixPass.enabled = false;
-      } else {
-        sceneManager.colorMatrixPass.enabled = true;
-        // Convert array to THREE.Matrix4
-        const m = new THREE.Matrix4();
-        m.set(
-          matArr[0], matArr[1], matArr[2], matArr[3],
-          matArr[4], matArr[5], matArr[6], matArr[7],
-          matArr[8], matArr[9], matArr[10], matArr[11],
-          matArr[12], matArr[13], matArr[14], matArr[15]
-        );
-        sceneManager.colorMatrixPass.uniforms.colorMatrix.value = m;
-      }
-    });
-
-  }
-
-
   update(delta) {
     // P(enis)
     if (inputManager.keysPressed[inputManager.bindings.settings]) {
@@ -234,17 +165,21 @@ export class SettingsMenu {
   }
 
   async toggleFullscreen() {
-    if (this.fullscreenTogglePending) return;
-    this.fullscreenTogglePending = true;
-
-    if (document.fullscreenElement) {
-      await document.exitFullscreen();
-    } else if (document.documentElement.requestFullscreen) {
-      await document.documentElement.requestFullscreen();
+    try {
+      if (document.fullscreenElement) {
+        await document.exitFullscreen();
+      } else {
+        await document.documentElement.requestFullscreen();
+      }
+    } catch (error) {
+      console.error('Fullscreen change failed:', error);
     }
-
-    this.fullscreenTogglePending = false;
   }
+  updateFullscreenUI() {
+    const isFullscreen = !!document.fullscreenElement;
+    this.fullScreen.checked = isFullscreen;
+  }
+
 
   open() {
     if (!this.menu) return;
@@ -257,7 +192,6 @@ export class SettingsMenu {
     // Blur the settings button to prevent key re-trigger
     this.button.blur();
     this.isOpen = true;
-    console.log("open dont make me mad")
   }
 
   close() {

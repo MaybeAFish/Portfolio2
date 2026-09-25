@@ -1,0 +1,21 @@
+/* About button */
+.game-button {
+  color: white;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.game-button:hover {
+  color: var(--standout-color-green);
+}
+.game-button:active {
+  color: var(--standout-color-cyan);
+}
+
+#play-game-button {
+      position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
