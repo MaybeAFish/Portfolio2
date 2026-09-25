@@ -1,9 +1,6 @@
 import { audioManager } from '../sketch.js';
 import { inputManager } from '../core/input-manager.js';
-import { renderer, sceneManager } from '../sketch.js';
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
-
-import { EffectComposer, RenderPass, ShaderPass } from '../core/post-processing-loader.js';
+import { sceneManager } from '../sketch.js';
 
 export class SettingsMenu {
   constructor() {
@@ -66,11 +63,14 @@ export class SettingsMenu {
     this.lastFrameTime = performance.now();
     this.fps = 0;
     // Shadows
+    this.shadowsEnabled = true;
     this.shadowsToggle = document.getElementById('toggle-shadows');
-    this.shadowsToggle.addEventListener('change', (e) => {
-      setShadowsEnabled(e.target.checked);
-    });
+    this.shadowsToggle.checked = this.shadowsEnabled;
 
+    this.shadowsToggle.addEventListener('change', (e) => {
+      this.shadowsEnabled = e.target.checked;
+      this.onShadowsChanged?.(this.shadowsEnabled);
+    });
   }
   handleAudioTab() {
     // Master volume
@@ -201,31 +201,6 @@ export class SettingsMenu {
     sceneManager.currentScene.onMenuClose();
     audioManager.playGlobalSound('/game/sounds/ui/settings-close.mp3');
   }
-}
-
-function setShadowsEnabled(enabled) {
-  renderer.shadowMap.enabled = enabled;
-  
-  // Meshes
-  sceneManager.currentScene.scene.traverse((obj) => {
-    if (obj.isMesh) {
-      obj.castShadow = enabled;
-      obj.receiveShadow = enabled;
-    }
-  });
-
-  // Lights
-  sceneManager.currentScene.scene.traverse((obj) => {
-    if (
-      (obj instanceof THREE.DirectionalLight ||
-       obj instanceof THREE.SpotLight ||
-       obj instanceof THREE.PointLight)
-    ) {
-      obj.castShadow = enabled;
-    }
-  });
-  
-  renderer.shadowMap.needsUpdate = true;
 }
 
 function formatKeyDisplay(key) {

@@ -212,6 +212,9 @@ export class TutorialMap extends BaseMap {
     sunlight.shadow.camera.top = 80;
     sunlight.shadow.camera.bottom = -80;
 
+
+    sunlight.shadow.mapSize.width = 4096;
+    sunlight.shadow.mapSize.height = 4096;
     scene.add(sunlight);
 
 
@@ -227,7 +230,7 @@ export class TutorialMap extends BaseMap {
       4,
       2
     );
-
+    flowerLight.castShadow = false;
     scene.add(flowerLight);
   }
 

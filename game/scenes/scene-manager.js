@@ -4,6 +4,7 @@ import { GameScene } from './game-scenes/main-game-scene/game-scene.js';
 import { SettingsMenu } from '/game/settings/settings-menu.js';
 import { inputManager } from '/game/core/input-manager.js';
 import { EffectComposer, RenderPass, ShaderPass } from '../core/post-processing-loader.js';
+import * as THREE from 'three';
 
 export class SceneManager {
   constructor(rapierWorld, camera, renderer) {
@@ -21,6 +22,9 @@ export class SceneManager {
     };
 
     this.settingsMenu = new SettingsMenu();
+    this.settingsMenu.onShadowsChanged = (enabled) => {
+      this.applyShadows(enabled);
+    };
 
     this.isSwitching = false;
   }
@@ -43,13 +47,13 @@ export class SceneManager {
     }
 
     this.currentScene = this.scenes[name];
-    this.rebuildComposer();
-
     if (this.currentScene.enter.constructor.name === 'AsyncFunction') {
       await this.currentScene.enter();
     } else {
       this.currentScene.enter();
     }
+    this.applyShadows(this.settingsMenu.shadowsEnabled);
+    this.rebuildComposer();
 
     this.isSwitching = false;
   }
@@ -64,6 +68,30 @@ export class SceneManager {
     if (this.colorMatrixPass) {
       this.composer.addPass(this.colorMatrixPass);
     }
+  }
+
+  applyShadows(enabled) {
+    this.renderer.shadowMap.enabled = enabled;
+    this.renderer.shadowMap.type = THREE.PCFShadowMap;
+
+    if (!this.currentScene) return;
+
+    this.currentScene.scene.traverse((obj) => {
+      if (obj.isMesh) {
+        obj.castShadow = enabled;
+        obj.receiveShadow = enabled;
+      }
+
+      if (
+        obj instanceof THREE.DirectionalLight ||
+        obj instanceof THREE.SpotLight ||
+        obj instanceof THREE.PointLight
+      ) {
+        obj.castShadow = enabled;
+      }
+    });
+
+    this.renderer.shadowMap.needsUpdate = true;
   }
 
 
