@@ -18,7 +18,7 @@ export class InputManager {
       jump: ' ',
       interact: 'e',
       map: 'm',
-      settings: 'p',
+      settings: 'tab',
       fullscreen: 'f',
     };
 
