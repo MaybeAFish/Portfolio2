@@ -172,6 +172,13 @@
   color: var(--text-color-muted);
 }
 
+.iridescence-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+
 @media (max-width: 760px) {
   .skill-grid {
     grid-template-columns: 1fr;
