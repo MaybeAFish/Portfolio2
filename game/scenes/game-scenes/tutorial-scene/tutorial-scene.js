@@ -16,7 +16,7 @@ export class TutorialScene extends Scene {
   constructor(rapierWorld, camera) {
     super();
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0xaaddff);
+    this.scene.background = new THREE.Color(0x212121);
 
     this.rapierWorld = rapierWorld;
     this.camera = camera;
