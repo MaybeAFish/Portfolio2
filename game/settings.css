@@ -78,10 +78,9 @@
 #fps-display {
   position: fixed;
   font-size: 2rem;
-  top: 50px;
+  top: 70px;
   left: 10px;
   color: white;
-  z-index: 300;
   display: none;
   pointer-events: none;
   user-select: none;
