@@ -12,7 +12,6 @@ export class MapManager {
 
     // Setup UI bindings
     this._toggleMapHandler = this.toggleMap.bind(this);
-    document.getElementById('map-toggle').addEventListener('click', this._toggleMapHandler);
     document.getElementById('close-map-btn').addEventListener('click', this._toggleMapHandler);
   }
 
@@ -37,7 +36,6 @@ export class MapManager {
 
 
   dispose() {
-    document.getElementById('map-toggle').removeEventListener('click', this._toggleMapHandler);
     document.getElementById('close-map-btn').removeEventListener('click', this._toggleMapHandler);
     this.minimap.dispose();
     this.worldMap.dispose();
