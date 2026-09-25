@@ -117,6 +117,7 @@ export class SettingsMenu {
       { id: 'interact-key', binding: 'interact' },
       { id: 'map-key', binding: 'map' },
       { id: 'settings-key', binding: 'settings' },
+      { id: 'fullscreen-key', binding: 'fullscreen' },
     ];
 
     const rebinding = { active: null };
@@ -151,6 +152,11 @@ export class SettingsMenu {
     if (inputManager.keysPressed[inputManager.bindings.settings]) {
       if (this.menu.style.display === 'flex') this.close();
       else this.open();
+    }
+
+    // Fullscreen
+    if (inputManager.keysPressed[inputManager.bindings.fullscreen]) {
+      this.toggleFullscreen();
     }
 
     // FPS logic

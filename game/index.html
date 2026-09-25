@@ -108,8 +108,9 @@
               <label>Jump: <input type="text" id="jump-key" value="Space" readonly></label>
 
               <label>Interact: <input type="text" id="interact-key" readonly></label>
-              <label>Open/Close World Map: <input type="text" id="map-key" readonly></label>
-              <label>Open/Close Settings: <input type="text" id="settings-key" readonly></label>
+              <label>Toggle World Map: <input type="text" id="map-key" readonly></label>
+              <label>Toggle Settings: <input type="text" id="settings-key" readonly></label>
+              <label>Fullscreen: <input type="text" id="fullscreen-key" readonly></label>
 
             </div>
           </div>
@@ -133,16 +134,6 @@
 
   <script type="module">
     import { startGame } from '/game/sketch.js';
-
-    window.addEventListener('keydown', (event) => {
-      if (event.key.toLowerCase() !== 'f' || event.repeat) return;
-
-      if (document.fullscreenElement) {
-        document.exitFullscreen();
-      } else if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen().catch(() => {});
-      }
-    });
 
     document.getElementById('play-game-button').addEventListener('click', async (event) => {
       const button = event.currentTarget;
