@@ -35,7 +35,7 @@ export class GameScene extends Scene {
     const loader = new LoadingProgress();
     loader.addStep('Player', 1);
     loader.addStep('Map', 2);
-    loader.addStep('Projects', 3);
+    loader.addStep('World Interactions', 3);
     loader.addStep('Map UI', 2);
     loader.addStep('Opening the map...', 1);
     loader.showLoadingScreen();
@@ -59,17 +59,21 @@ export class GameScene extends Scene {
     loader.markDone('Map');
     await new Promise(r => setTimeout(r, 50));
 
-    // Projects
+    // World Interactions
     this.interactableManager = new InteractableManager();
     await this.interactableManager.load(
       this.scene,
       this.player,
       GameInteractables,
       (loaded, total) => {
-        loader.update('Projects', loaded / total);
+        loader.update(
+          'World Interactions',
+          loaded / total,
+          `World Interactions (${loaded}/${total})`
+        );
       }
     );
-    loader.markDone('Projects');
+    loader.markDone('World Interactions');
     await new Promise(r => setTimeout(r, 50));
 
     // Map UI

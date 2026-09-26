@@ -26,11 +26,11 @@ export class LoadingProgress {
     return step;
   }
 
-  update(label, fraction) {
+  update(label, fraction, displayLabel = label) {
     const step = this.steps.find(s => s.label === label);
-
     if (!step) return;
 
+    step.displayLabel = displayLabel;
     step.progress = Math.max(0, Math.min(1, fraction));
 
     if (step.progress >= 1) {
@@ -98,7 +98,7 @@ export class LoadingProgress {
 
       element.innerHTML = `
         <span class="loading-step-icon">${icon}</span>
-        <span class="loading-step-label">${step.label}</span>
+        <span class="loading-step-label">${step.displayLabel || step.label}</span>
       `;
 
       container.appendChild(element);

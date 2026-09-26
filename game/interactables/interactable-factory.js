@@ -56,6 +56,8 @@ export class InteractableFactory {
         await this.makeInteractable(interactable);
         loaded++;
         progressCallback(loaded, total);
+
+        await new Promise(resolve => setTimeout(resolve, 10));
       }
     }
   }

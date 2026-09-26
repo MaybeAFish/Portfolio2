@@ -43,7 +43,7 @@ export class TutorialScene extends Scene {
     loader.addStep('Player', 1);
     loader.addStep('Cave', 2);
     loader.addStep('Tutorial', 1);
-    loader.addStep('Projects', 3);
+    loader.addStep('World Interactions', 3);
     loader.addStep('Map UI', 2);
     loader.addStep('Opening the cave...', 1);
     loader.showLoadingScreen();
@@ -79,17 +79,21 @@ export class TutorialScene extends Scene {
     loader.markDone('Tutorial');
     await new Promise(r => setTimeout(r, 50));
 
-    // Projects
+    // World Interactions
     this.interactableManager = new InteractableManager();
     await this.interactableManager.load(
       this.scene,
       this.player,
       TutorialInteractables,
       (loaded, total) => {
-        loader.update('Projects', loaded / total);
+        loader.update(
+          'World Interactions',
+          loaded / total,
+          `World Interactions (${loaded}/${total})`
+        );
       }
     );
-    loader.markDone('Projects');
+    loader.markDone('World Interactions');
     await new Promise(r => setTimeout(r, 50));
 
     // Map
