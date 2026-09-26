@@ -15,12 +15,13 @@ export async function startGame() {
 
   rapierWorld = new RAPIER.World({ x: 0, y: -9.81, z: 0 });
 
-  // Setup Three.js renderer and camera
+  // Disable/enable the right content when game starts
   const container = document.getElementById('game-container');
-  renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
   document.getElementById('play-game-button').style.display = 'none';
-  document.getElementById('game-container').style.display = 'block';
+  container.style.display = 'block';
+
+  // Setup Three.js renderer and camera
+  renderer = new THREE.WebGLRenderer({ antialias: true });
   container.appendChild(renderer.domElement);
 
   camera = new THREE.PerspectiveCamera(
@@ -34,11 +35,18 @@ export async function startGame() {
 
   audioManager = new AudioManager(camera);
 
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
+  function resizeGame() {
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    camera.aspect = width / height;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
+    // false = don't overwrite CSS width/height
+    renderer.setSize(width, height, false);
+  }
+  const resizeObserver = new ResizeObserver(resizeGame);
+  resizeObserver.observe(container);
+  resizeGame();
 
   sceneManager = new SceneManager(rapierWorld, camera, renderer);
   await sceneManager.switchScene('tutorial');

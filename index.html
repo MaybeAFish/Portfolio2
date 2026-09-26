@@ -178,6 +178,14 @@
     <script src="/general/footer/footer-loader.js"></script>
     <script>
       console.log("Why are you snooping here? :P");
+
+      // Ifarme has to be full pixels
+      const gameFrame = document.querySelector('.game-iframe-container');
+      function resizeGameFrame() {
+          gameFrame.style.height = `${Math.round(window.innerHeight * 0.78)}px`;
+      }
+      window.addEventListener('resize', resizeGameFrame);
+      resizeGameFrame();
     </script>
 
   </body>
