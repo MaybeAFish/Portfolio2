@@ -30,7 +30,7 @@
   width: 300px;
   max-width: 80vw;
   height: 20px;
-  background-color: #444;
+  background-color: var(--supporting-background-color);
   border-radius: 10px;
   overflow: hidden;
   margin: 0 auto;
@@ -39,7 +39,7 @@
 #loading-bar {
   width: 0%;
   height: 100%;
-  background-color: lime;
+  background-color: var(--standout-color-cyan);
   /* transition: width 0.1s linear; */
 }
 
@@ -66,10 +66,12 @@
 
 .loading-step.completed {
   opacity: 1;
+  color: var(--standout-color-cyan);
 }
 
 .loading-step.loading {
   opacity: 1;
+  color: var(--standout-color-green);
 }
 
 .loading-step.pending {
