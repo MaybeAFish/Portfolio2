@@ -2,6 +2,7 @@
     position: relative;
     cursor: help;
     border-bottom: 1px dotted var(--standout-color-green);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .tooltip::after {
@@ -34,12 +35,12 @@
     /* transition: opacity 0.1s ease, transform 0.1s ease; */
 }
 
-.tooltip:hover::after {
+.tooltip:hover::after,
+.tooltip:active::after {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
 }
-
 
 /* Constraining inside screen */
 .tooltip.tooltip-left::after {
