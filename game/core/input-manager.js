@@ -38,6 +38,8 @@ export class InputManager {
     });
 
     window.addEventListener('mousedown', (e) => {
+      if (e.target.closest('button')) return;
+
       if (e.button === 0) this.mouseButtons.left = true;
       if (e.button === 1) this.mouseButtons.middle = true;
       if (e.button === 2) this.mouseButtons.right = true;
