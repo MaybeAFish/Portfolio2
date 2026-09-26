@@ -11,10 +11,37 @@
 
 <body>
 
-    <div id="header-placeholder"></div>
-    <script src="/general/header/header-loader.js"></script>
+  
 
-    <main>
+
+
+
+<script>
+  document.documentElement.classList.add("no-header-transition");
+</script>
+<header class="site-header">
+  <nav class="nav-container">
+
+    <div class="dropdown">
+      <a href="/" class="projects-nav-trigger">Projects</a>
+      <div class="dropdown-content">
+        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/tetris/">Tetris Airconsole</a>
+        <a href="/projects/engine/">Vulkan Game Engine</a>
+      </div>
+    </div>
+
+    <a href="/skills/">Skills</a>
+
+    <a href="/cv/">CV</a>
+
+    <a href="/about/" id="about-nav">About</a>
+
+  </nav>
+
+</header>
+<script src="/general/header/header-state.js"></script>
+<main>
       <nav
           class="side-navigation"
           aria-label="Skills navigation"
@@ -30,170 +57,7 @@
         </div>
         <script src="/general/media/pdf/load-pdf.js"></script>
 
-        <!-- <h1>Game Mechanics</h1>
-        <p>
-          Game mechanics are the most important part of any game.
-          They are the rules that define what players can do.
-          Some completely warp how the game is played, while others expand
-          upon that experience.
-        </p>
-        <p>
-          There are many ways to define/categorize game mechanics. One useful
-          framework, made by game designer Charmie Kim, separates a game's
-          mechanics into four layers:
-        </p>
-        <img class="side-navigation-media" src="/skills/mechanics-systems-loops/game-mechanics/diagram.svg">
-        <ul>
-          <li>
-            Core mechanic(s) are 
-            systems which make up the game's primary gameplay loop.
-          </li>
-          <li>
-            Secondary mechanics aren't essential for the core gameplay loop, but add depth to it. 
-          </li>
-          <li>
-            Progression mechanics determine how the player's/game's state changes over time.
-          </li>
-          <li>
-            The narrative gives context and meaning to the player's actions and the game's mechanics within its world.
-          </li>
-        </ul>
-
-        <br>
-        <p>
-          As an example, here is how I would fit a few mechanics from League of Legends
-          into this framework:
-        </p>
-        <h2>LoL's core mechanics:</h2>
-
-        <div class="content-grid content-grid-4">
-          <div>
-              <img src="/skills/mechanics-systems-loops/game-mechanics/league/core/moving.png" alt="Moving">
-              <h3>Moving</h3>
-          </div>
-
-          <div>
-              <img src="/skills/mechanics-systems-loops/game-mechanics/league/core/attacking.webp" alt="Attacking">
-              <h3>Attacking</h3>
-          </div>
-
-          <div>
-              <img src="/skills/mechanics-systems-loops/game-mechanics/league/core/abilities.webp" alt="Abilities">
-              <h3>Abilities</h3>
-          </div>
-
-          <div>
-              <img src="/skills/mechanics-systems-loops/game-mechanics/league/core/damage.png" alt="Damage/Health">
-              <h3>Taking/dealing damage</h3>
-          </div>
-        </div>
-
-        <h2>Some of LoL's secondary mechanics:</h2>
-        <div class="content-grid content-grid-4">
-          <div>
-              <img src="/skills/mechanics-systems-loops/game-mechanics/league/secondary/recalling.jpg" alt="Recalling">
-              <h3>Recalling</h3>
-          </div>
-
-          <div>
-              <img src="/skills/mechanics-systems-loops/game-mechanics/league/secondary/wards.webp" alt="Warding">
-              <h3>Warding</h3>
-          </div>
-
-          <div>
-              <img src="/skills/mechanics-systems-loops/game-mechanics/league/secondary/ping.jpg" alt="Pings">
-              <h3>Pings</h3>
-          </div>
-
-          <div>
-              <img src="/skills/mechanics-systems-loops/game-mechanics/league/secondary/dragon.jpg" alt="Dragon objective">
-              <h3>Dragons</h3>
-          </div>
-        </div>
-
-        <h2>LoL's progression mechanics:</h2>
-        <div class="content-grid content-grid-4">
-          <div>
-              <img src="/skills/mechanics-systems-loops/game-mechanics/league/progression/items.webp" alt="Gold and items">
-              <h3>Items</h3>
-          </div>
-
-          <div>
-              <img src="/skills/mechanics-systems-loops/game-mechanics/league/progression/level-up.webp" alt="Leveling up">
-              <h3>Levelling up</h3>
-          </div>
-
-          <div>
-              <img src="/skills/mechanics-systems-loops/game-mechanics/league/progression/role-quest.jpg" alt="Role quest progression">
-              <h3>Role quests</h3>
-          </div>
-
-          <div>
-              <img src="/skills/mechanics-systems-loops/game-mechanics/league/progression/super-minions.jpg" alt="Objective-based pressure">
-              <h3>Map pressure</h3>
-          </div>
-        </div>
-
-        <h2>LoL's narrative layer:</h2>
-        <div class="content-grid content-grid-2">
-          <div>
-              <img src="/skills/mechanics-systems-loops/game-mechanics/league/narrative/runeterra.jpg" alt="Runeterra map overview">
-              <h3>The world</h3>
-          </div>
-
-          <div>
-              <img src="/skills/mechanics-systems-loops/game-mechanics/league/narrative/ekko.webp" alt="Characters">
-              <h3>Its characters</h3>
-          </div>
-        </div>
-
-
-        <p>
-          When designing these game mechanics, I think it's important to design them while considering
-          how they fit within the larger systems of the game.
-        </p>
-
-        <br>
-        <h1>Game Systems</h1>
-        <p>A game system is comprised of multiple game mechanics. 
-        Some examples of game systems are movement, combat, shops, crafting, quests, dialogue, an enemy, multiplayer, etc.</p>
-
-        <br>
-        <h1>Game Loops</h1>
-        <p>Almost every game has at least one game loop: a repeating sequence of actions that keeps the player engaged which 
-        drives the entire game's experience.</p>
-
-        <ul>
-          <li>
-            In Tetris,
-            <ul>
-              <li>The player receives a tetromino</li>
-              <li>The tetromino is placed</li>
-              <li>The game evaluates the resulting board</li>
-              <li>Repeat</li>
-            </ul>
-          </li>
-          <li>
-            In VALORANT,
-            <ul>
-              <li>Preparation time</li>
-              <li>The barrier drops</li>
-              <li>A combat system happens</li>
-              <li>The round ends when a wincondition is reached</li>
-              <li>Repeat</li>
-            </ul>
-          </li>
-          <li>
-            In Life is Strange,
-            <ul>
-              <li>The player is presented with new narrative</li>
-              <li>The player may explore the environment and interact with characters or objects</li>
-              <li>The player makes decisions that influence the experience</li>
-              <li>The story progresses</li>
-              <li>Repeat</li>
-            </ul>
-          </li>
-        </ul> -->
+        
 
       </section>
     </main>

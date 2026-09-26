@@ -11,10 +11,37 @@
 
 <body>
 
-    <div id="header-placeholder"></div>
-    <script src="/general/header/header-loader.js"></script>
+    
 
-    <main>
+
+
+
+<script>
+  document.documentElement.classList.add("no-header-transition");
+</script>
+<header class="site-header">
+  <nav class="nav-container">
+
+    <div class="dropdown">
+      <a href="/" class="projects-nav-trigger">Projects</a>
+      <div class="dropdown-content">
+        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/tetris/">Tetris Airconsole</a>
+        <a href="/projects/engine/">Vulkan Game Engine</a>
+      </div>
+    </div>
+
+    <a href="/skills/">Skills</a>
+
+    <a href="/cv/">CV</a>
+
+    <a href="/about/" id="about-nav">About</a>
+
+  </nav>
+
+</header>
+<script src="/general/header/header-state.js"></script>
+<main>
 
         <nav
             class="side-navigation"
@@ -134,9 +161,9 @@
             <p>I had an idea for a juice that removes 3 item slots from the player for an annoyingly long duration, in return for a lump sum of gold. This seemed very difficult to balance and something that would create too many edge cases.</p>
 
 
-            <!-- Rune idea, keystone inspiration removes item slots 3, 4, 5 and 6. Periodically regain an item slot at 2:00, 6:00, 10:00, 14:00 and 16:00. For each item slot, gain 25g, 50g, 100g, 200g, 500g -->
-            <!-- Rune name: "Small pockets". but thats lame for a keystone. "idk" -->
-            <!-- Managing a tiny inventory in the early game seems interesting and can lead to fun gamelay decisions. -->
+            
+            
+            
             
 
         </section>

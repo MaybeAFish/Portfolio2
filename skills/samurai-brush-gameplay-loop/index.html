@@ -10,10 +10,37 @@
 
 <body>
 
-    <div id="header-placeholder"></div>
-    <script src="/general/header/header-loader.js"></script>
+    
 
-    <main>
+
+
+
+<script>
+  document.documentElement.classList.add("no-header-transition");
+</script>
+<header class="site-header">
+  <nav class="nav-container">
+
+    <div class="dropdown">
+      <a href="/" class="projects-nav-trigger">Projects</a>
+      <div class="dropdown-content">
+        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/tetris/">Tetris Airconsole</a>
+        <a href="/projects/engine/">Vulkan Game Engine</a>
+      </div>
+    </div>
+
+    <a href="/skills/">Skills</a>
+
+    <a href="/cv/">CV</a>
+
+    <a href="/about/" id="about-nav">About</a>
+
+  </nav>
+
+</header>
+<script src="/general/header/header-state.js"></script>
+<main>
         <nav
             class="side-navigation"
             aria-label="Skills navigation"

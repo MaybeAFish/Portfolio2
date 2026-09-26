@@ -16,11 +16,38 @@
     <link rel="stylesheet" href="/about/riddles/riddles.css" />
 </head>
 <body>
-    <div id="header-placeholder"></div>
-    <script src="/general/header/header-loader.js"></script>
+    
 
-    <main class="about-page">
-        <!-- INTRO -->
+
+
+
+<script>
+  document.documentElement.classList.add("no-header-transition");
+</script>
+<header class="site-header">
+  <nav class="nav-container">
+
+    <div class="dropdown">
+      <a href="/" class="projects-nav-trigger">Projects</a>
+      <div class="dropdown-content">
+        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/tetris/">Tetris Airconsole</a>
+        <a href="/projects/engine/">Vulkan Game Engine</a>
+      </div>
+    </div>
+
+    <a href="/skills/">Skills</a>
+
+    <a href="/cv/">CV</a>
+
+    <a href="/about/" id="about-nav">About</a>
+
+  </nav>
+
+</header>
+<script src="/general/header/header-state.js"></script>
+<main class="about-page">
+        
         <div class="hero intro-hero">
             <div class="hero-container">
                 <h1>Hi!</h1>
@@ -31,7 +58,7 @@
         </div>
 
 
-        <!-- TESTIMONIALZ -->
+        
         <section>
             <h1 class="section-title">Testimonials</h1>
             <div class="testimonial-grid">
@@ -220,7 +247,7 @@
         </section>
 
 
-        <!-- FAV GAMEZ -->
+        
         <section>
             <h1 class="section-title">Favourite Games</h1>
             <div class="game-grid">
@@ -353,7 +380,7 @@
         </section>
 
 
-        <!-- LIKES/DISLIKEZ -->
+        
         <section>
             <div class="like-section">
                 <div class="likes-column">
@@ -394,7 +421,7 @@
         <script src="/general/media/tooltip.js"></script>
 
 
-        <!-- ARTZ -->
+        
         <section>
             <h1 class="section-title">My Art</h1>
 
@@ -507,7 +534,7 @@
         </section>
 
 
-        <!-- RIDDLEZ -->
+        
         <section>
             <h1 class="section-title">Riddles</h1>
             <div class="textcarousel">
