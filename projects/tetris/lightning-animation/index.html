@@ -19,109 +19,103 @@
       </nav>
 
       <section>
-        <div>
-          <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
-            <source src="/projects/tetris/lightning-animation/battle.mp4" type="video/mp4" />
-          </video>
+        <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
+          <source src="/projects/tetris/lightning-animation/battle.mp4" type="video/mp4" />
+        </video>
 
-          <h1>Lightning Animation</h1>
-          <p>
-            I implemented the mathematical logic behind a lightning effect that visually connects the line a player clears
-            to the destination of the garbage they send. The effect was designed to make the connection between clearing
-            lines and sending garbage immediately readable to the player.
-          </p>
+        <h1>Lightning Animation</h1>
+        <p>
+          I implemented the mathematical logic behind a lightning effect that visually connects the line a player clears
+          to the destination of the garbage they send. The effect was designed to make the connection between clearing
+          lines and sending garbage immediately readable to the player.
+        </p>
 
-          <p>
-            I was provided with the initial line shader and a concept GIF, and was responsible for turning these
-            references into an actual implementation within the game.
-          </p>
+        <p>
+          I was provided with the initial line shader and a concept GIF, and was responsible for turning these
+          references into an actual implementation within the game.
+        </p>
 
-          <br>
-          <h2>How I Did This</h2>
-          <ul>
-            <li>
-              The first thing I did was defining the start and endpoints of the animation whenever garbage was sent, 
-              with the effect originating from the relevant cleared line and ending at each opponents' playingfields' garbage column's top most empty cell + amount of cells being sent.
-            </li>
-            <li>
-              Then, I calculated a parabolic trajectory of the line between those two points. I made sure the parabole's maximum was calculated lower at larger distances, otherwise the animation would sometimes reach out of bounds.
-            </li>
-            <li>Afterwards I created an instance of the line shader for each garbage being sent, which follows a number of points on this parabole.</li>
-            <li>
-              I then proceeded to animate these lines using Cocos' tween function while making it appear as if the electricity is travelling towards its destination to make it feel directional. This was done using three sets of keyframes. 
-              <ul>
-                <li>
-                  The first set of keyframes makes the line grow from it's starting point.
-                </li>
-                <li>
-                  The second set of keyframes holds the line while it touches both ends of the trajectory. 
-                </li>
-                <li>
-                  The last set of keyframes completely retract the line before despawning.
-                </li>
-              </ul>
-            </li>
-            <li>
-              I also created a secondary animation which animates the line thicknesses on various parts of the line, to even further sell the illusion that it's travelling towards the destination.
-            </li>
+        <br>
+        <h2>How I Did This</h2>
+        <ul>
+          <li>
+            The first thing I did was defining the start and endpoints of the animation whenever garbage was sent, 
+            with the effect originating from the relevant cleared line and ending at each opponents' playingfields' garbage column's top most empty cell + amount of cells being sent.
+          </li>
+          <li>
+            Then, I calculated a parabolic trajectory of the line between those two points. I made sure the parabole's maximum was calculated lower at larger distances, otherwise the animation would sometimes reach out of bounds.
+          </li>
+          <li>Afterwards I created an instance of the line shader for each garbage being sent, which follows a number of points on this parabole.</li>
+          <li>
+            I then proceeded to animate these lines using Cocos' tween function while making it appear as if the electricity is travelling towards its destination to make it feel directional. This was done using three sets of keyframes. 
+            <ul>
+              <li>
+                The first set of keyframes makes the line grow from it's starting point.
+              </li>
+              <li>
+                The second set of keyframes holds the line while it touches both ends of the trajectory. 
+              </li>
+              <li>
+                The last set of keyframes completely retract the line before despawning.
+              </li>
+            </ul>
+          </li>
+          <li>
+            I also created a secondary animation which animates the line thicknesses on various parts of the line, to even further sell the illusion that it's travelling towards the destination.
+          </li>
 
-            <li>
-              At this point, the line itself is done. All that is left are the particles.
-              <ul>
-                <li>
-                  A start particle with a decaying size.
-                </li>
-                <li>
-                  An end particle that shows an impact effect with a random rotation, with random small electricity like spark particles flying off in random directions using a particlesystem.
-                </li>
-              </ul>
-            </li>
+          <li>
+            At this point, the line itself is done. All that is left are the particles.
+            <ul>
+              <li>
+                A start particle with a decaying size.
+              </li>
+              <li>
+                An end particle that shows an impact effect with a random rotation, with random small electricity like spark particles flying off in random directions using a particlesystem.
+              </li>
+            </ul>
+          </li>
 
-            <li>
-              Finally, added a 9-sliced bar at the destination, positioned over the garbage
-              indicator next to the opponent's playfield when the impact lands. 
-              This bar was stretched to fill all the garbage cells that were being sent
-            </li>
-          </ul>
-
-
-          <br>
-          <h2>Levelling Up</h2>
-          <p>
-            After implementing the animation for sending garbage in the Battle mode, 
-            I also proposed and implemented the same animation for levelling up in the Marathon Mode, 
-            as I found that there was previously no visual feedback when the player reached a new level:
-          </p>
-          <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
-            <source src="/projects/tetris/lightning-animation/marathon.mp4" type="video/mp4" />
-          </video>
-
-          <br><br>
-          <h2>Old Iteration</h2>
-          <p>
-            I had to experiment a lot with the timing and duration, as it either felt unimpactful, unclear or too distracting. 
-            Here's an old version where the animation was somehow ALL 3:
-          </p>
-          <video class="side-navigation-media" autoplay controls muted loop playsinline preload="metadata">
-            <source src="/projects/tetris/lightning-animation/old.mp4" type="video/mp4" />
-          </video>
-          <ul>
-            <li>
-              The impact particles were boring, soft, randomized in ways that didn't matter, and mistimed, making the sending part feel <span style="color: var(--standout-color-cyan);">unimpactful</span>.
-            </li>
-            <li>
-              The electricity didn't gradually dash towards the destination, it only retracted, making it <span style="color: var(--standout-color-cyan);">unclear</span> who was sending it and why.
-            </li>
-            <li>
-              The electricity line was too big, making the animation wayyy too <span style="color: var(--standout-color-cyan);">distracting</span>.
-            </li>
-          </ul>
+          <li>
+            Finally, added a 9-sliced bar at the destination, positioned over the garbage
+            indicator next to the opponent's playfield when the impact lands. 
+            This bar was stretched to fill all the garbage cells that were being sent
+          </li>
+        </ul>
 
 
+        <br>
+        <h2>Levelling Up</h2>
+        <p>
+          After implementing the animation for sending garbage in the Battle mode, 
+          I also proposed and implemented the same animation for levelling up in the Marathon Mode, 
+          as I found that there was previously no visual feedback when the player reached a new level:
+        </p>
+        <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
+          <source src="/projects/tetris/lightning-animation/marathon.mp4" type="video/mp4" />
+        </video>
 
+        <br><br>
+        <h2>Old Iteration</h2>
+        <p>
+          I had to experiment a lot with the timing and duration, as it either felt unimpactful, unclear or too distracting. 
+          Here's an old version where the animation was somehow ALL 3:
+        </p>
+        <video class="side-navigation-media" autoplay controls muted loop playsinline preload="metadata">
+          <source src="/projects/tetris/lightning-animation/old.mp4" type="video/mp4" />
+        </video>
+        <ul>
+          <li>
+            The impact particles were boring, soft, randomized in ways that didn't matter, and mistimed, making the sending part feel <span style="color: var(--standout-color-cyan);">unimpactful</span>.
+          </li>
+          <li>
+            The electricity didn't gradually dash towards the destination, it only retracted, making it <span style="color: var(--standout-color-cyan);">unclear</span> who was sending it and why.
+          </li>
+          <li>
+            The electricity line was too big, making the animation wayyy too <span style="color: var(--standout-color-cyan);">distracting</span>.
+          </li>
+        </ul>
 
-
-        </div>
       </section>
     </main>
 
