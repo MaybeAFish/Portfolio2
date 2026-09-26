@@ -20,7 +20,7 @@
 }
 
 .project-showcase-information p {
-  margin: 0 0 1rem;
+  margin: 0 2rem 1rem;
   color: var(--text-color-muted);
   line-height: 1.6;
 }

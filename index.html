@@ -179,7 +179,7 @@
     <script>
       console.log("Why are you snooping here? :P");
 
-      // Ifarme has to be full pixels
+      // IFrame has to be full pixels or else there's a 1px line height black line at the bottom
       const gameFrame = document.querySelector('.game-iframe-container');
       function resizeGameFrame() {
           gameFrame.style.height = `${Math.round(window.innerHeight * 0.78)}px`;
