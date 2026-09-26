@@ -37,73 +37,76 @@ export class TutorialScene extends Scene {
   }
 
   async enter() {
-    const loader = new LoadingProgress;
-    loader.showLoadingScreen('Loading scene...');
-    await new Promise(r => setTimeout(r, 100));
-
     document.getElementById('game-container').style.display = 'block';
 
-    loader.updateLoadingScreen('Loading player...', 10);
+    const loader = new LoadingProgress();
+    loader.addStep('Player', 1);
+    loader.addStep('Cave', 2);
+    loader.addStep('Tutorial', 1);
+    loader.addStep('Projects', 3);
+    loader.addStep('Map UI', 2);
+    loader.addStep('Opening the cave...', 1);
+    loader.showLoadingScreen();
+
+    // Player
     this.player = new Player(this.rapierWorld, this.scene);
+    await new Promise((resolve) => {
+      this.player.load((loadedChar) => {
+        this.scene.add(this.player.mesh);
+        resolve();
+      });
+    });
+    this.player.setPosition(0, 200, 0);
+    loader.markDone('Player');
+    await new Promise(r => setTimeout(r, 50));
 
-    loader.updateLoadingScreen('Loading map...', 20);
+    // Cave
     this.map = new TutorialMap(this.rapierWorld);
+    await this.fallHint.load(this.player);
+    await this.map.load(this.scene);
+    loader.markDone('Cave');
+    await new Promise(r => setTimeout(r, 50));
 
-    loader.updateLoadingScreen('Creating tutorial zones...', 30);
+    // Tutorial
     this.tutorialZones = [
       new GifTutorialZone(this.scene, new THREE.Vector3(0, 5, 0), new THREE.Vector3(10, 10, 10), '/game/scenes/game-scenes/tutorial-scene/tutorial-wasd.gif', this.rapierWorld),
-
       new GifTutorialZone(this.scene, new THREE.Vector3(10, 10, -50), new THREE.Vector3(50, 20, 50), '/game/scenes/game-scenes/tutorial-scene/tutorial-camera.gif', this.rapierWorld),
-
       new GifTutorialZone(this.scene, new THREE.Vector3(50, 4, -50), new THREE.Vector3(8, 8, 40), '/game/scenes/game-scenes/tutorial-scene/tutorial-jump.gif', this.rapierWorld),
-
       new GifTutorialZone(this.scene, new THREE.Vector3(80, 0, -50), new THREE.Vector3(10, 40, 10), '/game/scenes/game-scenes/tutorial-scene/tutorial-double-jump.gif', this.rapierWorld),
-
       // new ArrowTutorialZone(this.scene, new THREE.Vector3(20, -8, 0), new THREE.Vector3(10, 6, 10), new THREE.Vector3(30, 3, 0), this.rapierWorld),
-
       // new TextTutorialZone(this.scene, new THREE.Vector3(25, -8, 0), new THREE.Vector3(10, 6, 10), 'Press [M] to open the world map and look for a way out', this.rapierWorld),
     ];
+    loader.markDone('Tutorial');
+    await new Promise(r => setTimeout(r, 50));
 
-    loader.updateLoadingScreen('Loading interactables...', 50);
+    // Projects
     this.interactableManager = new InteractableManager();
     await this.interactableManager.load(
       this.scene,
       this.player,
       TutorialInteractables,
       (loaded, total) => {
-        const percent = 50 + (loaded / total) * 25; // From 60% to 75%
-        loader.updateLoadingScreen(`Loading interactables... (${loaded}/${total})`, percent);
+        loader.update('Projects', loaded / total);
       }
     );
+    loader.markDone('Projects');
+    await new Promise(r => setTimeout(r, 50));
 
-    await this.fallHint.load(this.player);
-
-    loader.updateLoadingScreen('Initializing map manager...', 75);
+    // Map
     this.mapManager = new MapManager(this.player, TutorialInteractables);
-    this.mapManager.load((completed, total, label) => {
-      const percent = 75 + (completed / total) * 20; // 75–85%
-      loader.updateLoadingScreen(`${label} (${Math.round((completed / total) * 100)}%)`, percent);
+    await this.mapManager.load((completed, total, label) => {
+      loader.update('Map UI', completed / total)
     });
+    loader.markDone('Map UI');
+    await new Promise(r => setTimeout(r, 50));
 
+    // Opening cave
+    loader.markDone('Opening the cave...');
+    await new Promise(r => setTimeout(r, 10));
 
-    loader.updateLoadingScreen('Loading player...', 95);
-    await new Promise((resolve) => {
-        this.player.load((loadedChar) => {
-          this.scene.add(this.player.mesh);
-          resolve();
-        });
-    });
-
-    loader.updateLoadingScreen('Finalizing...', 100);
-    await this.map.load(this.scene);
-
+    // Done
     this.isLoaded = true;
-
-    this.player.setPosition(0, 200, 0);
-    await new Promise(r => setTimeout(r, 100));// Delay so player can see whatsup
     loader.hideLoadingScreen();
-    this.showTutorialUI();
-
     super.enter();
   }
 

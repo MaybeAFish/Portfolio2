@@ -8,53 +8,6 @@ html {
   scrollbar-gutter: auto;
 }
 
-/* Loading screen */
-#loading-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  z-index: 9999;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  color: white;
-}
-
-.loading-content {
-  max-width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-#loading-text {
-  font-size: 3em;
-  margin-bottom: 30px;
-  white-space: nowrap;
-}
-
-.loading-bar-container {
-  width: 300px;
-  max-width: 80vw;
-  height: 20px;
-  background-color: #444;
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 0 auto;
-}
-
-#loading-bar {
-  width: 0%;
-  height: 100%;
-  background-color: #00ff00;
-  transition: width 0.3s ease,
-  background-color 0.3s ease;
-}
-
 /* Game container stuff */
 #game-container {
   position: absolute;

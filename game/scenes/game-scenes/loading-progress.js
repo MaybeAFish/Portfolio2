@@ -1,60 +1,119 @@
-// loading-helper.js
 export class LoadingProgress {
-  constructor(updateFn) {
-    this.updateFn = updateFn; // function(percent, label)
+  constructor() {
     this.steps = [];
   }
 
-  showLoadingScreen(label = 'Loading...') {
+  showLoadingScreen() {
     const overlay = document.getElementById('loading-overlay');
-    const loadingText = document.getElementById('loading-text');
-    const loadingBar = document.getElementById('loading-bar');
 
     overlay.style.display = 'flex';
-    loadingText.textContent = label;
-    loadingBar.style.width = '0%';
+
+    this.render();
+    this.updateBar(0);
   }
 
-  updateLoadingScreen(label, percent) {
-    const loadingText = document.getElementById('loading-text');
-    const loadingBar = document.getElementById('loading-bar');
+  addStep(label, weight = 1) {
+    const step = {
+      label,
+      weight,
+      progress: 0,
+      completed: false
+    };
 
-    loadingText.textContent = label;
-    loadingBar.style.width = `${percent}%`;
-  }
-
-  hideLoadingScreen() {
-    document.getElementById('loading-overlay').style.display = 'none';
-  }
-
-  
-
-  addStep(label, weight) {
-    const step = { label, weight, completed: false };
     this.steps.push(step);
+    this.render();
+
     return step;
   }
 
   update(label, fraction) {
-    let totalWeight = 0;
-    let completedWeight = 0;
+    const step = this.steps.find(s => s.label === label);
 
-    for (const step of this.steps) {
-      if (step.label === label) {
-        completedWeight += step.weight * fraction;
-      } else if (step.completed) {
-        completedWeight += step.weight;
-      }
-      totalWeight += step.weight;
+    if (!step) return;
+
+    step.progress = Math.max(0, Math.min(1, fraction));
+
+    if (step.progress >= 1) {
+      step.completed = true;
     }
 
-    const percent = (completedWeight / totalWeight) * 100;
-    this.updateFn(label, percent);
+    this.render();
+    this.updateBar(this.getPercent());
   }
 
   markDone(label) {
     const step = this.steps.find(s => s.label === label);
-    if (step) step.completed = true;
-    this.update(label, 1);
+
+    if (!step) return;
+
+    step.progress = 1;
+    step.completed = true;
+
+    this.render();
+    this.updateBar(this.getPercent());
+  }
+
+  getPercent() {
+    const totalWeight = this.steps.reduce(
+      (sum, step) => sum + step.weight,
+      0
+    );
+
+    const completedWeight = this.steps.reduce(
+      (sum, step) => sum + step.weight * step.progress,
+      0
+    );
+
+    if (totalWeight === 0) return 0;
+
+    return (completedWeight / totalWeight) * 100;
+  }
+
+  render() {
+    const container = document.getElementById('loading-steps');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    this.steps.forEach(step => {
+      const element = document.createElement('div');
+
+      element.classList.add('loading-step');
+
+      if (step.completed) {
+        element.classList.add('completed');
+      } else if (step.progress > 0) {
+        element.classList.add('loading');
+      } else {
+        element.classList.add('pending');
+      }
+
+      let icon = '○';
+
+      if (step.completed) {
+        icon = '✓';
+      } else if (step.progress > 0) {
+        icon = '◌';
+      }
+
+      element.innerHTML = `
+        <span class="loading-step-icon">${icon}</span>
+        <span class="loading-step-label">${step.label}</span>
+      `;
+
+      container.appendChild(element);
+    });
+  }
+
+  updateBar(percent) {
+    const loadingBar = document.getElementById('loading-bar');
+
+    if (loadingBar) {
+      loadingBar.style.width = `${percent}%`;
+    }
+  }
+
+  hideLoadingScreen() {
+    document.getElementById('loading-overlay').style.display = 'none';
   }
 }

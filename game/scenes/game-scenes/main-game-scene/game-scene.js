@@ -30,55 +30,62 @@ export class GameScene extends Scene {
   }
 
   async enter() {
-    const loader = new LoadingProgress;
-    loader.showLoadingScreen('Loading scene...');
-    await new Promise(r => setTimeout(r, 100));
-
     document.getElementById('game-container').style.display = 'block';
 
-    loader.updateLoadingScreen('Loading player...', 10);
+    const loader = new LoadingProgress();
+    loader.addStep('Player', 1);
+    loader.addStep('Map', 2);
+    loader.addStep('Projects', 3);
+    loader.addStep('Map UI', 2);
+    loader.addStep('Opening the map...', 1);
+    loader.showLoadingScreen();
+
+    // Player
     this.player = new Player(this.rapierWorld, this.scene);
+    await new Promise((resolve) => {
+      this.player.load((loadedChar) => {
+        this.scene.add(this.player.mesh);
+        resolve();
+      });
+    });
+    this.player.setPosition(0, 5, 0);
+    loader.markDone('Player');
+    await new Promise(r => setTimeout(r, 50));
 
-    loader.updateLoadingScreen('Loading map...', 20);
+    // Map
     this.map = new GameMap(this.rapierWorld);
+    await this.fallHint.load(this.player);
+    await this.map.load(this.scene);
+    loader.markDone('Map');
+    await new Promise(r => setTimeout(r, 50));
 
-    loader.updateLoadingScreen('Loading interactables...', 50);
+    // Projects
     this.interactableManager = new InteractableManager();
     await this.interactableManager.load(
       this.scene,
       this.player,
       GameInteractables,
       (loaded, total) => {
-        const percent = 50 + (loaded / total) * 25;
-        loader.updateLoadingScreen(`Loading interactables... (${loaded}/${total})`, percent);
+        loader.update('Projects', loaded / total);
       }
     );
+    loader.markDone('Projects');
+    await new Promise(r => setTimeout(r, 50));
 
-    await this.fallHint.load(this.player);
-
-    loader.updateLoadingScreen('Initializing map manager...', 75);
+    // Map UI
     this.mapManager = new MapManager(this.player, GameInteractables);
-    this.mapManager.load((completed, total, label) => {
-      const percent = 75 + (completed / total) * 20; // 75–85%
-      loader.updateLoadingScreen(`${label} (${Math.round((completed / total) * 100)}%)`, percent);
+    await this.mapManager.load((completed, total, label) => {
+      loader.update('Map UI', completed / total);
     });
+    loader.markDone('Map UI');
+    await new Promise(r => setTimeout(r, 50));
 
+    // Opening the map
+    loader.markDone('Opening the map...');
+    await new Promise(r => setTimeout(r, 10));
 
-    loader.updateLoadingScreen('Loading player...', 95);
-    await new Promise((resolve) => {
-        this.player.load((loadedChar) => {
-          this.scene.add(this.player.mesh);
-          resolve();
-        });
-    });
-
-    loader.updateLoadingScreen('Finalizing...', 100);
-    await this.map.load(this.scene);
-
+    // Done
     this.isLoaded = true;
-    this.player.setPosition(0, 5, 0);
-
-    await new Promise(r => setTimeout(r, 100));// Delay so player can see whatsup
     loader.hideLoadingScreen();
     super.enter();
   }
