@@ -46,24 +46,23 @@
             <li>
               Then, I calculated a parabolic trajectory of the line between those two points. I made sure the parabole's maximum was calculated lower at larger distances, otherwise the animation would sometimes reach out of bounds.
             </li>
+            <li>Afterwards I created an instance of the line shader for each garbage being sent, which follows a number of points on this parabole.</li>
             <li>
-              Afterwards I created an instance of the line shader for each garbage being sent, and animated its keyframes
-              using Cocos' tween function to appear as if the electricity is travelling towards its destination to make it feel directional. 
+              I then proceeded to animate these lines using Cocos' tween function while making it appear as if the electricity is travelling towards its destination to make it feel directional. This was done using three sets of keyframes. 
               <ul>
                 <li>
-                  The first set of keyframes makes the line grow from it's starting point...
+                  The first set of keyframes makes the line grow from it's starting point.
                 </li>
                 <li>
-                  ...the next set of keyframes animates the line towards the middle of the trajectory... 
+                  The second set of keyframes holds the line while it touches both ends of the trajectory. 
                 </li>
                 <li>
-                  ...and the last set of keyframes continues the line to the endpoint before retracting.
+                  The last set of keyframes completely retract the line before despawning.
                 </li>
               </ul>
             </li>
             <li>
-              I also created a new tween including new keyframes for a varying line thickness to make the electricity
-              feel more energetic.
+              I also created a secondary animation which animates the line thicknesses on various parts of the line, to even further sell the illusion that it's travelling towards the destination.
             </li>
 
             <li>
