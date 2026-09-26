@@ -12,7 +12,7 @@
   width: 700px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .settings-menu-header {
