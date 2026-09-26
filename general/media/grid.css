@@ -1,3 +1,11 @@
+.solo-content {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: var(--border-radius);
+}
+
 .content-grid {
     display: grid;
     gap: 20px;
@@ -39,7 +47,7 @@
 }
 
 .content-grid:has(> :only-child) {
-    grid-template-columns: minmax(0, 600px);
+    grid-template-columns: minmax(0, 800px);
     justify-content: center;
 }
 
