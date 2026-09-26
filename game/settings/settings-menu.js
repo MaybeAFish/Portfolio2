@@ -21,8 +21,13 @@ export class SettingsMenu {
     const tabButtons = this.menu.querySelectorAll('.tab-button');
     const tabContents = this.menu.querySelectorAll('.tab-content');
 
+    let activeTab = this.menu.querySelector('.tab-button.active');
     tabButtons.forEach(button => {
       button.addEventListener('click', () => {
+        if (button === activeTab) return;
+      
+        audioManager.playGlobalSound('/game/sounds/ui/tab-switch.m4a');
+
         // Remove active state from all
         tabButtons.forEach(btn => btn.classList.remove('active'));
         tabContents.forEach(tab => tab.classList.remove('active-tab'));
@@ -32,6 +37,8 @@ export class SettingsMenu {
         const targetId = button.getAttribute('data-tab');
         const targetTab = this.menu.querySelector(`#${targetId}`);
         if (targetTab) targetTab.classList.add('active-tab');
+
+        activeTab = button;
       });
     });
 
