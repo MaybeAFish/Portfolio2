@@ -78,6 +78,7 @@ html {
   background-color: rgba(0, 0, 0, 0.6);
   font-size: 12px;
   border-radius: 5px;
+  user-select: none;
 }
 
 #minimap-container {
@@ -90,6 +91,7 @@ html {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  user-select: none;
 }
 
 #minimap-content {
