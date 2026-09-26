@@ -152,8 +152,13 @@ export class Minimap {
       const dirZ = relZ / dist;
       const clampedDist = Math.min(dist, this.radius);
 
-      const px = this.cx + dirX * clampedDist * this.scale;
-      const pz = this.cy + dirZ * clampedDist * this.scale;
+      const size = this.minimap.clientWidth;
+      const iconScale = size / (this.radius * 2);
+      const iconCx = size / 2;
+      const iconCy = size / 2;
+      const px = iconCx + dirX * clampedDist * iconScale;
+      const pz = iconCy + dirZ * clampedDist * iconScale;
+
 
       // Only show if within radius (icon center must be inside)
       wrapper.style.display = 'flex';
@@ -162,9 +167,9 @@ export class Minimap {
 
       const baseTransform = `translate(-50%, -50%)`;
 
-      if (item.name === 'Watch Me Play') {
-        const dx = this.cx - px;
-        const dy = this.cy - pz;
+      if (item.name === 'Cosmos Intruders') {
+        const dx = iconCx - px;
+        const dy = iconCy - pz;
         const angleToCenter = Math.atan2(dy, dx)  - Math.PI / 2;;
         wrapper.style.transform = `${baseTransform} rotate(${angleToCenter}rad)`;
       } else {

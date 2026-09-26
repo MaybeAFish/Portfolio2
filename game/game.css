@@ -1,4 +1,3 @@
-/* About button */
 .game-button {
   color: white;
   background-color: transparent;
@@ -10,6 +9,10 @@
 }
 .game-button:active {
   color: var(--standout-color-cyan);
+}
+
+#interact-button {
+  user-select: none;
 }
 
 #play-game-button {
