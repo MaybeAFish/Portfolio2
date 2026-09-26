@@ -22,7 +22,9 @@
   );
   border-radius: 0 0 999px 999px;
   filter: drop-shadow(0 0 6px rgba(255,255,255,0.3));
-  transition: width 0.3s ease, opacity 0.3s ease;
+  transition: width 0.3s ease, 
+  background-color 0.3s ease,
+  opacity 0.3s ease;
   pointer-events: none;
 }
 

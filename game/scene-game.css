@@ -51,7 +51,8 @@ html {
   width: 0%;
   height: 100%;
   background-color: #00ff00;
-  transition: width 0.3s ease;
+  transition: width 0.3s ease,
+  background-color 0.3s ease;
 }
 
 /* Game container stuff */

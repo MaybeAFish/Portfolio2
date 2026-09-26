@@ -70,6 +70,7 @@
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
   transition:
     width 0.3s ease,
+    background-color 0.3s ease,
     opacity 0.3s ease;
   pointer-events: none;
 }
@@ -88,12 +89,15 @@
 }
 .side-navigation a:active,
 .side-navigation a[aria-current="page"],
+.side-navigation a.underline-hover:active,
 .side-navigation a.underline-hover[aria-current="page"] {
   color: var(--standout-color-cyan);
 }
 .side-navigation a:active::after,
 .side-navigation a[aria-current="page"]::after,
+.side-navigation a.underline-hover:active::after,
 .side-navigation a.underline-hover[aria-current="page"]::after {
   width: 100%;
   background-color: var(--standout-color-cyan);
 }
+
