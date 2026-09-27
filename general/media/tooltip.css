@@ -36,7 +36,8 @@
 }
 
 .tooltip:hover::after,
-.tooltip:active::after {
+.tooltip:active::after,
+.tooltip.tooltip-open::after {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
