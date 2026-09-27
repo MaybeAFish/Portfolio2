@@ -39,7 +39,14 @@ function initialiseGameCharacters() {
 
   document.querySelectorAll(".game-card").forEach((card) => {
     const previewTemplate = card.querySelector(".game-hover");
-    if (!previewTemplate) return;
+
+    if (!previewTemplate) {
+      card.addEventListener("touchstart", (e) => {
+        e.stopPropagation();
+        hidePreview();
+      }, { passive: true });
+      return;
+    }
 
     card.addEventListener("pointerenter", (event) => {
       if (event.pointerType !== "mouse") return;
