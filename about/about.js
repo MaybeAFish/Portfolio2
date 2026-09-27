@@ -12,28 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
 function initialiseGameCharacters() {
   const preview = document.querySelector(".hover-preview");
   let activeCard = null;
-  let scrollY = 0;
-  let scrollLocked = false;
-
-  function lockScroll() {
-    if (scrollLocked) return;
-    scrollLocked = true;
-    scrollY = window.scrollY;
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.left = "0";
-    document.body.style.right = "0";
-  }
-
-  function unlockScroll() {
-    if (!scrollLocked) return;
-    scrollLocked = false;
-    document.body.style.position = "";
-    document.body.style.top = "";
-    document.body.style.left = "";
-    document.body.style.right = "";
-    window.scrollTo(0, scrollY);
-  }
 
   function positionPreview(x, y) {
     const margin = 18;
@@ -57,7 +35,6 @@ function initialiseGameCharacters() {
     preview.classList.remove("is-visible");
     if (activeCard) activeCard.classList.remove("is-selected");
     activeCard = null;
-    unlockScroll();
   }
 
   document.querySelectorAll(".game-card").forEach((card) => {
@@ -91,12 +68,16 @@ function initialiseGameCharacters() {
       activeCard = card;
       card.classList.add("is-selected");
       showPreview(previewTemplate, touch.clientX, touch.clientY);
-      lockScroll();
     }, { passive: true });
   });
 
   document.addEventListener("touchstart", (e) => {
     if (!e.target.closest(".game-card")) hidePreview();
+  }, { passive: true });
+
+  // Close the preview if the page scrolls instead of blocking scroll
+  window.addEventListener("scroll", () => {
+    if (activeCard) hidePreview();
   }, { passive: true });
 }
 

@@ -17,8 +17,68 @@ function setupCarousel(carousel) {
     : "textcarousel";
 
   const track = carousel.querySelector(`.${prefix}-track`);
-
   if (!track) return;
+
+  /* -------------------------
+    Swipe support (touch/pointer)
+  ------------------------- */
+
+  let pointerId = null;
+  let startX = 0;
+  let startY = 0;
+  let deltaX = 0;
+  let isDragging = false;
+  let axisLocked = null; // "x" | "y" | null
+
+  const SWIPE_THRESHOLD = 40; // px needed to trigger a slide change
+
+  track.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+
+    pointerId = event.pointerId;
+    startX = event.clientX;
+    startY = event.clientY;
+    deltaX = 0;
+    isDragging = true;
+    axisLocked = null;
+  });
+
+  track.addEventListener("pointermove", (event) => {
+    if (!isDragging || event.pointerId !== pointerId) return;
+
+    const dx = event.clientX - startX;
+    const dy = event.clientY - startY;
+
+    if (!axisLocked) {
+      if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return; // too small to tell yet
+      axisLocked = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+    }
+
+    if (axisLocked === "x") {
+      event.preventDefault(); // stop vertical page scroll only once we're sure it's a horizontal swipe
+      deltaX = dx;
+    }
+  });
+
+  function endDrag(event) {
+    if (!isDragging || event.pointerId !== pointerId) return;
+    isDragging = false;
+
+    if (axisLocked === "x" && Math.abs(deltaX) > SWIPE_THRESHOLD) {
+      if (deltaX < 0) {
+        goToSlide(currentSlide + 1);
+      } else {
+        goToSlide(currentSlide - 1);
+      }
+    }
+
+    pointerId = null;
+    axisLocked = null;
+    deltaX = 0;
+  }
+
+  track.addEventListener("pointerup", endDrag);
+  track.addEventListener("pointercancel", endDrag);
 
   const slides = Array.from(
     track.querySelectorAll(`.${prefix}-slide`)
