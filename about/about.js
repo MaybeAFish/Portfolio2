@@ -11,61 +11,73 @@ document.addEventListener("DOMContentLoaded", () => {
 // SPECIFIC SHIZZLE
 function initialiseGameCharacters() {
   const preview = document.querySelector(".hover-preview");
-let activeCard = null;
+  let activeCard = null;
 
-function showPreview(card) {
-    const template = card.querySelector("template.game-hover");
-    if (!template) return;
+  function positionPreview(x, y) {
+    const margin = 18;
+    const offset = 18;
+    const previewRect = preview.getBoundingClientRect();
 
-    preview.innerHTML = "";
-    preview.appendChild(template.content.cloneNode(true));
+    const left = Math.min(x + offset, window.innerWidth - previewRect.width - margin);
+    const top = Math.min(y + offset, window.innerHeight - previewRect.height - margin);
 
-    const rect = card.getBoundingClientRect();
-    const previewRect = preview.getBoundingClientRect(); // after content injected
+    preview.style.setProperty("--preview-left", `${Math.max(margin, left)}px`);
+    preview.style.setProperty("--preview-top", `${Math.max(margin, top)}px`);
+  }
 
-    let left = rect.left + rect.width / 2 - previewRect.width / 2;
-    left = Math.max(12, Math.min(left, window.innerWidth - previewRect.width - 12));
-
-    let top = rect.bottom + 10;
-    // flip above if it would overflow bottom of viewport
-    if (top + previewRect.height > window.innerHeight - 12) {
-        top = rect.top - previewRect.height - 10;
-    }
-
-    preview.style.setProperty("--preview-left", `${left}px`);
-    preview.style.setProperty("--preview-top", `${top}px`);
+  function showPreview(template, x, y) {
+    preview.innerHTML = template.innerHTML;
     preview.classList.add("is-visible");
-}
+    positionPreview(x, y); // measure/position AFTER content is injected, so size is correct
+  }
 
-function hidePreview() {
+  function hidePreview() {
     preview.classList.remove("is-visible");
     if (activeCard) activeCard.classList.remove("is-selected");
     activeCard = null;
-}
+  }
 
-document.querySelectorAll(".game-card").forEach((card) => {
-    // desktop
-    card.addEventListener("mouseenter", () => showPreview(card));
-    card.addEventListener("mouseleave", hidePreview);
+  document.querySelectorAll(".game-card").forEach((card) => {
+    const previewTemplate = card.querySelector(".game-hover");
+    if (!previewTemplate) return;
 
-    // mobile
+    // Desktop: mouse only, follows cursor
+    card.addEventListener("pointerenter", (event) => {
+      if (event.pointerType !== "mouse") return;
+      showPreview(previewTemplate, event.clientX, event.clientY);
+    });
+
+    card.addEventListener("pointermove", (event) => {
+      if (event.pointerType !== "mouse") return;
+      positionPreview(event.clientX, event.clientY);
+    });
+
+    card.addEventListener("pointerleave", (event) => {
+      if (event.pointerType !== "mouse") return;
+      hidePreview();
+    });
+
+    // Mobile: tap toggles, positioned at the tap point
     card.addEventListener("touchstart", (e) => {
-        e.stopPropagation();
-        if (activeCard === card) {
-            hidePreview();
-            return;
-        }
-        if (activeCard) activeCard.classList.remove("is-selected");
-        activeCard = card;
-        card.classList.add("is-selected");
-        showPreview(card);
-    }, { passive: true });
-});
+      e.stopPropagation();
+      const touch = e.touches[0];
 
-document.addEventListener("touchstart", (e) => {
+      if (activeCard === card) {
+        hidePreview();
+        return;
+      }
+      if (activeCard) activeCard.classList.remove("is-selected");
+      activeCard = card;
+      card.classList.add("is-selected");
+      showPreview(previewTemplate, touch.clientX, touch.clientY);
+    }, { passive: true });
+  });
+
+  document.addEventListener("touchstart", (e) => {
     if (!e.target.closest(".game-card")) hidePreview();
-}, { passive: true });
+  }, { passive: true });
 }
+
 function initialiseEyeball() {
   const eyeball = document.querySelector(".eyeball");
 
