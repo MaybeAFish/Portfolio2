@@ -2,7 +2,7 @@ import { Interactable } from './interactable.js';
 import { audioManager } from '../../sketch.js';
 import { overlayManager } from './overlay-manager.js';
 
-export class OverlayInteractable extends Interactable {
+export class ProjectInteractable extends Interactable {
   constructor(position, name, minimapOptions, contentNode) {
     super(position, name, minimapOptions);
     this.contentNode = contentNode;

@@ -1,4 +1,4 @@
-import { OverlayInteractable } from './interactable-implementations/overlay-interactable.js';
+import { ProjectInteractable } from './interactable-implementations/project-interactable.js';
 import { TeleportInteractable } from './interactable-implementations/teleport-interactable.js';
 import { ChangeSceneInteractable } from './interactable-implementations/change-scene-interactable.js';
 import { DoorInteractable } from './interactable-implementations/door-interactable.js';

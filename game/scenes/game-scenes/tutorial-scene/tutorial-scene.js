@@ -120,7 +120,7 @@ export class TutorialScene extends Scene {
       this.player = null;
     }
 
-    this.hideTutorialUI();
+    onLeaveTutorialBox();
     
     this.interactableManager.dispose();
 
@@ -152,15 +152,13 @@ export class TutorialScene extends Scene {
       }
 
       this.interactableManager.update(delta, this.camera, this.player);
-    } else {
-      this.hideTutorialUI();
     }
 
     this.mapManager.update(delta);
   }
 
-  showTutorialUI() { this.box.style.opacity = '100%'; }
   hideTutorialUI() { this.box.style.opacity = '0%'; }
+  showTutorialUI() { this.box.style.opacity = '100%'; }
 
   onMenuClose() {
     this.showTutorialUI();
@@ -175,7 +173,7 @@ export class TutorialScene extends Scene {
 
 
 
-export function showTutorialBox(imageUrl = null) {
+export function onEnterTutorialBox(imageUrl = null) {
   const box = document.getElementById('tutorial-box');
   const imgEl = document.getElementById('tutorial-image');
 
@@ -189,11 +187,14 @@ export function showTutorialBox(imageUrl = null) {
   }
 
   box.style.display = 'flex';
+  box.style.opacity = '100%';
 
   audioManager.playGlobalSound('/game/sounds/ui/show-tutorial-popup.mp3');
 }
 
-export function hideTutorialBox() {
+export function onLeaveTutorialBox() {
   const box = document.getElementById('tutorial-box');
+
+  box.style.opacity = '0%';
   box.style.display = 'none';
 }

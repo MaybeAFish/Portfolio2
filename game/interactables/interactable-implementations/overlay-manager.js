@@ -1,4 +1,4 @@
-import { audioManager } from '../../sketch.js';
+import { audioManager, sceneManager } from '../../sketch.js';
 
 export const overlayManager = {
   currentOverlay: null,
@@ -8,6 +8,8 @@ export const overlayManager = {
     document.body.style.cursor = 'default';
 
     if (document.getElementById(id)) return;
+
+    sceneManager.currentScene.onMenuOpen();
 
     const overlay = document.createElement('div');
     overlay.id = id;
@@ -83,6 +85,8 @@ export const overlayManager = {
 
   closeOverlay(overlay, playSound = true) {
     if (!overlay) return;
+
+    sceneManager.currentScene.onMenuClose();
 
     document.body.removeChild(overlay);
     this.currentOverlay = null;
