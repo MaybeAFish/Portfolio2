@@ -47,62 +47,86 @@
 
         <section>
             <h1>Making Physiotherapy Exercises Fun</h1>
-            <p>During my VR minor, I partnered up with Physiotherapy professionals to create Motion: Virtual Physiotherapy, which is designed to make exercising fun for folks with lower back pain.</p>
-            <p>
-                This was done using gamified feedback, streaks, leaderboards and minigames.
-            </p>
+            <p>During my VR minor, I partnered up with Physiotherapy professionals to create "Motion: Virtual Physiotherapy". Motion is designed to make physiotherapy exercises fun and measurable for folks with lower back pain.</p>
 
-
-            <h2>VR Physiotherapy Exercise Bar</h2>
+            <br>
+            <h1>Exercise Bar</h1>
             <p>
-                I designed an exercise bar that could support multiple types of
+                I designed an exercise bar which supports multiple types of
                 physiotherapy exercises in VR. The bar communicates which movement
                 to perform and how long the player should perform it.
             </p>
-            <div class="content-grid">
-                <video class="side-navigation-media" autoplay muted loop playsinline>
-                    <source src="/skills/vr-physiotherapy-exercises/exercise.mp4" type="video/mp4"/>
-                </video>
-            </div>
-
-
-
             <p>
-                Before starting an exercise, the player first measures their
-                head sway. This establishes the desired "difficulty" that can
-                be used to evaluate their movement during the exercises.
+                Before being allowed to start any exercises, they must first measure their "head sway". The measurement is used to decide the desired difficulty of the exercises for the day, as head sway varies a lot from day to day. The chosen difficulty changes the amount of reps and sets of an exercise, and is simply a suggestion. If the patient is at all times allowed to change the difficulty for an exercise, but the evaluation remains mandatory.
             </p>
-            <div class="content-grid">
-                <img class="side-navigation-media" src="/skills/vr-physiotherapy-exercises/headsway.webp" alt="VR head sway measurement interface" loading="lazy">
+            <div class="content-grid content-grid-2">
+                <div>
+                    <video class="solo-content" autoplay muted controls loop playsinline>
+                        <source src="/skills/vr-physiotherapy-exercises/exercise.mp4" type="video/mp4"/>
+                    </video>
+                </div>
+
+                <div>
+                    <img class="side-navigation-media" src="/skills/vr-physiotherapy-exercises/headsway.webp" alt="VR head sway measurement interface" loading="lazy">
+                </div>
             </div>
 
-
-
-
             <p>
-                To make the shown movements clearer, I added
-                pulsing affordance balls which indicate the direction of the desired positions of each movement.
-                green for the left controller, blue for the right controller,
-                and pink for your head. These colors are consistent with
-                the controller colors and movement illustrations used throughout
-                the experience.
+                I designed and added pulsing affordance balls which indicate the desired movements for the exercise. The green ball is for the left controller, blue for the right, and pink for their head. These colours are consistent with
+                the colours used for the controllers and the movement illustrations used throughout
+                the game.
             </p>
 
             <p>
-                To make the exercises feel more like a game, I added feedback
-                such as Great, Good and Perfect, supported by color, visual effects,
-                and sound.
+                To gamify it, I added feedback
+                such as "Great", "Good" and "Perfect". Each having a different colour, VFX and SFX.
             </p>
 
 
             <br>
+            <h1>Minigames</h1>
+            <p>
+                I explored how traditional game mechanics could be created to make the exercises more fun while still encouraging the intended
+                physical movements.
+            </p>
+
+            <br>
+            <h2>Archery Minigame</h2>
+            <p>
+                I designed an archery minigame where the player's left controller
+                represents a bow whose string can be pulled by grabbing it with the right controller.
+                Pulling the string farther increases the shot's
+                strength, encouraging the player to maintain a
+                straight posture while performing the movement.
+            </p>
+            <video class="solo-content" autoplay controls muted loop playsinline>
+                <source
+                    src="/skills/vr-physiotherapy-exercises/bow.mp4"
+                    type="video/mp4">
+            </video>
+            <p>
+                Looking back, I should have added a left-handed setting which would allow the players to swap their bow and string-hand controls.
+            </p>
+
+            <br>
+            <h2>Sword Minigame</h2>
+            <p>
+                I designed a sword minigame where the player must stay near the center as much as possible while reaching for targets which fall to the ground.
+            </p>
+            <video class="solo-content" autoplay controls muted loop playsinline>
+                <source
+                    src="/skills/vr-physiotherapy-exercises/sword.webm"
+                    type="video/mp4">
+            </video>
+
+
+            <br><br>
             <h2>Environments</h2>
             <p>
                 I included the ability to switch maps, including a passthrough environment that uses mixed reality
                 to keep the player's real surroundings visible while placing
                 the exercise interface and interactive elements in world space.
-                This provides an alternative to performing exercises inside a
-                completely virtual environment for folk who would otherwise get motion sick.
+                This provides an alternative for folk who experience motion sickness.
             </p>
 
             <div class="content-grid content-grid-2">
@@ -123,7 +147,7 @@
             </div>
 
             <br>
-            <h2>Does the passthrough environment have better performance?</h2>
+            <h2>Does the passthrough environment improve exercise performance?</h2>
             <p>
                 I suspected the passthrough environment to result in better exercise performance. So I decided that to be my topic for my research assignment:
             </p>
@@ -132,64 +156,19 @@
             <div class="pdf-wrapper">
                 <div class="pdf-section">
                     <h2>A Comparative Study of Passthrough and Virtual Environments in VR-Based Physiotherapy</h2>
-                    <button class="fancy-button" onclick="loadPDF(this, '/skills/vr-physiotherapy-exercises/research.pdf')">View Research</button>
+                    <button class="fancy-button" onclick="loadPDF(this, '/skills/vr-physiotherapy-exercises/research.pdf')">View research</button>
                 </div>
             </div>
             <script src="/general/media/pdf/load-pdf.js"></script>
 
 
-            <h1>Designing VR Physiotherapy Minigames</h1>
-            <p>
-                I explored how traditional game mechanics could be
-                adapted into exercises while still encouraging the intended
-                physical movements.
-            </p>
-
-            <br>
-            <h2>Archery Minigame</h2>
-            <p>
-                I designed an archery minigame where the player's left controller
-                represents a bow whose string can be pulled by grabbing it with the right controller.
-            </p>
-
-            <p>
-                Pulling the string farther increases the shot's
-                strength, encouraging the player to maintain a
-                straight posture while performing the movement.
-            </p>
-            <div class="content-grid">
-                <video class="side-navigation-media" autoplay controls muted loop playsinline>
-                    <source
-                        src="/skills/vr-physiotherapy-exercises/bow.mp4"
-                        type="video/mp4">
-                </video>
-            </div>
-            <p>
-                Looking back, I would add a left-handed setting so
-                players could swap the bow and string-hand controls.
-            </p>
-
-            <br>
-            <h2>Sword Minigame</h2>
-            <p>
-                I designed a sword minigame where the player must stay near the center as much as possible while reaching for targets which fall to the ground.
-            </p>
-            <div class="content-grid">
-                <video class="side-navigation-media" autoplay controls muted loop playsinline>
-                    <source
-                        src="/skills/vr-physiotherapy-exercises/sword.webm"
-                        type="video/mp4">
-                </video>
-            </div>
-
             <br>
             <h1>Streaks & Leaderboard</h1>
             <p>Aside from colours, VFX, SFX, maps and minigames, I also focused on a streak system with the highest streaks available to see on a global leaderboard.</p>
             <p>We didn't implement the same for exercise scores, as that would feel competitive in an unhealthy way.</p>
-            <div class="content-grid">
-                <img class="side-navigation-media" src="/skills/vr-physiotherapy-exercises/streak.webp" loading="lazy">
-            </div>
+            <img class="solo-content" src="/skills/vr-physiotherapy-exercises/streak.webp" loading="lazy">
             <p>Looking back, the UI would look more logical if the streak and leaderboard were put together considering their logic is connected. Also, your streak should probably start at "1" instead of "0" to give a fake feeling of jumpstarting your progression.</p>
+
 
 
             <br>
@@ -218,7 +197,7 @@
             </div>
 
             <br><br>
-            <h2>My Models</h2>
+            <h2>Models</h2>
             <div class="banner-models">
                 <div class="banner-model">
                     <model-viewer
