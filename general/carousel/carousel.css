@@ -5,3 +5,10 @@
 .textcarousel-track {
   touch-action: pan-y;
 }
+
+.mediacarousel-button,
+.textcarousel-button,
+.mediacarousel-dot,
+.textcarousel-dot {
+  touch-action: manipulation;
+}
