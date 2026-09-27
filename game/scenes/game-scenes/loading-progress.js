@@ -88,16 +88,7 @@ export class LoadingProgress {
         element.classList.add('pending');
       }
 
-      let icon = '○';
-
-      if (step.completed) {
-        icon = '✓';
-      } else if (step.progress > 0) {
-        icon = '◌';
-      }
-
       element.innerHTML = `
-        <span class="loading-step-icon">${icon}</span>
         <span class="loading-step-label">${step.displayLabel || step.label}</span>
       `;
 

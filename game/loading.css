@@ -59,11 +59,6 @@
   font-size: 16px;
 }
 
-.loading-step-icon {
-  width: 20px;
-  text-align: center;
-}
-
 .loading-step.completed {
   opacity: 1;
   color: var(--standout-color-cyan);
@@ -76,18 +71,4 @@
 
 .loading-step.pending {
   opacity: 0.4;
-}
-
-.loading-step.loading .loading-step-icon {
-  animation: loading-spin 1s linear infinite;
-}
-
-@keyframes loading-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
 }
