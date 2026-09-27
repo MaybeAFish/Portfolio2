@@ -112,6 +112,8 @@ export class TutorialScene extends Scene {
     this.isLoaded = true;
     loader.hideLoadingScreen();
     super.enter();
+
+    audioManager.playMusic('/game/sounds/environment/ambience.mp3', 5);
   }
 
   async exit() {
@@ -130,6 +132,7 @@ export class TutorialScene extends Scene {
 
     this.scene.clear();
     this.isLoaded = false;
+    audioManager.stopMusic();
   }
 
   update(delta) {

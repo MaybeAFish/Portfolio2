@@ -8,6 +8,7 @@ import { GameInteractables } from '../../../interactables/interactable-groups.js
 import { overlayManager } from '../../../interactables/interactable-implementations/overlay-manager.js';
 import { FallOffHint } from '../fall-off-hint.js';
 import { LoadingProgress } from '../loading-progress.js';
+import { audioManager } from '../../../sketch.js';
 
 export class GameScene extends Scene {
   constructor(rapierWorld, camera) {
@@ -92,6 +93,7 @@ export class GameScene extends Scene {
     this.isLoaded = true;
     loader.hideLoadingScreen();
     super.enter();
+    audioManager.playMusic('/game/sounds/environment/ambience.mp3', 5);
   }
 
   async exit() {
@@ -108,6 +110,7 @@ export class GameScene extends Scene {
 
     this.scene.clear();
     this.isLoaded = false;
+    audioManager.stopMusic();
   }
 
   update(delta) {

@@ -28,7 +28,8 @@
     filter 0.4s ease;
 }
 
-.game-card:hover img {
+.game-card:hover img,
+.game-card.is-selected img {
   transform: scale(1.06);
   filter: brightness(0.8);
 }
@@ -66,6 +67,7 @@
   border: 1px solid var(--standout-color-green);
   border-radius: var(--border-radius);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  will-change: transform;
 
   transition:
     opacity 0.15s ease,
@@ -102,6 +104,7 @@
 /* League of Legendz */
 .game-hover-rank {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 20px;
@@ -114,10 +117,15 @@
     height: 55px;
     object-fit: contain;
 }
-.game-hover-rank div {
+.rank-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 1 auto;
+}
+.rank-item div {
     display: flex;
     flex-direction: column;
-    gap: 2px;
 }
 .game-hover-rank strong {
     font-size: 0.9rem;
@@ -148,13 +156,6 @@
 @media (hover: none) {
   .game-card {
     cursor: pointer;
-  }
-
-  .game-card.is-selected::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(33, 33, 33, 0.85);
   }
 }
 

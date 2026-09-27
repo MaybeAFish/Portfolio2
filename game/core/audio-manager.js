@@ -19,6 +19,8 @@ export class AudioManager {
     this.sfxGain.connect(this.masterGain);
     this.masterGain.connect(this.audioContext.destination);
 
+    this.currentMusic = null;
+
     this.updateListener();
   }
 
@@ -27,12 +29,43 @@ export class AudioManager {
     this.listener.setPosition(pos.x, pos.y, pos.z);
   }
 
-  // Global sound
+
+  async playMusic(url, volume = 1.0) {
+    this.stopMusic();
+
+    const response = await fetch(url);
+    const arrayBuffer = await response.arrayBuffer();
+    const audioBuffer = await this.audioContext.decodeAudioData(arrayBuffer);
+
+    const source = this.audioContext.createBufferSource();
+    source.buffer = audioBuffer;
+    source.loop = true;
+
+    const gainNode = this.audioContext.createGain();
+    gainNode.gain.value = volume;
+
+    source.connect(gainNode);
+    gainNode.connect(this.musicGain);
+
+    source.start();
+
+    this.currentMusic = source;
+  }
+
+  stopMusic() {
+    if (this.currentMusic) {
+      this.currentMusic.stop();
+      this.currentMusic.disconnect();
+      this.currentMusic = null;
+    }
+  }
+
+  // SFX
   playGlobalSound(url, volume = 1.0, category = 'sfx') {
     this._loadAndPlay(url, volume, null, 50, category);
   }
 
-  // Positional sound
+  // Positional SFX
   playPositionalSound(url, position, maxDistance = 50, category = 'sfx') {
     this._loadAndPlay(url, 1.0, position, maxDistance, category);
   }
