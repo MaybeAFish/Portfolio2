@@ -28,7 +28,7 @@ function initialiseGameCharacters() {
   function showPreview(template, x, y) {
     preview.innerHTML = template.innerHTML;
     preview.classList.add("is-visible");
-    positionPreview(x, y); // measure/position AFTER content is injected, so size is correct
+    positionPreview(x, y);
   }
 
   function hidePreview() {
@@ -41,7 +41,7 @@ function initialiseGameCharacters() {
     const previewTemplate = card.querySelector(".game-hover");
     if (!previewTemplate) return;
 
-    // Desktop: mouse only, follows cursor
+    // Desktop: mouse only follows cursor
     card.addEventListener("pointerenter", (event) => {
       if (event.pointerType !== "mouse") return;
       showPreview(previewTemplate, event.clientX, event.clientY);
@@ -57,7 +57,7 @@ function initialiseGameCharacters() {
       hidePreview();
     });
 
-    // Mobile: tap toggles, positioned at the tap point
+    // Mobile: tap toggles positioned at the tap point
     card.addEventListener("touchstart", (e) => {
       e.stopPropagation();
       const touch = e.touches[0];
