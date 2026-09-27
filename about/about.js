@@ -11,57 +11,60 @@ document.addEventListener("DOMContentLoaded", () => {
 // SPECIFIC SHIZZLE
 function initialiseGameCharacters() {
   const preview = document.querySelector(".hover-preview");
+let activeCard = null;
 
-  function positionPreview(event) {
-    const margin = 18;
-    const offset = 18;
-    const previewRect = preview.getBoundingClientRect();
+function showPreview(card) {
+    const template = card.querySelector("template.game-hover");
+    if (!template) return;
 
-    const left = Math.min(
-      event.clientX + offset,
-      window.innerWidth - previewRect.width - margin,
-    );
+    preview.innerHTML = "";
+    preview.appendChild(template.content.cloneNode(true));
 
-    const top = Math.min(
-      event.clientY + offset,
-      window.innerHeight - previewRect.height - margin,
-    );
+    const rect = card.getBoundingClientRect();
+    const previewRect = preview.getBoundingClientRect(); // after content injected
 
-    preview.style.setProperty(
-      "--preview-left",
-      `${Math.max(margin, left)}px`,
-    );
+    let left = rect.left + rect.width / 2 - previewRect.width / 2;
+    left = Math.max(12, Math.min(left, window.innerWidth - previewRect.width - 12));
 
-    preview.style.setProperty(
-      "--preview-top",
-      `${Math.max(margin, top)}px`,
-    );
-  }
+    let top = rect.bottom + 10;
+    // flip above if it would overflow bottom of viewport
+    if (top + previewRect.height > window.innerHeight - 12) {
+        top = rect.top - previewRect.height - 10;
+    }
 
-  document.querySelectorAll(".game-card").forEach((card) => {
-    const previewTemplate = card.querySelector(".game-hover");
+    preview.style.setProperty("--preview-left", `${left}px`);
+    preview.style.setProperty("--preview-top", `${top}px`);
+    preview.classList.add("is-visible");
+}
 
-    if (!previewTemplate) return;
+function hidePreview() {
+    preview.classList.remove("is-visible");
+    if (activeCard) activeCard.classList.remove("is-selected");
+    activeCard = null;
+}
 
-    card.addEventListener("pointerenter", (event) => {
-      if (event.pointerType !== "mouse") return;
+document.querySelectorAll(".game-card").forEach((card) => {
+    // desktop
+    card.addEventListener("mouseenter", () => showPreview(card));
+    card.addEventListener("mouseleave", hidePreview);
 
-      preview.innerHTML = previewTemplate.innerHTML;
-      preview.classList.add("is-visible");
-    });
+    // mobile
+    card.addEventListener("touchstart", (e) => {
+        e.stopPropagation();
+        if (activeCard === card) {
+            hidePreview();
+            return;
+        }
+        if (activeCard) activeCard.classList.remove("is-selected");
+        activeCard = card;
+        card.classList.add("is-selected");
+        showPreview(card);
+    }, { passive: true });
+});
 
-    card.addEventListener("pointermove", (event) => {
-      if (event.pointerType !== "mouse") return;
-
-      positionPreview(event);
-    });
-
-    card.addEventListener("pointerleave", (event) => {
-      if (event.pointerType !== "mouse") return;
-
-      preview.classList.remove("is-visible");
-    });
-  });
+document.addEventListener("touchstart", (e) => {
+    if (!e.target.closest(".game-card")) hidePreview();
+}, { passive: true });
 }
 function initialiseEyeball() {
   const eyeball = document.querySelector(".eyeball");

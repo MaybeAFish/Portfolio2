@@ -84,11 +84,14 @@
   gap: 10px;
 }
 .game-hover-favourites figure {
-  width: 200px;
-  margin: 0;
+  width: 100%;
+  max-width: 200px;
+  flex: 1 1 0;
+  min-width: 0;
 }
 .game-hover-favourites img {
-  width: 200px;
+  width: 100%;
+  max-width: 200px;
   aspect-ratio: 1;
   object-fit: cover;
   object-position: top;
@@ -160,5 +163,29 @@
     position: absolute;
     inset: 0;
     background: rgba(33, 33, 33, 0.85);
+  }
+}
+
+@media (max-width: 900px) {
+  .game-hover-favourites {
+    flex-wrap: wrap;
+  }
+  .game-hover-favourites figure,
+  .game-hover-favourites img {
+    max-width: 90px;
+  }
+}
+
+@media (max-width: 600px) {
+  .game-hover-rank {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+  .game-subinformation-divider {
+    display: none;
+  }
+  .game-hover-rank .never-surrender {
+    width: 100%;
+    height: 40px;
   }
 }
