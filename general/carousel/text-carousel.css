@@ -44,7 +44,7 @@
 
   background: var(--supporting-background-color);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 18px;
+  border-radius: var(--border-radius);
 
   transition:
     transform 0.45s ease,
