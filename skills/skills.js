@@ -88,43 +88,38 @@ filters.forEach((filter) => {
         if (selectedFilter === "all") {
             const isCurrentlyActive = filter.classList.contains("is-active");
 
-            filters.forEach((button) => {
-                button.classList.remove("is-active");
-                button.setAttribute("aria-pressed", "false");
-            });
+            if (isCurrentlyActive) {
+                filter.classList.remove("is-active");
+                filter.setAttribute("aria-pressed", "false");
+            } else {
+                filters.forEach((button) => {
+                    button.classList.remove("is-active");
+                    button.setAttribute("aria-pressed", "false");
+                });
 
-            // Only activate All if it wasn't already active
-            if (!isCurrentlyActive) {
                 filter.classList.add("is-active");
                 filter.setAttribute("aria-pressed", "true");
             }
         } else {
-            const allFilter = document.querySelector(
-                '.skill-filter[data-filter="all"]'
-            );
-
             const isCurrentlyActive = filter.classList.contains("is-active");
 
             if (isCurrentlyActive) {
-                // Deselect the current filter
-                filter.classList.remove("is-active");
-                filter.setAttribute("aria-pressed", "false");
+                filters.forEach((button) => {
+                    button.classList.remove("is-active");
+                    button.setAttribute("aria-pressed", "false");
+                });
 
-                const remainingActiveFilters = [...filters].filter(
-                    (button) =>
-                        button.dataset.filter !== "all" &&
-                        button.classList.contains("is-active")
+                const allFilter = document.querySelector(
+                    '.skill-filter[data-filter="all"]'
                 );
 
-                // If this was the last filter, switch to All
-                if (remainingActiveFilters.length === 0) {
-                    allFilter.classList.add("is-active");
-                    allFilter.setAttribute("aria-pressed", "true");
-                }
+                allFilter.classList.add("is-active");
+                allFilter.setAttribute("aria-pressed", "true");
             } else {
-                // Select this filter and disable All
-                allFilter.classList.remove("is-active");
-                allFilter.setAttribute("aria-pressed", "false");
+                filters.forEach((button) => {
+                    button.classList.remove("is-active");
+                    button.setAttribute("aria-pressed", "false");
+                });
 
                 filter.classList.add("is-active");
                 filter.setAttribute("aria-pressed", "true");
