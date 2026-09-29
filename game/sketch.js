@@ -10,7 +10,9 @@ export let camera, renderer, rapierWorld, audioManager, sceneManager;
 const clock = new THREE.Clock();
 
 export async function startGame() {
-  await RAPIER.init({});
+  await RAPIER.init({
+    module: '/game/rapier/rapier_wasm3d_bg.wasm'
+  });
   await loadPostProcessingModules();
 
   rapierWorld = new RAPIER.World({ x: 0, y: -9.81, z: 0 });
