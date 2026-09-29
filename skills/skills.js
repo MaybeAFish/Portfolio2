@@ -7,24 +7,30 @@ const SCROLL_KEY = "skillsScroll";
 const RESTORE_KEY = "restoreSkillsState";
 
 function applyFilters() {
-    const activeFilters = [...filters]
-        .filter((button) => button.classList.contains("is-active"))
-        .map((button) => button.dataset.filter);
+    const activeFilter = [...filters]
+        .find((button) => button.classList.contains("is-active"))
+        ?.dataset.filter;
 
-    const showAll = activeFilters.includes("all");
+    const showAll = activeFilter === "all";
 
     let visibleCards = 0;
 
     cards.forEach((card) => {
         const cardSkills = card.dataset.skills.split(" ");
-
-        const matches =
-            showAll ||
-            activeFilters.some((filterName) =>
-                cardSkills.includes(filterName)
-            );
+        const matches = showAll || cardSkills.includes(activeFilter);
 
         card.classList.toggle("is-hidden", !matches);
+
+        // Highlight matching filter
+        card.querySelectorAll(".skill-card-tags span").forEach((tag) => {
+            const tagFilter = tag.textContent
+                .toLowerCase()
+                .replace(/ /g, "-");
+            tag.classList.toggle(
+                "is-highlighted",
+                !showAll && tagFilter === activeFilter
+            );
+        });
 
         if (matches) {
             visibleCards++;

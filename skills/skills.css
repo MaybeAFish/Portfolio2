@@ -141,6 +141,10 @@
   font-size: 0.8rem;
   backdrop-filter: blur(4px);
 }
+.skill-card-tags span.is-highlighted {
+  border-color: var(--standout-color-cyan);
+  color: var(--standout-color-cyan);
+}
 .skill-card-content h2 {
   margin: 0;
   width: 100%;
