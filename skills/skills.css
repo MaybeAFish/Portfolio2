@@ -90,8 +90,8 @@
     filter 0.4s ease;
 }
 .skill-card:hover .skill-card-media {
-    opacity: 0.9;
-    transform: scale(1.15);
+  opacity: 0.9;
+  transform: scale(1.15);
 }
 
 .skill-card-overlay {
@@ -105,12 +105,12 @@
   );
 }
 .skill-card:hover .skill-card-overlay {
-    background: linear-gradient(
-        180deg,
-        rgba(4, 6, 10, 0) 50%,
-        rgba(4, 6, 10, 0.5) 70%,
-        rgba(4, 6, 10, 0.95) 100%
-    );
+  background: linear-gradient(
+    180deg,
+    rgba(4, 6, 10, 0) 50%,
+    rgba(4, 6, 10, 0.5) 70%,
+    rgba(4, 6, 10, 0.95) 100%
+  );
 }
 
 /* CONTENT */
@@ -141,6 +141,10 @@
   font-size: 0.8rem;
   backdrop-filter: blur(4px);
 }
+.skill-card-tags span.is-filter-hover {
+  border-color: var(--standout-color-green);
+  color: var(--standout-color-green);
+}
 .skill-card-tags span.is-highlighted {
   background: rgba(0, 0, 0, 0.25);
   border-color: var(--standout-color-cyan);
@@ -154,7 +158,7 @@
   transition: color 0.25s ease;
 }
 .skill-card:hover .skill-card-content h2 {
-    color: var(--text-color);
+  color: var(--text-color);
 }
 .skill-card-content:has(h2:only-child) {
   justify-content: flex-end;
@@ -178,11 +182,10 @@
 }
 
 .iridescence-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
-
 
 @media (max-width: 760px) {
   .skill-grid {

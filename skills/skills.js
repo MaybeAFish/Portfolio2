@@ -135,6 +135,31 @@ filters.forEach((filter) => {
         applyFilters();
         saveSkillsState();
     });
+
+    filter.addEventListener("mouseenter", () => {
+        const hoveredFilter = filter.dataset.filter;
+
+        cards.forEach((card) => {
+            card.querySelectorAll(".skill-card-tags span").forEach((tag) => {
+                const tagFilter = tag.textContent
+                    .toLowerCase()
+                    .replace(/ /g, "-");
+
+                tag.classList.toggle(
+                    "is-filter-hover",
+                    tagFilter === hoveredFilter
+                );
+            });
+        });
+    });
+
+    filter.addEventListener("mouseleave", () => {
+        cards.forEach((card) => {
+            card.querySelectorAll(".skill-card-tags span").forEach((tag) => {
+                tag.classList.remove("is-filter-hover");
+            });
+        });
+    });
 });
 
 // Keep the latest scroll position available.
