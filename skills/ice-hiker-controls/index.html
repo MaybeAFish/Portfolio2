@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Designing The Ice Hiker's Camera & Movement System – Amine El Hammdaoui</title>
+    <title>Designing The Ice Hiker's Camera & Animation System – Amine El Hammdaoui</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
 
@@ -44,11 +44,11 @@
         </nav>
 
         <section>
-            <h1>Designing The Ice Hiker's Camera & Movement System</h1>
+            <h1>Designing The Ice Hiker's Camera & Animation System</h1>
 
             <h2>Controls System</h2>
             <p>
-                I designed and implemented the controls system for The Ice Hiker. The system rotates the camera based on mouse movement,
+                I designed and implemented the main controls system for The Ice Hiker. The system rotates the camera based on mouse movement,
                 uses raycasts to prevent the camera from clipping through terrain and moves the player in the direction
                 the camera is facing. The character would only look in the camera direction when the player performed an action.
             </p>
@@ -56,7 +56,7 @@
             <p>
                 I designed it this way because I wanted players to be able to see the character's face to create more of an emotional attachment without making
                 the camera difficult to control. I verified this through A/B testing, where every player rated my system
-                higher than the previous version.
+                higher than Unity's default cinemachine version.
             </p>
 
             <video class="side-navigation-media" autoplay muted loop controls playsinline preload="metadata">
@@ -73,7 +73,7 @@
             <h2>Animation System</h2>
             <p>
                 I also designed and implemented a custom animation system for The Ice Hiker because Unity's Animator
-                Controller felt limited and difficult to scale. My system lets actions easily trigger animations based on their "priority". It also supported custom transition times between animations. Some animations want to play immediately, such as throwing the pickaxe, while others want to happen more gradually, like falling.
+                Controller felt limited and difficult to scale. My system lets actions easily trigger animations based on their "priority". It also supported custom transition times between animations. Some animations feel better if they play immediately, such as throwing the pickaxe, while others look better when they happen more gradually, like falling.
             </p>
 
             <img class="side-navigation-media" src="/skills/ice-hiker-controls/animation-controller.gif" loading="lazy">

@@ -32,6 +32,7 @@ export class TutorialScene extends Scene {
 
     this.isLoaded = false;
     this.hasShownIntro = false;
+    this.hasDismissedMovementTutorial = false;
 
     this.box = document.getElementById('tutorial-box');
   }
@@ -112,11 +113,11 @@ export class TutorialScene extends Scene {
     loader.hideLoadingScreen();
     super.enter();
 
-    audioManager.playMusic('/game/sounds/environment/ambience.mp3', 5);
+    audioManager.playMusic('/game/sounds/environment/ambience.mp3', 5);    
 
     if (!this.hasShownIntro) {
       this.hasShownIntro = true;
-      this.startUIIntro();
+      this.firstPlaythrough();
     }
   }
 
@@ -129,9 +130,7 @@ export class TutorialScene extends Scene {
     onLeaveTutorialBox();
     
     this.interactableManager.dispose();
-
     this.mapManager.dispose();
-
     await this.map.dispose(this.scene);
 
     this.scene.clear();
@@ -141,6 +140,11 @@ export class TutorialScene extends Scene {
 
   update(delta) {
     if (!this.isLoaded) return;
+
+    if (!this.hasDismissedMovementTutorial && this.player.hasMoved) {
+      this.hasDismissedMovementTutorial = true;
+      onLeaveTutorialBox();
+    }
 
     if (!this.mapManager?.isMapOpen()) {
       if (overlayManager.currentOverlay == null) {
@@ -164,73 +168,32 @@ export class TutorialScene extends Scene {
     this.mapManager.update(delta);
   }
 
-  hideAppropiateUI() { 
-    this.box.style.display = 'none';
-    document.getElementById('minimap-container').style.display = 'none';
-    document.getElementById('settings-button').style.display = 'none';
-  }
-  showAppropiateUI() { 
-    this.box.style.display = 'flex';
-    document.getElementById('minimap-container').style.display = 'flex';
-    document.getElementById('settings-button').style.display = 'flex';
-  }
-
-  onMenuClose() {
-    this.showAppropiateUI();
-  }
-
-  onMenuOpen() {
-    super.onMenuOpen();
-    this.hideAppropiateUI();
-  }
-
-  startUIIntro() {
-    const uiElements = [
-      document.getElementById('settings-button'),
-      document.getElementById('minimap-container'),
-      document.getElementById('tutorial-box')
-    ];
-
-    onEnterTutorialBox('/game/scenes/game-scenes/tutorial-scene/tutorial-wasd.gif');
-    uiElements.forEach(element => {
-      element.style.transition = 'opacity 2s ease';
-      element.style.opacity = '0';
-      element.style.display = 'none';
-    });
-
+  firstPlaythrough() {
     setTimeout(() => {
-      uiElements.forEach(element => {
-        element.style.display = 'flex';
+      this.HUD.minimap.style.opacity = '1';
+      this.HUD.settings.style.opacity = '1';
 
-        requestAnimationFrame(() => {
-          element.style.opacity = '1';
-        });
-      });
-    }, 3000);
+      if (!this.player.hasMoved) {
+        onEnterTutorialBox('/game/scenes/game-scenes/tutorial-scene/tutorial-wasd.gif');
+      }
+    }, 2000);
   }
 }
 
 export function onEnterTutorialBox(imageUrl = null) {
-  const box = document.getElementById('tutorial-box');
-  const imgEl = document.getElementById('tutorial-image');
+  const tutorialBox = document.getElementById('tutorial-box');
+  const tutorialImg = document.getElementById('tutorial-image');
 
-  if (imageUrl) {
-    imgEl.src = '';
-    imgEl.src = imageUrl;
-    imgEl.style.display = 'block';
-  } else {
-    imgEl.style.display = 'none';
-  }
+  tutorialImg.onload = () => {
+    tutorialBox.style.opacity = '1';
+  };
+  tutorialImg.src = imageUrl;
 
-  box.style.display = 'flex';
-  box.style.opacity = '100%';
-
-  audioManager.playGlobalSound('/game/sounds/ui/show-tutorial-popup.mp3');
+  // audioManager.playGlobalSound('/game/sounds/ui/show-tutorial-popup.mp3');
 }
 
 export function onLeaveTutorialBox() {
   const box = document.getElementById('tutorial-box');
 
-  box.style.opacity = '0%';
-  box.style.display = 'none';
+  box.style.opacity = '0';
 }

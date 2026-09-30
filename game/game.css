@@ -5,6 +5,8 @@
   border: none;
   cursor: pointer;
   z-index: 101;
+  opacity: 0;
+  transition: opacity 1s ease;
 }
 .settings-button:hover {
   color: var(--standout-color-green);

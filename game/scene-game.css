@@ -47,6 +47,8 @@ html {
   align-items: center;
   gap: 10px;
   user-select: none;
+  opacity: 0;
+  transition: opacity 1s ease;
 }
 
 #minimap-content {

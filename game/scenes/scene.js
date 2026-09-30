@@ -2,7 +2,13 @@ import { overlayManager } from '../interactables/interactable-implementations/ov
 import { sceneManager } from '../sketch.js'
 
 export class Scene {
-  constructor() {}
+  constructor() {
+    this.HUD = {
+      tutorialBox: document.getElementById('tutorial-box'),
+      minimap: document.getElementById('minimap-container'),
+      settings: document.getElementById('settings-button'),
+    };
+  }
   enter() { // called when scene becomes active
     this.isFinishedEntering();
   }
@@ -12,10 +18,25 @@ export class Scene {
   async exit() {} // called when scene leaves
   update(delta) {} // called each frame
 
-  onMenuClose() {} // Called when settings menu opens or worldmap menu closes
+  // Called when settings menu opens or worldmap menu closes
+  onMenuClose() {
+    this.showUI();
+  }
 
+  // Called when settings menu opens or worldmap menu opens
   onMenuOpen() {
-    // Called when settings menu opens or worldmap menu opens
     overlayManager.closeOverlay(overlayManager.currentOverlay, false);
+    this.hideUI();
+  }
+
+  hideUI() { 
+    Object.values(this.HUD).forEach(element => {
+      element.style.display = 'none';
+    });
+  }
+  showUI() {
+    Object.values(this.HUD).forEach(element => {
+      element.style.display = 'flex';
+    });
   }
 }

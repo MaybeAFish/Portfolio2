@@ -16,6 +16,7 @@ export class Player extends Character {
     this.offset = new THREE.Vector3(0, 2, -5); // third-person offset camera
 
     // Movement
+    this.hasMoved = false;
     this.velocity = new THREE.Vector3(); // total velocity
     this.speed = 220; // Units per second
     this.drag = 10; // how quickly velocity slows
@@ -113,6 +114,7 @@ export class Player extends Character {
     if (inputManager.keysHeld[inputManager.bindings.right]) inputDir.x -= 1;
 
     if (inputDir.lengthSq() === 0) return;
+    this.hasMoved = true;
 
     inputDir.normalize();
     inputDir.applyAxisAngle(new THREE.Vector3(0, 1, 0), this.viewYaw);
