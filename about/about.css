@@ -4,3 +4,12 @@
     font-size: clamp(1.8rem, 3vw, 2.6rem);
     text-align: center;
 }
+.eyeball-projectile {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  user-select: none;
+  display: none;
+  will-change: transform;
+}

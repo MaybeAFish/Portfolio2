@@ -88,8 +88,39 @@ function initialiseGameCharacters() {
   }, { passive: true });
 }
 
+
+
 function initialiseEyeball() {
   const eyeball = document.querySelector(".eyeball");
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let lookAngle = 0;
+
+  const PROJECTILE_IMAGE = "/about/art/pixelart/eyeballProjectile.png";
+  const PROJECTILE_SPEED = 5000;
+  const SHOOT_INTERVAL = 2000;
+  const POOL_SIZE = 3;
+
+  const projectilePool = Array.from({ length: POOL_SIZE }, () => {
+    const element = document.createElement("img");
+
+    element.src = PROJECTILE_IMAGE;
+    element.className = "eyeball-projectile";
+    element.alt = "";
+    element.draggable = false;
+
+    document.body.appendChild(element);
+
+    return {
+      element,
+      active: false,
+      x: 0,
+      y: 0,
+      vx: 0,
+      vy: 0
+    };
+  });
 
   function updateEyeball(x, y) {
     const rect = eyeball.getBoundingClientRect();
@@ -97,14 +128,107 @@ function initialiseEyeball() {
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
 
-    const angle = Math.atan2(y - centerY, x - centerX) - Math.PI / 2;
+    lookAngle = Math.atan2(y - centerY, x - centerX) - Math.PI / 2;
 
-    eyeball.style.transform = `rotate(${angle}rad)`;
+    eyeball.style.transform = `rotate(${lookAngle}rad)`;
   }
 
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
+  function shootProjectile() {
+    const rect = eyeball.getBoundingClientRect();
 
+    const margin = 100;
+
+    if (
+      rect.right < -margin ||
+      rect.left > window.innerWidth + margin ||
+      rect.bottom < -margin ||
+      rect.top > window.innerHeight + margin
+    ) {
+      return;
+    }
+
+    const projectile = projectilePool.find(
+      projectile => !projectile.active
+    );
+
+    if (!projectile) return;
+
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const directionX = -Math.sin(lookAngle);
+    const directionY = Math.cos(lookAngle);
+
+    projectile.x = centerX;
+    projectile.y = centerY;
+
+    projectile.vx = directionX * PROJECTILE_SPEED;
+    projectile.vy = directionY * PROJECTILE_SPEED;
+
+    projectile.active = true;
+
+    projectile.element.style.display = "block";
+    projectile.element.style.left = `${centerX}px`;
+    projectile.element.style.top = `${centerY}px`;
+  }
+
+  function updateProjectiles(deltaTime) {
+    const margin = 100;
+
+    for (const projectile of projectilePool) {
+      if (!projectile.active) continue;
+
+      projectile.x += projectile.vx * deltaTime;
+      projectile.y += projectile.vy * deltaTime;
+
+      const angle = Math.atan2(
+        projectile.vy,
+        projectile.vx
+      );
+
+      projectile.element.style.left = `${projectile.x}px`;
+      projectile.element.style.top = `${projectile.y}px`;
+      projectile.element.style.transform = `
+        translate(-50%, -50%)
+        rotate(${angle + Math.PI / 2}rad)      
+      `;
+
+      // Recycle once it completely left screen.
+      if (
+        projectile.x < -margin ||
+        projectile.x > window.innerWidth + margin ||
+        projectile.y < -margin ||
+        projectile.y > window.innerHeight + margin
+      ) {
+        projectile.active = false;
+        projectile.element.style.display = "none";
+      }
+    }
+  }
+
+  let lastTime = performance.now();
+
+  function projectileLoop(time) {
+    const deltaTime = Math.min(
+      (time - lastTime) / 1000,
+      0.05
+    );
+
+    lastTime = time;
+
+    updateProjectiles(deltaTime);
+
+    requestAnimationFrame(projectileLoop);
+  }
+
+  requestAnimationFrame(projectileLoop);
+
+  // Shoot .
+  shootProjectile();
+  setInterval(shootProjectile, SHOOT_INTERVAL);
+
+
+  // Mobile support and resizing the shizzle
   document.addEventListener("mousemove", (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
