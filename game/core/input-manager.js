@@ -58,6 +58,10 @@ export class InputManager {
       this.mousePosition.y = e.clientY;
     });
 
+    window.addEventListener('blur', () => {
+      this.clearInput();
+    });
+
     // window.addEventListener('click', (e) => {
     //   if (!currentCharacter?.handleClickRaycast) return;
     //   currentCharacter.handleClickRaycast(e, scene, camera);
@@ -65,6 +69,11 @@ export class InputManager {
   
 
     window.addEventListener('contextmenu', (e) => e.preventDefault());
+  }
+
+  clearInput() {
+    this.keysHeld = {};
+    this.keysPressed = {};
   }
 
   resetFrame() {

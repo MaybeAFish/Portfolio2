@@ -9,10 +9,17 @@
   height: 78vh;
   margin: 32px auto 64px;
   overflow: hidden;
-  border: 1px solid rgba(71, 203, 210, 0.35);
+  border: 1px solid var(--supporting-background-color);
   border-radius: var(--border-radius);
   background: #111;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+}
+.game-iframe-container:hover {
+  border-color: var(--standout-color-green);
+}
+
+.game-iframe-container.is-focused {
+  border-color: var(--standout-color-cyan);
 }
 
 .game-iframe-container iframe {

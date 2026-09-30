@@ -1,28 +1,30 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
 import * as RAPIER from 'https://cdn.skypack.dev/@dimforge/rapier3d-compat';
-
 import { SceneManager } from './scenes/scene-manager.js';
 import { AudioManager } from '/game/core/audio-manager.js';
 import { loadPostProcessingModules } from './core/post-processing-loader.js';
 
 export let camera, renderer, rapierWorld, audioManager, sceneManager;
 
-const clock = new THREE.Clock();
+// border when focus
+window.addEventListener('focus', () => {
+  window.parent.postMessage({ type: 'game-focus', focused: true }, '*');
+});
+window.addEventListener('blur', () => {
+  window.parent.postMessage({ type: 'game-focus', focused: false }, '*');
+});
 
 export async function startGame() {
+  // Play button
+  const container = document.getElementById('game-container');
+  document.getElementById('play-game-button').style.display = 'none';
+
+  // Setup Three.js stuff
   await RAPIER.init({
     module: '/game/rapier/rapier_wasm3d_bg.wasm'
   });
   await loadPostProcessingModules();
 
-  rapierWorld = new RAPIER.World({ x: 0, y: -9.81, z: 0 });
-
-  // Disable/enable the right content when game starts
-  const container = document.getElementById('game-container');
-  document.getElementById('play-game-button').style.display = 'none';
-  container.style.display = 'block';
-
-  // Setup Three.js renderer and camera
   renderer = new THREE.WebGLRenderer({ antialias: true });
   container.appendChild(renderer.domElement);
 
@@ -50,11 +52,15 @@ export async function startGame() {
   resizeObserver.observe(container);
   resizeGame();
 
+  rapierWorld = new RAPIER.World({ x: 0, y: -9.81, z: 0 });
   sceneManager = new SceneManager(rapierWorld, camera, renderer);
   await sceneManager.switchScene('tutorial');
+  container.style.display = 'block';
 
   animate();
 }
+
+const clock = new THREE.Clock();
 
 function animate() {
   requestAnimationFrame(animate);

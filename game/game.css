@@ -1,13 +1,15 @@
-.game-button {
+.settings-button {
+  position: fixed;
   color: white;
   background-color: transparent;
   border: none;
   cursor: pointer;
+  z-index: 101;
 }
-.game-button:hover {
+.settings-button:hover {
   color: var(--standout-color-green);
 }
-.game-button:active {
+.settings-button:active {
   color: var(--standout-color-cyan);
 }
 

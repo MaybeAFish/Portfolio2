@@ -10,6 +10,9 @@ export class MapManager {
     this.interactables = interactables;
     this.mapOpen = false;
 
+    this.minimap;
+    this.worldMap;
+
     // Setup UI bindings
     this._toggleMapHandler = this.toggleMap.bind(this);
     document.getElementById('close-map-btn').addEventListener('click', this._toggleMapHandler);

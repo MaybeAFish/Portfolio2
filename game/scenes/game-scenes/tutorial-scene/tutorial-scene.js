@@ -28,10 +28,10 @@ export class TutorialScene extends Scene {
     this.mapManager = null;
     this.interactableManager = null;
     this.fallHint = new FallOffHint(-20);
-
     this.tutorialZones = [];
 
     this.isLoaded = false;
+    this.hasShownIntro = false;
 
     this.box = document.getElementById('tutorial-box');
   }
@@ -69,7 +69,6 @@ export class TutorialScene extends Scene {
 
     // Tutorial
     this.tutorialZones = [
-      new GifTutorialZone(this.scene, new THREE.Vector3(0, 5, 0), new THREE.Vector3(10, 10, 10), '/game/scenes/game-scenes/tutorial-scene/tutorial-wasd.gif', this.rapierWorld),
       new GifTutorialZone(this.scene, new THREE.Vector3(10, 10, -50), new THREE.Vector3(50, 20, 50), '/game/scenes/game-scenes/tutorial-scene/tutorial-camera.gif', this.rapierWorld),
       new GifTutorialZone(this.scene, new THREE.Vector3(50, 4, -50), new THREE.Vector3(8, 8, 40), '/game/scenes/game-scenes/tutorial-scene/tutorial-jump.gif', this.rapierWorld),
       new GifTutorialZone(this.scene, new THREE.Vector3(80, 0, -50), new THREE.Vector3(10, 40, 10), '/game/scenes/game-scenes/tutorial-scene/tutorial-double-jump.gif', this.rapierWorld),
@@ -114,6 +113,11 @@ export class TutorialScene extends Scene {
     super.enter();
 
     audioManager.playMusic('/game/sounds/environment/ambience.mp3', 5);
+
+    if (!this.hasShownIntro) {
+      this.hasShownIntro = true;
+      this.startUIIntro();
+    }
   }
 
   async exit() {
@@ -160,26 +164,55 @@ export class TutorialScene extends Scene {
     this.mapManager.update(delta);
   }
 
-  hideTutorialUI() { this.box.style.opacity = '0%'; }
-  showTutorialUI() { this.box.style.opacity = '100%'; }
+  hideAppropiateUI() { 
+    this.box.style.display = 'none';
+    document.getElementById('minimap-container').style.display = 'none';
+    document.getElementById('settings-button').style.display = 'none';
+  }
+  showAppropiateUI() { 
+    this.box.style.display = 'flex';
+    document.getElementById('minimap-container').style.display = 'flex';
+    document.getElementById('settings-button').style.display = 'flex';
+  }
 
   onMenuClose() {
-    this.showTutorialUI();
+    this.showAppropiateUI();
   }
 
   onMenuOpen() {
     super.onMenuOpen();
-    this.hideTutorialUI();
+    this.hideAppropiateUI();
+  }
+
+  startUIIntro() {
+    const uiElements = [
+      document.getElementById('settings-button'),
+      document.getElementById('minimap-container'),
+      document.getElementById('tutorial-box')
+    ];
+
+    onEnterTutorialBox('/game/scenes/game-scenes/tutorial-scene/tutorial-wasd.gif');
+    uiElements.forEach(element => {
+      element.style.transition = 'opacity 2s ease';
+      element.style.opacity = '0';
+      element.style.display = 'none';
+    });
+
+    setTimeout(() => {
+      uiElements.forEach(element => {
+        element.style.display = 'flex';
+
+        requestAnimationFrame(() => {
+          element.style.opacity = '1';
+        });
+      });
+    }, 3000);
   }
 }
-
-
-
 
 export function onEnterTutorialBox(imageUrl = null) {
   const box = document.getElementById('tutorial-box');
   const imgEl = document.getElementById('tutorial-image');
-
 
   if (imageUrl) {
     imgEl.src = '';

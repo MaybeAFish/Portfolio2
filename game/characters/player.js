@@ -10,10 +10,12 @@ export class Player extends Character {
     this.world = rapierWorld;
     this.scene = scene;
 
+    // Camera
     this.viewPitch = 0.4;
     this.viewYaw = 0;
     this.offset = new THREE.Vector3(0, 2, -5); // third-person offset camera
 
+    // Movement
     this.velocity = new THREE.Vector3(); // total velocity
     this.speed = 220; // Units per second
     this.drag = 10; // how quickly velocity slows
@@ -38,7 +40,6 @@ export class Player extends Character {
       this.charRadius
     );
     this.characterCollider = this.world.createCollider(this.colliderDesc);
-
     this.characterCollider.setTranslation({ x: 0, y: 0, z: 0 }, true);
     this.controller = this.world.createCharacterController(0.01);
     this.controller.enableAutostep(
