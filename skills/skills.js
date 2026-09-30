@@ -136,27 +136,71 @@ filters.forEach((filter) => {
         saveSkillsState();
     });
 
-    filter.addEventListener("mouseenter", () => {
-        const hoveredFilter = filter.dataset.filter;
 
-        cards.forEach((card) => {
-            card.querySelectorAll(".skill-card-tags span").forEach((tag) => {
-                const tagFilter = tag.textContent
-                    .toLowerCase()
-                    .replace(/ /g, "-");
+    // Actively clicking
+    let clickingFilter = null;
+    filters.forEach((filter) => {
+        filter.addEventListener("pointerdown", () => {
+            clickingFilter = filter.dataset.filter;
 
-                tag.classList.toggle(
-                    "is-filter-hover",
-                    tagFilter === hoveredFilter
-                );
+            cards.forEach((card) => {
+                card.querySelectorAll(".skill-card-tags span").forEach((tag) => {
+                    const tagFilter = tag.textContent
+                        .toLowerCase()
+                        .replace(/ /g, "-");
+
+                    tag.classList.toggle(
+                        "is-clicking",
+                        tagFilter === clickingFilter
+                    );
+                });
+            });
+        });
+
+        // Hover
+        filter.addEventListener("mouseenter", () => {
+            const hoveredFilter = filter.dataset.filter;
+
+            cards.forEach((card) => {
+                card.querySelectorAll(".skill-card-tags span").forEach((tag) => {
+                    const tagFilter = tag.textContent
+                        .toLowerCase()
+                        .replace(/ /g, "-");
+
+                    tag.classList.toggle(
+                        "is-filter-hover",
+                        tagFilter === hoveredFilter
+                    );
+                });
+            });
+        });
+        filter.addEventListener("mouseleave", () => {
+            cards.forEach((card) => {
+                card.querySelectorAll(".skill-card-tags span").forEach((tag) => {
+                    tag.classList.remove("is-filter-hover");
+                });
             });
         });
     });
 
-    filter.addEventListener("mouseleave", () => {
+    // Release anywhere on  page
+    window.addEventListener("pointerup", () => {
+        clickingFilter = null;
+
         cards.forEach((card) => {
             card.querySelectorAll(".skill-card-tags span").forEach((tag) => {
-                tag.classList.remove("is-filter-hover");
+                tag.classList.remove("is-clicking");
+            });
+        });
+    });
+
+    // browser cancelling the pointer
+    window.addEventListener("pointercancel", () => {
+        clickingFilter = null;
+
+        cards.forEach((card) => {
+            card.querySelectorAll(".skill-card-tags span").forEach((tag) => {
+                tag.classList.remove("is-clicking");
             });
         });
     });
