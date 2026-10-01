@@ -59,7 +59,7 @@
 
             <p>
                 Asteroids, solar rays and supernovas could come from different directions, meaning that
-                staying in one position was rarely safe for long.
+                staying in one position was never safe for long.
             </p>
 
             <video class="side-navigation-media" autoplay muted controls loop playsinline>
@@ -99,19 +99,13 @@
             <h2>Making Enemies Use Positioning to Survive</h2>
 
             <p>
-                I also designed the eyeball enemies around positioning rather than simply having them
-                chase the player.
+                I designed the eyeball enemies' to be cowards which position themselves in the safest possible manner to avoid conflict with the player for as long as possible.
             </p>
 
             <p>
-                Eyeballs are high-priority targets, but they try to stay behind meatshield enemies and
-                away from the player. They also consider the positions of nearby eyeballs, preventing
-                them from simply stacking on top of each other.
+                Eyeballs are high-priority targets, but because of this behaviour where they try to stay behind meatshield enemies, it prevents the player from abusing the 2D movement and moving upwards to try and immediately kill these threats. Additionally, I made them consider the positions of other nearby eyeballs, which prevented
+                them from stacking on top of each other.
             </p>
-            <p>
-                This prevented the player from simply moving upwards to immediately try to kill the high-prio threats to make the rest of the round too easy.
-            </p>
-
 
             <div class="mediacarousel" data-category="asdf" aria-label="Eyeball enemy behaviour">
                 <div class="mediacarousel-track">

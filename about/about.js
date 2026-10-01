@@ -98,9 +98,10 @@ function initialiseEyeball() {
   let lookAngle = 0;
 
   const PROJECTILE_IMAGE = "/about/art/pixelart/eyeballProjectile.png";
-  const PROJECTILE_SPEED = 5000;
+  const PROJECTILE_SPEED = 800;
   const SHOOT_INTERVAL = 2000;
   const POOL_SIZE = 3;
+  const HIT_DISTANCE = 40; // Hitbox
 
   const projectilePool = Array.from({ length: POOL_SIZE }, () => {
     const element = document.createElement("img");
@@ -159,8 +160,8 @@ function initialiseEyeball() {
     const directionX = -Math.sin(lookAngle);
     const directionY = Math.cos(lookAngle);
 
-    projectile.x = centerX;
-    projectile.y = centerY;
+    projectile.x = centerX + window.scrollX;
+    projectile.y = centerY + window.scrollY;
 
     projectile.vx = directionX * PROJECTILE_SPEED;
     projectile.vy = directionY * PROJECTILE_SPEED;
@@ -168,8 +169,11 @@ function initialiseEyeball() {
     projectile.active = true;
 
     projectile.element.style.display = "block";
-    projectile.element.style.left = `${centerX}px`;
-    projectile.element.style.top = `${centerY}px`;
+    const screenX = projectile.x - window.scrollX;
+    const screenY = projectile.y - window.scrollY;
+
+    projectile.element.style.left = `${screenX}px`;
+    projectile.element.style.top = `${screenY}px`;
   }
 
   function updateProjectiles(deltaTime) {
@@ -186,19 +190,32 @@ function initialiseEyeball() {
         projectile.vx
       );
 
-      projectile.element.style.left = `${projectile.x}px`;
-      projectile.element.style.top = `${projectile.y}px`;
+      projectile.element.style.left = `${projectile.x - window.scrollX}px`;
+      projectile.element.style.top = `${projectile.y - window.scrollY}px`;
       projectile.element.style.transform = `
         translate(-50%, -50%)
         rotate(${angle + Math.PI / 2}rad)      
       `;
 
       // Recycle once it completely left screen.
+      const screenX = projectile.x - window.scrollX;
+      const screenY = projectile.y - window.scrollY;
+
       if (
-        projectile.x < -margin ||
-        projectile.x > window.innerWidth + margin ||
-        projectile.y < -margin ||
-        projectile.y > window.innerHeight + margin
+        Math.hypot(screenX - mouseX, screenY - mouseY) < HIT_DISTANCE
+      ) {
+        document.querySelector(".about-page").classList.add("screen-shake");
+        setTimeout(() => document.querySelector(".about-page").classList.remove("screen-shake"), 125);
+        
+        projectile.active = false;
+        projectile.element.style.display = "none";
+      }
+
+      if (
+        screenX < -margin ||
+        screenX > window.innerWidth + margin ||
+        screenY < -margin ||
+        screenY > window.innerHeight + margin
       ) {
         projectile.active = false;
         projectile.element.style.display = "none";
