@@ -90,6 +90,10 @@
             <br>
             <h1>Juice Concepts</h1>
             <p>Every choice offers both a combat juice and a tempo juice, with each option carrying a drawback that matters to the other juice's playstyle.</p>
+            <!-- <br>
+            <h2>First choice (levels 3-4, min 3:00-3:30)</h2> -->
+
+
             <ul>
                 <li>
                     <strong>First choice (levels 3-4, min 3:00-3:30)</strong>
@@ -107,9 +111,9 @@
                     <strong>Second choice (levels 4-6, min 5:00-5:30)</strong>
                     <ul>
                         <li>
-                            Watermelon Juice: "Increases your damage dealt by 10% but reduces your minion damage by 20% for 60s."
+                            Watermelon Juice: "Increases your damage dealt to champions by 10% but reduces your minion and monster damage by 20% for 60s."
                         </li>
-                        <li>Pineapple Juice: "Increases your out-of-combat movement speed by 40 but reduces your damage dealt by 10% for 60s."</li>
+                        <li>Pineapple Juice: "Increases your out-of-combat movement speed by 40 but reduces your damage dealt to champions by 10% for 60s."</li>
                     </ul>
                 </li>
             </ul>
@@ -117,13 +121,22 @@
 
             <br>
             <h1>My Design Thinking</h1>
-            <p>I wanted Pick Your Poison to be chosen by players who want to temporarily cater their power in either combat or tempo during the early laning phase. This rune is especially useful if the player's playstyle varies from game to game. For the player to make the correct choice, they must assess both the benefit and the drawback simultaneously which can change depending on any given situation.</p>
+            <p>I wanted Pick Your Poison to be chosen by players who want to temporarily cater their power in either combat or tempo during the early stages of laning. This rune is especially useful if the player's playstyle varies from game to game. For the player to make the correct choice, they must assess both the benefit and the drawback simultaneously which can change depending on any given situation.</p>
 
 
             <ul>
                 <li>
                     I want my trade-off system to be something that can be played around, no matter if it's you or the enemy that's using it. Each juice has a window of opportunity to abuse the juice's drawback or respect the juice's buff. But the player drinking the juice will of course always be able to drink it more favourably.
                 </li>
+                <li>Intended use of each juice:</li>
+                    <ul>
+                        <li>Apple juice allows for more beneficial extended trades, at the cost of weaker mobility.</li>
+                        <li>Orange juice lets the player reset faster for an early buy, but makes staying in lane riskier while the buff is active.</li>
+                        <li>Watermelon juice gives the player an advantage in close fights, at the cost of weaker wave management.</li>
+                        <li>Pineapple juice lets the player walk to lane and roam faster, at the cost of weaker damage when a fight starts.</li>
+                    </ul>
+                </li>
+                <li>I gave the player 30s to make each decision so that players in base have a respectable amount of time to choose a juice to maximize its benefit or minimize its drawback.</li>
                 <li>I made the decision for the juices to occupy the player's inventory in alternating slots.</li>
                     <ul>
                         <li>This solved the gameplay problem of a player not having enough inventory slots available for the choice to be presented. Had I made the juices wait in a queue until there is enough inventory space, it would create UX problems regarding the 30s timer to drink one.</li>
@@ -131,10 +144,21 @@
                         <li>The tab menu will remain to show the player's actual inventory.</li>
                     </ul>
                 </li>
-                <li>I gave the player 30s to make each decision so that players in base have a respectable amount of time to choose a juice to maximize its benefit or minimize its drawback.</li>
                 <li>I made every juice represented by either red (combat) or yellow (tempo) fruit to make them slightly easier to differentiate during fights.</li>
                 <li>I call them "juices", as that differentiates my rune from Triple Tonic's "elixirs", and Biscuit Delivery's "biscuits".</li>
             </ul>
+
+
+            <!-- Example Usecases -->
+            <!-- <li>Intended use of each juice:</li>
+                <ul>
+                    <li>Apple juice allows for more beneficial extended trades, at the cost of weaker mobility.</li>
+                    <li>Orange juice lets the player reset faster for an early buy, but makes staying in lane riskier while the buff is active.</li>
+                    <li>Watermelon juice gives the player an advantage in close fights, at the cost of weaker wave management.</li>
+                    <li>Pineapple juice lets the player walk to lane and roam faster, at the cost of weaker damage when a fight starts.</li>
+                </ul>
+            </li> -->
+            <!-- Show me three real lane states. What does the player choose in each? What does the opponent do in response? Why is that interesting? -->
 
             <br>
             <h2>Problems Left to Solve</h2>
