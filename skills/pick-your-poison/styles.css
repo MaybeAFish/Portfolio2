@@ -1,0 +1,39 @@
+﻿.juice-choice {
+    background: var(--supporting-background-color);
+    border-radius: var(--border-radius);
+    padding: 40px;
+    margin: 40px 0;
+}
+.juice-choice p,
+.juice-choice h3 {
+    text-align: center;
+}
+
+.juice-choice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.juice-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.juice-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.juice-card h3 {
+    margin-top: 0;
+}
+
+@media (max-width: 680px) {
+    .juice-choice-grid {
+        grid-template-columns: 1fr;
+    }
+}
