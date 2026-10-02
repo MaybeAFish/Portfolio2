@@ -46,17 +46,15 @@
         <section>
             <h1>Designing The Ice Hiker's Camera & Animation System</h1>
 
-            <h2>Controls System</h2>
+            <h2>Camera & Character Facing</h2>
             <p>
-                I designed and implemented the main controls system for The Ice Hiker. The system rotates the camera based on mouse movement,
-                uses raycasts to prevent the camera from clipping through terrain and moves the player in the direction
-                the camera is facing. The character would only look in the camera direction when the player performed an action.
+                I wanted players to be able to see the character's face and build more of an emotional connection with him without restricting camera control. To achieve this, I separated the camera's facing direction from the character's facing direction. The player can freely look around, but the actual character will only turn toward the camera when performing an action.
             </p>
-
             <p>
-                I designed it this way because I wanted players to be able to see the character's face to create more of an emotional attachment without making
-                the camera difficult to control. I verified this through A/B testing, where every player rated my system
-                higher than Unity's default cinemachine version.
+                I designed and implemented the camera and movement system around this decision. The camera rotates with mouse movement, uses raycasts to prevent the camera from clipping through terrain and the player will always move in the direction the camera's facing, independant of the character's actual direction.
+            </p>
+            <p>
+                I verified the design through A/B testing, where every player preferred my system over Unity's default Cinemachine setup.
             </p>
 
             <video class="solo-content" autoplay muted loop controls playsinline preload="metadata">
@@ -73,8 +71,12 @@
             <h2>Animation System</h2>
             <p>
                 I also designed and implemented a custom animation system for The Ice Hiker because Unity's Animator
-                Controller felt limited and difficult to scale. My system lets actions easily trigger animations based on their "priority". It also supported custom transition times between animations. Some animations feel better if they play immediately, such as throwing the pickaxe, while others look better when they happen more gradually, like falling.
+                Controller felt limited and difficult to scale.
             </p>
+            <p>
+                This system supports custom transition times between animations. I implemented this because some animations feel better when they play immediately, such as throwing the pickaxe, while others look better when they happen more gradually, like falling.
+            </p>
+
 
             <img class="solo-content" src="/skills/ice-hiker-controls/animation-controller.gif" loading="lazy">
         </section>
