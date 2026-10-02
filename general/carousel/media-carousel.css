@@ -37,7 +37,7 @@
   pointer-events: none;
 
   transition:
-    transform 0.45s ease,
+    transform 0.35s ease,
     opacity 0.35s ease,
     filter 0.35s ease;
 
@@ -83,7 +83,7 @@
 .mediacarousel-slide.is-next {
   visibility: visible;
 
-  opacity: 0.38;
+  opacity: 0.3;
   filter: saturate(0.7);
 
   cursor: pointer;
@@ -93,11 +93,11 @@
 }
 
 .mediacarousel-slide.is-prev {
-  --mediacarousel-offset: clamp(-430px, -32vw, -220px);
+  --mediacarousel-offset: clamp(-330px, -25vw, -170px);
 }
 
 .mediacarousel-slide.is-next {
-  --mediacarousel-offset: clamp(220px, 32vw, 430px);
+  --mediacarousel-offset: clamp(170px, 25vw, 330px);
 }
 
 /* Active */
