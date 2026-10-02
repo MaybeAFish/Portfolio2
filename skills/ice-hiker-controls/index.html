@@ -48,7 +48,7 @@
 
             <h2>Camera & Character Facing</h2>
             <p>
-                I wanted players to be able to see the character's face and build more of an emotional connection with him without restricting camera control. To achieve this, I separated the camera's facing direction from the character's facing direction. The player can freely look around, but the actual character will only turn toward the camera when performing an action.
+                I wanted players to be able to see the character's face and build more of an emotional connection with him without restricting camera control. To achieve this, I separated the camera's facing direction from the character's facing direction. The player can freely look around, but the actual character will only turn toward the camera when the player performs an action.
             </p>
             <p>
                 I designed and implemented the camera and movement system around this decision. The camera rotates with mouse movement, uses raycasts to prevent the camera from clipping through terrain and the player will always move in the direction the camera's facing, independant of the character's actual direction.
