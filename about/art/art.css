@@ -13,28 +13,18 @@
 
 /* Respawn button centerization */
 .art-grid figure:has(.eyeball) {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   z-index: 1;
 }
 
 /* Respawn button */
 .eyeball-respawn {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  grid-area: 1 / 1;
   margin: 0;
   white-space: nowrap;
 }
-.eyeball-respawn:hover {
-  transform: translate(-50%, -50%) scale(1.01);
-}
-.eyeball-respawn:active {
-  transform: translate(-50%, -50%) scale(0.97);
-}
+
 
 /* Player takes dmg animation */
 .screen-shake {

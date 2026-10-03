@@ -19,10 +19,12 @@
   z-index: 0;
   transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.3s ease;
   cursor: pointer;
+
+  font-size: clamp(0.8rem, 3vw, 1.2rem);
+  transform: scale(clamp(0.7, 3vw, 1));
 }
 
 .fancy-button:hover {
-  transform: scale(1.01);
   color: var(--standout-color-green);
   border-color: var(--standout-color-green);
 }
