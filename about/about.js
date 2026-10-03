@@ -107,9 +107,10 @@ function initialiseEyeball() {
 
   const MOUSE_HIT_DISTANCE = 40;
   const AGE_BEFORE_DAMAGE = 1;
+  const HEALTH_AMOUNT = 3;
 
 
-  let health = 3;
+  let health = HEALTH_AMOUNT;
   let dead = false;
 
   const projectilePool = Array.from({ length: POOL_SIZE }, () => {
@@ -234,7 +235,7 @@ function initialiseEyeball() {
   }
 
   function respawnEyeball() {
-    health = 3;
+    health = HEALTH_AMOUNT;
     dead = false;
 
     const respawnButton =
