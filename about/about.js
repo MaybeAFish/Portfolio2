@@ -92,7 +92,6 @@ function initialiseGameCharacters() {
 
 function initialiseEyeball() {
   const eyeball = document.querySelector(".eyeball");
-  if (!eyeball) return;
 
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
@@ -187,7 +186,6 @@ function initialiseEyeball() {
     health--;
 
 
-    // Visual feedback
     eyeball.classList.remove("hit");
     // Force the animation to restart if hit repeatedly
     void eyeball.offsetWidth;
@@ -217,7 +215,7 @@ function initialiseEyeball() {
       deactivateProjectile(projectile);
     }
 
-    // Stop the damage flicker before starting death animation
+    // Stop the damage flickers before starting death animation
     eyeball.classList.remove("hit");
     eyeball.classList.add("dying");
 
@@ -264,12 +262,7 @@ function initialiseEyeball() {
       const screenY = projectile.y - window.scrollY;
       projectile.age += deltaTime;
 
-      /*
-       * HOMING
-       *
-       * Instead of instantly pointing at the cursor,
-       * gradually rotate the projectile's velocity toward it.
-       */
+      // Fly to mouse homing
       const targetX = mouseX + window.scrollX;
       const targetY = mouseY + window.scrollY;
 
@@ -284,8 +277,6 @@ function initialiseEyeball() {
       );
 
       let angleDifference = targetAngle - currentAngle;
-
-      // Normalize to -PI -> PI
       angleDifference = Math.atan2(
         Math.sin(angleDifference),
         Math.cos(angleDifference)
@@ -323,9 +314,8 @@ function initialiseEyeball() {
         rotate(${projectileAngle + Math.PI / 2}rad)
       `;
 
-      /*
-       * PLAYER HIT
-       */
+
+      // Player hit
       if (
         Math.hypot(
           newScreenX - mouseX,
@@ -346,18 +336,21 @@ function initialiseEyeball() {
         continue;
       }
 
-      /*
-       * EYEBALL HIT
-       *
-       * Because the projectile can curve,
-       * it can now actually come back to the eyeball.
-       */
+
+      // Collision
       const eyeballRect = eyeball.getBoundingClientRect();
+      const eyeballCenterX = eyeballRect.left + eyeballRect.width / 2;
+      const eyeballCenterY = eyeballRect.top + eyeballRect.height / 2;
+
+      const eyeballRadius = eyeballRect.width / 2;
+
+      const distance = Math.hypot(
+        newScreenX - eyeballCenterX,
+        newScreenY - eyeballCenterY
+      );
+
       const projectileHitsEyeball =
-        newScreenX >= eyeballRect.left &&
-        newScreenX <= eyeballRect.right &&
-        newScreenY >= eyeballRect.top &&
-        newScreenY <= eyeballRect.bottom;
+        distance <= eyeballRadius;
 
       if (
         projectile.age > AGE_BEFORE_DAMAGE &&
@@ -368,9 +361,7 @@ function initialiseEyeball() {
         continue;
       }
 
-      /*
-       * Outside screen
-       */
+      // Out screen
       const margin = 150;
 
       if (
@@ -405,9 +396,8 @@ function initialiseEyeball() {
   shootProjectile();
   setInterval(shootProjectile, SHOOT_INTERVAL);
 
-  /*
-   * Mouse
-   */
+
+  // mouse
   document.addEventListener("mousemove", (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
@@ -415,9 +405,7 @@ function initialiseEyeball() {
     updateEyeball(mouseX, mouseY);
   });
 
-  /*
-   * Touch
-   */
+  // touch
   document.addEventListener("touchstart", (e) => {
     mouseX = e.touches[0].clientX;
     mouseY = e.touches[0].clientY;
