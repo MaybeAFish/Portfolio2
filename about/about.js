@@ -92,16 +92,25 @@ function initialiseGameCharacters() {
 
 function initialiseEyeball() {
   const eyeball = document.querySelector(".eyeball");
+  if (!eyeball) return;
 
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
   let lookAngle = 0;
 
   const PROJECTILE_IMAGE = "/about/art/pixelart/eyeballProjectile.png";
-  const PROJECTILE_SPEED = 800;
+
+  const PROJECTILE_SPEED = 500;
+  const HOMING_STRENGTH = 3.5;
   const SHOOT_INTERVAL = 2000;
   const POOL_SIZE = 3;
-  const HIT_DISTANCE = 40; // Hitbox
+
+  const MOUSE_HIT_DISTANCE = 40;
+  const AGE_BEFORE_DAMAGE = 1;
+
+
+  let health = 3;
+  let dead = false;
 
   const projectilePool = Array.from({ length: POOL_SIZE }, () => {
     const element = document.createElement("img");
@@ -119,11 +128,14 @@ function initialiseEyeball() {
       x: 0,
       y: 0,
       vx: 0,
-      vy: 0
+      vy: 0,
+      age: 0
     };
   });
 
   function updateEyeball(x, y) {
+    if (dead) return;
+
     const rect = eyeball.getBoundingClientRect();
 
     const centerX = rect.left + rect.width / 2;
@@ -135,18 +147,9 @@ function initialiseEyeball() {
   }
 
   function shootProjectile() {
+    if (dead) return;
+
     const rect = eyeball.getBoundingClientRect();
-
-    const margin = 100;
-
-    if (
-      rect.right < -margin ||
-      rect.left > window.innerWidth + margin ||
-      rect.bottom < -margin ||
-      rect.top > window.innerHeight + margin
-    ) {
-      return;
-    }
 
     const projectile = projectilePool.find(
       projectile => !projectile.active
@@ -165,60 +168,217 @@ function initialiseEyeball() {
 
     projectile.vx = directionX * PROJECTILE_SPEED;
     projectile.vy = directionY * PROJECTILE_SPEED;
+    projectile.age = 0;
 
     projectile.active = true;
 
     projectile.element.style.display = "block";
-    const screenX = projectile.x - window.scrollX;
-    const screenY = projectile.y - window.scrollY;
+  }
 
-    projectile.element.style.left = `${screenX}px`;
-    projectile.element.style.top = `${screenY}px`;
+  function deactivateProjectile(projectile) {
+    projectile.active = false;
+    projectile.element.style.display = "none";
+  }
+
+  function damageEyeball() {
+    if (dead) return;
+
+    health--;
+
+
+    // Visual feedback
+    eyeball.classList.remove("hit");
+    // Force the animation to restart if hit repeatedly
+    void eyeball.offsetWidth;
+    eyeball.classList.add("hit");
+    eyeball.animate(
+      [
+        { transform: `rotate(${lookAngle}rad) scale(1)` },
+        { transform: `rotate(${lookAngle}rad) scale(1.25)` },
+        { transform: `rotate(${lookAngle}rad) scale(1)` }
+      ],
+      {
+        duration: 150,
+        easing: "ease-out"
+      }
+    );
+
+    if (health <= 0) {
+      killEyeball();
+    }
+  }
+
+  function killEyeball() {
+    dead = true;
+
+    // Stop all projectiles
+    for (const projectile of projectilePool) {
+      deactivateProjectile(projectile);
+    }
+
+    // Stop the damage flicker before starting death animation
+    eyeball.classList.remove("hit");
+    eyeball.classList.add("dying");
+
+    setTimeout(() => {
+      eyeball.style.display = "none";
+
+      const respawnButton = document.createElement("button");
+      respawnButton.className = "fancy-button eyeball-respawn";
+      respawnButton.textContent = "Respawn";
+
+      respawnButton.addEventListener("click", respawnEyeball);
+
+      eyeball.parentElement.appendChild(respawnButton);
+    }, 300);
+  }
+
+  function respawnEyeball() {
+    health = 3;
+    dead = false;
+
+    const respawnButton =
+      eyeball.parentElement.querySelector(".eyeball-respawn");
+
+    if (respawnButton) {
+      respawnButton.remove();
+    }
+
+    eyeball.classList.remove("dying");
+    eyeball.style.display = "";
+
+    // flicker
+    eyeball.classList.remove("hit");
+    void eyeball.offsetWidth;
+    eyeball.classList.add("hit");
+
+    updateEyeball(mouseX, mouseY);
   }
 
   function updateProjectiles(deltaTime) {
-    const margin = 100;
-
     for (const projectile of projectilePool) {
       if (!projectile.active) continue;
 
-      projectile.x += projectile.vx * deltaTime;
-      projectile.y += projectile.vy * deltaTime;
+      const screenX = projectile.x - window.scrollX;
+      const screenY = projectile.y - window.scrollY;
+      projectile.age += deltaTime;
 
-      const angle = Math.atan2(
+      /*
+       * HOMING
+       *
+       * Instead of instantly pointing at the cursor,
+       * gradually rotate the projectile's velocity toward it.
+       */
+      const targetX = mouseX + window.scrollX;
+      const targetY = mouseY + window.scrollY;
+
+      const targetAngle = Math.atan2(
+        targetY - projectile.y,
+        targetX - projectile.x
+      );
+
+      const currentAngle = Math.atan2(
         projectile.vy,
         projectile.vx
       );
 
-      projectile.element.style.left = `${projectile.x - window.scrollX}px`;
-      projectile.element.style.top = `${projectile.y - window.scrollY}px`;
+      let angleDifference = targetAngle - currentAngle;
+
+      // Normalize to -PI -> PI
+      angleDifference = Math.atan2(
+        Math.sin(angleDifference),
+        Math.cos(angleDifference)
+      );
+
+      const maxTurn = HOMING_STRENGTH * deltaTime;
+
+      const turn =
+        Math.max(
+          -maxTurn,
+          Math.min(maxTurn, angleDifference)
+        );
+
+      const newAngle = currentAngle + turn;
+
+      projectile.vx = Math.cos(newAngle) * PROJECTILE_SPEED;
+      projectile.vy = Math.sin(newAngle) * PROJECTILE_SPEED;
+
+      projectile.x += projectile.vx * deltaTime;
+      projectile.y += projectile.vy * deltaTime;
+
+      const newScreenX = projectile.x - window.scrollX;
+      const newScreenY = projectile.y - window.scrollY;
+
+      const projectileAngle = Math.atan2(
+        projectile.vy,
+        projectile.vx
+      );
+
+      projectile.element.style.left = `${newScreenX}px`;
+      projectile.element.style.top = `${newScreenY}px`;
+
       projectile.element.style.transform = `
         translate(-50%, -50%)
-        rotate(${angle + Math.PI / 2}rad)      
+        rotate(${projectileAngle + Math.PI / 2}rad)
       `;
 
-      // Recycle once it completely left screen.
-      const screenX = projectile.x - window.scrollX;
-      const screenY = projectile.y - window.scrollY;
-
+      /*
+       * PLAYER HIT
+       */
       if (
-        Math.hypot(screenX - mouseX, screenY - mouseY) < HIT_DISTANCE
+        Math.hypot(
+          newScreenX - mouseX,
+          newScreenY - mouseY
+        ) < MOUSE_HIT_DISTANCE
       ) {
-        document.querySelector(".about-page").classList.add("screen-shake");
-        setTimeout(() => document.querySelector(".about-page").classList.remove("screen-shake"), 125);
-        
-        projectile.active = false;
-        projectile.element.style.display = "none";
+        document
+          .querySelector(".about-page")
+          ?.classList.add("screen-shake");
+
+        setTimeout(() => {
+          document
+            .querySelector(".about-page")
+            ?.classList.remove("screen-shake");
+        }, 125);
+
+        deactivateProjectile(projectile);
+        continue;
       }
 
+      /*
+       * EYEBALL HIT
+       *
+       * Because the projectile can curve,
+       * it can now actually come back to the eyeball.
+       */
+      const eyeballRect = eyeball.getBoundingClientRect();
+      const projectileHitsEyeball =
+        newScreenX >= eyeballRect.left &&
+        newScreenX <= eyeballRect.right &&
+        newScreenY >= eyeballRect.top &&
+        newScreenY <= eyeballRect.bottom;
+
       if (
-        screenX < -margin ||
-        screenX > window.innerWidth + margin ||
-        screenY < -margin ||
-        screenY > window.innerHeight + margin
+        projectile.age > AGE_BEFORE_DAMAGE &&
+        projectileHitsEyeball
       ) {
-        projectile.active = false;
-        projectile.element.style.display = "none";
+        deactivateProjectile(projectile);
+        damageEyeball();
+        continue;
+      }
+
+      /*
+       * Outside screen
+       */
+      const margin = 150;
+
+      if (
+        newScreenX < -margin ||
+        newScreenX > window.innerWidth + margin ||
+        newScreenY < -margin ||
+        newScreenY > window.innerHeight + margin
+      ) {
+        deactivateProjectile(projectile);
       }
     }
   }
@@ -240,27 +400,34 @@ function initialiseEyeball() {
 
   requestAnimationFrame(projectileLoop);
 
-  // Shoot .
+  // First shot + recurring shots
   shootProjectile();
   setInterval(shootProjectile, SHOOT_INTERVAL);
 
-
-  // Mobile support and resizing the shizzle
+  /*
+   * Mouse
+   */
   document.addEventListener("mousemove", (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
+
     updateEyeball(mouseX, mouseY);
   });
 
+  /*
+   * Touch
+   */
   document.addEventListener("touchstart", (e) => {
     mouseX = e.touches[0].clientX;
     mouseY = e.touches[0].clientY;
+
     updateEyeball(mouseX, mouseY);
   }, { passive: true });
 
   document.addEventListener("touchmove", (e) => {
     mouseX = e.touches[0].clientX;
     mouseY = e.touches[0].clientY;
+
     updateEyeball(mouseX, mouseY);
   }, { passive: true });
 

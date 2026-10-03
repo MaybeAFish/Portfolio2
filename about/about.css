@@ -28,3 +28,56 @@
   90%  { transform: translate(-4px, -4px); }
   100% { transform: translate(0, 0); }
 }
+
+.eyeball.dying {
+  animation: eyeball-death 300ms ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes eyeball-death {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2.2);
+  }
+}
+
+.eyeball-respawn {
+  display: block;
+  margin: 0 auto;
+}
+
+/* taking dmg */
+.eyeball.hit {
+  animation: eyeball-hit 300ms ease-out;
+}
+@keyframes eyeball-hit {
+  0% {
+    opacity: 1;
+    filter: none;
+  }
+
+  20% {
+    opacity: 0.3;
+    filter: sepia(1) saturate(12) hue-rotate(320deg);
+  }
+
+  40% {
+    opacity: 1;
+    filter: none;
+  }
+
+  60% {
+    opacity: 0.4;
+    filter: sepia(1) saturate(12) hue-rotate(320deg);
+  }
+
+  100% {
+    opacity: 1;
+    filter: none;
+  }
+}

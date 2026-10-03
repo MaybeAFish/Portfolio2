@@ -1,3 +1,9 @@
 .eyeball {
   transition: none !important;
 }
+
+.art-grid figure:has(.eyeball) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
