@@ -220,7 +220,7 @@ function initialiseEyeball() {
     eyeball.classList.add("dying");
 
     setTimeout(() => {
-      eyeball.style.display = "none";
+      eyeball.style.visibility = "none";
 
       const respawnButton = document.createElement("button");
       respawnButton.className = "fancy-button eyeball-respawn";
@@ -244,7 +244,7 @@ function initialiseEyeball() {
     }
 
     eyeball.classList.remove("dying");
-    eyeball.style.display = "";
+    eyeball.style.visibility = "visible";
 
     // flicker
     eyeball.classList.remove("hit");

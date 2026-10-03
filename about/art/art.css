@@ -13,16 +13,24 @@
 
 /* Respawn button centerization */
 .art-grid figure:has(.eyeball) {
-  display: grid;
-  place-items: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1;
 }
 
 /* Respawn button */
 .eyeball-respawn {
-  grid-area: 1 / 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   margin: 0;
   white-space: nowrap;
+}
+.eyeball-respawn:active {
+  transform: translate(-50%, -50%) scale(0.97);
 }
 
 
