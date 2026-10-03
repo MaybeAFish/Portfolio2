@@ -9,6 +9,7 @@
   user-select: none;
   display: none;
   will-change: transform;
+  z-index: 1;
 }
 
 /* Respawn button centerization */
