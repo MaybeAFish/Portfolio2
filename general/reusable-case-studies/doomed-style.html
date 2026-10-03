@@ -29,6 +29,7 @@ mana -> wapens -->
 
 
 <br>
+<h1>Heads-Up Display (HUD)</h1>
 <h2>Old HUD</h2>
 <p>
 One of the first things I worked on was the HUD. The original HUD communicated a lot of information, 
@@ -150,26 +151,24 @@ This UI will only appear when the currently equipped weapon actually has access 
 
 
 <br>
-<h2>Visual identity</h2>
+<h1>Visual identity</h1>
 <p>
-I was basically fixing a bunch of tiny visual problems at a time. But once the HUD and readability were
-    in a better place, I started looking at the bigger visual problem. 
+    I was basically fixing a bunch of tiny visual problems at a time. But once the HUD and readability were
+    in a better place, I started looking at the bigger visual problem: the lack of visual identity. 
 </p>
 <p>
 I spoke with a teacher who has, give or take, a gazillion years of game development experience 
-and has played more boomer shooters than my age. 
-</p>
-<p>
-He gave me some feedback, telling me that Doomed could benefit from having its own art style. 
-This brought me back to the same problem I had identified earlier with visual identity.
-</p>
-<p>
-I had already been doing shader research, so I started experimenting with ways to give the existing assets 
-a more coherent look without having to replace all of the project's art. 
+and has played more boomer shooters than my age. He gave me some feedback where he confirmed my suspicion. He told me that Doomed could benefit from having its own art style. 
 </p>
 
-<img class="side-navigation-media" src="/projects/doomed/stylization/shaders.png" alt="Last shaders iteration" loading="lazy">
-<img class="side-navigation-media" src="/projects/doomed/stylization/material.png" alt="Shaders material" loading="lazy">
+<br>
+<h2>Cel Shading</h2>
+<p>
+I had already been doing shader research, so I started experimenting with ways to give the existing assets 
+a more coherent look that fits the thematic setting of the game without having to replace all of the project's art. 
+</p>
+
+<img class="solo-content" src="/projects/doomed/stylization/shaders.png" alt="Last shaders iteration" loading="lazy">
 
 <p>
 I developed a cel shader that I applied individually to ALL materials. This encouraged assets to 
@@ -177,16 +176,22 @@ follow a consistent combination of albedo, normal, and ORH maps rather than rely
 effect over the entire scene which wouldn't be performant or look as good. Forcing the assets 
 to only use these 3 maps also created a greater visual identity to the game, as some models that used more than those three texture maps would otherwise have a lot more detail than other assets. 
 </p>
+
+<img class="solo-content" src="/projects/doomed/stylization/material.png" alt="Shaders material" loading="lazy">
+
 <p>
-But to be honest, a lot of the models are asset flips, and either didn't have a normal map, didnt have an ORH map, 
+To be honest, a lot of the models are asset flips, and either didn't have a normal map, didnt have an ORH map, 
 or were relying on other maps. These models would look off next to the rest of the environment. You can sometimes notice this while crossing different sections in the map with assets from different publishers.
 </p>
 <p>My system would work substantially better if we had the skilled manpower needed to create our own assets that used the same style and sets of albedos and normals.</p>
-<p>Anyhow, aside from the cel shaders, I had developed some outline shaders. I made a normal outline for static objects, and a boil effect variant that is applied on important objects such as the viewmodel, enemies and interactables. These outlines are used as an overlay shader and would help making the models pop. This prevented some models blending together as they create unreadable noise.</p> 
 
-<p>Despite the inconsistent assets from different publishers, I believe these shaders to have made great improvements on both the game's visual identity and clarity.</p>
+<br>
+<h2>Outline</h2>
+<p>Anyhow, aside from the cel shaders, I had developed some outline shaders. I made 3 different sized outlines for static objects, and a boil effect variant that is applied on important objects such as the viewmodel, enemies and interactables. These outlines are used as an overlay shader and would help making the models pop. These outlines would help prevent some models blending together which would create unreadable noise.</p> 
 
-<img class="side-navigation-media" src="/projects/doomed/doomed.png" alt="Result" loading="lazy">
+<p>Despite the inconsistent assets from different publishers, I believe my shaders to have made great improvements on both the game's visual identity and clarity.</p>
+
+<img class="solo-content" src="/projects/doomed/doomed.png" alt="Result" loading="lazy">
 
 
 <br>
