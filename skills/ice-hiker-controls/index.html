@@ -51,9 +51,6 @@
                 I wanted players to be able to see the character's face and build more of an emotional connection with him without restricting camera control. To achieve this, I separated the camera's facing direction from the character's facing direction. The player can freely look around, but the actual character will only turn toward the camera when the player performs an action.
             </p>
             <p>
-                I designed and implemented the camera and movement system around this decision. The camera rotates with mouse movement, uses raycasts to prevent the camera from clipping through terrain and the player will always move in the direction the camera's facing, independant of the character's actual direction.
-            </p>
-            <p>
                 I verified the design through A/B testing, where every player preferred my system over Unity's default Cinemachine setup.
             </p>
 
@@ -62,12 +59,11 @@
             </video>
 
             <p>
-                Looking back, the camera occasionally clips through terrain in a distracting way. I believe that the raycast should
-                have been a "spherecast", which would've allowed me to make the camera more sensitive to prevent potential clippings.
+                Looking back, the camera occasionally clips through terrain in a distracting way. I believe the collision raycast I implemented should
+                have been a "spherecast", which would've allowed me to make the camera more sensitive.
             </p>
 
             <br>
-
             <h2>Animation System</h2>
             <p>
                 I also designed and implemented a custom animation system for The Ice Hiker because Unity's Animator
