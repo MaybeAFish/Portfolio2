@@ -9,6 +9,12 @@
     text-align: left;
 }
 
+.profile-picture-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+}
+
 .profile-picture {
     display: block;
     width: 180px;
@@ -18,28 +24,43 @@
     border: 5px solid white;
     border-radius: 50%;
     box-sizing: border-box;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
 }
-.profile-picture:hover {
+
+.profile-picture.hover {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+
+.profile-picture-container:hover .normal {
+    opacity: 0;
+}
+
+.profile-picture-container:hover .hover {
+    opacity: 1;
+}
+
+.profile-picture-container:hover .profile-picture {
     border-color: var(--standout-color-green);
-    transform: scale(1.02);
 }
-.profile-picture:active {
+
+.profile-picture-container:active .profile-picture {
     border-color: var(--standout-color-cyan);
 }
 
 /* About me button effect */
-body:has(.profile-picture:hover) #about-nav {
+body:has(.profile-picture-container:hover) #about-nav {
   color: var(--standout-color-green);
 }
-body:has(.profile-picture:hover) #about-nav::after {
+body:has(.profile-picture-container:hover) #about-nav::after {
     width: 100%;
     background-color: var(--standout-color-green);
 }
-body:has(.profile-picture:active) #about-nav {
+body:has(.profile-picture-container:active) #about-nav {
     color: var(--standout-color-cyan);
 }
-body:has(.profile-picture:active) #about-nav::after {
+body:has(.profile-picture-container:active) #about-nav::after {
     width: 100%;
     background-color: var(--standout-color-cyan);
 }

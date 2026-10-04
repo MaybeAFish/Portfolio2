@@ -62,7 +62,7 @@ function restoreSkillsState() {
     const savedScroll = sessionStorage.getItem(SCROLL_KEY);
 
     if (savedFilters) {
-        const activeFilters = JSON.parse(savedFilters);
+        let activeFilters = JSON.parse(savedFilters);
 
         if (activeFilters.length === 0) {
             activeFilters = ["all"];
@@ -206,7 +206,7 @@ filters.forEach((filter) => {
     });
 });
 
-// Keep the latest scroll position available.
+// Keep latest scroll position available
 let scrollSavePending = false;
 
 window.addEventListener("scroll", () => {
@@ -223,3 +223,10 @@ window.addEventListener("scroll", () => {
 });
 
 restoreSkillsState();
+
+document.querySelectorAll(".skill-card").forEach((link) => {
+    link.addEventListener("click", () => {
+        saveSkillsState();
+        sessionStorage.setItem(RESTORE_KEY, "true");
+    });
+});
