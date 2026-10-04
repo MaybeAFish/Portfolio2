@@ -44,6 +44,10 @@ body:has(.profile-picture:active) #about-nav::after {
     background-color: var(--standout-color-cyan);
 }
 
+
+.profile-info {
+    max-width: 500px;
+}
 .profile-info h1 {
     margin: 0;
     text-align: left;
