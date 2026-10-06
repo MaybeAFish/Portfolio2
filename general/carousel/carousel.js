@@ -1,364 +1,660 @@
 document.addEventListener("DOMContentLoaded", () => {
   document
-    .querySelectorAll(".mediacarousel, .textcarousel")
-    .forEach(setupCarousel);
+    .querySelectorAll(".mediacarousel[data-carousel]")
+    .forEach(setupMediaCarousel);
 });
 
-function setupCarousel(carousel) {
-  if (carousel.querySelector(".carousel-controls")) return;
-  if (carousel.querySelector(".mediacarousel-controls")) return;
-  if (carousel.querySelector(".textcarousel-controls")) return;
 
-  const isMediaCarousel =
-    carousel.classList.contains("mediacarousel");
+function setupMediaCarousel(carousel) {
 
-  const prefix = isMediaCarousel
-    ? "mediacarousel"
-    : "textcarousel";
+  const main = carousel.querySelector(".mediacarousel-main");
+  const current = carousel.querySelector(".mediacarousel-current");
+  const thumbsContainer = carousel.querySelector(".mediacarousel-thumbs");
 
-  const track = carousel.querySelector(`.${prefix}-track`);
-  if (!track) return;
+  const prevButton = carousel.querySelector(".mediacarousel-button--prev");
+  const nextButton = carousel.querySelector(".mediacarousel-button--next");
 
-  /* -------------------------
-    Swipe support (touch/pointer)
-  ------------------------- */
+  const counter = carousel.querySelector(".mediacarousel-counter");
+
+  const thumbs = Array.from(
+    carousel.querySelectorAll(".mediacarousel-thumb")
+  );
+
+  const infoItems = Array.from(
+    carousel.querySelectorAll(".mediacarousel-info-item")
+  );
+
+
+  if (
+    !main ||
+    !current ||
+    !thumbsContainer ||
+    !thumbs.length
+  ) {
+    return;
+  }
+
+
+  /* =========================================================
+     STATE
+     ========================================================= */
+
+  let currentIndex = 0;
 
   let pointerId = null;
-  let startX = 0;
-  let startY = 0;
-  let deltaX = 0;
+  let pointerStartX = 0;
+  let pointerStartY = 0;
+  let pointerStartScrollLeft = 0;
+
   let isDragging = false;
-  let axisLocked = null; // "x" | "y" | null
+  let axisLocked = null;
 
-  const SWIPE_THRESHOLD = 40; // px needed to trigger a slide change
+  let suppressNextClick = false;
 
-  track.addEventListener("pointerdown", (event) => {
-    if (event.pointerType === "mouse" && event.button !== 0) return;
 
-    pointerId = event.pointerId;
-    startX = event.clientX;
-    startY = event.clientY;
-    deltaX = 0;
-    isDragging = true;
-    axisLocked = null;
-  });
+  /* =========================================================
+     MEDIA HELPERS
+     ========================================================= */
 
-  track.addEventListener("pointermove", (event) => {
-    if (!isDragging || event.pointerId !== pointerId) return;
+  function freezeThumbnailVideo(video) {
 
-    const dx = event.clientX - startX;
-    const dy = event.clientY - startY;
+    video.muted = true;
+    video.pause();
 
-    if (!axisLocked) {
-      if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return; // too small to tell yet
-      axisLocked = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+    try {
+      video.currentTime = 0;
+    } catch {
+      /* Ignore videos that are not seekable yet. */
     }
-
-    if (axisLocked === "x") {
-      event.preventDefault(); // stop vertical page scroll only once we're sure it's a horizontal swipe
-      deltaX = dx;
-    }
-  });
-
-  function endDrag(event) {
-    if (!isDragging || event.pointerId !== pointerId) return;
-    isDragging = false;
-
-    if (axisLocked === "x" && Math.abs(deltaX) > SWIPE_THRESHOLD) {
-      if (deltaX < 0) {
-        goToSlide(currentSlide + 1);
-      } else {
-        goToSlide(currentSlide - 1);
-      }
-    }
-
-    pointerId = null;
-    axisLocked = null;
-    deltaX = 0;
   }
 
-  track.addEventListener("pointerup", endDrag);
-  track.addEventListener("pointercancel", endDrag);
 
-  const slides = Array.from(
-    track.querySelectorAll(`.${prefix}-slide`)
-  );
-  if (!slides.length) return;
+  function prepareThumbnailVideo(video) {
 
-  /* -------------------------
-     Media loading placeholders
-  ------------------------- */
+    video.muted = true;
+    video.pause();
+    video.controls = false;
 
-  if (isMediaCarousel) {
-    slides.forEach((slide) => {
-      const media = slide.querySelector("img, video");
+    /*
+     * Try to get the first frame without playing it.
+     */
+    video.addEventListener(
+      "loadedmetadata",
+      () => {
 
-      if (!media) return;
-
-      const markLoaded = () => {
-        slide.classList.add("is-loaded");
-      };
-
-      if (media.tagName === "IMG") {
-        if (media.complete) {
-          markLoaded();
-        } else {
-          media.addEventListener("load", markLoaded, {
-            once: true
-          });
+        try {
+          video.currentTime = 0;
+        } catch {
+          /* Ignore. */
         }
-      }
 
-      if (media.tagName === "VIDEO") {
-        if (media.readyState >= 2) {
-          markLoaded();
-        } else {
-          media.addEventListener("loadeddata", markLoaded, {
-            once: true
-          });
-        }
-      }
-    });
-  }
-
-  let currentSlide = 0;
-
-  /* -------------------------
-     Controls
-  ------------------------- */
-
-  const controls = document.createElement("div");
-  controls.className = `${prefix}-controls`;
-
-  const previousButton = createArrowButton(
-    "Previous slide",
-    "prev",
-    prefix
-  );
-
-  const nextButton = createArrowButton(
-    "Next slide",
-    "next",
-    prefix
-  );
-
-  const dots = document.createElement("div");
-
-  dots.className = `${prefix}-dots`;
-  dots.setAttribute("role", "tablist");
-  dots.setAttribute("aria-label", "Slides");
-
-  slides.forEach((slide, index) => {
-    const dot = document.createElement("button");
-
-    dot.type = "button";
-    dot.className = `${prefix}-dot`;
-
-    dot.setAttribute(
-      "aria-label",
-      `Go to slide ${index + 1}`
+      },
+      { once: true }
     );
 
-    dot.setAttribute("aria-selected", "false");
-    dot.setAttribute("role", "tab");
 
-    dot.addEventListener("click", () => {
-      goToSlide(index);
-    });
-
-    dots.appendChild(dot);
-  });
-
-  controls.append(
-    previousButton,
-    dots,
-    nextButton
-  );
-
-  carousel.appendChild(controls);
-
-  /* -------------------------
-     Update carousel
-  ------------------------- */
-
-  function updateCarousel() {
-    const totalSlides = slides.length;
-
-    slides.forEach((slide, index) => {
-      let difference = index - currentSlide;
-
-      /*
-       * Wrap around so the first and last
-       * slides remain adjacent.
-       */
-      if (difference > totalSlides / 2) {
-        difference -= totalSlides;
+    video.addEventListener(
+      "loadeddata",
+      () => {
+        freezeThumbnailVideo(video);
       }
+    );
+  }
 
-      if (difference < -totalSlides / 2) {
-        difference += totalSlides;
-      }
 
-      const isActive = difference === 0;
-      const isPrevious = difference === -1;
-      const isNext = difference === 1;
+  function createMainMedia(thumb) {
 
-      slide.classList.toggle(
+    const source = thumb.querySelector("img, video");
+
+    if (!source) {
+      return null;
+    }
+
+    const media = source.cloneNode(true);
+    media.removeAttribute("loading");
+    media.draggable = false;
+
+
+    if (media.tagName === "IMG") {
+      media.alt =
+        thumb.dataset.title ||
+        source.alt ||
+        "";
+    }
+
+    if (media.tagName === "VIDEO") {
+
+      media.muted = true;
+      media.autoplay = true;
+      media.loop = true;
+      media.controls = false;
+      media.playsInline = true;
+
+      media.setAttribute("playsinline", "");
+      media.setAttribute("muted", "");
+      media.setAttribute("autoplay", "");
+      media.setAttribute("loop", "");
+
+
+      media.addEventListener(
+        "loadeddata",
+        () => {
+          media.play().catch(() => {
+            /*
+             * Browser may still reject autoplay.
+             * The video remains usable as a still frame.
+             */
+          });
+        },
+        { once: true }
+      );
+
+    }
+
+
+    return media;
+  }
+
+
+  /* =========================================================
+     INFO PANEL
+     ========================================================= */
+
+  function updateInfo(index) {
+
+    infoItems.forEach((item) => {
+
+      const itemIndex =
+        Number(item.dataset.slide);
+
+      const active =
+        itemIndex === index;
+
+      item.classList.toggle(
         "is-active",
-        isActive
-      );
-
-      slide.classList.toggle(
-        "is-prev",
-        isPrevious
-      );
-
-      slide.classList.toggle(
-        "is-next",
-        isNext
-      );
-
-      slide.setAttribute(
-        "aria-hidden",
-        String(!isActive)
-      );
-
-      slide.style.zIndex = isActive
-        ? "2"
-        : isPrevious || isNext
-          ? "1"
-          : "0";
-
-      /*
-       * Only the side slides are clickable.
-       */
-      slide.onclick = null;
-
-      if (isPrevious || isNext) {
-        slide.onclick = () => {
-          goToSlide(index);
-        };
-      }
-    });
-
-    /* Update dots */
-
-    const dotElements =
-      dots.querySelectorAll(`.${prefix}-dot`);
-
-    dotElements.forEach((dot, index) => {
-      const active = index === currentSlide;
-
-      dot.classList.toggle(
-        "active",
         active
       );
 
-      dot.setAttribute(
+      item.setAttribute(
+        "aria-hidden",
+        String(!active)
+      );
+
+    });
+  }
+
+
+  /* =========================================================
+     THUMBNAIL STATE
+     ========================================================= */
+
+  function updateThumbs(index) {
+
+    thumbs.forEach((thumb, thumbIndex) => {
+
+      const active =
+        thumbIndex === index;
+
+      thumb.classList.toggle(
+        "is-active",
+        active
+      );
+
+      thumb.setAttribute(
         "aria-selected",
         String(active)
       );
 
-      dot.setAttribute(
-        "aria-current",
-        active ? "true" : "false"
+      thumb.setAttribute(
+        "tabindex",
+        active ? "0" : "-1"
       );
+
     });
 
-    carousel.dataset.activeSlide =
-      String(currentSlide);
   }
 
-  /* -------------------------
-     Navigation
-  ------------------------- */
+
+  /* =========================================================
+     MAIN MEDIA UPDATE
+     ========================================================= */
+
+  function updateMain(index, options = {}) {
+
+    const {
+      scrollThumb = true
+    } = options;
+
+
+    currentIndex =
+      (index + thumbs.length) %
+      thumbs.length;
+
+
+    const activeThumb =
+      thumbs[currentIndex];
+
+
+    updateThumbs(currentIndex);
+    updateInfo(currentIndex);
+
+
+    /* -------------------------
+       Counter
+       ------------------------- */
+
+    if (counter) {
+
+      counter.textContent =
+        `${currentIndex + 1} / ${thumbs.length}`;
+
+    }
+
+
+    /* -------------------------
+       Main media
+       ------------------------- */
+
+    const media =
+      createMainMedia(activeThumb);
+
+
+    if (media) {
+
+      current.replaceChildren(media);
+
+      main.setAttribute(
+        "aria-label",
+        activeThumb.dataset.title ||
+        `Media ${currentIndex + 1}`
+      );
+
+    }
+
+
+    /* -------------------------
+       Scroll active thumbnail
+       ------------------------- */
+
+    if (scrollThumb) {
+
+      activeThumb.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center"
+      });
+
+    }
+
+
+    carousel.dataset.activeSlide =
+      String(currentIndex);
+
+  }
+
+
+  /* =========================================================
+     NAVIGATION
+     ========================================================= */
 
   function goToSlide(index) {
-    currentSlide =
-      (index + slides.length) %
-      slides.length;
 
-    updateCarousel();
+    updateMain(index, {
+      scrollThumb: true
+    });
+
   }
 
-  /* -------------------------
-     Keyboard navigation
-  ------------------------- */
 
-  function handleKeyboard(event) {
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      goToSlide(currentSlide - 1);
-    }
+  /* =========================================================
+     BUTTONS
+     ========================================================= */
 
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      goToSlide(currentSlide + 1);
-    }
+  if (prevButton) {
+
+    prevButton.addEventListener(
+      "click",
+      () => {
+        goToSlide(currentIndex - 1);
+      }
+    );
+
   }
 
-  previousButton.addEventListener(
-    "click",
-    () => {
-      goToSlide(currentSlide - 1);
+
+  if (nextButton) {
+
+    nextButton.addEventListener(
+      "click",
+      () => {
+        goToSlide(currentIndex + 1);
+      }
+    );
+
+  }
+
+
+  /* =========================================================
+     THUMBNAIL CLICKS
+     ========================================================= */
+
+  thumbs.forEach((thumb, index) => {
+
+    thumb.addEventListener(
+      "click",
+      (event) => {
+
+        if (suppressNextClick) {
+
+          event.preventDefault();
+
+          suppressNextClick = false;
+
+          return;
+        }
+
+
+        goToSlide(index);
+
+      }
+    );
+
+
+    const video =
+      thumb.querySelector("video");
+
+    if (video) {
+      prepareThumbnailVideo(video);
+    }
+
+  });
+
+
+  /* =========================================================
+     MOUSE / TOUCH DRAGGING
+     ========================================================= */
+
+  thumbsContainer.addEventListener(
+    "pointerdown",
+    (event) => {
+
+      if (
+        event.pointerType === "mouse" &&
+        event.button !== 0
+      ) {
+        return;
+      }
+
+
+      pointerId = event.pointerId;
+
+      pointerStartX =
+        event.clientX;
+
+      pointerStartY =
+        event.clientY;
+
+      pointerStartScrollLeft =
+        thumbsContainer.scrollLeft;
+
+      isDragging = true;
+      axisLocked = null;
+
     }
   );
 
-  nextButton.addEventListener(
-    "click",
-    () => {
-      goToSlide(currentSlide + 1);
+
+  thumbsContainer.addEventListener(
+    "pointermove",
+    (event) => {
+
+      if (
+        !isDragging ||
+        event.pointerId !== pointerId
+      ) {
+        return;
+      }
+
+
+      const deltaX =
+        event.clientX -
+        pointerStartX;
+
+      const deltaY =
+        event.clientY -
+        pointerStartY;
+
+
+      /* -------------------------
+         Determine gesture axis
+         ------------------------- */
+
+      if (!axisLocked) {
+
+        if (
+          Math.abs(deltaX) < 8 &&
+          Math.abs(deltaY) < 8
+        ) {
+          return;
+        }
+
+
+        axisLocked =
+          Math.abs(deltaX) >
+          Math.abs(deltaY)
+            ? "x"
+            : "y";
+
+        if (axisLocked === "x") {
+          thumbsContainer.classList.add(
+            "is-dragging"
+          );
+
+          thumbsContainer.setPointerCapture(
+            event.pointerId
+          );
+        }
+
+      }
+
+
+      /* -------------------------
+         Horizontal drag
+         ------------------------- */
+
+      if (axisLocked === "x") {
+
+        event.preventDefault();
+
+        thumbsContainer.scrollLeft =
+          pointerStartScrollLeft -
+          deltaX;
+
+
+        suppressNextClick = true;
+
+      }
+
     }
   );
+
+
+  function endPointerDrag(event) {
+
+    if (
+      !isDragging ||
+      event.pointerId !== pointerId
+    ) {
+      return;
+    }
+
+
+    isDragging = false;
+
+    axisLocked = null;
+
+    thumbsContainer.classList.remove(
+      "is-dragging"
+    );
+
+
+    try {
+      thumbsContainer.releasePointerCapture(
+        event.pointerId
+      );
+    } catch {
+      /* Ignore. */
+    }
+
+
+    pointerId = null;
+
+
+    /*
+     * Wait until the click event has passed.
+     */
+    if (suppressNextClick) {
+
+      setTimeout(() => {
+        suppressNextClick = false;
+      }, 0);
+
+    }
+
+  }
+
+
+  thumbsContainer.addEventListener(
+    "pointerup",
+    endPointerDrag
+  );
+
+
+  thumbsContainer.addEventListener(
+    "pointercancel",
+    endPointerDrag
+  );
+
+
+  thumbsContainer.addEventListener(
+    "lostpointercapture",
+    endPointerDrag
+  );
+
+
+  /* =========================================================
+     MOUSEWHEEL
+     ========================================================= */
+
+  thumbsContainer.addEventListener(
+    "wheel",
+    (event) => {
+
+      const wheelDelta =
+        Math.abs(event.deltaX) >
+        Math.abs(event.deltaY)
+          ? event.deltaX
+          : event.deltaY;
+
+
+      if (wheelDelta === 0) {
+        return;
+      }
+
+      const deltaScale =
+        event.deltaMode === 1
+          ? 16
+          : event.deltaMode === 2
+            ? thumbsContainer.clientWidth
+            : 1;
+
+      const scrollAmount =
+        wheelDelta * deltaScale;
+
+      const maxScrollLeft =
+        thumbsContainer.scrollWidth -
+        thumbsContainer.clientWidth;
+
+      if (maxScrollLeft <= 1) {
+        return;
+      }
+
+      const currentScrollLeft =
+        thumbsContainer.scrollLeft;
+
+      const nextScrollLeft =
+        Math.max(
+          0,
+          Math.min(
+            maxScrollLeft,
+            currentScrollLeft + scrollAmount
+          )
+        );
+
+      if (
+        Math.abs(nextScrollLeft - currentScrollLeft) < 0.5
+      ) {
+        return;
+      }
+
+      event.preventDefault();
+
+      thumbsContainer.scrollLeft =
+        nextScrollLeft;
+
+    },
+    {
+      passive: false
+    }
+  );
+
+
+  /* =========================================================
+     KEYBOARD
+     ========================================================= */
 
   carousel.addEventListener(
     "keydown",
-    handleKeyboard
+    (event) => {
+
+      if (
+        event.target.tagName === "BUTTON"
+      ) {
+        return;
+      }
+
+
+      if (event.key === "ArrowLeft") {
+
+        event.preventDefault();
+
+        goToSlide(
+          currentIndex - 1
+        );
+
+      }
+
+
+      if (event.key === "ArrowRight") {
+
+        event.preventDefault();
+
+        goToSlide(
+          currentIndex + 1
+        );
+
+      }
+
+    }
   );
 
-  carousel.tabIndex = 0;
 
-  /* Initial state */
+  /* =========================================================
+     INITIAL STATE
+     ========================================================= */
 
-  updateCarousel();
-}
+  updateMain(0, {
+    scrollThumb: false
+  });
 
-
-/* =========================================================
-   ARROW BUTTON
-   ========================================================= */
-
-function createArrowButton(label, direction, prefix) {
-  const button = document.createElement("button");
-
-  button.type = "button";
-
-  button.className =
-    `${prefix}-button ${direction}`;
-
-  button.setAttribute(
-    "aria-label",
-    label
-  );
-
-  button.innerHTML =
-    direction === "prev"
-      ? `
-        <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path d="M15 5l-7 7 7 7"/>
-        </svg>
-      `
-      : `
-        <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path d="M9 5l7 7-7 7"/>
-        </svg>
-      `;
-
-  return button;
 }

@@ -1,21 +1,10 @@
 @import "/general/carousel/media-carousel.css";
-@import "/general/carousel/text-carousel.css";
 
-.mediacarousel-track,
-.textcarousel-track {
-  touch-action: pan-y;
-}
-
-.mediacarousel-button,
-.textcarousel-button,
-.mediacarousel-dot,
-.textcarousel-dot {
-  touch-action: manipulation;
-}
-
-.mediacarousel-slide img,
-.textcarousel-slide img {
+.mediacarousel-thumbs,
+.mediacarousel-current img,
+.mediacarousel-current video,
+.mediacarousel-thumb img,
+.mediacarousel-thumb video {
   -webkit-user-drag: none;
   -webkit-touch-callout: none;
-  user-select: none;
 }

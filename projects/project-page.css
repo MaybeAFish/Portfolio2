@@ -4,27 +4,7 @@
   background: white;
 }
 
-.project-info {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-  margin: 40px 0;
-}
-.project-info-card {
-  padding: 24px;
-  background: var(--supporting-background-color);
-  border-radius: var(--border-radius);
-}
-.project-info-card h2 {
-  margin-top: 0;
-  text-align: left;
-}
 
-@media (max-width: 700px) {
-  .project-info {
-    grid-template-columns: 1fr;
-  }
-}
 
 @media (max-width: 760px) {
   .page-shell {

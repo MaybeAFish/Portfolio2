@@ -1,8 +1,5 @@
 /* font */
-@import url("https://fonts.googleapis.com/css2?family=Salsa&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Bree+Serif&family=Merriweather:wght@400;700&family=Noto+Serif:wght@400;700&family=Roboto&family=Roboto+Slab:wght@400;700&display=swap');
 @import "general/carousel/carousel.css";
 @import "general/header/header.css";
 @import "general/footer/footer.css";
@@ -19,6 +16,19 @@
 @import "general/button.css";
 @import "general/media/tooltip.css";
 @import "general/side-nav/side-nav.css";
+
+@font-face {
+  font-family: "Rocky Rock";
+  src: url("/general/fonts/clicktoamine/Rocky Rock.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto Condensed";
+  src: url("/general/fonts/clicktoamine/Roboto-Condensed-Regular.woff2") format("woff2");
+  font-weight: 700;
+}
 
 :root {
   --standout-color-cyan: #47cbd2;
@@ -50,7 +60,9 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: clip;
-  font-family: "Varela Round", sans-serif;
+
+  font-weight: 0;
+  font-family: "Bree Serif", sans-serif;
 }
 body {
   padding-top: var(--header-height);
@@ -78,23 +90,32 @@ p {
   margin: 0 0 10px;
   line-height: 1.3;
 }
+
 h1 {
   font-size: 2.2rem;
   text-align: center;
   color: var(--text-color);
   margin: 0;
   margin-top: 1rem; 
-  margin-bottom: 2rem;
-  font-family: "Salsa", cursive;
-
+  margin-bottom: 1rem;
 }
 h2 {
   font-size: 1.8rem;
   text-align: center;
-  font-weight: normal;
   color: var(--text-color-muted);
-  margin-top: 0;
+  -webkit-text-stroke: 0.5px var(--supporting-background-color);
 }
+h3 {
+  -webkit-text-stroke: 0.1px var(--supporting-background-color);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: normal;
+  font-family: "Rocky Rock", sans-serif;
+}
+
 
 ol,
 ul {
