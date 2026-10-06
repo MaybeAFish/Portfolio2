@@ -125,8 +125,24 @@
     let volumeButton;
     let volumeSlider;
     let progress;
+    let progressTrack;
+    let progressHover;
+    let progressPlayed;
+    let progressTrackContainer;
+    let volumeTrackContainer;
+    let volumeHover;
+    let volumePlayed;
     let timeLabel;
     let fullscreenButton;
+
+    function updateVolumeHover(event) {
+      if (!volumeSlider) return;
+      const bounds = volumeSlider.getBoundingClientRect();
+      if (!bounds.width) return;
+      const position = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
+      volumeTrackContainer.style.setProperty("--volume-hover", `${position * 100}%`);
+      volumeTrackContainer.classList.add("is-previewing");
+    }
 
     function togglePlayback() {
       if (video.paused || video.ended) {
@@ -164,6 +180,10 @@
       const percentage = duration ? (currentTime / duration) * 100 : 0;
       progress.value = String(Math.round(percentage * 10));
       progress.style.setProperty("--progress", `${percentage}%`);
+      if (progressPlayed) progressPlayed.style.width = `${percentage}%`;
+      if (volumeSlider) {
+        if (volumePlayed) volumePlayed.style.width = `${video.volume * 100}%`;
+      }
       progress.setAttribute("aria-valuetext", `${formatTime(currentTime)} of ${formatTime(duration)}`);
       timeLabel.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
     }
@@ -179,6 +199,17 @@
       const controls = document.createElement("div");
       controls.className = "custom-video-controls";
 
+      progressTrackContainer = document.createElement("div");
+      progressTrackContainer.className = "custom-video-progress-container";
+
+      progressTrack = document.createElement("span");
+      progressTrack.className = "custom-video-progress-track";
+      progressHover = document.createElement("span");
+      progressHover.className = "custom-video-progress-hover";
+      progressPlayed = document.createElement("span");
+      progressPlayed.className = "custom-video-progress-played";
+      progressTrack.append(progressHover, progressPlayed);
+
       progress = document.createElement("input");
       progress.className = "custom-video-progress";
       progress.type = "range";
@@ -187,12 +218,22 @@
       progress.step = "1";
       progress.value = "0";
       progress.setAttribute("aria-label", "Seek video");
+      progress.addEventListener("pointermove", (event) => {
+        const bounds = progress.getBoundingClientRect();
+        const position = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
+        progressTrackContainer.style.setProperty("--hover-progress", `${position * 100}%`);
+        progressTrackContainer.classList.add("is-previewing");
+      });
+      progress.addEventListener("pointerleave", () => {
+        progressTrackContainer.classList.remove("is-previewing");
+      });
       progress.addEventListener("input", () => {
         if (Number.isFinite(video.duration)) {
           video.currentTime = video.duration * Number(progress.value) / 1000;
         }
         updateProgress();
       });
+      progressTrackContainer.append(progressTrack, progress);
 
       const row = document.createElement("div");
       row.className = "custom-video-control-row";
@@ -210,6 +251,16 @@
         const volumeControl = document.createElement("div");
         volumeControl.className = "custom-video-volume-control";
 
+        volumeTrackContainer = document.createElement("span");
+        volumeTrackContainer.className = "custom-video-volume-slider-container";
+        const volumeTrack = document.createElement("span");
+        volumeTrack.className = "custom-video-volume-track";
+        volumeHover = document.createElement("span");
+        volumeHover.className = "custom-video-volume-hover";
+        volumePlayed = document.createElement("span");
+        volumePlayed.className = "custom-video-volume-played";
+        volumeTrack.append(volumeHover, volumePlayed);
+
         volumeSlider = document.createElement("input");
         volumeSlider.className = "custom-video-volume-slider";
         volumeSlider.type = "range";
@@ -218,6 +269,10 @@
         volumeSlider.step = "0.01";
         volumeSlider.value = String(video.volume);
         volumeSlider.setAttribute("aria-label", "Video volume");
+        volumeSlider.addEventListener("pointermove", updateVolumeHover);
+        volumeSlider.addEventListener("pointerleave", () => {
+          volumeTrackContainer.classList.remove("is-previewing");
+        });
         volumeSlider.addEventListener("input", () => {
           video.volume = Number(volumeSlider.value);
           video.muted = video.volume === 0;
@@ -242,6 +297,8 @@
         });
 
         volumeControl.append(volumeSlider, volumeButton);
+        volumeTrackContainer.append(volumeTrack, volumeSlider);
+        volumeControl.prepend(volumeTrackContainer);
         row.append(volumeControl);
         row.classList.add("has-volume-control");
       }
@@ -269,7 +326,7 @@
       });
 
       row.append(fullscreenButton);
-      controls.append(progress, row);
+      controls.append(progressTrackContainer, row);
       controls.addEventListener("click", (event) => {
         event.stopPropagation();
       });
@@ -281,7 +338,10 @@
       video.addEventListener("play", updatePlayButton);
       video.addEventListener("pause", updatePlayButton);
       video.addEventListener("ended", updatePlayButton);
-      video.addEventListener("volumechange", updateVolumeButton);
+      video.addEventListener("volumechange", () => {
+        updateVolumeButton();
+        updateProgress();
+      });
       player.addEventListener("fullscreenchange", updateFullscreenButton);
       video.addEventListener("webkitbeginfullscreen", updateFullscreenButton);
       video.addEventListener("webkitendfullscreen", updateFullscreenButton);

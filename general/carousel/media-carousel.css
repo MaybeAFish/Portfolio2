@@ -140,7 +140,7 @@
 .mediacarousel-counter {
   position: absolute;
 
-  top: 14px;
+  top: 6px;
   left: 50%;
 
   transform: translateX(-50%);
@@ -202,19 +202,35 @@
 
 
 .mediacarousel-button--prev {
-  left: calc(14px - var(--carousel-arrow-edge-inset, 0px));
+  left: calc(12px - var(--carousel-arrow-edge-inset, 0px));
 }
 
 
 .mediacarousel-button--next {
-  right: calc(14px - var(--carousel-arrow-edge-inset, 0px));
+  right: calc(12px - var(--carousel-arrow-edge-inset, 0px));
 }
 
+
+.mediacarousel-button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.mediacarousel-button--prev .mediacarousel-button-icon {
+  transform: translateX(-2px);
+}
+
+.mediacarousel-button--next .mediacarousel-button-icon {
+  transform: translateX(2px);
+}
 
 .mediacarousel-button svg {
   width: 25px;
   height: 25px;
-
   fill: none;
 
   stroke: currentColor;

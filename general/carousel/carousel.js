@@ -160,6 +160,18 @@ function setupMediaCarousel(carousel) {
 
   }
 
+  function wrapButtonIcons() {
+    carousel.querySelectorAll(".mediacarousel-button svg").forEach((icon) => {
+      if (icon.parentElement.classList.contains("mediacarousel-button-icon")) return;
+      const wrapper = document.createElement("span");
+      wrapper.className = "mediacarousel-button-icon";
+      icon.before(wrapper);
+      wrapper.append(icon);
+    });
+  }
+
+  wrapButtonIcons();
+
 
   /* =========================================================
      MAIN MEDIA UPDATE
