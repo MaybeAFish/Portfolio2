@@ -62,6 +62,10 @@
   -webkit-user-select: none;
 }
 
+.mediacarousel--corner-art .mediacarousel-main {
+  overflow: visible;
+}
+
 
 /* Current image/video */
 
@@ -75,6 +79,11 @@
 
   width: 100%;
   height: 100%;
+}
+
+.mediacarousel--corner-art .mediacarousel-current {
+  overflow: hidden;
+  border-radius: inherit;
 }
 
 
@@ -98,7 +107,6 @@
   -webkit-user-drag: none;
 }
 
-
 /* =========================================================
    OVERLAY
    ========================================================= */
@@ -121,7 +129,7 @@
 .mediacarousel-main:hover .mediacarousel-overlay,
 .mediacarousel-main:focus-within .mediacarousel-overlay {
   opacity: 1;
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 
@@ -183,6 +191,7 @@
   border-radius: 999px;
 
   cursor: pointer;
+  pointer-events: auto;
 
   transition:
     color 0.15s ease,
@@ -193,12 +202,12 @@
 
 
 .mediacarousel-button--prev {
-  left: 14px;
+  left: calc(14px - var(--carousel-arrow-edge-inset, 0px));
 }
 
 
 .mediacarousel-button--next {
-  right: 14px;
+  right: calc(14px - var(--carousel-arrow-edge-inset, 0px));
 }
 
 
@@ -269,7 +278,6 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 
-  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
 
   touch-action: pan-y;
@@ -289,7 +297,6 @@
 .mediacarousel-thumbs.is-dragging {
   cursor: grabbing;
 
-  scroll-snap-type: none;
   scroll-behavior: auto;
 }
 
@@ -312,8 +319,6 @@
   padding: 0;
 
   overflow: hidden;
-
-  scroll-snap-align: center;
 
   background: var(--supporting-background-color);
 
@@ -339,6 +344,33 @@
   border: 2px solid var(--carousel-cyan);
 }
 
+.mediacarousel--corner-art .mediacarousel-thumb {
+  overflow: visible;
+}
+
+.mediacarousel--corner-art .mediacarousel-thumbs {
+  box-sizing: border-box;
+  padding: 2px 1px;
+}
+
+.mediacarousel--corner-art .mediacarousel-thumb:hover,
+.mediacarousel--corner-art .mediacarousel-thumb:focus-visible,
+.mediacarousel--corner-art .mediacarousel-thumb.is-active {
+  z-index: 4;
+}
+
+.mediacarousel--corner-art .mediacarousel-thumb:hover,
+.mediacarousel--corner-art .mediacarousel-thumb:focus-visible,
+.mediacarousel--corner-art .mediacarousel-thumb:active,
+.mediacarousel--corner-art .mediacarousel-thumb.is-active {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.mediacarousel--corner-art .mediacarousel-thumb img,
+.mediacarousel--corner-art .mediacarousel-thumb video {
+  border-radius: inherit;
+}
+
 
 /* Thumbnail media */
 
@@ -362,6 +394,196 @@
   -webkit-user-drag: none;
 }
 
+/* Project-carousel corner artwork is independently configurable per surface and corner. */
+.mediacarousel--corner-art {
+  --corner-art-size: 32px;
+  --corner-art-outset: -12px;
+  --corner-art-thumb-size: 24px;
+}
+
+.mediacarousel--corner-art.doomed {
+  --carousel-arrow-edge-inset: 5px;
+  --carousel-arrow-mobile-inset: 3px;
+  --media-top-left-image: url("/about/art/svg/DoomedDash.svg");
+  --media-top-right-image: url("/about/art/svg/Chat.svg");
+  --media-bottom-left-image: url("/about/art/svg/DoomedMelee.svg");
+  --media-bottom-right-image: url("/about/art/svg/Discover.svg");
+  --info-top-left-image: url("/about/art/svg/Home.svg");
+  --info-top-right-image: url("/about/art/svg/Calendar.svg");
+  --info-bottom-left-image: url("/about/art/svg/Mail.svg");
+  --info-bottom-right-image: url("/about/art/svg/Courses.svg");
+  --thumb-top-left-image: url("/about/art/svg/Hubs.svg");
+  --thumb-top-right-image: url("/about/art/svg/Create.svg");
+  --thumb-bottom-left-image: url("/about/art/svg/Pronounciation.svg");
+  --thumb-bottom-right-image: url("/about/art/svg/Cloud.svg");
+}
+
+.mediacarousel--corner-art.tetris {
+  --carousel-arrow-edge-inset: 6px;
+  --carousel-arrow-mobile-inset: 4px;
+  --media-top-left-image: url("/about/art/svg/Cloud.svg");
+  --media-top-right-image: url("/about/art/svg/Calendar.svg");
+  --media-bottom-left-image: url("/about/art/svg/Discover.svg");
+  --media-bottom-right-image: url("/about/art/svg/Create.svg");
+  --info-top-left-image: url("/about/art/svg/Courses.svg");
+  --info-top-right-image: url("/about/art/svg/Hubs.svg");
+  --info-bottom-left-image: url("/about/art/svg/Home.svg");
+  --info-bottom-right-image: url("/about/art/svg/Chat.svg");
+  --thumb-top-left-image: url("/about/art/svg/Mail.svg");
+  --thumb-top-right-image: url("/about/art/svg/DoomedDash.svg");
+  --thumb-bottom-left-image: url("/about/art/svg/DoomedMelee.svg");
+  --thumb-bottom-right-image: url("/about/art/svg/Pronounciation.svg");
+}
+
+.mediacarousel--corner-art.engine {
+  --carousel-arrow-edge-inset: 3px;
+  --carousel-arrow-mobile-inset: 2px;
+  --media-top-left-image: url("/about/art/svg/Create.svg");
+  --media-top-right-image: url("/about/art/svg/Courses.svg");
+  --media-bottom-left-image: url("/about/art/svg/Chat.svg");
+  --media-bottom-right-image: url("/about/art/svg/Hubs.svg");
+  --info-top-left-image: url("/about/art/svg/DoomedDash.svg");
+  --info-top-right-image: url("/about/art/svg/Pronounciation.svg");
+  --info-bottom-left-image: url("/about/art/svg/Cloud.svg");
+  --info-bottom-right-image: url("/about/art/svg/Home.svg");
+  --thumb-top-left-image: url("/about/art/svg/Calendar.svg");
+  --thumb-top-right-image: url("/about/art/svg/Discover.svg");
+  --thumb-bottom-left-image: url("/about/art/svg/Mail.svg");
+  --thumb-bottom-right-image: url("/about/art/svg/DoomedMelee.svg");
+}
+
+.mediacarousel--corner-art .mediacarousel-info {
+  overflow: visible;
+}
+
+.carousel-corner-art {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.carousel-corner-art__piece {
+  position: absolute;
+  width: var(--corner-art-size);
+  height: var(--corner-art-size);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.carousel-corner-art--media {
+  --corner-art-size: var(--corner-art-media-size, 32px);
+}
+
+.carousel-corner-art--info {
+  --corner-art-size: var(--corner-art-info-size, 30px);
+}
+
+.carousel-corner-art--thumb {
+  --corner-art-size: var(--corner-art-thumb-size, 24px);
+  --corner-art-outset: 0px;
+  opacity: 0;
+  transition: opacity 0.16s ease;
+}
+
+.mediacarousel-thumb:hover .carousel-corner-art--thumb,
+.mediacarousel-thumb:focus-visible .carousel-corner-art--thumb,
+.mediacarousel-thumb.is-active .carousel-corner-art--thumb {
+  opacity: 1;
+}
+
+.carousel-corner-art__piece--top-left {
+  top: var(--corner-top-left-y, var(--corner-art-outset, -12px));
+  left: var(--corner-top-left-x, var(--corner-art-outset, -12px));
+  background-image: var(--corner-top-left-image);
+  transform: rotate(var(--corner-top-left-rotation, 0deg));
+}
+
+.carousel-corner-art__piece--top-right {
+  top: var(--corner-top-right-y, var(--corner-art-outset, -12px));
+  right: var(--corner-top-right-x, var(--corner-art-outset, -12px));
+  background-image: var(--corner-top-right-image);
+  transform: rotate(var(--corner-top-right-rotation, 0deg));
+}
+
+.carousel-corner-art__piece--bottom-left {
+  bottom: var(--corner-bottom-left-y, var(--corner-art-outset, -12px));
+  left: var(--corner-bottom-left-x, var(--corner-art-outset, -12px));
+  background-image: var(--corner-bottom-left-image);
+  transform: rotate(var(--corner-bottom-left-rotation, 0deg));
+}
+
+.carousel-corner-art__piece--bottom-right {
+  right: var(--corner-bottom-right-x, var(--corner-art-outset, -12px));
+  bottom: var(--corner-bottom-right-y, var(--corner-art-outset, -12px));
+  background-image: var(--corner-bottom-right-image);
+  transform: rotate(var(--corner-bottom-right-rotation, 0deg));
+}
+
+.carousel-corner-art--media {
+  --corner-top-left-image: var(--media-top-left-image);
+  --corner-top-right-image: var(--media-top-right-image);
+  --corner-bottom-left-image: var(--media-bottom-left-image);
+  --corner-bottom-right-image: var(--media-bottom-right-image);
+}
+
+.carousel-corner-art--info {
+  --corner-top-left-image: var(--info-top-left-image);
+  --corner-top-right-image: var(--info-top-right-image);
+  --corner-bottom-left-image: var(--info-bottom-left-image);
+  --corner-bottom-right-image: var(--info-bottom-right-image);
+}
+
+.carousel-corner-art--thumb {
+  --corner-top-left-image: var(--thumb-top-left-image);
+  --corner-top-right-image: var(--thumb-top-right-image);
+  --corner-bottom-left-image: var(--thumb-bottom-left-image);
+  --corner-bottom-right-image: var(--thumb-bottom-right-image);
+}
+
+.mediacarousel--corner-art .carousel-corner-art--media .carousel-corner-art__piece--top-right {
+  --corner-top-right-rotation: 18deg;
+  --corner-top-right-y: 2px;
+}
+
+.mediacarousel--corner-art .carousel-corner-art--media .carousel-corner-art__piece--bottom-left {
+  --corner-bottom-left-rotation: -14deg;
+  --corner-bottom-left-x: 2px;
+}
+
+.mediacarousel--corner-art .carousel-corner-art--info .carousel-corner-art__piece--top-left {
+  --corner-top-left-rotation: -12deg;
+  --corner-top-left-y: 2px;
+}
+
+.mediacarousel--corner-art .carousel-corner-art--info .carousel-corner-art__piece--bottom-right {
+  --corner-bottom-right-rotation: 14deg;
+  --corner-bottom-right-x: 2px;
+}
+
+.mediacarousel--corner-art .carousel-corner-art--thumb .carousel-corner-art__piece--top-right {
+  --corner-top-right-rotation: 12deg;
+}
+
+.mediacarousel--corner-art .carousel-corner-art--thumb .carousel-corner-art__piece--bottom-left {
+  --corner-bottom-left-rotation: -12deg;
+}
+
+.mediacarousel--corner-art.tetris .mediacarousel-thumb.is-active .carousel-corner-art__piece--top-right,
+.mediacarousel--corner-art.tetris .mediacarousel-thumb.is-active .carousel-corner-art__piece--bottom-left,
+.mediacarousel--corner-art.engine .mediacarousel-thumb.is-active .carousel-corner-art__piece--top-right,
+.mediacarousel--corner-art.engine .mediacarousel-thumb.is-active .carousel-corner-art__piece--bottom-left {
+  display: none;
+}
+
+.mediacarousel--text-only {
+  display: block;
+}
+
+.mediacarousel--text-only .mediacarousel-thumbs {
+  display: none;
+}
 
 /* =========================================================
    KEYBOARD FOCUS
@@ -382,7 +604,7 @@
 
   .mediacarousel-overlay {
     opacity: 1;
-    pointer-events: auto;
+    pointer-events: none;
   }
 
 }
@@ -425,11 +647,11 @@
   }
 
   .mediacarousel-button--prev {
-    left: 9px;
+    left: calc(9px - var(--carousel-arrow-mobile-inset, 0px));
   }
 
   .mediacarousel-button--next {
-    right: 9px;
+    right: calc(9px - var(--carousel-arrow-mobile-inset, 0px));
   }
 
   .mediacarousel-button svg {

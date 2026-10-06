@@ -48,6 +48,7 @@
 
 </header>
 <script src="/general/header/header-state.js"></script>
+<script src="/general/media/video/video.js"></script>
 <script src="/general/carousel/carousel.js"></script>
 
     
@@ -119,10 +120,8 @@
     <main class="projects">
       <article class="project-showcase">
         <div
-          class="mediacarousel mediacarousel--info-right doomed"
-          data-carousel
-          aria-label="Doomed project gallery"
-        >
+          class="mediacarousel mediacarousel--info-right mediacarousel--corner-art doomed"
+          data-carousel>
           <div class="mediacarousel-content">
             <div class="mediacarousel-main">
               <div class="mediacarousel-current"></div>
@@ -130,82 +129,17 @@
                 <div class="mediacarousel-counter" aria-live="polite">
                   1 / 5
                 </div>
-                <button
-                  class="mediacarousel-button mediacarousel-button--prev"
-                  type="button"
-                  aria-label="Previous item"
-                >
-                  <svg width="17" height="24" viewBox="0 0 17 24" aria-hidden="true">
-                    <path d="M9 12L4.5 8L0 0L9 4L17 12L9 20L0 24L4.5 16L9 12Z"></path>
-                  </svg>
-                </button>
-                <button
-                  class="mediacarousel-button mediacarousel-button--next"
-                  type="button"
-                  aria-label="Next item"
-                >
-                  <svg width="17" height="24" viewBox="0 0 17 24" aria-hidden="true">
-                    <path d="M9 12L4.5 8L0 0L9 4L17 12L9 20L0 24L4.5 16L9 12Z"></path>
-                  </svg>
-                </button>
+                <button class="mediacarousel-button mediacarousel-button--prev" type="button" aria-label="Previous item"><svg width="17" height="24" viewBox="0 0 17 24" aria-hidden="true"><path d="M9 12L4.5 8L0 0L9 4L17 12L9 20L0 24L4.5 16L9 12Z"></path></svg></button>
+                <button class="mediacarousel-button mediacarousel-button--next" type="button" aria-label="Next item"><svg width="17" height="24" viewBox="0 0 17 24" aria-hidden="true"><path d="M9 12L4.5 8L0 0L9 4L17 12L9 20L0 24L4.5 16L9 12Z"></path></svg></button>
               </div>
             </div>
 
-            <div
-              class="mediacarousel-thumbs"
-              role="tablist"
-              aria-label="Doomed media"
-            >
-              <button
-                class="mediacarousel-thumb"
-                type="button"
-                role="tab"
-                data-title="Doomed"
-                aria-label="Show Doomed"
-              >
-                <img src="/projects/doomed/doomed.png" alt="" draggable="false">
-              </button>
-              <button
-                class="mediacarousel-thumb"
-                type="button"
-                role="tab"
-                data-title="Contributions"
-                aria-label="Show contributions"
-              >
-                <img src="/projects/doomed/carousel/1.png" alt="" draggable="false">
-              </button>
-              <button
-                class="mediacarousel-thumb"
-                type="button"
-                role="tab"
-                data-title="Stylization"
-                aria-label="Show stylization"
-              >
-                <img src="/projects/doomed/carousel/2.png" alt="" draggable="false">
-              </button>
-              <button
-                class="mediacarousel-thumb"
-                type="button"
-                role="tab"
-                data-title="Combat"
-                aria-label="Show combat"
-              >
-                <video
-                  muted
-                  playsinline
-                  preload="metadata"
-                  src="/projects/doomed/carousel/3.mp4"
-                ></video>
-              </button>
-              <button
-                class="mediacarousel-thumb"
-                type="button"
-                role="tab"
-                data-title="Horde Mode and Project Structure"
-                aria-label="Show Horde Mode and project structure"
-              >
-                <img src="/projects/doomed/carousel/4.png" alt="" draggable="false">
-              </button>
+            <div class="mediacarousel-thumbs">
+              <button class="mediacarousel-thumb" type="button"><img src="/projects/doomed/carousel/intro.webp" alt="" draggable="false"></button>
+              <button class="mediacarousel-thumb" type="button" data-controls="true" data-volume-button="true" data-volume="0.25"><video muted playsinline preload="metadata" src="/projects/doomed/doomed.webm"></video></button>
+              <button class="mediacarousel-thumb" type="button" data-controls="true" data-volume-button="false" data-volume="0"><video muted playsinline preload="metadata" src="/projects/doomed/carousel/beforeANDafter.webm"></video></button>
+              <button class="mediacarousel-thumb" type="button" data-controls="true" data-volume-button="false"><video muted playsinline preload="metadata" src="/projects/doomed/carousel/3.mp4"></video></button>
+              <button class="mediacarousel-thumb" type="button"><img src="/projects/doomed/carousel/4.png" alt="" draggable="false"></button>
             </div>
           </div>
 
@@ -229,35 +163,50 @@
                 <p>Combat design • Stylization • Ability upgrade system • Onboarding • Horde mode • Project management</p>
                 <h2>Tech Stack</h2>
                 <p>UE5 • Gitlab • Git LFS • Canva</p>
+              </div>
 
-              </div>
               <div class="mediacarousel-info-item" data-slide="1">
-                <h2>My Contributions</h2>
+                <h2>Context</h2>
                 <p>
-                  I worked on stylization, combat, Horde Mode, and project
-                  management.
+                  Doomed was given to a select few students during our Gameplay Engineering semester.
                 </p>
+                <br>
+                <p>When Gameplay Engineering stopped existing, I contacted the product owner, to which my enthusiasm for the game directly resulted in the project being continued in the university's new "Playful Tech" studio.
+                </p>
+                <br>
+                <p>At the start of the Playful Tech semester, I was asked to represent and pitch this project to a class of over <span style="color: var(--standout-color-cyan);">100 students</span>. I was automatically assigned this project while every other student had to endure a vote.</p>
               </div>
+
               <div class="mediacarousel-info-item" data-slide="2">
                 <h2>Stylization</h2>
+                <p>When we were handed the project, I had Identified several problems regarding clarity, visual identity and cohecency.</p>
+                <br>
                 <p>
-                  Improving scene clarity and bringing the HUD, shaders, and
-                  terrain together into a cohesive visual style.
+                  I redesigned the HUD because it was conveying unnecessary information while simultaneously missing important information such as keybinds and cooldowns.
                 </p>
+                <br>
+                <p>I improved the scene's clarity and atmosphere by working on the lighting, fog and post-processing effects. I also made sure upcoming landmarks were just barely visible to reduce the player's cognitive load.</p>
+                <br>
+                <p>I created stylized cel and outline shaders that only accept three types of materials. This ensured that our assets, which are from different publishers, followed the same coherent visual style.</p>
+
               </div>
+
               <div class="mediacarousel-info-item" data-slide="3">
                 <h2>Combat</h2>
-                <p>
-                  Making the game easier to learn and improving how its combat
-                  feels.
-                </p>
+                <p>I implemented gradual learning; instead of starting with all abilities, you had to find runes and learn them.</p>
+                <br>
+                <p>I also coupled the weapons and abilities together which reduced the amount of inputs a player had to learn from four to one.</p>
+                <br>
+                <p>And finally, I made abilities cost ammo instead of mana, as the mana system overcomplicated the game in a way that wasn't fun.</p>
+                <h2>Other Combat Contributions</h2>
+                <p>Melee • Expected reload behaviour • Emergent projectiles • Weapon swapping accessibility</p>
               </div>
               <div class="mediacarousel-info-item" data-slide="4">
-                <h2>Horde Mode & Project Management</h2>
+                <h2>Project Management</h2>
                 <p>
-                  Near the end of development, we added Horde Mode. I also took
-                  on the role of Project Lead.
+                  As project lead, I was responsible that we were hitting the right deadlines.
                 </p>
+                <p>I also viewed my role as a motivator. There wasn't a moment where I wasn't enthusiastic about the game, even during times where not everything went as planned, because I understand how that would influence both my teammates and the product owner.</p>
               </div>
             </div>
           </aside>
@@ -269,14 +218,11 @@
       </article>
 
 
-      <br><br><br>
       <article class="project-showcase">
 
         <div
-          class="mediacarousel mediacarousel--info-left tetris"
-          data-carousel
-          aria-label="Tetris Airconsole project gallery"
-        >
+          class="mediacarousel mediacarousel--info-left mediacarousel--corner-art tetris"
+          data-carousel>
 
           <div class="mediacarousel-content">
             <div class="mediacarousel-main">
@@ -289,92 +235,19 @@
                   1 / 4
                 </div>
 
-                <button
-                  class="mediacarousel-button mediacarousel-button--prev"
-                  type="button"
-                  aria-label="Previous item"
-                >
-                  <svg width="16" height="24" viewBox="0 0 16 24" aria-hidden="true">
-                    <path d="M0 0L16 12L0 24V0Z"></path>
-                  </svg>
-                </button>
-
-                <button
-                  class="mediacarousel-button mediacarousel-button--next"
-                  type="button"
-                  aria-label="Next item"
-                >
-                  <svg width="16" height="24" viewBox="0 0 16 24" aria-hidden="true">
-                    <path d="M0 0L16 12L0 24V0Z"></path>
-                  </svg>
-                </button>
+                <button class="mediacarousel-button mediacarousel-button--prev" type="button" aria-label="Previous item"><svg width="16" height="24" viewBox="0 0 16 24" aria-hidden="true"><path d="M0 0L16 12L0 24V0Z"></path></svg></button>
+                <button class="mediacarousel-button mediacarousel-button--next" type="button" aria-label="Next item"><svg width="16" height="24" viewBox="0 0 16 24" aria-hidden="true"><path d="M0 0L16 12L0 24V0Z"></path></svg></button>
 
               </div>
 
             </div>
 
-            <div
-              class="mediacarousel-thumbs"
-              role="tablist"
-              aria-label="Tetris Airconsole media"
-            >
-              <button
-                class="mediacarousel-thumb"
-                type="button"
-                role="tab"
-                data-title="Tetris Airconsole gameplay"
-                aria-label="Show Tetris Airconsole gameplay"
-              >
-                <img
-                  src="/projects/tetris/tetris.jpg"
-                  alt=""
-                  draggable="false"
-                >
-              </button>
-
-              <button
-                class="mediacarousel-thumb"
-                type="button"
-                role="tab"
-                data-title="Lightning animation"
-                aria-label="Show lightning animation"
-              >
-                <video
-                  muted
-                  playsinline
-                  preload="metadata"
-                  src="/projects/tetris/lightning-animation/battle.mp4"
-                ></video>
-              </button>
-
-              <button
-                class="mediacarousel-thumb"
-                type="button"
-                role="tab"
-                data-title="Multiplayer stability"
-                aria-label="Show multiplayer stability"
-              >
-                <img
-                  src="/projects/tetris/multiplayer-stability/airconsole.webp"
-                  alt=""
-                  draggable="false"
-                >
-              </button>
-
-              <button
-                class="mediacarousel-thumb"
-                type="button"
-                role="tab"
-                data-title="UI and UX"
-                aria-label="Show UI and UX"
-              >
-                <img
-                  src="/projects/tetris/ui-ux/main-screen.png"
-                  alt=""
-                  draggable="false"
-                >
-              </button>
-
+            <div class="mediacarousel-thumbs">
+              <button class="mediacarousel-thumb" type="button"><img src="/projects/tetris/tetris.jpg" alt="" draggable="false"></button>
+              <button class="mediacarousel-thumb" type="button" data-controls="true" data-volume-button="true" data-volume="0.25" data-fit="contain" data-blurred-background="true"><video muted playsinline preload="metadata" src="/projects/tetris/Skoda.mp4"></video></button>
+              <button class="mediacarousel-thumb" type="button" data-controls="true" data-volume-button="false"><video muted playsinline preload="metadata" src="/projects/tetris/lightning-animation/battle.mp4"></video></button>
+              <button class="mediacarousel-thumb" type="button"><img src="/projects/tetris/multiplayer-stability/airconsole.webp" alt="" draggable="false"></button>
+              <button class="mediacarousel-thumb" type="button"><img src="/projects/tetris/ui-ux/main-screen.png" alt="" draggable="false"></button>
             </div>
           </div>
 
@@ -415,15 +288,27 @@
                 class="mediacarousel-info-item"
                 data-slide="1"
               >
-                <h2>Lightning Animation</h2>
+                <h2>Context</h2>
                 <p>
-                  I implemented the logic behind a lightning effect that visually connects the line a player clears to the destination of the garbage they send. I made sure that the effect remained immediately readable without being too distracting.
+                  Tetris Airconsole is an official Tetris title built for the Airconsole platform for an in-car multiplayer experience, where players connect through their phones and interact with the game on a shared screen.
                 </p>
+                <br>
+                <p>Airconsole works together with external game companies, such as Wanted Game Studio, to develop games like these. I happen to be lucky enough to intern for Wanted while they were tasked with developing Tetris Airconsole.</p>
               </div>
 
               <div
                 class="mediacarousel-info-item"
                 data-slide="2"
+              >
+                <h2>Lightning Animation</h2>
+                <p>
+                  I implemented the logic behind a lightning effect that visually connects the line a player clears to the destination of the garbage they send. I iterated on it to make sure that the effect remained immediately readable without being too distracting.
+                </p>
+              </div>
+
+              <div
+                class="mediacarousel-info-item"
+                data-slide="3"
               >
                 <h2>Multiplayer Stability</h2>
                 <p>
@@ -433,7 +318,7 @@
 
               <div
                 class="mediacarousel-info-item"
-                data-slide="3"
+                data-slide="4"
               >
                 <h2>UI, UX & Interactions</h2>
                 <p>
@@ -450,13 +335,10 @@
       </article>
 
 
-      <br><br><br>
       <article class="project-showcase">
         <div
-          class="mediacarousel mediacarousel--info-right engine"
-          data-carousel
-          aria-label="Vulkan Game Engine project gallery"
-        >
+          class="mediacarousel mediacarousel--info-right mediacarousel--corner-art engine"
+          data-carousel>
           <div class="mediacarousel-content">
             <div class="mediacarousel-main">
               <div class="mediacarousel-current"></div>
@@ -464,64 +346,16 @@
                 <div class="mediacarousel-counter" aria-live="polite">
                   1 / 3
                 </div>
-                <button
-                  class="mediacarousel-button mediacarousel-button--prev"
-                  type="button"
-                  aria-label="Previous item"
-                >
-                  <svg width="11" height="16" viewBox="0 0 11 16" aria-hidden="true">
-                    <path d="M9.37118 1.00004L1.38606 7.21068C0.871313 7.61104 0.871313 8.38902 1.38606 8.78938L9.37118 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                  </svg>
-                </button>
-                <button
-                  class="mediacarousel-button mediacarousel-button--next"
-                  type="button"
-                  aria-label="Next item"
-                >
-                  <svg width="11" height="16" viewBox="0 0 11 16" aria-hidden="true">
-                    <path d="M9.37118 1.00004L1.38606 7.21068C0.871313 7.61104 0.871313 8.38902 1.38606 8.78938L9.37118 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                  </svg>
-                </button>
+                <button class="mediacarousel-button mediacarousel-button--prev" type="button" aria-label="Previous item"><svg width="11" height="16" viewBox="0 0 11 16" aria-hidden="true"><path d="M9.37118 1.00004L1.38606 7.21068C0.871313 7.61104 0.871313 8.38902 1.38606 8.78938L9.37118 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button>
+                <button class="mediacarousel-button mediacarousel-button--next" type="button" aria-label="Next item"><svg width="11" height="16" viewBox="0 0 11 16" aria-hidden="true"><path d="M9.37118 1.00004L1.38606 7.21068C0.871313 7.61104 0.871313 8.38902 1.38606 8.78938L9.37118 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button>
               </div>
             </div>
 
-            <div
-              class="mediacarousel-thumbs"
-              role="tablist"
-              aria-label="Vulkan Game Engine media"
-            >
-              <button
-                class="mediacarousel-thumb"
-                type="button"
-                role="tab"
-                data-title="Vulkan Game Engine"
-                aria-label="Show Vulkan Game Engine"
-              >
-                <img src="/projects/engine/engine.png" alt="" draggable="false">
-              </button>
-              <button
-                class="mediacarousel-thumb"
-                type="button"
-                role="tab"
-                data-title="Lighting"
-                aria-label="Show lighting"
-              >
-                <img src="/projects/engine/lighting.png" alt="" draggable="false">
-              </button>
-              <button
-                class="mediacarousel-thumb"
-                type="button"
-                role="tab"
-                data-title="Game object system"
-                aria-label="Show the game object system"
-              >
-                <video
-                  muted
-                  playsinline
-                  preload="metadata"
-                  src="/projects/engine/gameobjects.mp4"
-                ></video>
-              </button>
+            <div class="mediacarousel-thumbs">
+              <button class="mediacarousel-thumb" type="button"><img src="/projects/engine/engine.png" alt="" draggable="false"></button>
+              <button class="mediacarousel-thumb" type="button"><img src="/projects/engine/cube.gif" alt="" draggable="false"></button>
+              <button class="mediacarousel-thumb" type="button"><img src="/projects/engine/lighting.png" alt="" draggable="false"></button>
+              <button class="mediacarousel-thumb" type="button" data-controls="true" data-volume-button="false"><video muted playsinline preload="metadata" src="/projects/engine/gameobjects.mp4"></video></button>
             </div>
           </div>
 
@@ -534,21 +368,29 @@
                   A graphics engine focused on high performance
                 </p>
                 <h2>My Role</h2>
-                <p>Solo developer</p>
+                <p>Solo Developer</p>
                 <h2>Timespan</h2>
-                <p>Four weeks</p>
+                <p>4 weeks during my Gameplay Engineering semester</p>
                 <h2>My Work</h2>
                 <p>Rendering pipeline • Vertex & fragment shaders • Camera system • Game object system • Lighting</p>                
                 <h2>Tech Stack</h2>
                 <p>C++ • Vulkan • Github</p>
               </div>
               <div class="mediacarousel-info-item" data-slide="1">
+                <h2>Context</h2>
+                <p>
+                  During my gameplay engineering semester, we had a 4-week solo project where we were tasked to work on anything we wanted, such as a very cool game system or a shader. I was a teeny tiny bit ambitieus, and used this time to create a game engine.
+                </p>
+                <br>
+                <p>The GIF shows me excited with my first cube.</p>
+              </div>
+              <div class="mediacarousel-info-item" data-slide="2">
                 <h2>Lighting</h2>
                 <p>
                   Implemented point lights, directional lights and ambient light.
                 </p>
               </div>
-              <div class="mediacarousel-info-item" data-slide="2">
+              <div class="mediacarousel-info-item" data-slide="3">
                 <h2>Game Object System</h2>
                 <p>
                   Built a game object system similar to that of Unity, where each game object has its own list of components. This is useful for oganizing entities and behaviour.

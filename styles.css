@@ -1,5 +1,6 @@
 /* font */
 @import "general/fonts/fonts.css";
+@import "general/media/video/video.css";
 
 @import "general/carousel/carousel.css";
 @import "general/header/header.css";
@@ -19,7 +20,7 @@
 
 :root {
   --standout-color-cyan: #47cbd2;
-  --standout-color-green: #58b550;
+  --standout-color-green: #5ed453;
   --supporting-background-color: #3b3b3b;
   --main-background-color: #212121;
   --text-color: #e0e0e0;

@@ -24,6 +24,21 @@ function setupMediaCarousel(carousel) {
     carousel.querySelectorAll(".mediacarousel-info-item")
   );
 
+  function addCornerArtwork(target, area) {
+    if (!target) return;
+
+    const artwork = document.createElement("span");
+    artwork.className = `carousel-corner-art carousel-corner-art--${area}`;
+    artwork.setAttribute("aria-hidden", "true");
+
+    ["top-left", "top-right", "bottom-left", "bottom-right"].forEach((corner) => {
+      const piece = document.createElement("span");
+      piece.className = `carousel-corner-art__piece carousel-corner-art__piece--${corner}`;
+      artwork.append(piece);
+    });
+
+    target.append(artwork);
+  }
 
   if (
     !main ||
@@ -32,6 +47,12 @@ function setupMediaCarousel(carousel) {
     !thumbs.length
   ) {
     return;
+  }
+
+  if (carousel.classList.contains("mediacarousel--corner-art")) {
+    addCornerArtwork(main, "media");
+    addCornerArtwork(carousel.querySelector(".mediacarousel-info"), "info");
+    thumbs.forEach((thumb) => addCornerArtwork(thumb, "thumb"));
   }
 
 
@@ -56,55 +77,9 @@ function setupMediaCarousel(carousel) {
      MEDIA HELPERS
      ========================================================= */
 
-  function freezeThumbnailVideo(video) {
-
-    video.muted = true;
-    video.pause();
-
-    try {
-      video.currentTime = 0;
-    } catch {
-      /* Ignore videos that are not seekable yet. */
-    }
-  }
-
-
-  function prepareThumbnailVideo(video) {
-
-    video.muted = true;
-    video.pause();
-    video.controls = false;
-
-    /*
-     * Try to get the first frame without playing it.
-     */
-    video.addEventListener(
-      "loadedmetadata",
-      () => {
-
-        try {
-          video.currentTime = 0;
-        } catch {
-          /* Ignore. */
-        }
-
-      },
-      { once: true }
-    );
-
-
-    video.addEventListener(
-      "loadeddata",
-      () => {
-        freezeThumbnailVideo(video);
-      }
-    );
-  }
-
-
   function createMainMedia(thumb) {
 
-    const source = thumb.querySelector("img, video");
+    const source = thumb.querySelector(".mediacarousel-text-source, img, video");
 
     if (!source) {
       return null;
@@ -120,41 +95,12 @@ function setupMediaCarousel(carousel) {
         thumb.dataset.title ||
         source.alt ||
         "";
+    } else if (source.classList.contains("mediacarousel-text-source")) {
+      media.classList.add("mediacarousel-text-slide");
     }
-
-    if (media.tagName === "VIDEO") {
-
-      media.muted = true;
-      media.autoplay = true;
-      media.loop = true;
-      media.controls = false;
-      media.playsInline = true;
-
-      media.setAttribute("playsinline", "");
-      media.setAttribute("muted", "");
-      media.setAttribute("autoplay", "");
-      media.setAttribute("loop", "");
-
-
-      media.addEventListener(
-        "loadeddata",
-        () => {
-          media.play().catch(() => {
-            /*
-             * Browser may still reject autoplay.
-             * The video remains usable as a still frame.
-             */
-          });
-        },
-        { once: true }
-      );
-
-    }
-
 
     return media;
   }
-
 
   /* =========================================================
      INFO PANEL
@@ -258,16 +204,29 @@ function setupMediaCarousel(carousel) {
     const media =
       createMainMedia(activeThumb);
 
-
     if (media) {
+      current.querySelectorAll("video").forEach((video) => video.pause());
+      let displayMedia = media;
 
-      current.replaceChildren(media);
+      if (media instanceof HTMLVideoElement) {
+        if (!window.VideoPlayer) {
+          throw new Error("The shared video player must load before the media carousel.");
+        }
 
-      main.setAttribute(
-        "aria-label",
-        activeThumb.dataset.title ||
-        `Media ${currentIndex + 1}`
-      );
+        media.muted = false;
+        media.preload = "auto";
+        displayMedia = window.VideoPlayer.initialize(media, {
+          controls: activeThumb.dataset.controls !== "false",
+          volumeButton: activeThumb.dataset.volumeButton !== "false",
+          volume: activeThumb.dataset.volume,
+          fit: activeThumb.dataset.fit,
+          blurredBackground: activeThumb.dataset.blurredBackground === "true",
+          autoplay: true,
+          loop: true
+        });
+      }
+
+      current.replaceChildren(displayMedia);
 
     }
 
@@ -364,7 +323,7 @@ function setupMediaCarousel(carousel) {
       thumb.querySelector("video");
 
     if (video) {
-      prepareThumbnailVideo(video);
+      window.VideoPlayer.prepareThumbnail(video);
     }
 
   });

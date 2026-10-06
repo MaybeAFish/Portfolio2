@@ -1,8 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  document
-    .querySelectorAll(".mediacarousel, .textcarousel")
-    .forEach(setupCarousel);
-
   initialiseGameCharacters();
   initialiseEyeball();
 });

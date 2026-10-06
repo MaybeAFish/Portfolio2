@@ -45,9 +45,11 @@
 
       <section>
         <img class="side-navigation-media" style="border-radius: 0;" src="/projects/tetris/tetris.jpg">
-        <video id="skoda-video" style="height: 600px;" class="side-navigation-media" autoplay loop controls preload="metadata">
-          <source src="/projects/tetris/Skoda.mp4" type="video/mp4" />
-        </video>
+        <div class="skoda-video-frame">
+          <video id="skoda-video" class="side-navigation-media" data-video-player data-video-blurred-background="true" data-video-fit="contain" data-video-volume="0.08" autoplay loop controls playsinline preload="metadata">
+            <source src="/projects/tetris/Skoda.mp4" type="video/mp4" />
+          </video>
+        </div>
 
         <h1>Tetris Airconsole</h1>
         <p>
@@ -120,8 +122,6 @@
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
     <script src="/general/component-loader.js"></script>
-    <script>
-      document.getElementById("skoda-video").volume = 0.08;
-    </script>
+    <script src="/general/media/video/video.js"></script>
   </body>
 </html>
