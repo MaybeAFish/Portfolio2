@@ -42,7 +42,7 @@
   box-sizing: border-box;
   overflow: hidden;
 
-  background: var(--supporting-background-color);
+  /* background: var(--supporting-background-color); */
   border-radius: var(--border-radius);
 }
 

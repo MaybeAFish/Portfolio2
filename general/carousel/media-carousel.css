@@ -214,6 +214,18 @@
   stroke-linejoin: round;
 }
 
+.mediacarousel.doomed .mediacarousel-button svg,
+.mediacarousel.tetris .mediacarousel-button svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+.mediacarousel.doomed .mediacarousel-button--prev svg,
+.mediacarousel.tetris .mediacarousel-button--prev svg,
+.mediacarousel.engine .mediacarousel-button--next svg {
+  transform: rotate(180deg);
+}
+
 
 /* Hover = green */
 

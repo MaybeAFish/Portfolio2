@@ -1,5 +1,6 @@
 /* font */
-@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Bree+Serif&family=Merriweather:wght@400;700&family=Noto+Serif:wght@400;700&family=Roboto&family=Roboto+Slab:wght@400;700&display=swap');
+@import "general/fonts/fonts.css";
+
 @import "general/carousel/carousel.css";
 @import "general/header/header.css";
 @import "general/footer/footer.css";
@@ -9,26 +10,12 @@
 @import "general/media/art/art-grid.css";
 @import "general/media/art/models-grid.css";
 
-
 @import "general/scrollbar.css";
 @import "general/dropdown.css";
 @import "general/underline-hover.css";
 @import "general/button.css";
 @import "general/media/tooltip.css";
 @import "general/side-nav/side-nav.css";
-
-@font-face {
-  font-family: "Rocky Rock";
-  src: url("/general/fonts/clicktoamine/Rocky Rock.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Roboto Condensed";
-  src: url("/general/fonts/clicktoamine/Roboto-Condensed-Regular.woff2") format("woff2");
-  font-weight: 700;
-}
 
 :root {
   --standout-color-cyan: #47cbd2;
@@ -40,10 +27,6 @@
 
   --header-height: 80px;
   --border-radius: 10px;
-}
-
-* {
-  font-family: inherit;
 }
 
 main {
@@ -60,9 +43,6 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: clip;
-
-  font-weight: 0;
-  font-family: "Bree Serif", sans-serif;
 }
 body {
   padding-top: var(--header-height);
@@ -74,11 +54,11 @@ body {
   color: var(--text-color);
 
   background: var(--main-background-color);
-  background-image:
+  /* background-image:
     linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 40px 40px;
-  background-position: center top;
+  background-position: center top; */
 }
 
 a {
@@ -103,17 +83,6 @@ h2 {
   font-size: 1.8rem;
   text-align: center;
   color: var(--text-color-muted);
-  -webkit-text-stroke: 0.5px var(--supporting-background-color);
-}
-h3 {
-  -webkit-text-stroke: 0.1px var(--supporting-background-color);
-}
-
-h1,
-h2,
-h3 {
-  font-weight: normal;
-  font-family: "Rocky Rock", sans-serif;
 }
 
 
