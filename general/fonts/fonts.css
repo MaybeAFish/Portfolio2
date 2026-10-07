@@ -154,6 +154,14 @@
 .engine {
   --font-heading: "Engine Heading";
   --font-body: "Engine Text";
+  --font-body-size: 0.9em;
+}
+.engine blockquote,
+.engine a,
+.engine p,
+.engine span,
+.engine li {
+  font-size: var(--font-body-size);
 }
 .karaoke {
   --font-heading: "Karaoke Heading";
@@ -209,10 +217,12 @@ h6 {
 blockquote,
 a,
 p,
+strong,
 span,
 li {
   font-family: var(--font-body), sans-serif;
 }
+
 .body {
   font-family: var(--font-body), sans-serif !important;
 }
@@ -220,5 +230,3 @@ li {
 .outline {
   -webkit-text-stroke: 0.5px var(--supporting-background-color);
 }
-
-

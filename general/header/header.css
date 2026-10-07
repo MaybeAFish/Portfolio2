@@ -44,7 +44,6 @@ nav a {
   border: none;
   cursor: pointer;
   padding: clamp(6px, 0.8vw, 8px) clamp(10px, 1.6vw, 14px);
-  font-size: clamp(0.72rem, 0.95vw + 0.15rem, 1rem);
 
   position: relative;
   display: inline-block;

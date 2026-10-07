@@ -16,7 +16,6 @@
 <p>Looking back, I should've made an attempt at experimenting with different animations, 
 because boomer shooter players ended up suggesting to have an animation which would communicate more impact, like a strong punch. 
 And I think the melee could also have used some additional VFX. Blood, particles, or, in this case, bones. 
-I think connecting a melee in a game can (sometimes) allow for more VFX than connecting gunshots.
 </p>
 
 
@@ -36,7 +35,7 @@ I think connecting a melee in a game can (sometimes) allow for more VFX than con
 <video class="solo-content" loop muted controls autoplay playsinline preload="metadata"> 
     <source src="/projects/doomed/combat/projectiles/deadwhy.webm" type="video/webm"> 
 </video>
-<p>I first fixed this by making projectiles despawn when their centre point reached a wall. This solved the frustration problem, but introduced a new gameplay problem considering projectiles could disappear in ways that felt inconsistent from the player's perspective.</p>
+<p>I first fixed this by making projectiles despawn when their centre point collided with terrain. This solved the frustration problem, but introduced a new gameplay problem considering projectiles could disappear in ways that felt inconsistent from the player's perspective.</p>
 <video class="solo-content" loop muted controls autoplay playsinline preload="metadata"> 
     <source src="/projects/doomed/combat/oldprojectiles.webm" type="video/webm"> 
 </video>
@@ -69,5 +68,49 @@ By observing their behaviour, I realized that the frustrating was primarily caus
     <source src="/projects/doomed/combat/reload.webm" type="video/webm"> 
 </video>
 
+
+<br>
+<h1>Horde Mode</h1>
+<video class="side-navigation-media" autoplay muted controls loop playsinline preload="metadata">
+    <source src="/projects/doomed/combat/horde/horde.mp4" type="video/mp4" />
+</video>
+<br>
+<p>
+Near the end of the project, we decided to add a Horde Mode to Doomed.
+Another team member had originally taken on the task, but ran into enough
+problems that we were ok with leaving it unfinished.
+</p>
+<p>
+With very little time left before the showcase, I tried working on it anyways, and I managed 
+to make all of the functionality for the game mode in roughly two days.
+</p>
+
+
+<br>
+<h2>The Game Loop</h2>
+<p>
+The goal is to survive increasingly difficult rounds of
+enemies.
+</p>
+<ul>
+<li>The round starts</li>
+<li>After a short duration, enemies start spawning into the arena</li>
+<li>The player must kill all the enemies</li>
+<li>The player occasionally gains a new weapon</li>
+<li>Repeat</li>
+</ul>
+
+<br>
+<h2>My Leftover Ideas</h2>
+<p>If I had more time for the mode, I would've created the following:</p>
+<ul>
+<li>A system with deadly terrain, (like lava, or Fortnite's storm), that would force the player to traverse the horde mode map. Currently, the player is only really told to stand around the same area.</li>
+<li>Ability drops across rounds. Currently, some rounds will drop weapons, while the game already has an entire ability system in place.</li>
+<li>A better system for regaining ammo, like landing headshots with the pistol maybe, or enforcing ability usage (enemies drop more ammo while under a status effect).</li>
+<li>Design up to 100 rounds. I had only done 10, with the last one being basically impossible so that our players during the final showcase wouldn't be able to see that I had only designed 10...</li>
+<li>Somehow allow the player to use map objects creatively to kill the enemies.</li>
+<li>A better, more appropiate spawning area for the golem boss, as he felt out of place outside of his usual arena.</li>
+<li>A shop. Enemies could drop coins instead of ammo. The player could use those coins to purchase weapons, specific ammo, attachments, abilities, traps, or more. This would allow for more player choice, and it would also create a small break inbetween the rounds with constant action.</li>
+</ul>
 
 <!-- I also added gun screenshake -->
