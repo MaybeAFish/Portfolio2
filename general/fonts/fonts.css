@@ -56,7 +56,7 @@
 }
 @font-face {
   font-family: "Karaoke Text";
-  src: url("/general/fonts/engamine/consolas-webfont.woff2") format("woff2");
+  src: url("/general/fonts/karaoke/OpenSans.ttf") format("truetype");
   font-display: block;
 }
 
@@ -72,11 +72,39 @@
   font-display: block;
 }
 
+/* Bubbles */
+@font-face {
+  font-family: "Bubbles Heading";
+  src: url("/general/fonts/bubbles/DailyBubble-OGGdA.ttf") format("truetype");
+  font-display: block;
+}
+@font-face {
+  font-family: "Bubbles Text";
+  src: url("/general/fonts/bubbles/Fredoka.ttf") format("truetype");
+  font-display: block;
+}
+
+/* Frog */
+@font-face {
+  font-family: "Frog Heading";
+  src: url("/general/fonts/frog/KaitlynRoseRegular-9MrPL.ttf") format("truetype");
+  font-display: block;
+}
+@font-face {
+  font-family: "Frog Text";
+  src: url("/general/fonts/league/Spiegel_TT_Regular.ttf") format("truetype");
+  font-display: block;
+}
+
 :root {
   --font-heading: "Rocky Rock";
   --font-body: "Bree Serif";
 }
 
+.rock {
+  --font-heading: "Rocky Rock";
+  --font-body: "Bree Serif";
+}
 .doomed {
   --font-heading: "Doomed Heading";
   --font-body: "Doomed Text";
@@ -97,7 +125,14 @@
   --font-heading: "League Heading";
   --font-body: "League Text";
 }
-
+.bubbles {
+  --font-heading: "Bubbles Heading";
+  --font-body: "Bubbles Text";
+}
+.frog {
+  --font-heading: "Frog Heading";
+  --font-body: "Frog Text";
+}
 
 * {
   font-family: inherit;
@@ -113,6 +148,9 @@ h6 {
   font-weight: normal;
   font-family: var(--font-heading), sans-serif;
 }
+.header {
+  font-family: var(--font-heading), sans-serif !important;
+}
 
 blockquote,
 a,
@@ -121,16 +159,12 @@ span,
 li {
   font-family: var(--font-body), sans-serif;
 }
-
+.body {
+  font-family: var(--font-body), sans-serif !important;
+}
 
 .outline {
   -webkit-text-stroke: 0.5px var(--supporting-background-color);
 }
 
-.header {
-  font-family: var(--font-heading), sans-serif !important;
-}
 
-.body {
-  font-family: var(--font-body), sans-serif !important;
-}

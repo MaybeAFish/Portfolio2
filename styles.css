@@ -86,6 +86,11 @@ h2 {
   text-align: center;
   color: var(--text-color-muted);
 }
+h3 {
+  font-size: 1.9rem;
+  text-align: center;
+
+}
 
 
 ol,
