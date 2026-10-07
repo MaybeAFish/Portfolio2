@@ -101,6 +101,7 @@
   padding: 10px 20px;
   color: var(--text-color);
   font-size: 1rem;
+  line-height: 1;
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid var(--supporting-background-color);
   border-radius: 999px;
