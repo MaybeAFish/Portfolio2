@@ -394,7 +394,7 @@
 
 .mediacarousel-thumb:active,
 .mediacarousel-thumb.is-active {
-  border: 2px solid var(--carousel-cyan);
+  border-color: var(--carousel-cyan);
 }
 
 .mediacarousel--corner-art .mediacarousel-thumb {
@@ -631,6 +631,10 @@
 }
 
 .mediacarousel--text-only {
+  display: block;
+}
+
+.mediacarousel--standalone {
   display: block;
 }
 

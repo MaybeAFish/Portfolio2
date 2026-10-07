@@ -7,9 +7,6 @@ const isAllProjectsSelected =
 const trigger = document.querySelector(".projects-nav-trigger");
 
 if (trigger) {
-  trigger.textContent = "Projects";
-  trigger.setAttribute("aria-label", "Projects");
-
   if (isAllProjectsSelected) {
     trigger.classList.add("active");
   } else if (currentPath.startsWith("/projects/")) {

@@ -1,4 +1,5 @@
 .mediacarousel--text-only {
+  --font-heading: "Rocky Rock";
   --carousel-green: var(--standout-color-green);
   --carousel-cyan: var(--standout-color-cyan);
 
@@ -14,41 +15,33 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: safe center;
   width: 100%;
   height: 100%;
+  min-height: 0;
+  overflow-y: auto;
   padding: clamp(20px, 4vw, 40px);
   box-sizing: border-box;
   color: var(--text-color);
   text-align: center;
-}
-
-.mediacarousel-text-slide .riddle-text {
-  width: 100%;
-  max-width: 620px;
-  margin: 0 0 24px;
-  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-  line-height: 1.8;
-}
-
-.mediacarousel-text-slide > h1,
-.mediacarousel-text-slide > h2,
-.mediacarousel-text-slide > h3,
-.mediacarousel-text-slide > p {
-  width: 100%;
-  margin: 0 0 18px;
-  color: white;
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-  font-weight: bold;
+  scrollbar-gutter: stable;
 }
 
 .mediacarousel-text-slide details {
   font-size: 0.95rem;
 }
 
+
 .mediacarousel-text-slide summary {
-  color: var(--standout-color-green);
+  color: var(--text-color);
   cursor: pointer;
+  transition: color 0.2s ease;
+}
+.mediacarousel-text-slide summary:hover {
+  color: var(--standout-color-green);
+}
+.mediacarousel-text-slide summary:active {
+  color: var(--standout-color-cyan);
 }
 
 .mediacarousel-text-slide details p {

@@ -90,9 +90,47 @@
   src: url("/general/fonts/frog/KaitlynRoseRegular-9MrPL.ttf") format("truetype");
   font-display: block;
 }
+
+/* Physiotherapy */
 @font-face {
-  font-family: "Frog Text";
-  src: url("/general/fonts/league/Spiegel_TT_Regular.ttf") format("truetype");
+  font-family: "Physiotherapy Heading";
+  src: url("/general/fonts/physiotherapy/Montserrat-Bold.ttf") format("truetype");
+  font-display: block;
+}
+
+/* Space */
+@font-face {
+  font-family: "Space Heading";
+  src: url("/general/fonts/space/xirod.otf") format("opentype");
+  font-display: block;
+}
+@font-face {
+  font-family: "Space Text";
+  src: url("/general/fonts/space/Oxanium-VariableFont_wght.ttf") format("truetype");
+  font-display: block;
+}
+
+/* Ice */
+@font-face {
+  font-family: "Ice Heading";
+  src: url("/general/fonts/ice/snowtt.ttf") format("truetype");
+  font-display: block;
+}
+@font-face {
+  font-family: "Ice Text";
+  src: url("/general/fonts/ice/TitilliumWeb-Regular.ttf") format("opentype");
+  font-display: block;
+}
+
+/* Samurai */
+@font-face {
+  font-family: "Samurai Heading";
+  src: url("/general/fonts/samurai/oldJapanese.otf") format("opentype");
+  font-display: block;
+}
+@font-face {
+  font-family: "Samurai Text";
+  src: url("/general/fonts/samurai/NotoSerifJP.ttf") format("truetype");
   font-display: block;
 }
 
@@ -131,7 +169,23 @@
 }
 .frog {
   --font-heading: "Frog Heading";
-  --font-body: "Frog Text";
+  --font-body: "Bubbles Text";
+}
+.physiotherapy {
+  --font-heading: "Physiotherapy Heading";
+  --font-body: "Arial";
+}
+.space {
+  --font-heading: "Space Heading";
+  --font-body: "Space Text";
+}
+.ice {
+  --font-heading: "Ice Heading";
+  --font-body: "Ice Text";
+}
+.samurai {
+  --font-heading: "Samurai Heading";
+  --font-body: "Samurai Text";
 }
 
 * {
