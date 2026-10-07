@@ -12,6 +12,7 @@
     height: 100%;
     max-width: none;
     margin: 0;
+    border-radius: inherit;
 }
 
 .skoda-video-frame .custom-video-backdrop {

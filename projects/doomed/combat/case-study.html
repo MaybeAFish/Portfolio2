@@ -2,7 +2,7 @@
 <h2>Melee</h2>
 <p>The game already had a melee attack, but it wasn't in a particularly good state. The animation was buggy, there was no sound, and there was very little impact feedback beyond the basic enemy hit reaction.</p>
 <p>The damage was also very low, and the game would feel as if it randomly switches between the gun-waving animation and the knife animation used for executes.</p>
-<video class="solo-content" loop muted controls autoplay playsinline preload="metadata"> 
+<video class="solo-content" data-video-player loop muted controls autoplay playsinline preload="metadata">
     <source src="/projects/doomed/combat/oldmelee.webm" type="video/webm"> 
 </video>
 
@@ -10,7 +10,7 @@
 <p>I reworked the melee system to make it faster, more consistent with a better looking stab animation, and impact feedback by knocking the enemy back slightly.</p>
 <p>I also changed the execute from a percentage-based damage value to a flat amount. This made the behaviour more predictable and prevented situations where the mechanic could produce TONS OF DAMAGE.</p>
 <p>To give the attack some more audio feedback, I added seven different grunts that would play semi-randomely when casting, and added a sound effect when the attack connects.</p>
-<video class="solo-content" loop controls playsinline preload="metadata">
+<video class="solo-content" data-video-player loop controls playsinline preload="metadata">
     <source src="/projects/doomed/combat/melee.mp4" type="video/mp4" />
 </video>
 <p>Looking back, I should've made an attempt at experimenting with different animations, 
@@ -22,7 +22,7 @@ And I think the melee could also have used some additional VFX. Blood, particles
 <br>
 <h2>Weapon Swapping Accessibility</h2>
 <p>I added a slow-motion effect when switching weapons through the weapon wheel.</p>
-<video class="solo-content" loop controls autoplay muted playsinline preload="metadata">
+<video class="solo-content" data-video-player loop controls autoplay muted playsinline preload="metadata">
     <source src="/projects/doomed/combat/slowmotion.webm" type="video/webm" />
 </video>
 <p>During playtesting, I noticed that players who were familiar with boomer shooters almost immediately tried using the number keys. Because of that, I also implemented 1-4 key weapon switching.</p>
@@ -32,17 +32,17 @@ And I think the melee could also have used some additional VFX. Blood, particles
 <br>
 <h2>Enemy Projectiles</h2>
 <p>Enemy projectiles used to pass through walls, which absolutely sucked because it felt impossible to see it coming which would confuse players as they randomely died.</p>
-<video class="solo-content" loop muted controls autoplay playsinline preload="metadata"> 
+<video class="solo-content" data-video-player loop muted controls autoplay playsinline preload="metadata">
     <source src="/projects/doomed/combat/projectiles/deadwhy.webm" type="video/webm"> 
 </video>
 <p>I first fixed this by making projectiles despawn when their centre point collided with terrain. This solved the frustration problem, but introduced a new gameplay problem considering projectiles could disappear in ways that felt inconsistent from the player's perspective.</p>
-<video class="solo-content" loop muted controls autoplay playsinline preload="metadata"> 
+<video class="solo-content" data-video-player data-video-volume-button="false" loop muted controls autoplay playsinline preload="metadata">
     <source src="/projects/doomed/combat/oldprojectiles.webm" type="video/webm"> 
 </video>
 
 <p>I then had a cooler idea. Instead of simply making the projectiles disappear, I experimented with having them reflect off the environment.</p>
 
-<video class="solo-content" loop muted controls autoplay playsinline preload="metadata"> 
+<video class="solo-content" data-video-player loop muted controls autoplay playsinline preload="metadata">
     <source src="/projects/doomed/combat/emergent.mp4" type="video/mp4"> 
 </video>
 
@@ -64,14 +64,14 @@ By observing their behaviour, I realized that the frustrating was primarily caus
 <li>When finishing a melee attack while holding a weapon with an empty magazine, reload.</li>
 <li>Added SFX when you had nothing in your mag to reload.</li>
 </ul>
-<video class="solo-content" autoplay muted controls loop playsinline preload="metadata"> 
+<video class="solo-content" data-video-player autoplay muted controls loop playsinline preload="metadata">
     <source src="/projects/doomed/combat/reload.webm" type="video/webm"> 
 </video>
 
 
 <br>
 <h1>Horde Mode</h1>
-<video class="side-navigation-media" autoplay muted controls loop playsinline preload="metadata">
+<video class="side-navigation-media" data-video-player autoplay muted controls loop playsinline preload="metadata">
     <source src="/projects/doomed/combat/horde/horde.mp4" type="video/mp4" />
 </video>
 <br>

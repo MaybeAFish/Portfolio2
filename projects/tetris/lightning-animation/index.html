@@ -41,7 +41,7 @@
       </nav>
 
       <section>
-        <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
+        <video class="side-navigation-media" data-video-player data-video-volume-button="false" autoplay muted loop playsinline preload="metadata">
           <source src="/projects/tetris/lightning-animation/battle.mp4" type="video/mp4" />
         </video>
 
@@ -111,7 +111,7 @@
           I also proposed and implemented the same animation for levelling up in the Marathon Mode, 
           as I found that there was previously no visual feedback when the player reached a new level:
         </p>
-        <video class="solo-content" autoplay muted loop playsinline preload="metadata">
+        <video class="solo-content" data-video-player data-video-volume-button="false" autoplay muted loop playsinline preload="metadata">
           <source src="/projects/tetris/lightning-animation/marathon.mp4" type="video/mp4" />
         </video>
 
@@ -121,7 +121,7 @@
           I had to experiment a lot with the timing and duration, as it either felt unimpactful, unclear or too distracting. 
           Here's an old version where the animation was somehow ALL 3:
         </p>
-        <video class="solo-content" autoplay controls muted loop playsinline preload="metadata">
+        <video class="solo-content" data-video-player data-video-volume-button="false" autoplay controls muted loop playsinline preload="metadata">
           <source src="/projects/tetris/lightning-animation/old.mp4" type="video/mp4" />
         </video>
         <ul>
@@ -142,5 +142,6 @@
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
     <script src="/general/component-loader.js"></script>
+    <script src="/general/media/video/video.js"></script>
   </body>
 </html>

@@ -187,7 +187,8 @@ function setupMediaCarousel(carousel) {
   function updateMain(index, options = {}) {
 
     const {
-      scrollThumb = true
+      scrollThumb = true,
+      focusThumb = false
     } = options;
 
 
@@ -264,6 +265,10 @@ function setupMediaCarousel(carousel) {
 
     }
 
+    if (focusThumb) {
+      activeThumb.focus({ preventScroll: true });
+    }
+
 
     carousel.dataset.activeSlide =
       String(currentIndex);
@@ -275,10 +280,11 @@ function setupMediaCarousel(carousel) {
      NAVIGATION
      ========================================================= */
 
-  function goToSlide(index) {
+  function goToSlide(index, options = {}) {
 
     updateMain(index, {
-      scrollThumb: true
+      scrollThumb: options.scrollThumb ?? true,
+      focusThumb: options.focusThumb ?? false
     });
 
   }
@@ -292,8 +298,10 @@ function setupMediaCarousel(carousel) {
 
     prevButton.addEventListener(
       "click",
-      () => {
-        goToSlide(currentIndex - 1);
+      (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        goToSlide(currentIndex - 1, { scrollThumb: false });
       }
     );
 
@@ -304,8 +312,10 @@ function setupMediaCarousel(carousel) {
 
     nextButton.addEventListener(
       "click",
-      () => {
-        goToSlide(currentIndex + 1);
+      (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        goToSlide(currentIndex + 1, { scrollThumb: false });
       }
     );
 
@@ -596,7 +606,8 @@ function setupMediaCarousel(carousel) {
     (event) => {
 
       if (
-        event.target.tagName === "BUTTON"
+        event.target.closest(".custom-video-controls") ||
+        event.target.matches("input, select, textarea, [contenteditable='true']")
       ) {
         return;
       }
@@ -607,7 +618,8 @@ function setupMediaCarousel(carousel) {
         event.preventDefault();
 
         goToSlide(
-          currentIndex - 1
+          currentIndex - 1,
+          { scrollThumb: true, focusThumb: true }
         );
 
       }
@@ -618,7 +630,8 @@ function setupMediaCarousel(carousel) {
         event.preventDefault();
 
         goToSlide(
-          currentIndex + 1
+          currentIndex + 1,
+          { scrollThumb: true, focusThumb: true }
         );
 
       }

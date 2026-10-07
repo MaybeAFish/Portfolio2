@@ -1,7 +1,7 @@
 (() => {
   const playIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 12 7-12 7z"></path></svg>';
   const pauseIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM15 5h4v14h-4z"></path></svg>';
-  const mutedIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm13 3 5-5m-5 0 5 5"></path></svg>';
+  const mutedIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm13-1 5 8m-5 0 5-8"></path></svg>';
   const volumeIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm12-2a7 7 0 0 1 0 10m3-13a11 11 0 0 1 0 16"></path></svg>';
   const enterFullscreenIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5m6 0h5v5m0 6v5h-5m-6 0H4v-5"></path></svg>';
   const exitFullscreenIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4m11-5v5h5M4 15h5v5m6 0v-5h5"></path></svg>';
@@ -75,6 +75,7 @@
 
     const player = document.createElement("div");
     player.className = "custom-video-player";
+    player.tabIndex = 0;
     ["solo-content", "side-navigation-media"].forEach((className) => {
       if (video.classList.contains(className)) player.classList.add(className);
     });
@@ -167,10 +168,16 @@
 
     function updateVolumeButton() {
       if (!volumeButton) return;
-      const muted = video.muted || video.volume === 0;
+      const muted = video.muted;
       volumeButton.setAttribute("aria-label", muted ? "Unmute video" : "Mute video");
       volumeButton.setAttribute("aria-pressed", String(!muted));
       volumeButton.innerHTML = muted ? mutedIcon : volumeIcon;
+      if (volumeSlider) {
+        volumeSlider.value = String(video.volume);
+      }
+      if (volumePlayed) {
+        volumePlayed.style.width = `${video.volume * 100}%`;
+      }
     }
 
     function updateProgress() {
@@ -275,7 +282,6 @@
         });
         volumeSlider.addEventListener("input", () => {
           video.volume = Number(volumeSlider.value);
-          video.muted = video.volume === 0;
           updateVolumeButton();
         });
 
@@ -284,17 +290,28 @@
         volumeButton.type = "button";
         volumeButton.addEventListener("click", () => {
           volumeControl.classList.toggle("is-volume-open");
-          if (video.muted || video.volume === 0) {
-            video.volume = Number.isFinite(configuredVolume)
-              ? Math.max(0, Math.min(1, configuredVolume))
-              : 0.5;
-            volumeSlider.value = String(video.volume);
-            video.muted = false;
-          } else {
-            video.muted = true;
-          }
+          video.muted = !video.muted;
           updateVolumeButton();
         });
+
+        volumeControl.addEventListener("wheel", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          const delta = event.deltaY || event.deltaX;
+          if (delta === 0) return;
+
+          const deltaScale =
+            event.deltaMode === 1
+              ? 16
+              : event.deltaMode === 2
+                ? volumeControl.clientHeight
+                : 1;
+          video.volume = Math.max(
+            0,
+            Math.min(1, video.volume - (delta * deltaScale) / 600)
+          );
+        }, { passive: false });
 
         volumeControl.append(volumeSlider, volumeButton);
         volumeTrackContainer.append(volumeTrack, volumeSlider);
@@ -354,6 +371,19 @@
 
     player.addEventListener("click", (event) => {
       if (event.target.closest(".custom-video-controls")) return;
+      player.focus({ preventScroll: true });
+      togglePlayback();
+    });
+    player.addEventListener("keydown", (event) => {
+      if (
+        !["Enter", " "].includes(event.key) ||
+        event.repeat ||
+        event.target.closest(".custom-video-controls")
+      ) {
+        return;
+      }
+
+      event.preventDefault();
       togglePlayback();
     });
 
@@ -372,11 +402,44 @@
     return player;
   }
 
-  window.VideoPlayer = { initialize, prepareThumbnail };
+  function initializeMarkedVideos(root) {
+    if (root instanceof HTMLVideoElement && root.matches("video[data-video-player]")) {
+      initialize(root);
+    }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("video[data-video-player]").forEach((video) => {
+    root.querySelectorAll?.("video[data-video-player]").forEach((video) => {
       initialize(video);
     });
-  });
+  }
+
+  window.VideoPlayer = {
+    initialize,
+    initializeWithin: initializeMarkedVideos,
+    prepareThumbnail
+  };
+
+  function observeVideoPlayers() {
+    initializeMarkedVideos(document);
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node instanceof Element) {
+            initializeMarkedVideos(node);
+          }
+        });
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      childList: true,
+      subtree: true
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", observeVideoPlayers, { once: true });
+  } else {
+    observeVideoPlayers();
+  }
 })();

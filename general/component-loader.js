@@ -1,6 +1,7 @@
 document.querySelectorAll("[data-component]").forEach(async (element) => {
   const response = await fetch(element.dataset.component);
   element.innerHTML = await response.text();
+  window.VideoPlayer?.initializeWithin(element);
 
   const currentPath = window.location.pathname;
 
