@@ -8,10 +8,8 @@
 }
 
 .AUAS-line {
-  font-weight: 1000;
-}
-.AUAS-line::after {
-  bottom: -1px;
+  font-weight: 0;
+  letter-spacing: 1px;
 }
 
 

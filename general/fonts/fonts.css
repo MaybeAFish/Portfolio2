@@ -103,16 +103,6 @@
   font-family: inherit;
 }
 
-html,
-body {
-  font-family: var(--font-body), sans-serif;
-}
-
-main {
-  font-family: var(--font-body), sans-serif;
-}
-
-.header,
 div,
 h1,
 h2,
@@ -124,7 +114,6 @@ h6 {
   font-family: var(--font-heading), sans-serif;
 }
 
-.body,
 blockquote,
 a,
 p,
@@ -133,9 +122,15 @@ li {
   font-family: var(--font-body), sans-serif;
 }
 
-h2 {
-  font-family: var(--font-heading), sans-serif;
-}
+
 .outline {
   -webkit-text-stroke: 0.5px var(--supporting-background-color);
+}
+
+.header {
+  font-family: var(--font-heading), sans-serif !important;
+}
+
+.body {
+  font-family: var(--font-body), sans-serif !important;
 }
