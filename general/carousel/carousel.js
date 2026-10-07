@@ -161,10 +161,17 @@ function setupMediaCarousel(carousel) {
   }
 
   function wrapButtonIcons() {
+    const carouselVariant = ["doomed", "tetris", "engine"]
+      .find((variant) => carousel.classList.contains(variant));
+
     carousel.querySelectorAll(".mediacarousel-button svg").forEach((icon) => {
       if (icon.parentElement.classList.contains("mediacarousel-button-icon")) return;
       const wrapper = document.createElement("span");
       wrapper.className = "mediacarousel-button-icon";
+      if (carouselVariant) {
+        const direction = icon.closest(".mediacarousel-button--prev") ? "prev" : "next";
+        wrapper.classList.add(`mediacarousel-button-icon--${carouselVariant}-${direction}`);
+      }
       icon.before(wrapper);
       wrapper.append(icon);
     });

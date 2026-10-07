@@ -1,5 +1,5 @@
 const filters = document.querySelectorAll(".skill-filter");
-const cards = document.querySelectorAll(".skill-card");
+const cards = document.querySelectorAll(".article-card");
 const emptyState = document.querySelector(".skills-empty");
 
 const FILTERS_KEY = "skillsFilters";
@@ -22,7 +22,7 @@ function applyFilters() {
         card.classList.toggle("is-hidden", !matches);
 
         // Highlight matching filter
-        card.querySelectorAll(".skill-card-tags span").forEach((tag) => {
+        card.querySelectorAll(".article-card-tags span").forEach((tag) => {
             const tagFilter = tag.textContent
                 .toLowerCase()
                 .replace(/ /g, "-");
@@ -144,7 +144,7 @@ filters.forEach((filter) => {
             clickingFilter = filter.dataset.filter;
 
             cards.forEach((card) => {
-                card.querySelectorAll(".skill-card-tags span").forEach((tag) => {
+                card.querySelectorAll(".article-card-tags span").forEach((tag) => {
                     const tagFilter = tag.textContent
                         .toLowerCase()
                         .replace(/ /g, "-");
@@ -162,7 +162,7 @@ filters.forEach((filter) => {
             const hoveredFilter = filter.dataset.filter;
 
             cards.forEach((card) => {
-                card.querySelectorAll(".skill-card-tags span").forEach((tag) => {
+                card.querySelectorAll(".article-card-tags span").forEach((tag) => {
                     const tagFilter = tag.textContent
                         .toLowerCase()
                         .replace(/ /g, "-");
@@ -176,7 +176,7 @@ filters.forEach((filter) => {
         });
         filter.addEventListener("mouseleave", () => {
             cards.forEach((card) => {
-                card.querySelectorAll(".skill-card-tags span").forEach((tag) => {
+                card.querySelectorAll(".article-card-tags span").forEach((tag) => {
                     tag.classList.remove("is-filter-hover");
                 });
             });
@@ -188,7 +188,7 @@ filters.forEach((filter) => {
         clickingFilter = null;
 
         cards.forEach((card) => {
-            card.querySelectorAll(".skill-card-tags span").forEach((tag) => {
+            card.querySelectorAll(".article-card-tags span").forEach((tag) => {
                 tag.classList.remove("is-clicking");
             });
         });
@@ -199,7 +199,7 @@ filters.forEach((filter) => {
         clickingFilter = null;
 
         cards.forEach((card) => {
-            card.querySelectorAll(".skill-card-tags span").forEach((tag) => {
+            card.querySelectorAll(".article-card-tags span").forEach((tag) => {
                 tag.classList.remove("is-clicking");
             });
         });
@@ -224,7 +224,7 @@ window.addEventListener("scroll", () => {
 
 restoreSkillsState();
 
-document.querySelectorAll(".skill-card").forEach((link) => {
+document.querySelectorAll(".article-card").forEach((link) => {
     link.addEventListener("click", () => {
         saveSkillsState();
         sessionStorage.setItem(RESTORE_KEY, "true");

@@ -3,17 +3,3 @@
   width: 100%;
   background: white;
 }
-
-
-
-@media (max-width: 760px) {
-  .page-shell {
-    width: min(100%, calc(100% - 24px));
-    padding-top: 24px;
-  }
-
-  .project-layout {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-}

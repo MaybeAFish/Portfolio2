@@ -172,8 +172,8 @@
 
   top: 50%;
 
-  width: 46px;
-  height: 46px;
+  width: 50px;
+  height: 50px;
 
   padding: 0;
 
@@ -220,23 +220,60 @@
   pointer-events: none;
 }
 
-.mediacarousel-button--prev .mediacarousel-button-icon {
-  transform: translateX(-2px);
+.mediacarousel-button-icon--doomed-prev {
+  transform: translateX(-1px);
+  width: 18px;
+}
+.mediacarousel-button-icon--doomed-next {
+  transform: translateX(1px);
+  width: 18px;
 }
 
-.mediacarousel-button--next .mediacarousel-button-icon {
+.mediacarousel-button-icon--tetris-prev {
+  transform: translateX(-2px);
+  width: 14px;
+}
+.mediacarousel-button-icon--tetris-next {
   transform: translateX(2px);
+  width: 14px;
+}
+
+.mediacarousel-button-icon--engine-prev {
+  transform: translateX(-2px);
+  width: 14px;
+}
+.mediacarousel-button-icon--engine-next {
+  transform: translateX(2px);
+  width: 14px;
 }
 
 .mediacarousel-button svg {
-  width: 25px;
-  height: 25px;
+  width: var(--carousel-chevron-width, 25px);
+  height: var(--carousel-chevron-height, 25px);
   fill: none;
 
   stroke: currentColor;
   stroke-width: 2.5;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.mediacarousel-button-icon--doomed-prev,
+.mediacarousel-button-icon--doomed-next {
+  --carousel-chevron-width: 24px;
+  --carousel-chevron-height: 28px;
+}
+
+.mediacarousel-button-icon--tetris-prev,
+.mediacarousel-button-icon--tetris-next {
+  --carousel-chevron-width: 19px;
+  --carousel-chevron-height: 23px;
+}
+
+.mediacarousel-button-icon--engine-prev,
+.mediacarousel-button-icon--engine-next {
+  --carousel-chevron-width: 18px;
+  --carousel-chevron-height: 24px;
 }
 
 .mediacarousel.doomed .mediacarousel-button svg,
@@ -420,18 +457,18 @@
 .mediacarousel--corner-art.doomed {
   --carousel-arrow-edge-inset: 5px;
   --carousel-arrow-mobile-inset: 3px;
-  --media-top-left-image: url("/about/art/svg/DoomedDash.svg");
-  --media-top-right-image: url("/about/art/svg/Chat.svg");
-  --media-bottom-left-image: url("/about/art/svg/DoomedMelee.svg");
-  --media-bottom-right-image: url("/about/art/svg/Discover.svg");
-  --info-top-left-image: url("/about/art/svg/Home.svg");
-  --info-top-right-image: url("/about/art/svg/Calendar.svg");
-  --info-bottom-left-image: url("/about/art/svg/Mail.svg");
-  --info-bottom-right-image: url("/about/art/svg/Courses.svg");
-  --thumb-top-left-image: url("/about/art/svg/Hubs.svg");
-  --thumb-top-right-image: url("/about/art/svg/Create.svg");
-  --thumb-bottom-left-image: url("/about/art/svg/Pronounciation.svg");
-  --thumb-bottom-right-image: url("/about/art/svg/Cloud.svg");
+  --media-top-left-image: url("/projects/doomed/carousel/ornate.webp");
+  --media-top-right-image: url("/projects/doomed/carousel/ornate.webp");
+  --media-bottom-left-image: url("/projects/doomed/carousel/ornate.webp");
+  --media-bottom-right-image: url("/projects/doomed/carousel/ornate.webp");
+  --info-top-left-image: url("/projects/doomed/carousel/ornate.webp");
+  --info-top-right-image: url("/projects/doomed/carousel/ornate.webp");
+  --info-bottom-left-image: url("/projects/doomed/carousel/ornate.webp");
+  --info-bottom-right-image: url("/projects/doomed/carousel/ornate.webp");
+  --thumb-top-left-image: url("/projects/doomed/carousel/ornate.webp");
+  --thumb-top-right-image: url("/projects/doomed/carousel/ornate.webp");
+  --thumb-bottom-left-image: url("/projects/doomed/carousel/ornate.webp");
+  --thumb-bottom-right-image: url("/projects/doomed/carousel/ornate.webp");
 }
 
 .mediacarousel--corner-art.tetris {
@@ -520,7 +557,7 @@
   top: var(--corner-top-right-y, var(--corner-art-outset, -12px));
   right: var(--corner-top-right-x, var(--corner-art-outset, -12px));
   background-image: var(--corner-top-right-image);
-  transform: rotate(var(--corner-top-right-rotation, 0deg));
+  transform: rotate(var(--corner-top-right-rotation, 90deg));
 }
 
 .carousel-corner-art__piece--bottom-left {
@@ -671,8 +708,8 @@
   }
 
   .mediacarousel-button svg {
-    width: 22px;
-    height: 22px;
+    width: var(--carousel-chevron-width, 22px);
+    height: var(--carousel-chevron-height, 22px);
   }
 
   .mediacarousel-counter {
