@@ -57,6 +57,7 @@
       volume: config.volume ?? video.dataset.videoVolume,
       fit: config.fit ?? video.dataset.videoFit,
       blurredBackground: config.blurredBackground ?? video.dataset.videoBlurredBackground === "true",
+      interactive: config.interactive ?? video.dataset.videoInteractive !== "false",
       autoplay: config.autoplay ?? video.autoplay,
       loop: config.loop ?? video.loop
     };
@@ -75,7 +76,7 @@
 
     const player = document.createElement("div");
     player.className = "custom-video-player";
-    player.tabIndex = 0;
+    player.tabIndex = settings.interactive ? 0 : -1;
     ["solo-content", "side-navigation-media"].forEach((className) => {
       if (video.classList.contains(className)) player.classList.add(className);
     });
@@ -369,23 +370,25 @@
       updateFullscreenButton();
     }
 
-    player.addEventListener("click", (event) => {
-      if (event.target.closest(".custom-video-controls")) return;
-      player.focus({ preventScroll: true });
-      togglePlayback();
-    });
-    player.addEventListener("keydown", (event) => {
-      if (
-        !["Enter", " "].includes(event.key) ||
-        event.repeat ||
-        event.target.closest(".custom-video-controls")
-      ) {
-        return;
-      }
+    if (settings.interactive) {
+      player.addEventListener("click", (event) => {
+        if (event.target.closest(".custom-video-controls")) return;
+        player.focus({ preventScroll: true });
+        togglePlayback();
+      });
+      player.addEventListener("keydown", (event) => {
+        if (
+          !["Enter", " "].includes(event.key) ||
+          event.repeat ||
+          event.target.closest(".custom-video-controls")
+        ) {
+          return;
+        }
 
-      event.preventDefault();
-      togglePlayback();
-    });
+        event.preventDefault();
+        togglePlayback();
+      });
+    }
 
     if (settings.autoplay) {
       video.play().catch((error) => {

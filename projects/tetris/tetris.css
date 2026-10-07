@@ -4,7 +4,6 @@
     height: min(600px, 80vh);
     margin: 0 auto;
     overflow: hidden;
-    background: #111;
 }
 
 .skoda-video-frame > .custom-video-player {
