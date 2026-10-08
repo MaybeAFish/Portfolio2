@@ -10,6 +10,7 @@
 
 <body>
 
+
 <script>
   document.documentElement.classList.add("no-header-transition");
 </script>
@@ -19,7 +20,7 @@
     <div class="dropdown">
       <a href="/" class="projects-nav-trigger">Projects</a>
       <div class="dropdown-content">
-        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/doomed/">DOOMED</a>
         <a href="/projects/tetris/">Tetris Airconsole</a>
         <a href="/projects/engine/">Vulkan Game Engine</a>
       </div>
@@ -35,6 +36,7 @@
 
 </header>
 <script src="/general/header/header-state.js"></script>
+
 <main class="bubbles">
 
         <nav
@@ -44,6 +46,10 @@
         </nav>
 
         <section>
+            <video class="side-navigation-media" data-video-player data-video-volume-button="false" autoplay controls muted loop playsinline>
+                <source src="/skills/hairdryer/hairdryer.mp4" type="video/mp4">
+            </video>
+
             <h1>Designing a Game around the Theme: "Bubbles"</h1>
             <p>
                 I participated in the 2025 Global Game Jam (GGJ). The GGJ is an event where participants have to create a game in a weekend based on a certain   theme. The theme of this jam was "Bubbles". 
@@ -53,11 +59,6 @@
             <p>
                 I developed a puzzle-platformer where you play as a hairdryer. Your goal is to guide a girl named Elara, trapped inside a floating bubble, to safety by pushing her bubble through a dangerous underwater environment. The player must navigate around spikes, open doors and bait piranhas away from Elara's fragile bubble. If it pops, she'll drown. The bubble slowly loses air over time but can be replenished by collecting air bubbles.
             </p>
-
-
-            <video class="side-navigation-media" data-video-player data-video-volume-button="false" autoplay controls muted loop playsinline>
-                <source src="/skills/hairdryer/hairdryer.mp4" type="video/mp4">
-            </video>
 
 
             <h2>Designing the Core Mechanic</h2>
@@ -112,7 +113,8 @@
 
 
             <br>
-            <h1>My Pixelart</h1>
+            <h1>My Art</h1>
+            <h2>Pixelart</h2>
             <div class="art-grid">
                 <figure><img loading="lazy" src="/skills/hairdryer/pixelart/1.png"></figure>
                 <figure><img loading="lazy" src="/skills/hairdryer/pixelart/2.png"></figure>
@@ -125,8 +127,7 @@
                 <figure><img loading="lazy" src="/skills/hairdryer/pixelart/6.png"></figure>
             </div>
 
-            <br><br>
-            <h2>My Models</h2>
+            <h2>Models</h2>
             <div class="banner-models">
                 <div class="banner-model">
                     <model-viewer

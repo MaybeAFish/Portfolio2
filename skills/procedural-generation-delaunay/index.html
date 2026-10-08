@@ -10,6 +10,7 @@
 
 <body>
 
+
 <script>
   document.documentElement.classList.add("no-header-transition");
 </script>
@@ -19,7 +20,7 @@
     <div class="dropdown">
       <a href="/" class="projects-nav-trigger">Projects</a>
       <div class="dropdown-content">
-        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/doomed/">DOOMED</a>
         <a href="/projects/tetris/">Tetris Airconsole</a>
         <a href="/projects/engine/">Vulkan Game Engine</a>
       </div>
@@ -35,6 +36,7 @@
 
 </header>
 <script src="/general/header/header-state.js"></script>
+
 <main class="engine">
 
         <nav
@@ -44,10 +46,6 @@
         </nav>
 
         <section>
-          <h1>Making a Replayable Procedural Dungeon</h1>
-
-          <p>I designed a system for random dungeon generation. I used delauney triangulation to decide on potential room positions. Spawned those rooms randomely based on a seed. Pushed them together as close as possible in a grid. And used the a* algorithm to force hallways between them.</p>
-          <p>All of this was done in MonoGame, which at the time was primarily used to create 2D games.</p>
           <div class="mediacarousel mediacarousel--standalone engine" data-carousel>
             <div class="mediacarousel-content">
               <div class="mediacarousel-main">
@@ -67,6 +65,12 @@
               </div>
             </div>
           </div>
+
+          <h1>Making a Replayable Procedural Dungeon</h1>
+
+          <p>I created a random dungeon generation system. I used delauney triangulation to decide on potential room positions. Spawned those rooms randomely based on a seed. Pushed them together as close as possible in a grid. And used the a* algorithm to force hallways between them.</p>
+          <p>All of this was done in MonoGame, which at the time was primarily used to create 2D games.</p>
+          
         </section>
 
     </main>

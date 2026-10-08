@@ -10,6 +10,7 @@
 
 <body>
 
+
 <script>
   document.documentElement.classList.add("no-header-transition");
 </script>
@@ -19,7 +20,7 @@
     <div class="dropdown">
       <a href="/" class="projects-nav-trigger">Projects</a>
       <div class="dropdown-content">
-        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/doomed/">DOOMED</a>
         <a href="/projects/tetris/">Tetris Airconsole</a>
         <a href="/projects/engine/">Vulkan Game Engine</a>
       </div>
@@ -35,6 +36,7 @@
 
 </header>
 <script src="/general/header/header-state.js"></script>
+
 <main class="space">
 
         <nav
@@ -44,6 +46,10 @@
         </nav>
 
         <section>
+            <video class="solo-content" data-video-player data-video-volume-button="false" autoplay muted controls loop playsinline>
+                <source src="/skills/environmental-hazards/hazards.mp4" type="video/mp4">
+            </video>
+
             <h1>Forcing Interesting Repositioning</h1>
             <p>
                 My first ever game for a school assignment was a Space Invaders inspired game called
@@ -62,10 +68,6 @@
                 Asteroids, solar rays and supernovas could come from different directions, meaning that
                 staying in one position was never safe for long.
             </p>
-
-            <video class="solo-content" data-video-player data-video-volume-button="false" autoplay muted controls loop playsinline>
-                <source src="/skills/environmental-hazards/hazards.mp4" type="video/mp4">
-            </video>
 
             <p>
                 I made asteroids appear first because they move the slowest and are the easiest hazard
