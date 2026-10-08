@@ -10,7 +10,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--carousel-info-width);
-  gap: 28px;
+  gap: 10px;
   align-items: stretch;
 }
 
@@ -56,7 +56,7 @@
 
   background: var(--supporting-background-color);
 
-  border-radius: 10px;
+  border-radius: var(--border-radius);
 
   user-select: none;
   -webkit-user-select: none;
@@ -147,11 +147,10 @@
 
   padding: 5px 10px;
 
-  color: white;
 
   background: rgba(20, 20, 20, 0.72);
 
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--text-color);
   border-radius: 999px;
 
   font-size: 0.8rem;
@@ -183,11 +182,11 @@
 
   transform: translateY(-50%);
 
-  color: white;
+  color: var(--text-color);
 
   background: rgba(20, 20, 20, 0.60);
 
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--text-color);;
   border-radius: 999px;
 
   cursor: pointer;
@@ -398,15 +397,6 @@
   border-color: var(--carousel-cyan);
 }
 
-.mediacarousel--corner-art .mediacarousel-thumb {
-  overflow: visible;
-}
-
-.mediacarousel--corner-art .mediacarousel-thumbs {
-  box-sizing: border-box;
-  padding: 2px 1px;
-}
-
 .mediacarousel--corner-art .mediacarousel-thumb:hover,
 .mediacarousel--corner-art .mediacarousel-thumb:focus-visible,
 .mediacarousel--corner-art .mediacarousel-thumb.is-active {
@@ -448,62 +438,16 @@
   -webkit-user-drag: none;
 }
 
-/* Project-carousel corner artwork is independently configurable per surface and corner. */
+/* Corner art is absolutely positioned and never participates in carousel layout. */
 .mediacarousel--corner-art {
-  --corner-art-size: 32px;
-  --corner-art-outset: -12px;
-  --corner-art-thumb-size: 24px;
-}
-
-.mediacarousel--corner-art.doomed {
-  --carousel-arrow-edge-inset: 5px;
-  --carousel-arrow-mobile-inset: 3px;
-  --media-top-left-image: url("/projects/doomed/carousel/ornate.webp");
-  --media-top-right-image: url("/projects/doomed/carousel/ornate.webp");
-  --media-bottom-left-image: url("/projects/doomed/carousel/ornate.webp");
-  --media-bottom-right-image: url("/projects/doomed/carousel/ornate.webp");
-  --info-top-left-image: url("/projects/doomed/carousel/ornate.webp");
-  --info-top-right-image: url("/projects/doomed/carousel/ornate.webp");
-  --info-bottom-left-image: url("/projects/doomed/carousel/ornate.webp");
-  --info-bottom-right-image: url("/projects/doomed/carousel/ornate.webp");
-  --thumb-top-left-image: url("/projects/doomed/carousel/ornate.webp");
-  --thumb-top-right-image: url("/projects/doomed/carousel/ornate.webp");
-  --thumb-bottom-left-image: url("/projects/doomed/carousel/ornate.webp");
-  --thumb-bottom-right-image: url("/projects/doomed/carousel/ornate.webp");
-}
-
-.mediacarousel--corner-art.tetris {
-  --carousel-arrow-edge-inset: 6px;
-  --carousel-arrow-mobile-inset: 4px;
-  --media-top-left-image: url("/about/art/svg/Cloud.svg");
-  --media-top-right-image: url("/about/art/svg/Calendar.svg");
-  --media-bottom-left-image: url("/about/art/svg/Discover.svg");
-  --media-bottom-right-image: url("/about/art/svg/Create.svg");
-  --info-top-left-image: url("/about/art/svg/Courses.svg");
-  --info-top-right-image: url("/about/art/svg/Hubs.svg");
-  --info-bottom-left-image: url("/about/art/svg/Home.svg");
-  --info-bottom-right-image: url("/about/art/svg/Chat.svg");
-  --thumb-top-left-image: url("/about/art/svg/Mail.svg");
-  --thumb-top-right-image: url("/about/art/svg/DoomedDash.svg");
-  --thumb-bottom-left-image: url("/about/art/svg/DoomedMelee.svg");
-  --thumb-bottom-right-image: url("/about/art/svg/Pronounciation.svg");
-}
-
-.mediacarousel--corner-art.engine {
-  --carousel-arrow-edge-inset: 3px;
-  --carousel-arrow-mobile-inset: 2px;
-  --media-top-left-image: url("/about/art/svg/Create.svg");
-  --media-top-right-image: url("/about/art/svg/Courses.svg");
-  --media-bottom-left-image: url("/about/art/svg/Chat.svg");
-  --media-bottom-right-image: url("/about/art/svg/Hubs.svg");
-  --info-top-left-image: url("/about/art/svg/DoomedDash.svg");
-  --info-top-right-image: url("/about/art/svg/Pronounciation.svg");
-  --info-bottom-left-image: url("/about/art/svg/Cloud.svg");
-  --info-bottom-right-image: url("/about/art/svg/Home.svg");
-  --thumb-top-left-image: url("/about/art/svg/Calendar.svg");
-  --thumb-top-right-image: url("/about/art/svg/Discover.svg");
-  --thumb-bottom-left-image: url("/about/art/svg/Mail.svg");
-  --thumb-bottom-right-image: url("/about/art/svg/DoomedMelee.svg");
+  --corner-art-size: 24px;
+  --corner-art-thumb-size: 18px;
+  --corner-art-outset: 0px;
+  --corner-art-thumb-outset: 0px;
+  --corner-art-top-left-rotation: 0deg;
+  --corner-art-top-right-rotation: 90deg;
+  --corner-art-bottom-right-rotation: 180deg;
+  --corner-art-bottom-left-rotation: 270deg;
 }
 
 .mediacarousel--corner-art .mediacarousel-info {
@@ -526,17 +470,10 @@
   background-size: contain;
 }
 
-.carousel-corner-art--media {
-  --corner-art-size: var(--corner-art-media-size, 32px);
-}
-
-.carousel-corner-art--info {
-  --corner-art-size: var(--corner-art-info-size, 30px);
-}
-
 .carousel-corner-art--thumb {
-  --corner-art-size: var(--corner-art-thumb-size, 24px);
-  --corner-art-outset: 0px;
+  --corner-art-size: var(--corner-art-thumb-size, 18px);
+  --corner-art-outset: var(--corner-art-thumb-outset, 0px);
+  clip-path: inset(0);
   opacity: 0;
   transition: opacity 0.16s ease;
 }
@@ -550,29 +487,34 @@
 .carousel-corner-art__piece--top-left {
   top: var(--corner-top-left-y, var(--corner-art-outset, -12px));
   left: var(--corner-top-left-x, var(--corner-art-outset, -12px));
-  background-image: var(--corner-top-left-image);
-  transform: rotate(var(--corner-top-left-rotation, 0deg));
+  background-image: var(--corner-top-left-image, none);
+  transform: rotate(var(--corner-art-top-left-rotation, 0deg));
 }
 
 .carousel-corner-art__piece--top-right {
   top: var(--corner-top-right-y, var(--corner-art-outset, -12px));
   right: var(--corner-top-right-x, var(--corner-art-outset, -12px));
-  background-image: var(--corner-top-right-image);
-  transform: rotate(var(--corner-top-right-rotation, 90deg));
+  background-image: var(--corner-top-right-image, none);
+  transform: rotate(var(--corner-art-top-right-rotation, 90deg));
 }
 
 .carousel-corner-art__piece--bottom-left {
   bottom: var(--corner-bottom-left-y, var(--corner-art-outset, -12px));
   left: var(--corner-bottom-left-x, var(--corner-art-outset, -12px));
-  background-image: var(--corner-bottom-left-image);
-  transform: rotate(var(--corner-bottom-left-rotation, 0deg));
+  background-image: var(--corner-bottom-left-image, none);
+  transform: rotate(var(--corner-art-bottom-left-rotation, 270deg));
 }
 
 .carousel-corner-art__piece--bottom-right {
   right: var(--corner-bottom-right-x, var(--corner-art-outset, -12px));
   bottom: var(--corner-bottom-right-y, var(--corner-art-outset, -12px));
-  background-image: var(--corner-bottom-right-image);
-  transform: rotate(var(--corner-bottom-right-rotation, 0deg));
+  background-image: var(--corner-bottom-right-image, none);
+  transform: rotate(var(--corner-art-bottom-right-rotation, 180deg));
+}
+
+.carousel-corner-art--media .carousel-corner-art__piece--bottom-left,
+.carousel-corner-art--media .carousel-corner-art__piece--bottom-right {
+  display: none;
 }
 
 .carousel-corner-art--media {
@@ -594,41 +536,6 @@
   --corner-top-right-image: var(--thumb-top-right-image);
   --corner-bottom-left-image: var(--thumb-bottom-left-image);
   --corner-bottom-right-image: var(--thumb-bottom-right-image);
-}
-
-.mediacarousel--corner-art .carousel-corner-art--media .carousel-corner-art__piece--top-right {
-  --corner-top-right-rotation: 18deg;
-  --corner-top-right-y: 2px;
-}
-
-.mediacarousel--corner-art .carousel-corner-art--media .carousel-corner-art__piece--bottom-left {
-  --corner-bottom-left-rotation: -14deg;
-  --corner-bottom-left-x: 2px;
-}
-
-.mediacarousel--corner-art .carousel-corner-art--info .carousel-corner-art__piece--top-left {
-  --corner-top-left-rotation: -12deg;
-  --corner-top-left-y: 2px;
-}
-
-.mediacarousel--corner-art .carousel-corner-art--info .carousel-corner-art__piece--bottom-right {
-  --corner-bottom-right-rotation: 14deg;
-  --corner-bottom-right-x: 2px;
-}
-
-.mediacarousel--corner-art .carousel-corner-art--thumb .carousel-corner-art__piece--top-right {
-  --corner-top-right-rotation: 12deg;
-}
-
-.mediacarousel--corner-art .carousel-corner-art--thumb .carousel-corner-art__piece--bottom-left {
-  --corner-bottom-left-rotation: -12deg;
-}
-
-.mediacarousel--corner-art.tetris .mediacarousel-thumb.is-active .carousel-corner-art__piece--top-right,
-.mediacarousel--corner-art.tetris .mediacarousel-thumb.is-active .carousel-corner-art__piece--bottom-left,
-.mediacarousel--corner-art.engine .mediacarousel-thumb.is-active .carousel-corner-art__piece--top-right,
-.mediacarousel--corner-art.engine .mediacarousel-thumb.is-active .carousel-corner-art__piece--bottom-left {
-  display: none;
 }
 
 .mediacarousel--text-only {
@@ -676,7 +583,7 @@
   .mediacarousel,
   .mediacarousel--info-left {
     grid-template-columns: minmax(0, 1fr);
-    gap: 18px;
+    gap: 25px;
   }
 
   .mediacarousel--info-left .mediacarousel-content,
@@ -693,11 +600,6 @@
    ========================================================= */
 
 @media (max-width: 600px) {
-
-  .mediacarousel-main {
-    border-radius: 8px;
-  }
-
   .mediacarousel-button {
     width: 40px;
     height: 40px;

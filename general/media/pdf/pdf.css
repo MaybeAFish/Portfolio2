@@ -19,7 +19,7 @@
   box-sizing: border-box;
 
   padding: 1.5rem;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   text-align: center;
 
   background-color: var(--supporting-background-color);

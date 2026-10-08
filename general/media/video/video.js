@@ -1,10 +1,5 @@
 (() => {
-  const playIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 12 7-12 7z"></path></svg>';
-  const pauseIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM15 5h4v14h-4z"></path></svg>';
-  const mutedIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm13-1 5 8m-5 0 5-8"></path></svg>';
-  const volumeIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm12-2a7 7 0 0 1 0 10m3-13a11 11 0 0 1 0 16"></path></svg>';
-  const enterFullscreenIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5m6 0h5v5m0 6v5h-5m-6 0H4v-5"></path></svg>';
-  const exitFullscreenIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4m11-5v5h5M4 15h5v5m6 0v-5h5"></path></svg>';
+  const icon = (name) => `<span class="custom-video-icon custom-video-icon--${name}" aria-hidden="true"></span>`;
 
   function formatTime(seconds) {
     if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
@@ -164,7 +159,7 @@
       if (!playButton) return;
       const playing = !video.paused && !video.ended;
       playButton.setAttribute("aria-label", playing ? "Pause video" : "Play video");
-      playButton.innerHTML = playing ? pauseIcon : playIcon;
+      playButton.innerHTML = icon(playing ? "paused" : "play");
     }
 
     function updateVolumeButton() {
@@ -172,7 +167,10 @@
       const muted = video.muted;
       volumeButton.setAttribute("aria-label", muted ? "Unmute video" : "Mute video");
       volumeButton.setAttribute("aria-pressed", String(!muted));
-      volumeButton.innerHTML = muted ? mutedIcon : volumeIcon;
+      const volumeIcon = muted || video.volume === 0
+        ? "muted"
+        : `sound${Math.ceil(video.volume * 4) * 25}`;
+      volumeButton.innerHTML = icon(volumeIcon);
       if (volumeSlider) {
         volumeSlider.value = String(video.volume);
       }
@@ -200,7 +198,7 @@
       if (!fullscreenButton) return;
       const fullscreen = isFullscreen();
       fullscreenButton.setAttribute("aria-label", fullscreen ? "Exit fullscreen" : "Enter fullscreen");
-      fullscreenButton.innerHTML = fullscreen ? exitFullscreenIcon : enterFullscreenIcon;
+      fullscreenButton.innerHTML = icon(fullscreen ? "windowed" : "fullscreen");
     }
 
     if (settings.controls) {

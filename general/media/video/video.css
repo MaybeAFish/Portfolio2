@@ -77,7 +77,7 @@
   bottom: 0;
   left: 0;
   padding: 22px 12px 8px;
-  color: white;
+  color: var(--text-color);
   background: linear-gradient(to top, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.42) 68%, transparent);
   opacity: 0;
   pointer-events: none;
@@ -105,7 +105,7 @@
   width: 28px;
   height: 28px;
   padding: 3px;
-  color: white;
+  color: var(--text-color);
   background: transparent;
   border: 0;
   cursor: pointer;
@@ -120,19 +120,62 @@
   color: var(--supporting-color-cyan);
 }
 
-.custom-video-control svg {
+.custom-video-icon {
+  display: block;
   width: 100%;
   height: 100%;
-  fill: currentColor;
-  stroke: currentColor;
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  background-color: currentColor;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 
-.custom-video-volume svg,
-.custom-video-fullscreen svg {
-  fill: none;
+.custom-video-icon--play {
+  -webkit-mask-image: url("/general/media/video/icons/Play.svg");
+  mask-image: url("/general/media/video/icons/Play.svg");
+}
+
+.custom-video-icon--paused {
+  -webkit-mask-image: url("/general/media/video/icons/Paused.svg");
+  mask-image: url("/general/media/video/icons/Paused.svg");
+}
+
+.custom-video-icon--muted {
+  -webkit-mask-image: url("/general/media/video/icons/Muted.svg");
+  mask-image: url("/general/media/video/icons/Muted.svg");
+}
+
+.custom-video-icon--sound25 {
+  -webkit-mask-image: url("/general/media/video/icons/Sound25.svg");
+  mask-image: url("/general/media/video/icons/Sound25.svg");
+}
+
+.custom-video-icon--sound50 {
+  -webkit-mask-image: url("/general/media/video/icons/Sound50.svg");
+  mask-image: url("/general/media/video/icons/Sound50.svg");
+}
+
+.custom-video-icon--sound75 {
+  -webkit-mask-image: url("/general/media/video/icons/Sound75.svg");
+  mask-image: url("/general/media/video/icons/Sound75.svg");
+}
+
+.custom-video-icon--sound100 {
+  -webkit-mask-image: url("/general/media/video/icons/Sound100.svg");
+  mask-image: url("/general/media/video/icons/Sound100.svg");
+}
+
+.custom-video-icon--fullscreen {
+  -webkit-mask-image: url("/general/media/video/icons/Fullscreen.svg");
+  mask-image: url("/general/media/video/icons/Fullscreen.svg");
+}
+
+.custom-video-icon--windowed {
+  -webkit-mask-image: url("/general/media/video/icons/Windowed.svg");
+  mask-image: url("/general/media/video/icons/Windowed.svg");
 }
 
 .custom-video-time {
@@ -211,21 +254,23 @@
 }
 
 .custom-video-progress::-webkit-slider-thumb {
-  width: 11px;
-  height: 11px;
-  margin-top: -4px;
+  width: 18px;
+  height: 17px;
+  margin-top: -7px;
   appearance: none;
   border: 0;
-  border-radius: 50%;
-  background: var(--supporting-color-cyan);
+  background: var(--standout-color-cyan);
+  -webkit-mask: url("/general/media/video/icons/Playhead.svg") center / contain no-repeat;
+  mask: url("/general/media/video/icons/Playhead.svg") center / contain no-repeat;
 }
 
 .custom-video-progress::-moz-range-thumb {
-  width: 11px;
-  height: 11px;
+  width: 18px;
+  height: 17px;
   border: 0;
-  border-radius: 50%;
-  background: var(--supporting-color-cyan);
+  background: var(--standout-color-cyan);
+  -webkit-mask: url("/general/media/video/icons/Playhead.svg") center / contain no-repeat;
+  mask: url("/general/media/video/icons/Playhead.svg") center / contain no-repeat;
 }
 
 .custom-video-volume-control {
@@ -311,22 +356,24 @@
 }
 
 .custom-video-volume-slider::-webkit-slider-thumb {
-  width: 10px;
-  height: 10px;
-  margin-top: -3.5px;
+  width: 18px;
+  height: 17px;
+  margin-top: -7px;
   appearance: none;
   border: 0;
-  border-radius: 50%;
-  background: var(--supporting-color-cyan);
+  background: var(--standout-color-cyan);
+  -webkit-mask: url("/general/media/video/icons/Playhead.svg") center / contain no-repeat;
+  mask: url("/general/media/video/icons/Playhead.svg") center / contain no-repeat;
   cursor: pointer;
 }
 
 .custom-video-volume-slider::-moz-range-thumb {
-  width: 10px;
-  height: 10px;
+  width: 18px;
+  height: 17px;
   border: 0;
-  border-radius: 50%;
-  background: var(--supporting-color-cyan);
+  background: var(--standout-color-cyan);
+  -webkit-mask: url("/general/media/video/icons/Playhead.svg") center / contain no-repeat;
+  mask: url("/general/media/video/icons/Playhead.svg") center / contain no-repeat;
   cursor: pointer;
 }
 

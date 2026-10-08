@@ -64,7 +64,7 @@ nav a::after {
     rgba(255, 255, 255, 0.1) 60%,
     transparent 100%
   );
-  border-radius: 0 0 999px 999px; /* bottom curve now */
+  border-radius: 0 0 999px 999px;
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
   transition:
     width 0.3s ease,
@@ -73,12 +73,11 @@ nav a::after {
   pointer-events: none;
 }
 
-/* Subpage small underline */
+/* Tiny dot underline */
 nav a.subpage::after {
   width: 10%;
   background-color: var(--standout-color-cyan);
 }
-
 .dropdown-content a.subpage::after,
 .dropdown-content a.active::after,
 .dropdown-content a.selected::after {

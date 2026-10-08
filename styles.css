@@ -28,7 +28,7 @@
   --text-color-muted: #a5a5a5;
 
   --header-height: 80px;
-  --border-radius: 10px;
+  --border-radius: 0;
 }
 
 main {

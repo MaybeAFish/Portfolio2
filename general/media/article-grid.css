@@ -10,7 +10,7 @@
   position: relative;
   display: flex;
   width: 100%;
-  min-height: clamp(240px, 30vw, 400px);
+  min-height: clamp(240px, 30vw, 300px);
   overflow: hidden;
   box-sizing: border-box;
   color: var(--text-color, #e0e0e0);

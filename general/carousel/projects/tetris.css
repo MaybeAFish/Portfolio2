@@ -1,0 +1,42 @@
+.mediacarousel--corner-art.tetris {
+  --carousel-arrow-edge-inset: 6px;
+  --carousel-arrow-mobile-inset: 4px;
+  --corner-art-size: 28px;
+  --corner-art-outset: -3px;
+  --corner-art-thumb-size: 18px;
+  --corner-art-thumb-outset: 0px;
+  --media-top-left-image: url("/about/art/svg/Cloud.svg");
+  --media-top-right-image: url("/about/art/svg/Calendar.svg");
+  --media-bottom-left-image: url("/about/art/svg/Discover.svg");
+  --media-bottom-right-image: url("/about/art/svg/Create.svg");
+  --info-top-left-image: url("/about/art/svg/Courses.svg");
+  --info-top-right-image: url("/about/art/svg/Hubs.svg");
+  --info-bottom-left-image: url("/about/art/svg/Home.svg");
+  --info-bottom-right-image: url("/about/art/svg/Chat.svg");
+  --thumb-top-left-image: url("/about/art/svg/Mail.svg");
+  --thumb-top-right-image: url("/about/art/svg/DoomedDash.svg");
+  --thumb-bottom-left-image: url("/about/art/svg/DoomedMelee.svg");
+  --thumb-bottom-right-image: url("/about/art/svg/Pronounciation.svg");
+}
+
+.mediacarousel--corner-art.tetris .carousel-corner-art--media {
+  --corner-art-top-right-rotation: 18deg;
+  --corner-art-bottom-left-rotation: -14deg;
+  --corner-art-bottom-right-rotation: 0deg;
+}
+
+.mediacarousel--corner-art.tetris .carousel-corner-art--info {
+  --corner-art-top-left-rotation: -12deg;
+  --corner-art-bottom-right-rotation: 14deg;
+}
+
+.mediacarousel--corner-art.tetris .carousel-corner-art--thumb {
+  --corner-art-top-right-rotation: 12deg;
+  --corner-art-bottom-left-rotation: -12deg;
+  --corner-art-bottom-right-rotation: 0deg;
+}
+
+.mediacarousel--corner-art.tetris .mediacarousel-thumb.is-active .carousel-corner-art__piece--top-right,
+.mediacarousel--corner-art.tetris .mediacarousel-thumb.is-active .carousel-corner-art__piece--bottom-left {
+  display: none;
+}

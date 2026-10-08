@@ -1,4 +1,7 @@
 @import "/general/carousel/media-carousel.css";
+@import "/general/carousel/projects/doomed.css";
+@import "/general/carousel/projects/tetris.css";
+@import "/general/carousel/projects/engine.css";
 
 .mediacarousel-thumbs,
 .mediacarousel-current img,
