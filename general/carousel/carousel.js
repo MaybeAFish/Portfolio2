@@ -70,6 +70,16 @@ function setupMediaCarousel(carousel) {
     }, 3000);
   }
 
+  document.addEventListener("pointerdown", (event) => {
+    if (
+      (event.pointerType === "touch" || event.pointerType === "pen") &&
+      !main.contains(event.target)
+    ) {
+      clearTimeout(touchControlsTimeout);
+      main.classList.remove("is-controls-visible");
+    }
+  });
+
   main.addEventListener("pointerdown", (event) => {
     if (event.pointerType !== "touch" && event.pointerType !== "pen") return;
 

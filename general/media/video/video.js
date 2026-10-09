@@ -13,6 +13,18 @@
     }
   }
 
+  document.addEventListener("pointerdown", (event) => {
+    if (event.pointerType !== "touch" && event.pointerType !== "pen") return;
+
+    document
+      .querySelectorAll(".custom-video-player.is-controls-visible")
+      .forEach((player) => {
+        if (!player.contains(event.target)) {
+          player.classList.remove("is-controls-visible");
+        }
+      });
+  });
+
   function prepareThumbnail(video) {
     video.muted = true;
     video.pause();
