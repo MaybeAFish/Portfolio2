@@ -32,7 +32,6 @@ export const overlayManager = {
     Object.assign(container.style, {
       position: 'relative',
       backgroundColor: '#222',
-      color: 'white',
       width: '80vw',
       maxWidth: '600px',
       height: '70vh',
@@ -50,7 +49,7 @@ export const overlayManager = {
       right: '10px',
       background: 'transparent',
       border: 'none',
-      color: 'white',
+      color: 'var(--text-color)',
       fontSize: '24px',
       cursor: 'pointer',
       fontWeight: 'bold'

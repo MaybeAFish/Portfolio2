@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/projects/project-page.css"/>
   </head>
   <body>
+
 <script>
   document.documentElement.classList.add("no-header-transition");
 </script>
@@ -17,7 +18,7 @@
     <div class="dropdown">
       <a href="/" class="projects-nav-trigger">Projects</a>
       <div class="dropdown-content">
-        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/doomed/">DOOMED</a>
         <a href="/projects/tetris/">Tetris Airconsole</a>
         <a href="/projects/engine/">Vulkan Game Engine</a>
       </div>
@@ -33,7 +34,8 @@
 
 </header>
 <script src="/general/header/header-state.js"></script>
-<main>
+
+<main class="tetris">
       <nav
         class="side-navigation"
         aria-label="Tetris Airconsole project navigation"
@@ -41,15 +43,13 @@
       </nav>
 
       <section>
-        <video class="side-navigation-media" autoplay muted loop playsinline preload="metadata">
+        <video class="side-navigation-media" data-video-player data-video-volume-button="false" autoplay muted loop playsinline preload="metadata">
           <source src="/projects/tetris/lightning-animation/battle.mp4" type="video/mp4" />
         </video>
 
         <h1>Lightning Animation</h1>
         <p>
-          I implemented the mathematical logic behind a lightning effect that visually connects the line a player clears
-          to the destination of the garbage they send. The effect was designed to make the connection between clearing
-          lines and sending garbage immediately readable to the player.
+          I implemented the logic behind a lightning effect that visually connects the line a player clears to the destination of the garbage they send. I iterated on it to make sure that the effect remained immediately readable without being too distracting.
         </p>
 
         <p>
@@ -113,22 +113,22 @@
           I also proposed and implemented the same animation for levelling up in the Marathon Mode, 
           as I found that there was previously no visual feedback when the player reached a new level:
         </p>
-        <video class="solo-content" autoplay muted loop playsinline preload="metadata">
+        <video class="solo-content" data-video-player data-video-volume-button="false" autoplay muted loop playsinline preload="metadata">
           <source src="/projects/tetris/lightning-animation/marathon.mp4" type="video/mp4" />
         </video>
 
-        <br><br>
+        <br>
         <h2>Old Iteration</h2>
         <p>
           I had to experiment a lot with the timing and duration, as it either felt unimpactful, unclear or too distracting. 
           Here's an old version where the animation was somehow ALL 3:
         </p>
-        <video class="solo-content" autoplay controls muted loop playsinline preload="metadata">
+        <video class="solo-content" data-video-player data-video-volume-button="false" autoplay controls muted loop playsinline preload="metadata">
           <source src="/projects/tetris/lightning-animation/old.mp4" type="video/mp4" />
         </video>
         <ul>
           <li>
-            The impact particles were boring, soft, randomized in ways that didn't matter, and mistimed, making the sending part feel <span style="color: var(--standout-color-cyan);">unimpactful</span>.
+            The impact particles were boring, soft, randomized in ways that didn't matter, and mistimed, making the garbage sending part feel <span style="color: var(--standout-color-cyan);">unimpactful</span>.
           </li>
           <li>
             The electricity didn't gradually dash towards the destination, it only retracted, making it <span style="color: var(--standout-color-cyan);">unclear</span> who was sending it and why.
@@ -144,5 +144,6 @@
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
     <script src="/general/component-loader.js"></script>
+    <script src="/general/media/video/video.js"></script>
   </body>
 </html>

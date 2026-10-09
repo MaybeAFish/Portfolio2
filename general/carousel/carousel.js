@@ -1,364 +1,651 @@
 document.addEventListener("DOMContentLoaded", () => {
   document
-    .querySelectorAll(".mediacarousel, .textcarousel")
-    .forEach(setupCarousel);
+    .querySelectorAll(".mediacarousel[data-carousel]")
+    .forEach(setupMediaCarousel);
 });
 
-function setupCarousel(carousel) {
-  if (carousel.querySelector(".carousel-controls")) return;
-  if (carousel.querySelector(".mediacarousel-controls")) return;
-  if (carousel.querySelector(".textcarousel-controls")) return;
 
-  const isMediaCarousel =
-    carousel.classList.contains("mediacarousel");
+function setupMediaCarousel(carousel) {
 
-  const prefix = isMediaCarousel
-    ? "mediacarousel"
-    : "textcarousel";
+  const main = carousel.querySelector(".mediacarousel-main");
+  const current = carousel.querySelector(".mediacarousel-current");
+  const thumbsContainer = carousel.querySelector(".mediacarousel-thumbs");
 
-  const track = carousel.querySelector(`.${prefix}-track`);
-  if (!track) return;
+  const prevButton = carousel.querySelector(".mediacarousel-button--prev");
+  const nextButton = carousel.querySelector(".mediacarousel-button--next");
 
-  /* -------------------------
-    Swipe support (touch/pointer)
-  ------------------------- */
+  const counter = carousel.querySelector(".mediacarousel-counter");
+
+  const thumbs = Array.from(
+    carousel.querySelectorAll(".mediacarousel-thumb")
+  );
+
+  const infoItems = Array.from(
+    carousel.querySelectorAll(".mediacarousel-info-item")
+  );
+
+  function addCornerArtwork(target, area) {
+    if (!target) return;
+
+    const artwork = document.createElement("span");
+    artwork.className = `carousel-corner-art carousel-corner-art--${area}`;
+    artwork.setAttribute("aria-hidden", "true");
+
+    ["top-left", "top-right", "bottom-left", "bottom-right"].forEach((corner) => {
+      const piece = document.createElement("span");
+      piece.className = `carousel-corner-art__piece carousel-corner-art__piece--${corner}`;
+      artwork.append(piece);
+    });
+
+    target.append(artwork);
+  }
+
+  if (
+    !main ||
+    !current ||
+    !thumbsContainer ||
+    !thumbs.length
+  ) {
+    return;
+  }
+
+  if (carousel.classList.contains("mediacarousel--corner-art")) {
+    addCornerArtwork(main, "media");
+    addCornerArtwork(carousel.querySelector(".mediacarousel-info"), "info");
+    thumbs.forEach((thumb) => addCornerArtwork(thumb, "thumb"));
+  }
+
+
+  /* =========================================================
+     STATE
+     ========================================================= */
+
+  let currentIndex = 0;
 
   let pointerId = null;
-  let startX = 0;
-  let startY = 0;
-  let deltaX = 0;
+  let pointerStartX = 0;
+  let pointerStartY = 0;
+  let pointerStartScrollLeft = 0;
+
   let isDragging = false;
-  let axisLocked = null; // "x" | "y" | null
+  let axisLocked = null;
 
-  const SWIPE_THRESHOLD = 40; // px needed to trigger a slide change
+  let suppressNextClick = false;
 
-  track.addEventListener("pointerdown", (event) => {
-    if (event.pointerType === "mouse" && event.button !== 0) return;
 
-    pointerId = event.pointerId;
-    startX = event.clientX;
-    startY = event.clientY;
-    deltaX = 0;
-    isDragging = true;
-    axisLocked = null;
-  });
+  /* =========================================================
+     MEDIA HELPERS
+     ========================================================= */
 
-  track.addEventListener("pointermove", (event) => {
-    if (!isDragging || event.pointerId !== pointerId) return;
+  function createMainMedia(thumb) {
 
-    const dx = event.clientX - startX;
-    const dy = event.clientY - startY;
+    const source = thumb.querySelector(".mediacarousel-text-source, img, video");
 
-    if (!axisLocked) {
-      if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return; // too small to tell yet
-      axisLocked = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+    if (!source) {
+      return null;
     }
 
-    if (axisLocked === "x") {
-      event.preventDefault(); // stop vertical page scroll only once we're sure it's a horizontal swipe
-      deltaX = dx;
-    }
-  });
+    const media = source.cloneNode(true);
+    media.removeAttribute("loading");
+    media.draggable = false;
 
-  function endDrag(event) {
-    if (!isDragging || event.pointerId !== pointerId) return;
-    isDragging = false;
 
-    if (axisLocked === "x" && Math.abs(deltaX) > SWIPE_THRESHOLD) {
-      if (deltaX < 0) {
-        goToSlide(currentSlide + 1);
-      } else {
-        goToSlide(currentSlide - 1);
-      }
+    if (media.tagName === "IMG") {
+      media.alt =
+        thumb.dataset.title ||
+        source.alt ||
+        "";
+    } else if (source.classList.contains("mediacarousel-text-source")) {
+      media.classList.add("mediacarousel-text-slide");
     }
 
-    pointerId = null;
-    axisLocked = null;
-    deltaX = 0;
+    return media;
   }
 
-  track.addEventListener("pointerup", endDrag);
-  track.addEventListener("pointercancel", endDrag);
+  /* =========================================================
+     INFO PANEL
+     ========================================================= */
 
-  const slides = Array.from(
-    track.querySelectorAll(`.${prefix}-slide`)
-  );
-  if (!slides.length) return;
+  function updateInfo(index) {
 
-  /* -------------------------
-     Media loading placeholders
-  ------------------------- */
+    infoItems.forEach((item) => {
 
-  if (isMediaCarousel) {
-    slides.forEach((slide) => {
-      const media = slide.querySelector("img, video");
+      const itemIndex =
+        Number(item.dataset.slide);
 
-      if (!media) return;
+      const active =
+        itemIndex === index;
 
-      const markLoaded = () => {
-        slide.classList.add("is-loaded");
-      };
-
-      if (media.tagName === "IMG") {
-        if (media.complete) {
-          markLoaded();
-        } else {
-          media.addEventListener("load", markLoaded, {
-            once: true
-          });
-        }
-      }
-
-      if (media.tagName === "VIDEO") {
-        if (media.readyState >= 2) {
-          markLoaded();
-        } else {
-          media.addEventListener("loadeddata", markLoaded, {
-            once: true
-          });
-        }
-      }
-    });
-  }
-
-  let currentSlide = 0;
-
-  /* -------------------------
-     Controls
-  ------------------------- */
-
-  const controls = document.createElement("div");
-  controls.className = `${prefix}-controls`;
-
-  const previousButton = createArrowButton(
-    "Previous slide",
-    "prev",
-    prefix
-  );
-
-  const nextButton = createArrowButton(
-    "Next slide",
-    "next",
-    prefix
-  );
-
-  const dots = document.createElement("div");
-
-  dots.className = `${prefix}-dots`;
-  dots.setAttribute("role", "tablist");
-  dots.setAttribute("aria-label", "Slides");
-
-  slides.forEach((slide, index) => {
-    const dot = document.createElement("button");
-
-    dot.type = "button";
-    dot.className = `${prefix}-dot`;
-
-    dot.setAttribute(
-      "aria-label",
-      `Go to slide ${index + 1}`
-    );
-
-    dot.setAttribute("aria-selected", "false");
-    dot.setAttribute("role", "tab");
-
-    dot.addEventListener("click", () => {
-      goToSlide(index);
-    });
-
-    dots.appendChild(dot);
-  });
-
-  controls.append(
-    previousButton,
-    dots,
-    nextButton
-  );
-
-  carousel.appendChild(controls);
-
-  /* -------------------------
-     Update carousel
-  ------------------------- */
-
-  function updateCarousel() {
-    const totalSlides = slides.length;
-
-    slides.forEach((slide, index) => {
-      let difference = index - currentSlide;
-
-      /*
-       * Wrap around so the first and last
-       * slides remain adjacent.
-       */
-      if (difference > totalSlides / 2) {
-        difference -= totalSlides;
-      }
-
-      if (difference < -totalSlides / 2) {
-        difference += totalSlides;
-      }
-
-      const isActive = difference === 0;
-      const isPrevious = difference === -1;
-      const isNext = difference === 1;
-
-      slide.classList.toggle(
+      item.classList.toggle(
         "is-active",
-        isActive
-      );
-
-      slide.classList.toggle(
-        "is-prev",
-        isPrevious
-      );
-
-      slide.classList.toggle(
-        "is-next",
-        isNext
-      );
-
-      slide.setAttribute(
-        "aria-hidden",
-        String(!isActive)
-      );
-
-      slide.style.zIndex = isActive
-        ? "2"
-        : isPrevious || isNext
-          ? "1"
-          : "0";
-
-      /*
-       * Only the side slides are clickable.
-       */
-      slide.onclick = null;
-
-      if (isPrevious || isNext) {
-        slide.onclick = () => {
-          goToSlide(index);
-        };
-      }
-    });
-
-    /* Update dots */
-
-    const dotElements =
-      dots.querySelectorAll(`.${prefix}-dot`);
-
-    dotElements.forEach((dot, index) => {
-      const active = index === currentSlide;
-
-      dot.classList.toggle(
-        "active",
         active
       );
 
-      dot.setAttribute(
+      item.setAttribute(
+        "aria-hidden",
+        String(!active)
+      );
+
+    });
+  }
+
+
+  /* =========================================================
+     THUMBNAIL STATE
+     ========================================================= */
+
+  function updateThumbs(index) {
+
+    thumbs.forEach((thumb, thumbIndex) => {
+
+      const active =
+        thumbIndex === index;
+
+      thumb.classList.toggle(
+        "is-active",
+        active
+      );
+
+      thumb.setAttribute(
         "aria-selected",
         String(active)
       );
 
-      dot.setAttribute(
-        "aria-current",
-        active ? "true" : "false"
+      thumb.setAttribute(
+        "tabindex",
+        active ? "0" : "-1"
       );
+
     });
 
+  }
+
+  function wrapButtonIcons() {
+    const carouselVariant = ["doomed", "tetris", "engine"]
+      .find((variant) => carousel.classList.contains(variant));
+
+    carousel.querySelectorAll(".mediacarousel-button svg").forEach((icon) => {
+      if (icon.parentElement.classList.contains("mediacarousel-button-icon")) return;
+      const wrapper = document.createElement("span");
+      wrapper.className = "mediacarousel-button-icon";
+      if (carouselVariant) {
+        const direction = icon.closest(".mediacarousel-button--prev") ? "prev" : "next";
+        wrapper.classList.add(`mediacarousel-button-icon--${carouselVariant}-${direction}`);
+      }
+      icon.before(wrapper);
+      wrapper.append(icon);
+    });
+  }
+
+  wrapButtonIcons();
+
+
+  /* =========================================================
+     MAIN MEDIA UPDATE
+     ========================================================= */
+
+  function updateMain(index, options = {}) {
+
+    const {
+      scrollThumb = true,
+      focusThumb = false
+    } = options;
+
+
+    currentIndex =
+      (index + thumbs.length) %
+      thumbs.length;
+
+
+    const activeThumb =
+      thumbs[currentIndex];
+
+
+    updateThumbs(currentIndex);
+    updateInfo(currentIndex);
+
+
+    /* -------------------------
+       Counter
+       ------------------------- */
+
+    if (counter) {
+
+      counter.textContent =
+        `${currentIndex + 1} / ${thumbs.length}`;
+
+    }
+
+
+    /* -------------------------
+       Main media
+       ------------------------- */
+
+    const media =
+      createMainMedia(activeThumb);
+
+    if (media) {
+      current.querySelectorAll("video").forEach((video) => video.pause());
+      let displayMedia = media;
+
+      if (media instanceof HTMLVideoElement) {
+        if (!window.VideoPlayer) {
+          throw new Error("The shared video player must load before the media carousel.");
+        }
+
+        media.muted = false;
+        media.preload = "auto";
+        displayMedia = window.VideoPlayer.initialize(media, {
+          controls: activeThumb.dataset.controls !== "false",
+          volumeButton: activeThumb.dataset.volumeButton !== "false",
+          volume: activeThumb.dataset.volume,
+          fit: activeThumb.dataset.fit,
+          blurredBackground: activeThumb.dataset.blurredBackground === "true",
+          autoplay: true,
+          loop: true
+        });
+      }
+
+      current.replaceChildren(displayMedia);
+
+    }
+
+
+    /* -------------------------
+       Scroll active thumbnail
+       ------------------------- */
+
+    if (scrollThumb) {
+
+      activeThumb.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center"
+      });
+
+    }
+
+    if (focusThumb) {
+      activeThumb.focus({ preventScroll: true });
+    }
+
+
     carousel.dataset.activeSlide =
-      String(currentSlide);
+      String(currentIndex);
+
   }
 
-  /* -------------------------
-     Navigation
-  ------------------------- */
 
-  function goToSlide(index) {
-    currentSlide =
-      (index + slides.length) %
-      slides.length;
+  /* =========================================================
+     NAVIGATION
+     ========================================================= */
 
-    updateCarousel();
+  function goToSlide(index, options = {}) {
+
+    updateMain(index, {
+      scrollThumb: options.scrollThumb ?? true,
+      focusThumb: options.focusThumb ?? false
+    });
+
   }
 
-  /* -------------------------
-     Keyboard navigation
-  ------------------------- */
 
-  function handleKeyboard(event) {
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      goToSlide(currentSlide - 1);
+  /* =========================================================
+     BUTTONS
+     ========================================================= */
+
+  if (prevButton) {
+
+    prevButton.addEventListener(
+      "click",
+      (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        goToSlide(currentIndex - 1, { scrollThumb: false });
+      }
+    );
+
+  }
+
+
+  if (nextButton) {
+
+    nextButton.addEventListener(
+      "click",
+      (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        goToSlide(currentIndex + 1, { scrollThumb: false });
+      }
+    );
+
+  }
+
+
+  /* =========================================================
+     THUMBNAIL CLICKS
+     ========================================================= */
+
+  thumbs.forEach((thumb, index) => {
+
+    thumb.addEventListener(
+      "click",
+      (event) => {
+
+        if (suppressNextClick) {
+
+          event.preventDefault();
+
+          suppressNextClick = false;
+
+          return;
+        }
+
+
+        goToSlide(index);
+
+      }
+    );
+
+
+    const video =
+      thumb.querySelector("video");
+
+    if (video) {
+      window.VideoPlayer.prepareThumbnail(video);
     }
 
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      goToSlide(currentSlide + 1);
-    }
-  }
+  });
 
-  previousButton.addEventListener(
-    "click",
-    () => {
-      goToSlide(currentSlide - 1);
+
+  /* =========================================================
+     MOUSE / TOUCH DRAGGING
+     ========================================================= */
+
+  thumbsContainer.addEventListener(
+    "pointerdown",
+    (event) => {
+
+      if (
+        event.pointerType === "mouse" &&
+        event.button !== 0
+      ) {
+        return;
+      }
+
+
+      pointerId = event.pointerId;
+
+      pointerStartX =
+        event.clientX;
+
+      pointerStartY =
+        event.clientY;
+
+      pointerStartScrollLeft =
+        thumbsContainer.scrollLeft;
+
+      isDragging = true;
+      axisLocked = null;
+
     }
   );
 
-  nextButton.addEventListener(
-    "click",
-    () => {
-      goToSlide(currentSlide + 1);
+
+  thumbsContainer.addEventListener(
+    "pointermove",
+    (event) => {
+
+      if (
+        !isDragging ||
+        event.pointerId !== pointerId
+      ) {
+        return;
+      }
+
+
+      const deltaX =
+        event.clientX -
+        pointerStartX;
+
+      const deltaY =
+        event.clientY -
+        pointerStartY;
+
+
+      /* -------------------------
+         Determine gesture axis
+         ------------------------- */
+
+      if (!axisLocked) {
+
+        if (
+          Math.abs(deltaX) < 8 &&
+          Math.abs(deltaY) < 8
+        ) {
+          return;
+        }
+
+
+        axisLocked =
+          Math.abs(deltaX) >
+          Math.abs(deltaY)
+            ? "x"
+            : "y";
+
+        if (axisLocked === "x") {
+          thumbsContainer.classList.add(
+            "is-dragging"
+          );
+
+          thumbsContainer.setPointerCapture(
+            event.pointerId
+          );
+        }
+
+      }
+
+
+      /* -------------------------
+         Horizontal drag
+         ------------------------- */
+
+      if (axisLocked === "x") {
+
+        event.preventDefault();
+
+        thumbsContainer.scrollLeft =
+          pointerStartScrollLeft -
+          deltaX;
+
+
+        suppressNextClick = true;
+
+      }
+
     }
   );
+
+
+  function endPointerDrag(event) {
+
+    if (
+      !isDragging ||
+      event.pointerId !== pointerId
+    ) {
+      return;
+    }
+
+
+    isDragging = false;
+
+    axisLocked = null;
+
+    thumbsContainer.classList.remove(
+      "is-dragging"
+    );
+
+
+    try {
+      thumbsContainer.releasePointerCapture(
+        event.pointerId
+      );
+    } catch {
+      /* Ignore. */
+    }
+
+
+    pointerId = null;
+
+
+    /*
+     * Wait until the click event has passed.
+     */
+    if (suppressNextClick) {
+
+      setTimeout(() => {
+        suppressNextClick = false;
+      }, 0);
+
+    }
+
+  }
+
+
+  thumbsContainer.addEventListener(
+    "pointerup",
+    endPointerDrag
+  );
+
+
+  thumbsContainer.addEventListener(
+    "pointercancel",
+    endPointerDrag
+  );
+
+
+  thumbsContainer.addEventListener(
+    "lostpointercapture",
+    endPointerDrag
+  );
+
+
+  /* =========================================================
+     MOUSEWHEEL
+     ========================================================= */
+
+  thumbsContainer.addEventListener(
+    "wheel",
+    (event) => {
+
+      const wheelDelta =
+        Math.abs(event.deltaX) >
+        Math.abs(event.deltaY)
+          ? event.deltaX
+          : event.deltaY;
+
+
+      if (wheelDelta === 0) {
+        return;
+      }
+
+      const deltaScale =
+        event.deltaMode === 1
+          ? 16
+          : event.deltaMode === 2
+            ? thumbsContainer.clientWidth
+            : 1;
+
+      const scrollAmount =
+        wheelDelta * deltaScale;
+
+      const maxScrollLeft =
+        thumbsContainer.scrollWidth -
+        thumbsContainer.clientWidth;
+
+      if (maxScrollLeft <= 1) {
+        return;
+      }
+
+      const currentScrollLeft =
+        thumbsContainer.scrollLeft;
+
+      const nextScrollLeft =
+        Math.max(
+          0,
+          Math.min(
+            maxScrollLeft,
+            currentScrollLeft + scrollAmount
+          )
+        );
+
+      if (
+        Math.abs(nextScrollLeft - currentScrollLeft) < 0.5
+      ) {
+        return;
+      }
+
+      event.preventDefault();
+
+      thumbsContainer.scrollLeft =
+        nextScrollLeft;
+
+    },
+    {
+      passive: false
+    }
+  );
+
+
+  /* =========================================================
+     KEYBOARD
+     ========================================================= */
 
   carousel.addEventListener(
     "keydown",
-    handleKeyboard
+    (event) => {
+
+      if (
+        event.target.closest(".custom-video-controls") ||
+        event.target.matches("input, select, textarea, [contenteditable='true']")
+      ) {
+        return;
+      }
+
+
+      if (event.key === "ArrowLeft") {
+
+        event.preventDefault();
+
+        goToSlide(
+          currentIndex - 1,
+          { scrollThumb: true, focusThumb: true }
+        );
+
+      }
+
+
+      if (event.key === "ArrowRight") {
+
+        event.preventDefault();
+
+        goToSlide(
+          currentIndex + 1,
+          { scrollThumb: true, focusThumb: true }
+        );
+
+      }
+
+    }
   );
 
-  carousel.tabIndex = 0;
 
-  /* Initial state */
+  /* =========================================================
+     INITIAL STATE
+     ========================================================= */
 
-  updateCarousel();
-}
+  updateMain(0, {
+    scrollThumb: false
+  });
 
-
-/* =========================================================
-   ARROW BUTTON
-   ========================================================= */
-
-function createArrowButton(label, direction, prefix) {
-  const button = document.createElement("button");
-
-  button.type = "button";
-
-  button.className =
-    `${prefix}-button ${direction}`;
-
-  button.setAttribute(
-    "aria-label",
-    label
-  );
-
-  button.innerHTML =
-    direction === "prev"
-      ? `
-        <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path d="M15 5l-7 7 7 7"/>
-        </svg>
-      `
-      : `
-        <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path d="M9 5l7 7-7 7"/>
-        </svg>
-      `;
-
-  return button;
 }

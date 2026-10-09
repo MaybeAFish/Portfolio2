@@ -1,277 +1,668 @@
+/* =========================================================
+   MEDIA CAROUSEL
+   ========================================================= */
+
 .mediacarousel {
-  --mediacarousel-accent: var(--standout-color-green);
+  --carousel-green: var(--standout-color-green);
+  --carousel-cyan: var(--standout-color-cyan);
+  --carousel-info-width: 500px;
 
-  position: relative;
-  margin: 0 auto 10px;
-  box-sizing: border-box;
-}
-
-.mediacarousel[data-category="development"] {
-  --mediacarousel-accent: var(--standout-color-cyan);
-}
-
-.mediacarousel-track {
-  position: relative;
   width: 100%;
-  height: clamp(220px, 38vw, 460px);
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--carousel-info-width);
+  gap: 32px;
+  align-items: stretch;
 }
 
-.mediacarousel-slide {
+
+/* =========================================================
+   INFO POSITION
+   ========================================================= */
+
+.mediacarousel--info-left {
+  grid-template-columns: var(--carousel-info-width) minmax(0, 1fr);
+}
+
+.mediacarousel--info-left .mediacarousel-content {
+  grid-column: 2;
+}
+
+.mediacarousel--info-left .mediacarousel-info-shell {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+
+/* =========================================================
+   MAIN CAROUSEL CONTENT
+   ========================================================= */
+
+.mediacarousel-content {
+  min-width: 0;
+}
+
+
+/* =========================================================
+   MAIN MEDIA
+   ========================================================= */
+
+.mediacarousel-main {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+
+  background: var(--supporting-background-color);
+
+  border-radius: var(--border-radius);
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.mediacarousel--corner-art .mediacarousel-main {
+  overflow: visible;
+}
+
+
+/* Current image/video */
+
+.mediacarousel-current {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: min(68vw, 760px);
-  height: 100%;
+  inset: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
-  transform:
-    translate(-50%, -50%)
-    translateX(var(--mediacarousel-offset, 0px))
-    scale(var(--mediacarousel-scale, 0.72));
-
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-
-  transition:
-    transform 0.35s ease,
-    opacity 0.35s ease,
-    filter 0.35s ease;
-
-
-  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
 }
 
-/* Loading placeholder */
-.mediacarousel-slide::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--supporting-background-color);
-  z-index: 0;
+.mediacarousel--corner-art .mediacarousel-current {
+  overflow: hidden;
+  border-radius: inherit;
 }
 
-/* Remove placeholder once loaded */
-.mediacarousel-slide.is-loaded::before {
-  display: none;
-}
 
-/* Media */
-.mediacarousel-slide img,
-.mediacarousel-slide video {
-  position: relative;
-  z-index: 1;
+/* Main media */
 
+.mediacarousel-current img,
+.mediacarousel-current video {
   display: block;
+
   width: 100%;
   height: 100%;
 
+  object-fit: cover;
+  object-position: center;
+
   border: none;
-  object-fit: contain;
-  overflow: hidden;
   background: transparent;
 
   user-select: none;
+  -webkit-user-select: none;
   -webkit-user-drag: none;
 }
 
-/* Previous / next */
+/* =========================================================
+   OVERLAY
+   ========================================================= */
 
-.mediacarousel-slide.is-prev,
-.mediacarousel-slide.is-next {
-  visibility: visible;
+.mediacarousel-overlay {
+  position: absolute;
+  inset: 0;
 
-  opacity: 0.3;
-  filter: saturate(0.7);
+  z-index: 5;
 
-  cursor: pointer;
-  pointer-events: auto;
+  opacity: 0;
+  pointer-events: none;
 
-  --mediacarousel-scale: 0.68;
+  transition: opacity 0.18s ease;
 }
 
-.mediacarousel-slide.is-prev {
-  --mediacarousel-offset: clamp(-330px, -25vw, -170px);
-}
 
-.mediacarousel-slide.is-next {
-  --mediacarousel-offset: clamp(170px, 25vw, 330px);
-}
+/* Show controls on hover */
 
-/* Active */
-
-.mediacarousel-slide.is-active {
-  visibility: visible;
-
+.mediacarousel-main:hover .mediacarousel-overlay,
+.mediacarousel-main:focus-within .mediacarousel-overlay {
   opacity: 1;
-
-  --mediacarousel-offset: 0px;
-  --mediacarousel-scale: 1;
-
-  z-index: 2;
-
-  pointer-events: auto;
+  pointer-events: none;
 }
 
-/* Controls */
 
-.mediacarousel-controls {
+/* =========================================================
+   COUNTER
+   ========================================================= */
+
+.mediacarousel-counter {
+  position: absolute;
+
+  top: 6px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  padding: 5px 10px;
+
+
+  background: rgba(20, 20, 20, 0.72);
+
+  border: 1px solid var(--text-color);
+  border-radius: 999px;
+
+  font-size: 0.8rem;
+  line-height: 1;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   MAIN ARROWS
+   ========================================================= */
+
+.mediacarousel-button {
+  position: absolute;
+
+  top: 50%;
+
+  width: 50px;
+  height: 50px;
+
+  padding: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
-  gap: 22px;
+  transform: translateY(-50%);
 
-  margin-top: 12px;
-}
+  color: var(--text-color);
 
-/* Arrows */
+  background: rgba(20, 20, 20, 0.60);
 
-.mediacarousel-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 48px;
-  height: 48px;
-
-  padding: 0;
-
-  color: rgba(255, 255, 255, 0.82);
-
-  background: transparent;
-  border: none;
+  border: 1px solid var(--text-color);;
+  border-radius: 999px;
 
   cursor: pointer;
+  pointer-events: auto;
+  z-index: 6;
 
   transition:
-    color 0.2s ease,
-    transform 0.2s ease;
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+
+.mediacarousel-button--prev {
+  left: calc(12px - var(--carousel-arrow-edge-inset, 0px));
+}
+
+
+.mediacarousel-button--next {
+  right: calc(12px - var(--carousel-arrow-edge-inset, 0px));
+}
+
+
+.mediacarousel-button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.mediacarousel-button-icon--doomed-prev {
+  transform: translateX(-1px);
+  width: 18px;
+}
+.mediacarousel-button-icon--doomed-next {
+  transform: translateX(1px);
+  width: 18px;
+}
+
+.mediacarousel-button-icon--tetris-prev {
+  transform: translateX(-2px);
+  width: 14px;
+}
+.mediacarousel-button-icon--tetris-next {
+  transform: translateX(2px);
+  width: 14px;
+}
+
+.mediacarousel-button-icon--engine-prev {
+  transform: translateX(-2px);
+  width: 14px;
+}
+.mediacarousel-button-icon--engine-next {
+  transform: translateX(2px);
+  width: 14px;
 }
 
 .mediacarousel-button svg {
-  width: 30px;
-  height: 30px;
-
-  stroke: currentColor;
+  width: var(--carousel-chevron-width, 25px);
+  height: var(--carousel-chevron-height, 25px);
   fill: none;
 
-  stroke-width: 2.8;
+  stroke: currentColor;
+  stroke-width: 2.5;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
+.mediacarousel-button-icon--doomed-prev,
+.mediacarousel-button-icon--doomed-next {
+  --carousel-chevron-width: 24px;
+  --carousel-chevron-height: 28px;
+}
+
+.mediacarousel-button-icon--tetris-prev,
+.mediacarousel-button-icon--tetris-next {
+  --carousel-chevron-width: 19px;
+  --carousel-chevron-height: 23px;
+}
+
+.mediacarousel-button-icon--engine-prev,
+.mediacarousel-button-icon--engine-next {
+  --carousel-chevron-width: 18px;
+  --carousel-chevron-height: 24px;
+}
+
+.mediacarousel.doomed .mediacarousel-button svg,
+.mediacarousel.tetris .mediacarousel-button svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+.mediacarousel.doomed .mediacarousel-button--prev svg,
+.mediacarousel.tetris .mediacarousel-button--prev svg,
+.mediacarousel.engine .mediacarousel-button--next svg {
+  transform: rotate(180deg);
+}
+
+
+/* Hover = green */
+
 .mediacarousel-button:hover,
 .mediacarousel-button:focus-visible {
-  color: var(--standout-color-green);
-  transform: scale(1.08);
+  color: var(--carousel-green);
+  border-color: var(--carousel-green);
+
+  background: rgba(20, 20, 20, 0.78);
 }
+
+
+/* Click = cyan */
 
 .mediacarousel-button:active {
-  color: var(--standout-color-cyan);
-  transform: scale(0.96);
+  color: var(--carousel-cyan);
+  border-color: var(--carousel-cyan);
+
+  transform: translateY(-50%) scale(0.94);
 }
 
-/* Dots */
 
-.mediacarousel-dots {
+/* =========================================================
+   THUMBNAIL STRIP
+   ========================================================= */
+
+.mediacarousel-thumbs {
   display: flex;
   align-items: center;
-  justify-content: center;
 
-  gap: 12px;
+  gap: 10px;
+
+  width: 100%;
+
+  margin-top: 10px;
+  padding: 2px 1px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  scroll-behavior: smooth;
+
+  touch-action: pan-y;
+
+  cursor: grab;
+
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.mediacarousel-dot {
-  width: 14px;
-  height: 14px;
+
+.mediacarousel-thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+
+.mediacarousel-thumbs.is-dragging {
+  cursor: grabbing;
+
+  scroll-behavior: auto;
+}
+
+
+/* =========================================================
+   THUMBNAILS
+   ========================================================= */
+
+.mediacarousel-thumb {
+  position: relative;
+
+
+  flex: 0 0 150px;
+
+  display: block;
+
+  z-index: 2;
+  aspect-ratio: 16 / 9;
 
   padding: 0;
 
-  border: none;
-  border-radius: 50%;
+  overflow: hidden;
 
-  background: rgba(255, 255, 255, 0.42);
+  background: var(--supporting-background-color);
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--border-radius);
 
   cursor: pointer;
 
   transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
+    border-color 0.15s ease,
+    transform 0.15s ease,
+    opacity 0.15s ease;
 }
 
-.mediacarousel-dot:hover,
-.mediacarousel-dot:focus-visible {
-  background: var(--standout-color-green);
-  transform: scale(1.15);
+.mediacarousel-thumb::after {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+
+  background: rgba(0, 0, 0, 0.85);
+
+  content: "";
+  pointer-events: none;
+  transition: opacity 0.15s ease;
 }
 
-.mediacarousel-dot:active,
-.mediacarousel-dot.active {
-  background: var(--standout-color-cyan);
-  transform: scale(1.35);
+.mediacarousel-thumb:hover::after,
+.mediacarousel-thumb:focus-visible::after,
+.mediacarousel-thumb.is-active::after {
+  opacity: 0;
 }
 
-.mediacarousel:focus-visible {
-  outline: 3px solid white;
-  outline-offset: 4px;
+.mediacarousel-thumb:hover,
+.mediacarousel-thumb:focus-visible {
+  border-color: var(--carousel-green);
+}
+
+.mediacarousel-thumb:active,
+.mediacarousel-thumb.is-active {
+  border-color: var(--carousel-cyan);
+}
+
+.mediacarousel--corner-art .mediacarousel-thumb:hover,
+.mediacarousel--corner-art .mediacarousel-thumb:focus-visible,
+.mediacarousel--corner-art .mediacarousel-thumb.is-active {
+  z-index: 4;
+}
+
+.mediacarousel--corner-art .mediacarousel-thumb:hover,
+.mediacarousel--corner-art .mediacarousel-thumb:focus-visible,
+.mediacarousel--corner-art .mediacarousel-thumb:active,
+.mediacarousel--corner-art .mediacarousel-thumb.is-active {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.mediacarousel--corner-art .mediacarousel-thumb img,
+.mediacarousel--corner-art .mediacarousel-thumb video {
+  border-radius: inherit;
 }
 
 
-@media (max-width: 680px) {
-  .mediacarousel-track {
-    height: clamp(180px, 52vw, 300px);
+/* Thumbnail media */
+
+.mediacarousel-thumb img,
+.mediacarousel-thumb video {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border: none;
+
+  background: #111;
+
+  pointer-events: none;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Corner art is absolutely positioned and never participates in carousel layout. */
+.mediacarousel--corner-art {
+  --corner-art-size: 24px;
+  --corner-art-thumb-size: 18px;
+  --corner-art-outset: 0px;
+  --corner-art-thumb-outset: 0px;
+  --corner-art-top-left-rotation: 0deg;
+  --corner-art-top-right-rotation: 90deg;
+  --corner-art-bottom-right-rotation: 180deg;
+  --corner-art-bottom-left-rotation: 270deg;
+}
+
+.mediacarousel--corner-art .mediacarousel-info {
+  overflow: visible;
+}
+
+.carousel-corner-art {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.carousel-corner-art__piece {
+  position: absolute;
+  width: var(--corner-art-size);
+  height: var(--corner-art-size);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.carousel-corner-art--thumb {
+  --corner-art-size: var(--corner-art-thumb-size, 18px);
+  --corner-art-outset: var(--corner-art-thumb-outset, 0px);
+  clip-path: inset(0);
+  opacity: 0;
+  transition: opacity 0.16s ease;
+}
+
+.mediacarousel-thumb:hover .carousel-corner-art--thumb,
+.mediacarousel-thumb:focus-visible .carousel-corner-art--thumb,
+.mediacarousel-thumb.is-active .carousel-corner-art--thumb {
+  opacity: 1;
+}
+
+.carousel-corner-art__piece--top-left {
+  top: var(--corner-top-left-y, var(--corner-art-outset, -12px));
+  left: var(--corner-top-left-x, var(--corner-art-outset, -12px));
+  background-image: var(--corner-top-left-image, none);
+  transform: rotate(var(--corner-art-top-left-rotation, 0deg));
+}
+
+.carousel-corner-art__piece--top-right {
+  top: var(--corner-top-right-y, var(--corner-art-outset, -12px));
+  right: var(--corner-top-right-x, var(--corner-art-outset, -12px));
+  background-image: var(--corner-top-right-image, none);
+  transform: rotate(var(--corner-art-top-right-rotation, 90deg));
+}
+
+.carousel-corner-art__piece--bottom-left {
+  bottom: var(--corner-bottom-left-y, var(--corner-art-outset, -12px));
+  left: var(--corner-bottom-left-x, var(--corner-art-outset, -12px));
+  background-image: var(--corner-bottom-left-image, none);
+  transform: rotate(var(--corner-art-bottom-left-rotation, 270deg));
+}
+
+.carousel-corner-art__piece--bottom-right {
+  right: var(--corner-bottom-right-x, var(--corner-art-outset, -12px));
+  bottom: var(--corner-bottom-right-y, var(--corner-art-outset, -12px));
+  background-image: var(--corner-bottom-right-image, none);
+  transform: rotate(var(--corner-art-bottom-right-rotation, 180deg));
+}
+
+.carousel-corner-art--media .carousel-corner-art__piece--bottom-left,
+.carousel-corner-art--media .carousel-corner-art__piece--bottom-right {
+  display: none;
+}
+
+.carousel-corner-art--media {
+  --corner-top-left-image: var(--media-top-left-image);
+  --corner-top-right-image: var(--media-top-right-image);
+  --corner-bottom-left-image: var(--media-bottom-left-image);
+  --corner-bottom-right-image: var(--media-bottom-right-image);
+}
+
+.carousel-corner-art--info {
+  --corner-top-left-image: var(--info-top-left-image);
+  --corner-top-right-image: var(--info-top-right-image);
+  --corner-bottom-left-image: var(--info-bottom-left-image);
+  --corner-bottom-right-image: var(--info-bottom-right-image);
+}
+
+.carousel-corner-art--thumb {
+  --corner-top-left-image: var(--thumb-top-left-image);
+  --corner-top-right-image: var(--thumb-top-right-image);
+  --corner-bottom-left-image: var(--thumb-bottom-left-image);
+  --corner-bottom-right-image: var(--thumb-bottom-right-image);
+}
+
+.mediacarousel--text-only {
+  display: block;
+}
+
+.mediacarousel--standalone {
+  display: block;
+}
+
+.mediacarousel--text-only .mediacarousel-thumbs {
+  display: none;
+}
+
+/* =========================================================
+   KEYBOARD FOCUS
+   ========================================================= */
+
+.mediacarousel-button:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none), (pointer: coarse) {
+
+  .mediacarousel-overlay {
+    opacity: 1;
+    pointer-events: none;
   }
 
-  .mediacarousel-slide {
-    width: 76vw;
+}
+
+
+/* =========================================================
+   TABLET / SMALL DESKTOP
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .mediacarousel,
+  .mediacarousel--info-left {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 25px;
   }
 
-
-
-  .mediacarousel-controls {
-    gap: 16px;
-    margin-top: 10px;
+  .mediacarousel--info-left .mediacarousel-content,
+  .mediacarousel--info-left .mediacarousel-info-shell {
+    grid-column: 1;
+    grid-row: auto;
   }
 
+}
+
+
+/* =========================================================
+   PHONE
+   ========================================================= */
+
+@media (max-width: 600px) {
   .mediacarousel-button {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .mediacarousel-button--prev {
+    left: calc(9px - var(--carousel-arrow-mobile-inset, 0px));
+  }
+
+  .mediacarousel-button--next {
+    right: calc(9px - var(--carousel-arrow-mobile-inset, 0px));
   }
 
   .mediacarousel-button svg {
-    width: 31px;
-    height: 31px;
+    width: var(--carousel-chevron-width, 22px);
+    height: var(--carousel-chevron-height, 22px);
   }
 
-  .mediacarousel-dot {
-    width: 14px;
-    height: 14px;
+  .mediacarousel-counter {
+    top: 10px;
   }
+
+  .mediacarousel-thumbs {
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .mediacarousel-thumb {
+    flex-basis: 105px;
+  }
+
 }
 
 
-@media (max-width: 420px) {
-  .mediacarousel-track {
-    height: 210px;
-  }
-
-  .mediacarousel-slide {
-    width: 82vw;
-  }
-
-
-}
-
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .mediacarousel-slide,
+
+  .mediacarousel-overlay,
   .mediacarousel-button,
-  .mediacarousel-dot {
+  .mediacarousel-thumb,
+  .mediacarousel-thumbs {
     transition: none;
+    scroll-behavior: auto;
   }
+
 }

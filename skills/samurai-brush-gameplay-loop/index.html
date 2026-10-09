@@ -10,6 +10,7 @@
 
 <body>
 
+
 <script>
   document.documentElement.classList.add("no-header-transition");
 </script>
@@ -19,7 +20,7 @@
     <div class="dropdown">
       <a href="/" class="projects-nav-trigger">Projects</a>
       <div class="dropdown-content">
-        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/doomed/">DOOMED</a>
         <a href="/projects/tetris/">Tetris Airconsole</a>
         <a href="/projects/engine/">Vulkan Game Engine</a>
       </div>
@@ -35,7 +36,8 @@
 
 </header>
 <script src="/general/header/header-state.js"></script>
-<main>
+
+<main class="samurai">
         <nav
             class="side-navigation"
             aria-label="Skills navigation"
@@ -43,19 +45,21 @@
         </nav>
 
         <section>
+            <div class="portrait-video-frame">
+                <video class="side-navigation-media" data-video-player data-video-volume-button="false" data-video-fit="contain" data-video-blurred-background="true" autoplay muted controls loop playsinline>
+                    <source src="/skills/samurai-brush-gameplay-loop/samurai.mp4" type="video/mp4">
+                </video>
+            </div>
+
             <h1>Somehow Fitting Combat in a Match 3 Game</h1>
 
             <p>
                 For my second game ever, I had to make a match-3 game. I found the idea of making a
                 traditional match-3 game boring, so I looked for a way to make the matching
-                itself part of a larger gameplay loop.
+                part of a larger gameplay loop.
             </p>
 
-            <video class="side-navigation-media" autoplay muted controls loop playsinline>
-                <source src="/skills/samurai-brush-gameplay-loop/samurai.mp4" type="video/mp4">
-            </video>
-
-            <br><br>
+            <br>
             <h2>The Game Loop</h2>
             <p>
                 I designed a game loop which included a combat system where the player's matches decide how powerful the player's attacks are.
@@ -80,11 +84,13 @@
                 movement speed or allowing the player to reach further across the board. These items had the potential to be designed to be purposefully situational considering you can only equip one. This means that players could equip the gloves if they'd want more damage potential against Enemy A, or equip the boots if they wanted more defensive capabilities against Enemy B.
             </p>
 
-            <video class="side-navigation-media" autoplay controls muted loop playsinline>
-                <source src="/skills/samurai-brush-gameplay-loop/combining.mp4" type="video/mp4">
-            </video>
+            <div class="portrait-video-frame">
+                <video class="side-navigation-media" data-video-player data-video-volume-button="false" data-video-fit="contain" data-video-blurred-background="true" autoplay controls muted loop playsinline>
+                    <source src="/skills/samurai-brush-gameplay-loop/combining.mp4" type="video/mp4">
+                </video>
+            </div>
 
-            <br><br>
+            <br>
             <h2>What I'd Change</h2>
             <p>
                 The biggest problem was communicating how the match-3 board affected combat. I should
@@ -103,6 +109,7 @@
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
     <script src="/general/component-loader.js"></script>
+    <script src="/general/media/video/video.js"></script>
 
 </body>
 </html>

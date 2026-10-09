@@ -78,9 +78,9 @@ export const GameInteractables = {
     {
       type: ProjectInteractable,
       position: new THREE.Vector3(-110, interactableHeight, 45),
-      templateUrl: '/game/projects/dont-pop-the-balloon.html',
+      templateUrl: '/game/projects/dont-pop-the-bubble.html',
       options: { color: 'rgb(129, 255, 196)', icon: '/game/map/say-something.png' },
-      name: 'DONT pop the balloon'
+      name: 'DONT Pop the Bubble'
     },
   ],
   "Teleports": [

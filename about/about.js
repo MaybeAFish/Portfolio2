@@ -1,8 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  document
-    .querySelectorAll(".mediacarousel, .textcarousel")
-    .forEach(setupCarousel);
-
   initialiseGameCharacters();
   initialiseEyeball();
 });
@@ -223,7 +219,7 @@ function initialiseEyeball() {
       eyeball.style.visibility = "none";
 
       const respawnButton = document.createElement("button");
-      respawnButton.className = "fancy-button eyeball-respawn";
+      respawnButton.className = "fancy-button outline eyeball-respawn";
       respawnButton.textContent = "Respawn";
 
       respawnButton.addEventListener("click", respawnEyeball);

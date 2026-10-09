@@ -10,6 +10,7 @@
 
 <body>
 
+
 <script>
   document.documentElement.classList.add("no-header-transition");
 </script>
@@ -19,7 +20,7 @@
     <div class="dropdown">
       <a href="/" class="projects-nav-trigger">Projects</a>
       <div class="dropdown-content">
-        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/doomed/">DOOMED</a>
         <a href="/projects/tetris/">Tetris Airconsole</a>
         <a href="/projects/engine/">Vulkan Game Engine</a>
       </div>
@@ -35,7 +36,8 @@
 
 </header>
 <script src="/general/header/header-state.js"></script>
-<main>
+
+<main class="engine">
 
         <nav
             class="side-navigation"
@@ -44,32 +46,31 @@
         </nav>
 
         <section>
-          <h1>Making a Replayable Procedural Dungeon</h1>
+          <div class="mediacarousel mediacarousel--standalone engine" data-carousel>
+            <div class="mediacarousel-content">
+              <div class="mediacarousel-main">
+                <div class="mediacarousel-current"></div>
+                <div class="mediacarousel-overlay">
+                  <div class="mediacarousel-counter" aria-live="polite">1 / 4</div>
+                  <button class="mediacarousel-button mediacarousel-button--prev" type="button" aria-label="Previous item"><svg width="11" height="16" viewBox="0 0 11 16" aria-hidden="true"><path d="M9.37118 1.00004L1.38606 7.21068C0.871313 7.61104 0.871313 8.38902 1.38606 8.78938L9.37118 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button>
+                  <button class="mediacarousel-button mediacarousel-button--next" type="button" aria-label="Next item"><svg width="11" height="16" viewBox="0 0 11 16" aria-hidden="true"><path d="M9.37118 1.00004L1.38606 7.21068C0.871313 7.61104 0.871313 8.38902 1.38606 8.78938L9.37118 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button>
+                </div>
+              </div>
 
-          <p>I designed a system for random dungeon generation. I used delauney triangulation to decide on potential room positions. Spawned those rooms randomely based on a seed. Pushed them together as close as possible in a grid. And used the a* algorithm to force hallways between them.</p>
-          <p>All of this was done in MonoGame, which at the time was primarily used to create 2D games.</p>
-          <script src="/general/carousel/carousel.js"></script>
-          <div class="mediacarousel" data-category="asdf" aria-label="Doomed project gallery">
-            <div class="mediacarousel-track">
-
-              <div class="mediacarousel-slide">
-                <img src="/skills/procedural-generation-delaunay/delauney/image1.png" alt="Delauney" />
-              </div>
-              <div class="mediacarousel-slide">
-                <img src="/skills/procedural-generation-delaunay/delauney/image2.png" alt="Delauney" />
-              </div>
-              <div class="mediacarousel-slide">
-                <img src="/skills/procedural-generation-delaunay/delauney/image3.png" alt="Delauney" />
-              </div>
-              <div class="mediacarousel-slide">
-                <img src="/skills/procedural-generation-delaunay/delauney/card.gif" alt="Delauney" />
+              <div class="mediacarousel-thumbs">
+                <button class="mediacarousel-thumb" type="button"><img src="/skills/procedural-generation-delaunay/delauney/image1.png" alt="Generated dungeon room layout" draggable="false"></button>
+                <button class="mediacarousel-thumb" type="button"><img src="/skills/procedural-generation-delaunay/delauney/image2.png" alt="Delaunay triangulation connecting room positions" draggable="false"></button>
+                <button class="mediacarousel-thumb" type="button"><img src="/skills/procedural-generation-delaunay/delauney/image3.png" alt="Procedural dungeon with generated hallways" draggable="false"></button>
+                <button class="mediacarousel-thumb" type="button"><img src="/skills/procedural-generation-delaunay/delauney/card.gif" alt="Animated procedural dungeon generation" draggable="false"></button>
               </div>
             </div>
           </div>
 
+          <h1>Making a Replayable Procedural Dungeon</h1>
 
-
-            </div>
+          <p>I created a random dungeon generation system. I used delauney triangulation to decide on potential room positions. Spawned those rooms randomely based on a seed. Pushed them together as close as possible in a grid. And used the a* algorithm to force hallways between them.</p>
+          <p>All of this was done in MonoGame, which at the time was primarily used to create 2D games.</p>
+          
         </section>
 
     </main>
@@ -77,6 +78,7 @@
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
     <script src="/general/component-loader.js"></script>
+    <script src="/general/carousel/carousel.js"></script>
 
 </body>
 </html>

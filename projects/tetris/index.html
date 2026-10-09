@@ -11,6 +11,7 @@
   </head>
 
   <body>
+
 <script>
   document.documentElement.classList.add("no-header-transition");
 </script>
@@ -20,7 +21,7 @@
     <div class="dropdown">
       <a href="/" class="projects-nav-trigger">Projects</a>
       <div class="dropdown-content">
-        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/doomed/">DOOMED</a>
         <a href="/projects/tetris/">Tetris Airconsole</a>
         <a href="/projects/engine/">Vulkan Game Engine</a>
       </div>
@@ -36,7 +37,8 @@
 
 </header>
 <script src="/general/header/header-state.js"></script>
-<main>
+
+<main class="tetris">
       <nav
         class="side-navigation"
         aria-label="Tetris Airconsole project navigation"
@@ -45,54 +47,48 @@
 
       <section>
         <img class="side-navigation-media" style="border-radius: 0;" src="/projects/tetris/tetris.jpg">
-        <video id="skoda-video" style="height: 600px;" class="side-navigation-media" autoplay loop controls preload="metadata">
-          <source src="/projects/tetris/Skoda.mp4" type="video/mp4" />
-        </video>
+        <div class="skoda-video-frame">
+          <video id="skoda-video" class="side-navigation-media" data-video-player data-video-blurred-background="true" data-video-fit="contain" data-video-volume="0.1" autoplay loop controls playsinline preload="metadata">
+            <source src="/projects/tetris/Skoda.mp4" type="video/mp4" />
+          </video>
+        </div>
 
         <h1>Tetris Airconsole</h1>
-        <p>
-          Tetris Airconsole is an official Tetris title built for the Airconsole platform for an in-car multiplayer experience,
-          where players connect through their phones and interact with the game on a shared screen.
-        </p>
-        <p>
-          Airconsole works together with external game companies, such as Wanted Game Studio, to develop games like these.
-          I happen to be lucky enough to intern for Wanted while they were tasked with developing Tetris Airconsole.
+        <p style="text-align: center;">
+          A multiplayer Tetris® game designed to be played in cars
         </p>
 
+        <br>
+        <h2>Contributions</h2>
 
-        <div class="project-info">
-          <div class="project-info-card">
-            <h2>
-              My Contributions:
-            </h2>
-            <ul>
-              <li><a href="/projects/tetris/multiplayer-stability/" class="underline-hover clickable-text">Multiplayer stability</a></li>
-              <li><a href="/projects/tetris/ui-ux/" class="underline-hover clickable-text">UI, UX & interactions</a></li>
-              <li><a href="/projects/tetris/lightning-animation/" class="underline-hover clickable-text">Lightning animation</a></li>
-              <li>Analytics</li>
-            </ul>
-          </div>
+        <div class="article-grid">
+          <a class="article-card" href="/projects/tetris/lightning-animation/">
+            <video class="article-card-media" autoplay muted loop playsinline aria-hidden="true">
+              <source src="/projects/tetris/lightning-animation/battle.mp4" type="video/mp4">
+            </video>
+            <span class="article-card-overlay"></span>
+            <div class="article-card-content">
+              <h2>Lightning Animation</h2>
+            </div>
+          </a>
+          <a class="article-card" href="/projects/tetris/multiplayer-stability/">
+            <img class="article-card-media" src="/projects/tetris/multiplayer-stability/airconsole.webp" alt="" loading="lazy">
+            <span class="article-card-overlay"></span>
+            <div class="article-card-content">
+              <h2>Multiplayer Stability</h2>
+            </div>
+          </a>
+          <a class="article-card" href="/projects/tetris/ui-ux/">
+            <img class="article-card-media" src="/projects/tetris/ui-ux/main-screen.png" alt="" loading="lazy">
+            <span class="article-card-overlay"></span>
+            <div class="article-card-content">
+              <h2>UI, UX & Interactions</h2>
+            </div>
+          </a>
+        </div>
 
-          <div class="project-info-card">
-            <h2>
-              I've Learned:
-            </h2>
-            <ul>
-              <li>Cocos Engine and TypeScript</li>
-              <li>The AirConsole API</li>
-              <li>GameAnalytics API</li>
-              <li>Localization/Making sure all in-game text translates properly</li>
-              <li>9-slicing game art</li>
-              <li>Using easing functions for smooth gameplay transitions</li>
-              <li>Working with Figma to implement UI designs and compare UX flows</li>
-              <li>Working with Jira for project management</li>
-              <li>Working with Slack for daily team communication</li>
-              <li>Working closely with a Creative Director</li>
-              <li>Working closely with a Lead Developer</li>
-            </ul>
-          </div>
-        </div>        
-        
+
+        <br><br>
         <a
           class="fancy-button"
           href="https://tetris.com/news/airconsole-launches-with-skoda-introducing-a-skoda-exclusive-in-car-tetrisr-exper"
@@ -100,6 +96,10 @@
           rel="noopener noreferrer">
           Official Tetris article
         </a>
+        <br>
+        <a class="fancy-button" target="_blank" rel="noopener noreferrer" href="https://media.vw.com/releases/1937">Volkswagen press release</a>
+        <br>
+        <a class="fancy-button" target="_blank" rel="noopener noreferrer" href="https://www.skoda-storyboard.com/en/emobility/enyaq-and-elroq-now-double-as-gaming-consoles-and-thats-not-all/">Škoda press release</a>
         <br>
         <a
           class="fancy-button"
@@ -110,7 +110,7 @@
         </a>
 
         <br><br>
-        <video class="side-navigation-media" autoplay muted controls loop playsinline preload="metadata">
+        <video class="side-navigation-media" data-video-player autoplay muted controls loop playsinline preload="metadata">
           <source src="/projects/tetris/chunk.webm" type="video/webm" />
         </video>
 
@@ -120,8 +120,6 @@
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
     <script src="/general/component-loader.js"></script>
-    <script>
-      document.getElementById("skoda-video").volume = 0.08;
-    </script>
+    <script src="/general/media/video/video.js"></script>
   </body>
 </html>

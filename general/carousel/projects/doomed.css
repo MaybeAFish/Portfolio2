@@ -1,0 +1,39 @@
+.mediacarousel--corner-art.doomed {
+  --carousel-arrow-edge-inset: 5px;
+  --carousel-arrow-mobile-inset: 3px;
+  --corner-art-size: 40px;
+  --corner-art-outset: -4px;
+  --corner-art-thumb-size: 25px;
+  --corner-art-thumb-outset: -2px;
+  --doomed-ornament-mask: url("/projects/doomed/carousel/ornament.png");
+}
+
+.mediacarousel--corner-art.doomed .carousel-corner-art__piece {
+  background-image: none;
+  background-color: var(--text-color);
+  -webkit-mask: var(--doomed-ornament-mask) center / contain no-repeat;
+  mask: var(--doomed-ornament-mask) center / contain no-repeat;
+  transition: background-color 0.15s ease;
+}
+
+.mediacarousel--corner-art.doomed .mediacarousel-thumb:hover .carousel-corner-art--thumb,
+.mediacarousel--corner-art.doomed .mediacarousel-thumb:focus-visible .carousel-corner-art--thumb,
+.mediacarousel--corner-art.doomed .mediacarousel-thumb.is-active .carousel-corner-art--thumb {
+  opacity: 1;
+}
+
+.mediacarousel--corner-art.doomed .mediacarousel-thumb:hover .carousel-corner-art__piece,
+.mediacarousel--corner-art.doomed .mediacarousel-thumb:focus-visible .carousel-corner-art__piece {
+  background-color: var(--standout-color-green);
+}
+
+.mediacarousel--corner-art.doomed .mediacarousel-thumb.is-active .carousel-corner-art__piece,
+.mediacarousel--corner-art.doomed .mediacarousel-thumb:active .carousel-corner-art__piece {
+  background-color: var(--standout-color-cyan);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mediacarousel--corner-art.doomed .carousel-corner-art--thumb {
+    transition: none;
+  }
+}

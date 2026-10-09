@@ -10,6 +10,7 @@
   </head>
 
   <body>
+
 <script>
   document.documentElement.classList.add("no-header-transition");
 </script>
@@ -19,7 +20,7 @@
     <div class="dropdown">
       <a href="/" class="projects-nav-trigger">Projects</a>
       <div class="dropdown-content">
-        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/doomed/">DOOMED</a>
         <a href="/projects/tetris/">Tetris Airconsole</a>
         <a href="/projects/engine/">Vulkan Game Engine</a>
       </div>
@@ -35,7 +36,8 @@
 
 </header>
 <script src="/general/header/header-state.js"></script>
-<main>
+
+<main class="doomed">
       <nav
         class="side-navigation"
         aria-label="Doomed project navigation"
@@ -46,6 +48,7 @@
         <video
           id="doomed-video"
           class="side-navigation-media"
+          data-video-player
           autoplay
           controls
           loop
@@ -54,66 +57,58 @@
           <source src="/projects/doomed/doomed.webm" type="video/webm"/>
         </video>
 
-        <h1>Doomed</h1>
+        <h1>DOOMED</h1>
 
-        <p>
-          Doomed is a first-person boomer shooter developed in
-          Unreal Engine 5. My team took over the project for a development period of two months during our Gameplay Engineering semester, after it had already been through three development teams.
+        <p style="text-align: center;">
+          A first-person boomer shooter inspired by DOOM
         </p>
 
-        <div class="project-info">
-          <div class="project-info-card">
-            <h2>
-              My Contributions:
-            </h2>
-            <ul>
-              <li>
-                <a href="/projects/doomed/stylization/" class="underline-hover clickable-text">Stylization</a>
-                <ul>
-                  <li>Improving scene clarity</li>
-                  <li>Making Doomed's visuals (HUD, shaders, terrain) work together</li>
-                </ul>
-              </li>
-              <li>
-                <a href="/projects/doomed/combat/" class="underline-hover clickable-text">Combat</a>
-                <ul>
-                  <li>Making Doomed easier to learn</li>
-                  <li>Making Doomed's combat feel better</li>
-                </ul>
-              </li>
-              <li>
-                <a href="/projects/doomed/horde-mode/" class="underline-hover clickable-text">Horde Mode</a>
-              </li>
-              <li>
-                <a href="/projects/doomed/project-management/" class="underline-hover clickable-text">Project Management</a>
-              </li>
-            </ul>
-          </div>
-
-
-
-          <div class="project-info-card">
-            <h2>
-              I've Learned:
-            </h2>
-            <ul>
-              <li>The role as Project Lead</li>
-              <li>Unreal Engine 5</li>
-              <li>Blueprints</li>
-              <li>Git LFS</li>
-              <li>Canva presentations</li>
-              <li>Communicating design decisions through presentation and documentation</li>
-              <li>What the hell a boomer shooter even is</li>
-            </ul>
-          </div>
+        <br>
+        <h2>Contributions</h2>
+        <div class="article-grid">
+          <a class="article-card" href="/projects/doomed/stylization/">
+            <video class="article-card-media" autoplay muted loop playsinline aria-hidden="true">
+              <source src="/projects/doomed/carousel/beforeANDafter.webm" type="video/webm">
+            </video>
+            <span class="article-card-overlay"></span>
+            <div class="article-card-content">
+              <h2>Making DOOMED's Visuals Work Together</h2>
+            </div>
+          </a>
+          <a class="article-card" href="/projects/doomed/onboarding/">
+            <video class="article-card-media" autoplay muted loop playsinline aria-hidden="true">
+              <source src="/projects/doomed/combat/onboarding-skeleton.webm" type="video/webm">
+            </video>
+            <span class="article-card-overlay"></span>
+            <div class="article-card-content">
+              <h2>Making DOOMED Easier to Learn</h2>
+            </div>
+          </a>
+          <a class="article-card" href="/projects/doomed/combat/">
+            <video class="article-card-media" autoplay muted loop playsinline aria-hidden="true">
+              <source src="/projects/doomed/combat/slowmotion.webm" type="video/webm">
+            </video>
+            <span class="article-card-overlay"></span>
+            <div class="article-card-content">
+              <h2>Making DOOMED's Combat Feel Better</h2>
+            </div>
+          </a>
+          <a class="article-card" href="/projects/doomed/project-management/">
+            <img class="article-card-media" src="/projects/doomed/project-management/structure.png" alt="" loading="lazy">
+            <span class="article-card-overlay"></span>
+            <div class="article-card-content">
+              <h2>Project Management</h2>
+            </div>
+          </a>
         </div>
 
+        <br><br>
         <a
           class="fancy-button"
           href="https://maybeafish.itch.io/doomed"
           target="_blank"
           rel="noopener noreferrer">
-          Download Doomed on itch.io
+          Download DOOMED on itch.io
         </a>
 
         <img class="side-navigation-media" style="width: 600px; margin: auto; margin-bottom: -180px;" src="/projects/doomed/golem.webp" alt="Doomed game cover">
@@ -123,6 +118,7 @@
 
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
+    <script src="/general/media/video/video.js"></script>
     <script src="/general/component-loader.js"></script>
     <script>
       document.getElementById("doomed-video").volume = 0.08;

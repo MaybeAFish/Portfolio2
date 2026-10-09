@@ -1,26 +1,11 @@
 .projects {
   width: 100%;
-  margin: 0 auto 72px;
+  margin: 0 auto 3000px;
   padding: 0;
 }
 
 .project-showcase {
   margin-bottom: 5rem;
-}
-
-.project-showcase h1 {
-  margin-bottom: 1rem;
-}
-
-
-.project-showcase-information {
-  width: min(800px, 100%);
-  margin: 0 auto;
-  text-align: center;
-}
-
-.project-showcase-information p {
-  margin: 0 2rem 1rem;
-  color: var(--text-color-muted);
-  line-height: 1.6;
+  margin: 0 auto 240px;
+  width: min(1200px, calc(100% - 32px));
 }

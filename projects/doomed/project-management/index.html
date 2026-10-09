@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="/projects/project-page.css"/>
   </head>
 
-  <body>  
+  <body>
+
 <script>
   document.documentElement.classList.add("no-header-transition");
 </script>
@@ -19,7 +20,7 @@
     <div class="dropdown">
       <a href="/" class="projects-nav-trigger">Projects</a>
       <div class="dropdown-content">
-        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/doomed/">DOOMED</a>
         <a href="/projects/tetris/">Tetris Airconsole</a>
         <a href="/projects/engine/">Vulkan Game Engine</a>
       </div>
@@ -35,7 +36,8 @@
 
 </header>
 <script src="/general/header/header-state.js"></script>
-<main>
+
+<main class="doomed">
       <nav
         class="side-navigation"
         aria-label="Doomed project navigation"
@@ -87,46 +89,14 @@
 
           <br>
           <h2>Product Owner Communication</h2>
-          <p>I communicated our project goals, and important technical- & game design decisions to the product owner. I did this by planning meetings and by creating Canva presentations designed to grab his attention and excite him for what's to come.</p>
+          <p>I communicated our project goals, and important technical- & game design decisions to the Product Owner. I did this by planning meetings and by creating Canva presentations designed to grab his attention and excite him for what's to come.</p>
           <p>
-            The product owner had been considering ending the project, but told me that my enthusiasm and the direction I presented with were important factors in continuing it inside the university's new "Playful Tech" studio. He then asked me to present the project to the upcoming class (notice the introduction banner in the About page).
+            The Product Owner had been considering ending the project, but told me that my enthusiasm and the direction I presented with were important factors in continuing it inside the university's new "Playful Tech" studio. He then asked me to present the project to the upcoming class (notice the introduction banner in the About page).
           </p>
-          <div class="mediacarousel" data-category="tetris" aria-label="Tetris Airconsole project gallery">
-            <div class="mediacarousel-track" aria-label="Tetris showcase">
-
-              <div class="mediacarousel-slide">
-                <video autoplay muted loop playsinline preload="metadata">
-                  <source src="/projects/doomed/project-management/Runes.mp4" type="video/mp4" alt="Runes" />
-                </video>
-              </div>
-
-              <div class="mediacarousel-slide">
-                <img src="/projects/doomed/project-management/SuggestiesVijanden.webp" alt="Vijanden" loading="lazy" />
-              </div>
-
-              <div class="mediacarousel-slide">
-                <img src="/projects/doomed/project-management/SuggestiesNiew.webp" alt="Suggesties nieuw" loading="lazy" />
-              </div>
-
-              <div class="mediacarousel-slide">
-                <video controls muted loop playsinline preload="metadata">
-                  <source src="/projects/doomed/project-management/FinalMap.webm" type="video/webm" alt="Map" />
-                </video>
-              </div>
-
-              <div class="mediacarousel-slide">
-                <video controls muted loop playsinline preload="metadata">
-                  <source src="/projects/doomed/project-management/FinalLore.webm" type="video/webm" alt="Lore" />
-                </video>
-              </div>
-
-              <div class="mediacarousel-slide">
-                <img src="/projects/doomed/project-management/structure.png" alt="Structure improvements" loading="lazy">
-              </div>
-
-            </div>
-          </div>
-          <script src="/general/carousel/carousel.js"></script>
+        
+          <video class="solo-content" data-video-player data-video-volume-button="false" autoplay muted controls loop playsinline preload="metadata">
+            <source src="/projects/doomed/carousel/canva.webm" type="video/webm" alt="Canva" />
+          </video>
 
 
         </div>
@@ -135,6 +105,7 @@
 
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
+    <script src="/general/media/video/video.js"></script>
     <script src="/general/component-loader.js"></script>
   </body>
 </html>

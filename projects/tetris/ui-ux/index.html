@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/projects/project-page.css"/>
   </head>
   <body>
+
 <script>
   document.documentElement.classList.add("no-header-transition");
 </script>
@@ -17,7 +18,7 @@
     <div class="dropdown">
       <a href="/" class="projects-nav-trigger">Projects</a>
       <div class="dropdown-content">
-        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/doomed/">DOOMED</a>
         <a href="/projects/tetris/">Tetris Airconsole</a>
         <a href="/projects/engine/">Vulkan Game Engine</a>
       </div>
@@ -33,7 +34,8 @@
 
 </header>
 <script src="/general/header/header-state.js"></script>
-<main>
+
+<main class="tetris">
       <nav
         class="side-navigation"
         aria-label="Tetris Airconsole project navigation"
@@ -51,13 +53,13 @@
             Controller:
             <ul>
               <li>
-                Implemented a landscape layout for every single interface to support both phone orientations.
+                Implemented a landscape layout for most interfaces to support both phone orientations.
               </li>
               <li>
                 Implemented a preview of the currently held tetromino directly on the player's phone.
               </li>
               <li>
-                Built a carousel for navigating the gamemodes.
+                Built an animated carousel for navigating the gamemodes.
               </li>
               <li>
                 Proposed and added non-hosts being able to view their own best score/time in the leaderboard screen.
@@ -81,7 +83,7 @@
           </li>
         </ul>
 
-        <br><br>
+        <br>
         <h2>UI Feedback</h2>
         <ul>
           <li>
@@ -103,7 +105,7 @@
         </ul>
 
 
-        <br><br>
+        <br>
         <h2>Haptic Feedback</h2>
         <ul>
           <li>
@@ -119,7 +121,12 @@
 
 
         <br>
-        <img class="solo-content" src="/projects/tetris/ui-ux/controller.png">
+
+
+        <div class="content-grid content-grid-2">
+            <img src="/projects/tetris/ui-ux/controller.png">
+            <img src="/projects/tetris/ui-ux/game-ui.webp">
+        </div>
 
       </section>
     </main>

@@ -5,7 +5,7 @@
 
 *::-webkit-scrollbar-thumb {
   background: #555;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 }
 
 *::-webkit-scrollbar-track {
@@ -16,4 +16,5 @@
 * {
   scrollbar-width: thin;
   scrollbar-color: #555 #222;
+  /* border-radius: var(--border-radius); */
 }

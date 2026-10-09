@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="/projects/project-page.css"/>
   </head>
 
-  <body>  
+  <body>
+
 <script>
   document.documentElement.classList.add("no-header-transition");
 </script>
@@ -19,7 +20,7 @@
     <div class="dropdown">
       <a href="/" class="projects-nav-trigger">Projects</a>
       <div class="dropdown-content">
-        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/doomed/">DOOMED</a>
         <a href="/projects/tetris/">Tetris Airconsole</a>
         <a href="/projects/engine/">Vulkan Game Engine</a>
       </div>
@@ -35,7 +36,8 @@
 
 </header>
 <script src="/general/header/header-state.js"></script>
-<main>
+
+<main class="doomed">
       <nav
         class="side-navigation"
         aria-label="Doomed project navigation"
@@ -43,28 +45,13 @@
       </nav>
 
       <section>
-        <div>
-          <img class="side-navigation-media" src="/projects/doomed/doomed.png" alt="Doomed game cover">
-          <h1>Combat</h1>
-          <p>A large part of my work on Doomed was improving on the combat. Most systems were functional, but they felt very difficult to understand and inconsistent or unsatisfying.</p> 
-
-          <br>
-
-          <div data-component="/general/reusable-case-studies/doomed-onboarding.html"></div>
-
-          <br>
-          <div data-component="/general/reusable-case-studies/doomed-combat.html"></div>
-
-
-          
-
-
-        </div>
+        <div data-component="/projects/doomed/combat/case-study.html"></div>
       </section>
     </main>
 
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
+    <script src="/general/media/video/video.js"></script>
     <script src="/general/component-loader.js"></script>
   </body>
 </html>

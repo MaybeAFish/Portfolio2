@@ -2,7 +2,7 @@
   position: relative;
   padding: 0.8rem 1.8rem;
   font-size: 1.2rem;
-  font-weight: bold;
+  font-family: var(--font-heading), sans-serif;
   color: #f0f0f0;
   background: black;
   border: 2px solid var(--supporting-background-color);
@@ -11,12 +11,10 @@
   width: fit-content;
   margin: 0 auto;
 
-
-  border-radius: 0.6rem;
+  border-radius: var(--border-radius);
   text-align: center;
   text-decoration: none;
   overflow: hidden;
-  z-index: 0;
   transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.3s ease;
   cursor: pointer;
 

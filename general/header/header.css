@@ -39,13 +39,11 @@ nav {
 nav a {
   text-decoration: none;
   color: var(--text-color);
-  font-weight: bold;
   padding-bottom: 4px;
   background: none;
   border: none;
   cursor: pointer;
   padding: clamp(6px, 0.8vw, 8px) clamp(10px, 1.6vw, 14px);
-  font-size: clamp(0.72rem, 0.95vw + 0.15rem, 1rem);
 
   position: relative;
   display: inline-block;
@@ -66,7 +64,7 @@ nav a::after {
     rgba(255, 255, 255, 0.1) 60%,
     transparent 100%
   );
-  border-radius: 0 0 999px 999px; /* bottom curve now */
+  border-radius: 0 0 999px 999px;
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
   transition:
     width 0.3s ease,
@@ -75,12 +73,11 @@ nav a::after {
   pointer-events: none;
 }
 
-/* Subpage small underline */
+/* Tiny dot underline */
 nav a.subpage::after {
   width: 10%;
   background-color: var(--standout-color-cyan);
 }
-
 .dropdown-content a.subpage::after,
 .dropdown-content a.active::after,
 .dropdown-content a.selected::after {

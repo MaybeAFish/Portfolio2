@@ -1,0 +1,232 @@
+/* Default */
+@font-face {
+  font-family: "Rocky Rock";
+  src: url("/general/fonts/clicktoamine/Rocky Rock.otf") format("opentype");
+  font-display: block;
+}
+@font-face {
+  font-family: "Bree Serif";
+  src: url("/general/fonts/clicktoamine/bree-serif-latin-400-normal.woff2") format("woff2");
+  font-display: block;
+}
+
+/* Doomed */
+@font-face {
+  font-family: "Doomed Heading";
+  src: url("/general/fonts/doomed/Engravers'OldEnglishBold.otf") format("opentype");
+  font-display: block;
+}
+@font-face {
+  font-family: "Doomed Text";
+  src: url("/general/fonts/doomed/OldStandardTT-Regular.ttf") format("truetype");
+  font-display: block;
+}
+
+/* Tetris */
+@font-face {
+  font-family: "Tetris Heading";
+  src: url("/general/fonts/tetris/Tomorrow-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Tetris Text";
+  src: url("/general/fonts/tetris/BarlowCondensed-Regular.ttf") format("truetype");
+  font-display: block;
+}
+
+/* Engine */
+@font-face {
+  font-family: "Engine Heading";
+  src: url("/general/fonts/engamine/JetBrainsMono-Bold.woff2") format("woff2");
+  font-display: block;
+}
+@font-face {
+  font-family: "Engine Text";
+  src: url("/general/fonts/engamine/consolas-webfont.woff") format("woff");
+  font-display: block;
+}
+
+/* Karaoke */
+@font-face {
+  font-family: "Karaoke Heading";
+  src: url("/general/fonts/karaoke/BroadwayRegular.ttf") format("truetype");
+  font-display: block;
+}
+@font-face {
+  font-family: "Karaoke Text";
+  src: url("/general/fonts/karaoke/OpenSans.ttf") format("truetype");
+  font-display: block;
+}
+
+/* League */
+@font-face {
+  font-family: "League Heading";
+  src: url("/general/fonts/league/BeaufortforLOL-Bold.otf") format("opentype");
+  font-display: block;
+}
+@font-face {
+  font-family: "League Text";
+  src: url("/general/fonts/league/Spiegel_TT_Regular.ttf") format("truetype");
+  font-display: block;
+}
+
+/* Bubbles */
+@font-face {
+  font-family: "Bubbles Heading";
+  src: url("/general/fonts/bubbles/DailyBubble-OGGdA.ttf") format("truetype");
+  font-display: block;
+}
+@font-face {
+  font-family: "Bubbles Text";
+  src: url("/general/fonts/bubbles/Fredoka.ttf") format("truetype");
+  font-display: block;
+}
+
+/* Frog */
+@font-face {
+  font-family: "Frog Heading";
+  src: url("/general/fonts/frog/KaitlynRoseRegular-9MrPL.ttf") format("truetype");
+  font-display: block;
+}
+
+/* Physiotherapy */
+@font-face {
+  font-family: "Physiotherapy Heading";
+  src: url("/general/fonts/physiotherapy/Montserrat-Bold.ttf") format("truetype");
+  font-display: block;
+}
+
+/* Space */
+@font-face {
+  font-family: "Space Heading";
+  src: url("/general/fonts/space/xirod.otf") format("opentype");
+  font-display: block;
+}
+@font-face {
+  font-family: "Space Text";
+  src: url("/general/fonts/space/Oxanium-VariableFont_wght.ttf") format("truetype");
+  font-display: block;
+}
+
+/* Ice */
+@font-face {
+  font-family: "Ice Heading";
+  src: url("/general/fonts/ice/snowtt.ttf") format("truetype");
+  font-display: block;
+}
+@font-face {
+  font-family: "Ice Text";
+  src: url("/general/fonts/ice/TitilliumWeb-Regular.ttf") format("opentype");
+  font-display: block;
+}
+
+/* Samurai */
+@font-face {
+  font-family: "Samurai Heading";
+  src: url("/general/fonts/samurai/oldJapanese.otf") format("opentype");
+  font-display: block;
+}
+@font-face {
+  font-family: "Samurai Text";
+  src: url("/general/fonts/samurai/NotoSerifJP.ttf") format("truetype");
+  font-display: block;
+}
+
+:root {
+  --font-heading: "Rocky Rock";
+  --font-body: "Bree Serif";
+}
+
+.rock {
+  --font-heading: "Rocky Rock";
+  --font-body: "Bree Serif";
+}
+.doomed {
+  --font-heading: "Doomed Heading";
+  --font-body: "Doomed Text";
+}
+.tetris {
+  --font-heading: "Tetris Heading";
+  --font-body: "Tetris Text";
+}
+.engine {
+  --font-heading: "Engine Heading";
+  --font-body: "Engine Text";
+  --font-body-size: 0.9em;
+}
+.engine blockquote,
+.engine a,
+.engine p,
+.engine span,
+.engine li {
+  font-size: var(--font-body-size);
+}
+.karaoke {
+  --font-heading: "Karaoke Heading";
+  --font-body: "Karaoke Text";
+}
+.league {
+  --font-heading: "League Heading";
+  --font-body: "League Text";
+}
+.bubbles {
+  --font-heading: "Bubbles Heading";
+  --font-body: "Bubbles Text";
+}
+.frog {
+  --font-heading: "Frog Heading";
+  --font-body: "Bubbles Text";
+}
+.physiotherapy {
+  --font-heading: "Physiotherapy Heading";
+  --font-body: "Arial";
+}
+.space {
+  --font-heading: "Space Heading";
+  --font-body: "Space Text";
+}
+.ice {
+  --font-heading: "Ice Heading";
+  --font-body: "Ice Text";
+}
+.samurai {
+  --font-heading: "Samurai Heading";
+  --font-body: "Samurai Text";
+}
+
+* {
+  font-family: inherit;
+}
+
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-family: var(--font-heading), sans-serif;
+}
+.header {
+  font-family: var(--font-heading), sans-serif !important;
+}
+
+blockquote,
+a,
+p,
+strong,
+span,
+li {
+  font-family: var(--font-body), sans-serif;
+}
+
+.body {
+  font-family: var(--font-body), sans-serif !important;
+}
+
+.outline {
+  -webkit-text-stroke: 0.5px var(--supporting-background-color);
+}

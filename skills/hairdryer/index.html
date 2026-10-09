@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Designing a Game around the Theme: "Bubbles" – Amine El Hammdaoui</title>
     <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="/skills/skills-detail.css">
 </head>
 
 <body>
+
 
 <script>
   document.documentElement.classList.add("no-header-transition");
@@ -20,7 +20,7 @@
     <div class="dropdown">
       <a href="/" class="projects-nav-trigger">Projects</a>
       <div class="dropdown-content">
-        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/doomed/">DOOMED</a>
         <a href="/projects/tetris/">Tetris Airconsole</a>
         <a href="/projects/engine/">Vulkan Game Engine</a>
       </div>
@@ -36,7 +36,8 @@
 
 </header>
 <script src="/general/header/header-state.js"></script>
-<main>
+
+<main class="bubbles">
 
         <nav
             class="side-navigation"
@@ -45,29 +46,26 @@
         </nav>
 
         <section>
+            <video class="side-navigation-media" data-video-player data-video-volume-button="false" autoplay controls muted loop playsinline>
+                <source src="/skills/hairdryer/hairdryer.mp4" type="video/mp4">
+            </video>
+
             <h1>Designing a Game around the Theme: "Bubbles"</h1>
             <p>
                 I participated in the 2025 Global Game Jam (GGJ). The GGJ is an event where participants have to create a game in a weekend based on a certain   theme. The theme of this jam was "Bubbles". 
             </p>
 
-            <br>
-            <h2>DONT Pop The Balloon</h2>
+            <h2>DONT Pop the Bubble</h2>
             <p>
                 I developed a puzzle-platformer where you play as a hairdryer. Your goal is to guide a girl named Elara, trapped inside a floating bubble, to safety by pushing her bubble through a dangerous underwater environment. The player must navigate around spikes, open doors and bait piranhas away from Elara's fragile bubble. If it pops, she'll drown. The bubble slowly loses air over time but can be replenished by collecting air bubbles.
             </p>
 
 
-            <video class="side-navigation-media" autoplay controls muted loop playsinline>
-                <source src="/skills/hairdryer/hairdryer.mp4" type="video/mp4">
-            </video>
-
-
-            <br><br>
             <h2>Designing the Core Mechanic</h2>
             <p>The first thing I did was brainstorm a core mechanic. The only design constraint I set for myself at the time, was that I wanted a non-traditional movement mechanic in the context of a puzzle game.</p>
 
             <p>I managed to find an old video I posted in our gamejam's Discord, with the caption "No clue what obstacles ill implement but i thinks this'll be the core mechanic of my game"</p>
-            <video class="side-navigation-media" autoplay controls muted loop playsinline>
+            <video class="side-navigation-media" data-video-player data-video-volume-button="false" autoplay controls muted loop playsinline>
                 <source src="/skills/hairdryer/development.webm" type="video/webm">
             </video>
             <br>
@@ -82,14 +80,13 @@
                 <li>Some game feel stuff (bubble stretching and rotating) and some pixelart + models + animations later, and it was finished</li>
             </ul>
 
-
-            <br><br>
+            <br>
             <h2>Onboarding</h2>
             <p>I designed a logical learning curve for the game. I tried designing the levels in a way which forced the player to learn the main mechanic first, before experiencing some tension while manouvering around the terrain. I then created some calmness with puzzles, before finally increasing the tension once again with more and dangerously positioned piranhas.</p>
             <div class="content-grid content-grid-4">
                 <div>
                     <img src="/skills/hairdryer/onboarding1.webp" alt="Moving">
-                    <h3>The main mechanic</h3>
+                    <h3>Core mechanic</h3>
                 </div>
 
                 <div>
@@ -108,17 +105,16 @@
                 </div>
             </div>
 
-
-            <br><br>
             <h2>No UI Challenge</h2>
             <p>I tried challenging myself to design this game without any UI. I hoped the player will eventually randomly try to click, and notice the hairdryer show lines of air coming out of it. I made the hairdryer always look towards Elara, to insinuate the hairdryer having something to do with Elara/The bubble she's in. I also made the water completely gray while dying, and I made the player lose their control of the hairdryer as it slowly sinks in the ocean. And finally, I communicated the bubble's air amount by decreasing the bubble size (as opposed to showing it in UI elements).</p>
-            <video class="side-navigation-media" autoplay controls muted loop playsinline>
+            <video class="side-navigation-media" data-video-player autoplay controls muted loop playsinline>
                 <source src="/skills/hairdryer/dying.webm" type="video/webm">
             </video>
 
 
             <br>
-            <h1>My Pixelart</h1>
+            <h1>My Art</h1>
+            <h2>Pixelart</h2>
             <div class="art-grid">
                 <figure><img loading="lazy" src="/skills/hairdryer/pixelart/1.png"></figure>
                 <figure><img loading="lazy" src="/skills/hairdryer/pixelart/2.png"></figure>
@@ -131,8 +127,7 @@
                 <figure><img loading="lazy" src="/skills/hairdryer/pixelart/6.png"></figure>
             </div>
 
-            <br><br>
-            <h2>My Models</h2>
+            <h2>Models</h2>
             <div class="banner-models">
                 <div class="banner-model">
                     <model-viewer
@@ -155,7 +150,7 @@
             <br>
             <a
                 class="fancy-button"
-                href="https://maybeafish.itch.io/dont-pop-the-balloon"
+                href="https://maybeafish.itch.io/dont-pop-the-bubble"
                 target="_blank"
                 rel="noopener noreferrer">
                 Play in browser on itch.io
@@ -168,6 +163,7 @@
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
     <script src="/general/component-loader.js"></script>
+    <script src="/general/media/video/video.js"></script>
 
 </body>
 </html>

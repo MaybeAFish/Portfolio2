@@ -54,6 +54,7 @@
     margin: 0 0 4px;
     color: var(--text-color);
     font-size: 1.1rem;
+    text-align: left;
 }
 
 .testimonial-role {

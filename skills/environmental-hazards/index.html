@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forcing the Player to Reposition in Interesting Ways – Amine El Hammdaoui</title>
+    <title>Forcing Interesting Repositioning – Amine El Hammdaoui</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
+
 
 <script>
   document.documentElement.classList.add("no-header-transition");
@@ -19,7 +20,7 @@
     <div class="dropdown">
       <a href="/" class="projects-nav-trigger">Projects</a>
       <div class="dropdown-content">
-        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/doomed/">DOOMED</a>
         <a href="/projects/tetris/">Tetris Airconsole</a>
         <a href="/projects/engine/">Vulkan Game Engine</a>
       </div>
@@ -35,7 +36,8 @@
 
 </header>
 <script src="/general/header/header-state.js"></script>
-<main>
+
+<main class="space">
 
         <nav
             class="side-navigation"
@@ -44,7 +46,11 @@
         </nav>
 
         <section>
-            <h1>Forcing the Player to Reposition in Interesting Ways</h1>
+            <video class="solo-content" data-video-player data-video-volume-button="false" autoplay muted controls loop playsinline>
+                <source src="/skills/environmental-hazards/hazards.mp4" type="video/mp4">
+            </video>
+
+            <h1>Forcing Interesting Repositioning</h1>
             <p>
                 My first ever game for a school assignment was a Space Invaders inspired game called
                 Cosmos Intruders. I gave the player 2D movement, but quickly realized that
@@ -62,10 +68,6 @@
                 Asteroids, solar rays and supernovas could come from different directions, meaning that
                 staying in one position was never safe for long.
             </p>
-
-            <video class="solo-content" autoplay muted controls loop playsinline>
-                <source src="/skills/environmental-hazards/hazards.mp4" type="video/mp4">
-            </video>
 
             <p>
                 I made asteroids appear first because they move the slowest and are the easiest hazard
@@ -108,20 +110,13 @@
                 them from stacking on top of each other.
             </p>
 
-            <div class="mediacarousel" data-category="asdf" aria-label="Eyeball enemy behaviour">
-                <div class="mediacarousel-track">
-                    <div class="mediacarousel-slide">
-                        <img src="/skills/environmental-hazards/eyeballs.gif" alt="Eyeball enemies hiding behind meatshields">
-                    </div>
-                    <div class="mediacarousel-slide">
-                        <video class="side-navigation-media" autoplay muted loop playsinline>
-                            <source src="/skills/environmental-hazards/eyeballs.webm" type="video/webm">
-                        </video>
-                    </div>
-                </div>
+            <div class="content-grid content-grid-2">
+                <img src="/skills/environmental-hazards/eyeballs.gif">
+                        
+                <video autoplay muted loop playsinline>
+                    <source src="/skills/environmental-hazards/eyeballs.webm" type="video/webm">
+                </video>
             </div>
-
-            <script src="/general/carousel/carousel.js"></script>
 
 
             <p>
@@ -138,6 +133,7 @@
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
     <script src="/general/component-loader.js"></script>
+    <script src="/general/media/video/video.js"></script>
 
 </body>
 </html>

@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Making Physiotherapy Exercises Fun – Amine El Hammdaoui</title>
     <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="/skills/skills-detail.css">
 </head>
 
 <body>
+
 
 <script>
   document.documentElement.classList.add("no-header-transition");
@@ -20,7 +20,7 @@
     <div class="dropdown">
       <a href="/" class="projects-nav-trigger">Projects</a>
       <div class="dropdown-content">
-        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/doomed/">DOOMED</a>
         <a href="/projects/tetris/">Tetris Airconsole</a>
         <a href="/projects/engine/">Vulkan Game Engine</a>
       </div>
@@ -36,7 +36,8 @@
 
 </header>
 <script src="/general/header/header-state.js"></script>
-<main>
+
+<main class="physiotherapy">
 
         <nav
             class="side-navigation"
@@ -46,6 +47,9 @@
 
 
         <section>
+            <video class="solo-content" data-video-player autoplay muted controls loop playsinline>
+                <source src="/skills/vr-physiotherapy-exercises/minigames.mp4" type="video/mp4"/>
+            </video>
             <h1>Making Physiotherapy Exercises Fun</h1>
             <p>During my VR minor, I partnered up with Physiotherapy professionals to create "Motion: Virtual Physiotherapy". Motion is designed to make physiotherapy exercises fun and measurable for folks with lower back pain.</p>
 
@@ -61,7 +65,7 @@
             </p>
             <div class="content-grid content-grid-2">
                 <div>
-                    <video class="solo-content" autoplay muted controls loop playsinline>
+                    <video class="solo-content" data-video-player autoplay muted controls loop playsinline>
                         <source src="/skills/vr-physiotherapy-exercises/exercise.mp4" type="video/mp4"/>
                     </video>
                 </div>
@@ -99,7 +103,7 @@
                 strength, encouraging the player to maintain a
                 straight posture while performing the movement.
             </p>
-            <video class="solo-content" autoplay controls muted loop playsinline>
+            <video class="solo-content" data-video-player autoplay controls muted loop playsinline>
                 <source
                     src="/skills/vr-physiotherapy-exercises/bow.mp4"
                     type="video/mp4">
@@ -113,14 +117,14 @@
             <p>
                 I designed a sword minigame where the player must stay near the center as much as possible while reaching for targets which fall to the ground.
             </p>
-            <video class="solo-content" autoplay controls muted loop playsinline>
+            <video class="solo-content" data-video-player autoplay controls muted loop playsinline>
                 <source
                     src="/skills/vr-physiotherapy-exercises/sword.webm"
                     type="video/mp4">
             </video>
 
 
-            <br><br>
+            <br>
             <h2>Environments</h2>
             <p>
                 I included the ability to switch maps, including a passthrough environment that uses mixed reality
@@ -146,8 +150,6 @@
                 <img class="side-navigation-media" src="/skills/vr-physiotherapy-exercises/map1.png" loading="lazy">
             </div>
 
-            <br>
-            <h2>Does the passthrough environment improve exercise performance?</h2>
             <p>
                 I suspected the passthrough environment to result in better exercise performance. So I decided that to be my topic for my research assignment:
             </p>
@@ -161,19 +163,15 @@
             </div>
             <script src="/general/media/pdf/load-pdf.js"></script>
 
-
-            <br>
             <h1>Streaks & Leaderboard</h1>
             <p>Aside from colours, VFX, SFX, maps and minigames, I also focused on a streak system with the highest streaks available to see on a global leaderboard.</p>
             <p>We didn't implement the same for exercise scores, as that would feel competitive in an unhealthy way.</p>
             <img class="solo-content" src="/skills/vr-physiotherapy-exercises/streak.webp" loading="lazy">
             <p>Looking back, the UI would look more logical if the streak and leaderboard were put together considering their logic is connected. Also, your streak should probably start at "1" instead of "0" to give a fake feeling of jumpstarting your progression.</p>
 
-
-
             <br>
-            <h1>Exercise Art</h1>
-            <h2>2D Movement Guidance</h2>
+            <h1>My Art</h1>
+            <h2>Pixelart</h2>
             <div class="art-grid">
                 <figure><img loading="lazy" src="/skills/vr-physiotherapy-exercises/pixelart/1.png"></figure>
                 <figure><img loading="lazy" src="/skills/vr-physiotherapy-exercises/pixelart/2.png"></figure>
@@ -196,7 +194,6 @@
                 <figure><img loading="lazy" src="/skills/vr-physiotherapy-exercises/pixelart/19.png"></figure>
             </div>
 
-            <br><br>
             <h2>Models</h2>
             <div class="banner-models">
                 <div class="banner-model">
@@ -244,6 +241,7 @@
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
     <script src="/general/component-loader.js"></script>
+    <script src="/general/media/video/video.js"></script>
 
 </body>
 </html>

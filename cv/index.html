@@ -10,6 +10,7 @@
 </head>
 <body>
 
+
 <script>
   document.documentElement.classList.add("no-header-transition");
 </script>
@@ -19,7 +20,7 @@
     <div class="dropdown">
       <a href="/" class="projects-nav-trigger">Projects</a>
       <div class="dropdown-content">
-        <a href="/projects/doomed/">Doomed</a>
+        <a href="/projects/doomed/">DOOMED</a>
         <a href="/projects/tetris/">Tetris Airconsole</a>
         <a href="/projects/engine/">Vulkan Game Engine</a>
       </div>
@@ -35,19 +36,20 @@
 
 </header>
 <script src="/general/header/header-state.js"></script>
+
 <main>
     <section>
       <h1>Curriculum Vitae</h1>
 
       <div class="pdf-wrapper">
         <div class="pdf-section">
-          <h2>English Version</h2>
-          <button class="fancy-button" onclick="loadPDF(this, '/cv/CV-english.pdf')">View PDF</button>
+          <h2 class="outline">English Version</h2>
+          <button class="fancy-button outline" onclick="loadPDF(this, '/cv/CV-english.pdf')">View PDF</button>
         </div>
 
         <div class="pdf-section">
-          <h2>Dutch Version</h2>
-          <button class="fancy-button" onclick="loadPDF(this, '/cv/CV-dutch.pdf')">View PDF</button>
+          <h2 class="outline">Dutch Version</h2>
+          <button class="fancy-button outline" onclick="loadPDF(this, '/cv/CV-dutch.pdf')">View PDF</button>
         </div>
       </div>
 
