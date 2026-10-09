@@ -55,6 +55,38 @@ function setupMediaCarousel(carousel) {
     thumbs.forEach((thumb) => addCornerArtwork(thumb, "thumb"));
   }
 
+  let touchControlsTimeout;
+  let touchControlsPointerId = null;
+
+  function showTouchCarouselControls() {
+    main.classList.add("is-controls-visible");
+    clearTimeout(touchControlsTimeout);
+  }
+
+  function hideTouchCarouselControls() {
+    clearTimeout(touchControlsTimeout);
+    touchControlsTimeout = setTimeout(() => {
+      main.classList.remove("is-controls-visible");
+    }, 3000);
+  }
+
+  main.addEventListener("pointerdown", (event) => {
+    if (event.pointerType !== "touch" && event.pointerType !== "pen") return;
+
+    touchControlsPointerId = event.pointerId;
+    showTouchCarouselControls();
+    window.addEventListener("pointerup", finishTouchCarouselControls);
+    window.addEventListener("pointercancel", finishTouchCarouselControls);
+  });
+
+  function finishTouchCarouselControls(event) {
+    if (event.pointerId !== touchControlsPointerId) return;
+
+    touchControlsPointerId = null;
+    hideTouchCarouselControls();
+    window.removeEventListener("pointerup", finishTouchCarouselControls);
+    window.removeEventListener("pointercancel", finishTouchCarouselControls);
+  }
 
   /* =========================================================
      STATE
@@ -365,6 +397,10 @@ function setupMediaCarousel(carousel) {
   thumbsContainer.addEventListener(
     "pointerdown",
     (event) => {
+
+      if (event.pointerType !== "mouse") {
+        return;
+      }
 
       if (
         event.pointerType === "mouse" &&

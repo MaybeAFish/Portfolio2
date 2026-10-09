@@ -438,7 +438,12 @@
 }
 
 @media (hover: none), (pointer: coarse) {
-  .custom-video-controls {
+  .custom-video-player:not(.is-controls-visible) .custom-video-controls {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .custom-video-player.is-controls-visible .custom-video-controls {
     opacity: 1;
     pointer-events: auto;
   }

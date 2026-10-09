@@ -333,7 +333,7 @@
 
   scroll-behavior: smooth;
 
-  touch-action: pan-y;
+  touch-action: pan-x pan-y;
 
   cursor: grab;
 
@@ -361,13 +361,14 @@
 .mediacarousel-thumb {
   position: relative;
 
-
-  flex: 0 0 150px;
+  --carousel-thumb-min-height: 64px;
+  flex: 0 0 max(150px, calc(var(--carousel-thumb-min-height) * 16 / 9));
 
   display: block;
 
   z-index: 2;
   aspect-ratio: 16 / 9;
+  min-height: var(--carousel-thumb-min-height);
 
   padding: 0;
 
@@ -584,8 +585,12 @@
 @media (hover: none), (pointer: coarse) {
 
   .mediacarousel-overlay {
-    opacity: 1;
+    opacity: 0;
     pointer-events: none;
+  }
+
+  .mediacarousel-main.is-controls-visible .mediacarousel-overlay {
+    opacity: 1;
   }
 
 }
@@ -645,7 +650,7 @@
   }
 
   .mediacarousel-thumb {
-    flex-basis: 105px;
+    flex-basis: max(105px, calc(var(--carousel-thumb-min-height) * 16 / 9));
   }
 
 }

@@ -98,3 +98,10 @@
 .mediacarousel--corner-art.tetris .mediacarousel-thumb:active .carousel-corner-art--thumb .carousel-corner-art__piece--bottom-right {
   display: none;
 }
+
+@media (max-width: 900px) {
+  .mediacarousel--corner-art.tetris .carousel-corner-art--info .carousel-corner-art__piece--top-left,
+  .mediacarousel--corner-art.tetris .carousel-corner-art--info .carousel-corner-art__piece--top-right {
+    display: none;
+  }
+}

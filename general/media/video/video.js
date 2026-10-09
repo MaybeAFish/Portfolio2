@@ -201,6 +201,35 @@
       fullscreenButton.innerHTML = icon(fullscreen ? "windowed" : "fullscreen");
     }
 
+    let controlsHideTimeout;
+    let controlsPointerId = null;
+
+    function scheduleControlsHide() {
+      clearTimeout(controlsHideTimeout);
+      controlsHideTimeout = setTimeout(() => {
+        player.classList.remove("is-controls-visible");
+      }, 3000);
+    }
+
+    function finishTouchControls(event) {
+      if (event.pointerId !== controlsPointerId) return;
+
+      controlsPointerId = null;
+      scheduleControlsHide();
+      window.removeEventListener("pointerup", finishTouchControls);
+      window.removeEventListener("pointercancel", finishTouchControls);
+    }
+
+    player.addEventListener("pointerdown", (event) => {
+      if (event.pointerType !== "touch" && event.pointerType !== "pen") return;
+
+      controlsPointerId = event.pointerId;
+      player.classList.add("is-controls-visible");
+      clearTimeout(controlsHideTimeout);
+      window.addEventListener("pointerup", finishTouchControls);
+      window.addEventListener("pointercancel", finishTouchControls);
+    });
+
     if (settings.controls) {
       const controls = document.createElement("div");
       controls.className = "custom-video-controls";
