@@ -281,6 +281,7 @@
         });
         volumeSlider.addEventListener("input", () => {
           video.volume = Number(volumeSlider.value);
+          video.muted = false;
           updateVolumeButton();
         });
 

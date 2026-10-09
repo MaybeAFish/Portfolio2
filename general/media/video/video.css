@@ -144,8 +144,8 @@
 }
 
 .custom-video-icon--muted {
-  -webkit-mask-image: url("/general/media/video/icons/Muted.svg");
-  mask-image: url("/general/media/video/icons/Muted.svg");
+  -webkit-mask-image: url("/general/media/video/icons/Sound0.svg");
+  mask-image: url("/general/media/video/icons/Sound0.svg");
 }
 
 .custom-video-icon--sound25 {

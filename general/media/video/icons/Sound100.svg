@@ -1,12 +1,13 @@
-<svg width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0 2.5L3.5 3.5L6 11L19.5 22.5L23 29H0V2.5Z" fill="white"/>
-<path d="M20 4L22 8.46154V10.7692L20.25 12H16.625L15 8.76923L16.5 5.69231L20 4Z" fill="white"/>
-<path d="M27.5 14.5L29.5 19.25L28.5 20.5L26 22L23 20L23.5 16.5L27.5 14.5Z" fill="white"/>
-<path d="M20.5 14L20 17.5L18 16.5L19 14.5L20.5 14Z" fill="white"/>
-<path d="M27 7.5L29 9L26.5 11L24.5 10L25.5 8L27 7.5Z" fill="white"/>
-<path d="M27.5 23L29 26.5L26.5 28L25 25.5L26 23.5L27.5 23Z" fill="white"/>
-<path d="M13 5L10 7L7 6V4.5L9 3L13 2V5Z" fill="white"/>
-<path d="M12.5 8L13.5 10.5L11.5 11.5L9 11L10 9.5L12.5 8Z" fill="white"/>
-<path d="M4 0L5.5 1V2.23528L3 1.73528L4 0Z" fill="white"/>
-<path d="M17 0L19 1L18 2L16.5 3L15.5 1L17 0Z" fill="white"/>
+<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 0L7 4.5L10 12L25.5 22.5L30 30H0V0Z" fill="white"/>
+<path d="M21 5L23 9.46154V11.7692L19 12.5L16 9.76923L17.5 6.69231L21 5Z" fill="white"/>
+<path d="M27.5 9.73077L30 12.0385L28 14.2692L26 13.2692L25 10.7692L27.5 9.73077Z" fill="white"/>
+<path d="M26.5 15L28 18.5L25.5 20L24 17.5L25 15.5L26.5 15Z" fill="white"/>
+<path d="M13 2L13.5 5L10 4.5L11 3L13 2Z" fill="white"/>
+<path d="M13 8.5L14 10L12.5 10.5L12 9.5L11 8.5H13Z" fill="white"/>
+<path d="M17 12.5L18 14L16.5 14.5L15 12.5H17Z" fill="white"/>
+<path d="M15 5.5L16 7L14.5 7.5L14 6.5L15 5.5Z" fill="white"/>
+<path d="M7.5 0L9 1L8.5 3L6.5 2L6 1L7.5 0Z" fill="white"/>
+<path d="M21 14L23 16L22 17H20L19 15L21 14Z" fill="white"/>
+<path d="M29.5 22.5L30 24.5L27.5 23.5L28 21.5L29.5 22.5Z" fill="white"/>
 </svg>

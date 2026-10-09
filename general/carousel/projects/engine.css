@@ -5,18 +5,18 @@
   --corner-art-outset: -3px;
   --corner-art-thumb-size: 18px;
   --corner-art-thumb-outset: 0px;
-  --media-top-left-image: url("/about/art/svg/Create.svg");
-  --media-top-right-image: url("/about/art/svg/Courses.svg");
-  --media-bottom-left-image: url("/about/art/svg/Chat.svg");
-  --media-bottom-right-image: url("/about/art/svg/Hubs.svg");
-  --info-top-left-image: url("/about/art/svg/DoomedDash.svg");
-  --info-top-right-image: url("/about/art/svg/Pronounciation.svg");
-  --info-bottom-left-image: url("/about/art/svg/Cloud.svg");
-  --info-bottom-right-image: url("/about/art/svg/Home.svg");
-  --thumb-top-left-image: url("/about/art/svg/Calendar.svg");
-  --thumb-top-right-image: url("/about/art/svg/Discover.svg");
-  --thumb-bottom-left-image: url("/about/art/svg/Mail.svg");
-  --thumb-bottom-right-image: url("/about/art/svg/DoomedMelee.svg");
+  --media-top-left-image: url("/projects/engine/carousel/triangle.webp");
+  --media-top-right-image: url("/projects/engine/carousel/triangle.webp");
+  --media-bottom-left-image: url("/projects/engine/carousel/triangle.webp");
+  --media-bottom-right-image: url("/projects/engine/carousel/triangle.webp");
+  --info-top-left-image: url("/projects/engine/carousel/triangle.webp");
+  --info-top-right-image: url("/projects/engine/carousel/triangle.webp");
+  --info-bottom-left-image: url("/projects/engine/carousel/triangle.webp");
+  --info-bottom-right-image: url("/projects/engine/carousel/triangle.webp");
+  --thumb-top-left-image: url("/projects/engine/carousel/triangle.webp");
+  --thumb-top-right-image: url("/projects/engine/carousel/triangle.webp");
+  --thumb-bottom-left-image: url("/projects/engine/carousel/triangle.webp");
+  --thumb-bottom-right-image: url("/projects/engine/carousel/triangle.webp");
 }
 
 .mediacarousel--corner-art.engine .carousel-corner-art--media {
