@@ -21,9 +21,9 @@
   --corner-top-right-x: -17px;
   --corner-top-right-y: -16px;
   --corner-bottom-left-x: -17px;
-  --corner-bottom-left-y: -16px;
+  --corner-bottom-left-y: -0;
   --corner-bottom-right-x: -17px;
-  --corner-bottom-right-y: -16px;
+  --corner-bottom-right-y: -0;
 }
 
 .mediacarousel--corner-art.tetris .carousel-corner-art__piece {
