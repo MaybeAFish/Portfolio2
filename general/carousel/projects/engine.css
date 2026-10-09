@@ -3,8 +3,6 @@
   --carousel-arrow-mobile-inset: 2px;
   --corner-art-size: 28px;
   --corner-art-outset: -3px;
-  --corner-art-thumb-size: 18px;
-  --corner-art-thumb-outset: 0px;
   --media-top-left-image: url("/projects/engine/carousel/triangle.webp");
   --media-top-right-image: url("/projects/engine/carousel/triangle.webp");
   --media-bottom-left-image: url("/projects/engine/carousel/triangle.webp");
@@ -13,10 +11,6 @@
   --info-top-right-image: url("/projects/engine/carousel/triangle.webp");
   --info-bottom-left-image: url("/projects/engine/carousel/triangle.webp");
   --info-bottom-right-image: url("/projects/engine/carousel/triangle.webp");
-  --thumb-top-left-image: url("/projects/engine/carousel/triangle.webp");
-  --thumb-top-right-image: url("/projects/engine/carousel/triangle.webp");
-  --thumb-bottom-left-image: url("/projects/engine/carousel/triangle.webp");
-  --thumb-bottom-right-image: url("/projects/engine/carousel/triangle.webp");
 }
 
 .mediacarousel--corner-art.engine .carousel-corner-art--media {
@@ -28,15 +22,4 @@
 .mediacarousel--corner-art.engine .carousel-corner-art--info {
   --corner-art-top-left-rotation: -12deg;
   --corner-art-bottom-right-rotation: 14deg;
-}
-
-.mediacarousel--corner-art.engine .carousel-corner-art--thumb {
-  --corner-art-top-right-rotation: 12deg;
-  --corner-art-bottom-left-rotation: -12deg;
-  --corner-art-bottom-right-rotation: 0deg;
-}
-
-.mediacarousel--corner-art.engine .mediacarousel-thumb.is-active .carousel-corner-art__piece--top-right,
-.mediacarousel--corner-art.engine .mediacarousel-thumb.is-active .carousel-corner-art__piece--bottom-left {
-  display: none;
 }

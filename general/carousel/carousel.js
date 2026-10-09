@@ -52,7 +52,6 @@ function setupMediaCarousel(carousel) {
   if (carousel.classList.contains("mediacarousel--corner-art")) {
     addCornerArtwork(main, "media");
     addCornerArtwork(carousel.querySelector(".mediacarousel-info"), "info");
-    thumbs.forEach((thumb) => addCornerArtwork(thumb, "thumb"));
   }
 
   let touchControlsTimeout;

@@ -415,25 +415,6 @@
   border-color: var(--carousel-cyan);
 }
 
-.mediacarousel--corner-art .mediacarousel-thumb:hover,
-.mediacarousel--corner-art .mediacarousel-thumb:focus-visible,
-.mediacarousel--corner-art .mediacarousel-thumb.is-active {
-  z-index: 4;
-}
-
-.mediacarousel--corner-art .mediacarousel-thumb:hover,
-.mediacarousel--corner-art .mediacarousel-thumb:focus-visible,
-.mediacarousel--corner-art .mediacarousel-thumb:active,
-.mediacarousel--corner-art .mediacarousel-thumb.is-active {
-  border: 1px solid rgba(255, 255, 255, 0.22);
-}
-
-.mediacarousel--corner-art .mediacarousel-thumb img,
-.mediacarousel--corner-art .mediacarousel-thumb video {
-  border-radius: inherit;
-}
-
-
 /* Thumbnail media */
 
 .mediacarousel-thumb img,
@@ -459,9 +440,7 @@
 /* Corner art is absolutely positioned and never participates in carousel layout. */
 .mediacarousel--corner-art {
   --corner-art-size: 24px;
-  --corner-art-thumb-size: 18px;
   --corner-art-outset: 0px;
-  --corner-art-thumb-outset: 0px;
   --corner-art-top-left-rotation: 0deg;
   --corner-art-top-right-rotation: 90deg;
   --corner-art-bottom-right-rotation: 180deg;
@@ -486,20 +465,6 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-}
-
-.carousel-corner-art--thumb {
-  --corner-art-size: var(--corner-art-thumb-size, 18px);
-  --corner-art-outset: var(--corner-art-thumb-outset, 0px);
-  clip-path: inset(0);
-  opacity: 0;
-  transition: opacity 0.16s ease;
-}
-
-.mediacarousel-thumb:hover .carousel-corner-art--thumb,
-.mediacarousel-thumb:focus-visible .carousel-corner-art--thumb,
-.mediacarousel-thumb.is-active .carousel-corner-art--thumb {
-  opacity: 1;
 }
 
 .carousel-corner-art__piece--top-left {
@@ -547,13 +512,6 @@
   --corner-top-right-image: var(--info-top-right-image);
   --corner-bottom-left-image: var(--info-bottom-left-image);
   --corner-bottom-right-image: var(--info-bottom-right-image);
-}
-
-.carousel-corner-art--thumb {
-  --corner-top-left-image: var(--thumb-top-left-image);
-  --corner-top-right-image: var(--thumb-top-right-image);
-  --corner-bottom-left-image: var(--thumb-bottom-left-image);
-  --corner-bottom-right-image: var(--thumb-bottom-right-image);
 }
 
 .mediacarousel--text-only {
