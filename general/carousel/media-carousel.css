@@ -386,6 +386,23 @@
     opacity 0.15s ease;
 }
 
+.mediacarousel-thumb::after {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+
+  background: rgba(0, 0, 0, 0.85);
+
+  content: "";
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.mediacarousel-thumb:hover::after,
+.mediacarousel-thumb:focus-visible::after,
+.mediacarousel-thumb.is-active::after {
+  opacity: 0;
+}
 
 .mediacarousel-thumb:hover,
 .mediacarousel-thumb:focus-visible {
