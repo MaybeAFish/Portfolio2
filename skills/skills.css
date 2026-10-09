@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 .skill-filter {
@@ -57,4 +57,10 @@
 .skills-empty p {
   margin: 0;
   color: var(--text-color-muted);
+}
+
+@media (max-width: 600px) {
+  .skill-filters {
+    display: none;
+  }
 }
