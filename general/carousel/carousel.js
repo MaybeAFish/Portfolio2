@@ -34,11 +34,6 @@ function setupMediaCarousel(carousel) {
     ["top-left", "top-right", "bottom-left", "bottom-right"].forEach((corner) => {
       const piece = document.createElement("span");
       piece.className = `carousel-corner-art__piece carousel-corner-art__piece--${corner}`;
-      ["one", "two", "three"].forEach((block) => {
-        const blockElement = document.createElement("span");
-        blockElement.className = `carousel-corner-art__block carousel-corner-art__block--${block}`;
-        piece.append(blockElement);
-      });
       artwork.append(piece);
     });
 

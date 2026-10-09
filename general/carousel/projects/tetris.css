@@ -1,164 +1,100 @@
 .mediacarousel--corner-art.tetris {
   --carousel-arrow-edge-inset: 6px;
   --carousel-arrow-mobile-inset: 4px;
-  --corner-art-size: 40px;
-  --corner-art-outset: -3px;
-  --corner-art-thumb-size: 20px;
+  --corner-art-outset: -16px;
+  --corner-art-thumb-size: 48px;
   --corner-art-thumb-outset: 0px;
-  --tetris-cyan: url("/projects/tetris/blocks/cyan.png");
-  --tetris-yellow: url("/projects/tetris/blocks/yellow.png");
-  --tetris-blue: url("/projects/tetris/blocks/blue.png");
-  --tetris-green: url("/projects/tetris/blocks/green.png");
-  --tetris-orange: url("/projects/tetris/blocks/orange.png");
-  --tetris-purple: url("/projects/tetris/blocks/purple.png");
-  --tetris-red: url("/projects/tetris/blocks/red.png");
+  --info-top-left-image: url("/projects/tetris/blocks/1.webp");
+  --info-top-right-image: url("/projects/tetris/blocks/2.webp");
+  --info-bottom-left-image: url("/projects/tetris/blocks/3.webp");
+  --info-bottom-right-image: url("/projects/tetris/blocks/4.webp");
+  --media-top-left-image: url("/projects/tetris/blocks/5.webp");
+  --media-top-right-image: url("/projects/tetris/blocks/6.webp");
+  --thumb-top-left-image: url("/projects/tetris/blocks/hover.webp");
+  --thumb-bottom-right-image: url("/projects/tetris/blocks/hover.webp");
+  --tetris-selected-upright: url("/projects/tetris/blocks/selected1.webp");
+}
+
+.mediacarousel--corner-art.tetris .carousel-corner-art--info {
+  --corner-top-left-x: -17px;
+  --corner-top-left-y: -16px;
+  --corner-top-right-x: -17px;
+  --corner-top-right-y: -16px;
+  --corner-bottom-left-x: -17px;
+  --corner-bottom-left-y: -16px;
+  --corner-bottom-right-x: -17px;
+  --corner-bottom-right-y: -16px;
 }
 
 .mediacarousel--corner-art.tetris .carousel-corner-art__piece {
-  background-image: none;
-}
-
-.mediacarousel--corner-art.tetris .carousel-corner-art--media .carousel-corner-art__piece,
-.mediacarousel--corner-art.tetris .carousel-corner-art--info .carousel-corner-art__piece {
   transform: none;
-}
-
-.mediacarousel--corner-art.tetris .carousel-corner-art__block {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  background-position: center;
+  background-position: top left;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100% 100%;
 }
 
-.mediacarousel--corner-art.tetris .carousel-corner-art__block--one {
-  background-image: var(--tetris-block-one, none);
-}
-
-.mediacarousel--corner-art.tetris .carousel-corner-art__block--two {
-  background-image: var(--tetris-block-two, none);
-}
-
-.mediacarousel--corner-art.tetris .carousel-corner-art__block--three {
-  background-image: var(--tetris-block-three, none);
-}
-
-.mediacarousel--corner-art.tetris .carousel-corner-art--media .carousel-corner-art__piece {
-  width: 52px;
-  height: 48px;
-}
-
-.mediacarousel--corner-art.tetris .carousel-corner-art--media .carousel-corner-art__block--one,
-.mediacarousel--corner-art.tetris .carousel-corner-art--info .carousel-corner-art__block--one {
-  top: 0;
-  left: 0;
-}
-
-.mediacarousel--corner-art.tetris .carousel-corner-art--media .carousel-corner-art__block--two,
-.mediacarousel--corner-art.tetris .carousel-corner-art--info .carousel-corner-art__block--two {
-  top: 0;
-  left: 20px;
-}
-
-.mediacarousel--corner-art.tetris .carousel-corner-art--media .carousel-corner-art__block--three,
-.mediacarousel--corner-art.tetris .carousel-corner-art--info .carousel-corner-art__block--three {
-  top: 20px;
-  left: 0;
-}
-
-.mediacarousel--corner-art.tetris .carousel-corner-art__piece--top-right .carousel-corner-art__block {
-  left: auto;
-  right: 0;
-}
-
-.mediacarousel--corner-art.tetris .carousel-corner-art__piece--top-right .carousel-corner-art__block--two,
-.mediacarousel--corner-art.tetris .carousel-corner-art__piece--bottom-right .carousel-corner-art__block--two {
-  right: 20px;
-}
-
-.mediacarousel--corner-art.tetris .carousel-corner-art__piece--bottom-left .carousel-corner-art__block,
-.mediacarousel--corner-art.tetris .carousel-corner-art__piece--bottom-right .carousel-corner-art__block {
-  top: auto;
-  bottom: 0;
-}
-
-.mediacarousel--corner-art.tetris .carousel-corner-art__piece--bottom-left .carousel-corner-art__block--three,
-.mediacarousel--corner-art.tetris .carousel-corner-art__piece--bottom-right .carousel-corner-art__block--three {
-  bottom: 20px;
-}
-
-.mediacarousel--corner-art.tetris .carousel-corner-art__piece--bottom-right .carousel-corner-art__block--three {
-  right: 0;
-  left: auto;
-}
-
-.mediacarousel--corner-art.tetris .carousel-corner-art--info .carousel-corner-art__piece--top-left {
-  --tetris-block-one: var(--tetris-cyan);
-  --tetris-block-two: var(--tetris-yellow);
-  --tetris-block-three: var(--tetris-blue);
+.mediacarousel--corner-art.tetris .carousel-corner-art--info .carousel-corner-art__piece--top-left,
+.mediacarousel--corner-art.tetris .carousel-corner-art--info .carousel-corner-art__piece--bottom-left,
+.mediacarousel--corner-art.tetris .carousel-corner-art--info .carousel-corner-art__piece--bottom-right {
+  width: 64px;
+  height: 96px;
 }
 
 .mediacarousel--corner-art.tetris .carousel-corner-art--info .carousel-corner-art__piece--top-right {
-  --tetris-block-one: var(--tetris-green);
-  --tetris-block-two: var(--tetris-orange);
-  --tetris-block-three: var(--tetris-cyan);
+  width: 64px;
+  height: 64px;
 }
 
-.mediacarousel--corner-art.tetris .carousel-corner-art--info .carousel-corner-art__piece--bottom-left {
-  --tetris-block-one: var(--tetris-cyan);
-  --tetris-block-two: var(--tetris-red);
-  --tetris-block-three: var(--tetris-green);
-}
-
-.mediacarousel--corner-art.tetris .carousel-corner-art--info .carousel-corner-art__piece--bottom-right {
-  --tetris-block-one: var(--tetris-blue);
-  --tetris-block-two: var(--tetris-yellow);
-  --tetris-block-three: var(--tetris-purple);
-}
-
-.mediacarousel--corner-art.tetris .carousel-corner-art--media .carousel-corner-art__piece--top-left {
-  --tetris-block-one: var(--tetris-cyan);
-  --tetris-block-two: var(--tetris-purple);
-  --tetris-block-three: var(--tetris-red);
-}
-
+.mediacarousel--corner-art.tetris .carousel-corner-art--media .carousel-corner-art__piece--top-left,
 .mediacarousel--corner-art.tetris .carousel-corner-art--media .carousel-corner-art__piece--top-right {
-  --tetris-block-one: var(--tetris-orange);
-  --tetris-block-two: var(--tetris-yellow);
-  --tetris-block-three: var(--tetris-green);
+  width: 80px;
+  height: 80px;
+}
+
+.mediacarousel--corner-art.tetris .carousel-corner-art--thumb .carousel-corner-art__piece {
+  width: 0;
+  height: 0;
+}
+
+.mediacarousel--corner-art.tetris .carousel-corner-art--thumb .carousel-corner-art__piece--top-left,
+.mediacarousel--corner-art.tetris .carousel-corner-art--thumb .carousel-corner-art__piece--top-right,
+.mediacarousel--corner-art.tetris .carousel-corner-art--thumb .carousel-corner-art__piece--bottom-right {
+  width: 48px;
+  height: 32px;
+}
+
+.mediacarousel--corner-art.tetris .carousel-corner-art--thumb .carousel-corner-art__piece--bottom-left {
+  display: none;
 }
 
 .mediacarousel--corner-art.tetris .carousel-corner-art--thumb .carousel-corner-art__piece--top-left,
 .mediacarousel--corner-art.tetris .carousel-corner-art--thumb .carousel-corner-art__piece--top-right {
-  width: 20px;
-  height: 20px;
-  --tetris-block-one: var(--tetris-blue);
+  position: absolute;
 }
 
-.mediacarousel--corner-art.tetris .carousel-corner-art--thumb .carousel-corner-art__piece--top-left .carousel-corner-art__block--one,
-.mediacarousel--corner-art.tetris .carousel-corner-art--thumb .carousel-corner-art__piece--top-right .carousel-corner-art__block--one {
-  inset: 0;
-  width: 20px;
-  height: 20px;
+
+.mediacarousel--corner-art.tetris .mediacarousel-thumb.is-active .carousel-corner-art--thumb .carousel-corner-art__piece--top-left,
+.mediacarousel--corner-art.tetris .mediacarousel-thumb.is-active .carousel-corner-art--thumb .carousel-corner-art__piece--top-right,
+.mediacarousel--corner-art.tetris .mediacarousel-thumb:active .carousel-corner-art--thumb .carousel-corner-art__piece--top-left,
+.mediacarousel--corner-art.tetris .mediacarousel-thumb:active .carousel-corner-art--thumb .carousel-corner-art__piece--top-right {
+  top: 50%;
+  width: 16px;
+  height: 64px;
+  background-image: var(--tetris-selected-upright);
+  transform: translateY(-50%);
 }
 
-.mediacarousel--corner-art.tetris .carousel-corner-art--thumb .carousel-corner-art__block--two,
-.mediacarousel--corner-art.tetris .carousel-corner-art--thumb .carousel-corner-art__block--three,
-.mediacarousel--corner-art.tetris .carousel-corner-art--thumb .carousel-corner-art__piece--bottom-left,
-.mediacarousel--corner-art.tetris .carousel-corner-art--thumb .carousel-corner-art__piece--bottom-right {
+.mediacarousel--corner-art.tetris .mediacarousel-thumb.is-active .carousel-corner-art--thumb .carousel-corner-art__piece--top-left,
+.mediacarousel--corner-art.tetris .mediacarousel-thumb:active .carousel-corner-art--thumb .carousel-corner-art__piece--top-left {
+  left: 0;
+}
+
+.mediacarousel--corner-art.tetris .mediacarousel-thumb.is-active .carousel-corner-art--thumb .carousel-corner-art__piece--top-right,
+.mediacarousel--corner-art.tetris .mediacarousel-thumb:active .carousel-corner-art--thumb .carousel-corner-art__piece--top-right {
+  right: -1px;
+}
+
+.mediacarousel--corner-art.tetris .mediacarousel-thumb.is-active .carousel-corner-art--thumb .carousel-corner-art__piece--bottom-right,
+.mediacarousel--corner-art.tetris .mediacarousel-thumb:active .carousel-corner-art--thumb .carousel-corner-art__piece--bottom-right {
   display: none;
-}
-
-.mediacarousel--corner-art.tetris .mediacarousel-thumb:not(.is-active):hover .carousel-corner-art--thumb .carousel-corner-art__piece,
-.mediacarousel--corner-art.tetris .mediacarousel-thumb:not(.is-active):focus-visible .carousel-corner-art--thumb .carousel-corner-art__piece {
-  --tetris-block-one: var(--tetris-green);
-}
-
-.mediacarousel--corner-art.tetris .mediacarousel-thumb:active .carousel-corner-art--thumb .carousel-corner-art__piece {
-  --tetris-block-one: var(--tetris-cyan);
-}
-
-.mediacarousel--corner-art.tetris .carousel-corner-art--thumb .carousel-corner-art__piece--top-right {
-  transform: none;
 }
