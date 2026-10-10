@@ -31,7 +31,7 @@
   max-width: 80vw;
   height: 20px;
   background-color: var(--supporting-background-color);
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   overflow: hidden;
   margin: 0 auto;
 }

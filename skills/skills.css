@@ -15,7 +15,7 @@
   line-height: 1;
   background: transparent;
   border: 1px solid var(--supporting-background-color);
-  border-radius: 999px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;

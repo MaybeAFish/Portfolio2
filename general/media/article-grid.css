@@ -112,9 +112,9 @@
   color: var(--text-color);
   font-size: 1rem;
   line-height: 1;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.75);
   border: 1px solid var(--supporting-background-color);
-  border-radius: 999px;
+  border-radius: var(--border-radius);
   backdrop-filter: blur(2px);
   transition: color 0.2s ease, border-color 0.2s ease;
 }
@@ -138,7 +138,7 @@
   color: var(--text-color);
   text-align: center;
   transition: color 0.25s ease;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(2px);
 
   border-top: 1px solid var(--supporting-background-color);
