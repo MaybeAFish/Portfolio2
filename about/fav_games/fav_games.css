@@ -144,7 +144,8 @@
   overflow-wrap: break-word;
 }
 .game-hover-cool-stuff strong {
-  font-size: 0.9rem;
+  font-weight: 0;
+
 }
 .game-hover-cool-stuff span {
   font-size: 0.8rem;

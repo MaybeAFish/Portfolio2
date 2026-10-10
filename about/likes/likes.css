@@ -6,7 +6,7 @@
   border-radius: var(--border-radius);
 }
 .likes-column {
-  padding: 42px clamp(24px, 5vw, 70px);
+  padding: 20px 40px;
 }
 .likes-column + .likes-column {
   border-left: 1px solid var(--main-background-color);
@@ -27,7 +27,7 @@
 }
 .likes-column li::before {
   content: "+";
-  color: lime;
+  color: var(--standout-color-green);
   font-weight: bold;
 }
 .dislikes li::before {
