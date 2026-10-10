@@ -169,3 +169,43 @@
   height: 55px;
   object-fit: contain;
 }
+
+@media (max-width: 600px) {
+  .hover-preview {
+    box-sizing: border-box;
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
+    max-height: calc(100vh - 36px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .game-hover-favourites {
+    flex-wrap: wrap;
+  }
+
+  .game-hover-favourites img {
+    width: min(200px, 26vw);
+  }
+
+  .game-hover-favourites figcaption {
+    overflow-wrap: anywhere;
+  }
+
+  .game-hover-cool-stuff {
+    flex-wrap: wrap;
+  }
+
+  .rank-item {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@supports (height: 100dvh) {
+  @media (max-width: 600px) {
+    .hover-preview {
+      max-height: calc(100dvh - 36px);
+    }
+  }
+}

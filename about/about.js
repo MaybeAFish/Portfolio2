@@ -13,8 +13,9 @@ function initialiseGameCharacters() {
     const margin = 18;
     const offset = 18;
     const previewRect = preview.getBoundingClientRect();
-
-    const left = Math.min(x + offset, window.innerWidth - previewRect.width - margin);
+    const left = window.matchMedia("(max-width: 600px)").matches
+      ? (window.innerWidth - previewRect.width) / 2
+      : Math.min(x + offset, window.innerWidth - previewRect.width - margin);
     const top = Math.min(y + offset, window.innerHeight - previewRect.height - margin);
 
     preview.style.setProperty("--preview-left", `${Math.max(margin, left)}px`);
