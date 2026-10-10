@@ -106,20 +106,13 @@ body:has(.profile-picture-container:active) #about-nav::after {
 }
 
 .social-links svg {
-  width: 28px;
-  height: 28px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
   flex-shrink: 0;
   transform-origin: center;
 }
-.social-label:nth-child(2) svg {
-  width: 21px;
-  height: 21px;
-}
-.social-label:nth-child(3) svg {
-  width: 21px;
-  height: 21px;
-}
+
 .social-label p {
   margin: 0;
   font-size: 16px;
