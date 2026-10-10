@@ -19,7 +19,7 @@
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.7);
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(2px);
-  border: 2px solid rgba(255, 255, 255, 0.15);
+  border: 2px solid var(--supporting-background-color);
   border-radius: var(--border-radius);
   overflow-x: auto;
   box-sizing: border-box;
@@ -64,7 +64,7 @@
     rgba(255, 255, 255, 0.1) 60%,
     transparent 100%
   );
-  border-radius: 0 0 999px 999px;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
   transition:
     width 0.3s ease,

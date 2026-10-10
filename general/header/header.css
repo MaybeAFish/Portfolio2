@@ -32,7 +32,7 @@ nav {
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.7);
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(2px);
-  border: 2px solid rgba(255, 255, 255, 0.15);
+  border: 2px solid var(--supporting-background-color);
   border-radius: var(--border-radius);
 }
 
@@ -41,7 +41,6 @@ nav a {
   color: var(--text-color);
   padding-bottom: 4px;
   background: none;
-  border: none;
   cursor: pointer;
   padding: clamp(6px, 0.8vw, 8px) clamp(10px, 1.6vw, 14px);
 
@@ -64,7 +63,7 @@ nav a::after {
     rgba(255, 255, 255, 0.1) 60%,
     transparent 100%
   );
-  border-radius: 0 0 999px 999px;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
   transition:
     width 0.3s ease,

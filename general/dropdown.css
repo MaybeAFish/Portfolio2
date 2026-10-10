@@ -8,15 +8,14 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  top: calc(100% + 12px);
+  top: calc(100% + 11px);
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(2px);
-  border: 2px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--supporting-background-color);
   border-radius: var(--border-radius);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  padding: 8px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.75);
   z-index: 100;
   min-width: 200px;
   flex-direction: column;
