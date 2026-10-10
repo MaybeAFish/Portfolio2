@@ -10,7 +10,7 @@
   position: relative;
   display: flex;
   width: 100%;
-  min-height: clamp(240px, 30vw, 300px);
+  min-height: clamp(240px, 30vw, 350px);
   overflow: hidden;
   box-sizing: border-box;
   color: var(--text-color, #e0e0e0);
@@ -21,15 +21,14 @@
     box-shadow 0.3s ease,
     transform 0.3s ease;
 }
-
 .article-card:hover {
   border-color: var(--standout-color-green);
   box-shadow: 0 5px 30px var(--supporting-background-color);
 }
 .article-card:active {
   border-color: var(--standout-color-cyan);
+  transition: border-color 0s;
 }
-
 .article-card.is-hidden {
   display: none;
 }
@@ -41,12 +40,21 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.5;
+  /* opacity: 0.6; */
   transform: scale(1.06);
   transition:
     transform 0.15s ease,
     opacity 0.15s ease,
     filter 0.15s ease;
+}
+
+.article-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+.article-card:hover .article-card-overlay {
+  background: 0;
 }
 
 .article-card.samurai > .custom-video-player {
@@ -70,6 +78,7 @@
 
 .article-card:hover .article-card-media {
   transform: scale(1.1);
+  opacity: 1;
 }
 
 .article-card.samurai:hover > .custom-video-player > video.custom-video-media {
@@ -103,10 +112,10 @@
   color: var(--text-color);
   font-size: 1rem;
   line-height: 1;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.8);
   border: 1px solid var(--supporting-background-color);
   border-radius: 999px;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(2px);
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -129,9 +138,11 @@
   color: var(--text-color);
   text-align: center;
   transition: color 0.25s ease;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(2px);
+
   border-top: 1px solid var(--supporting-background-color);
-  transition: border-color 0.2s ease;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 .article-card-content:hover h2 {
   color: var(--standout-color-green);

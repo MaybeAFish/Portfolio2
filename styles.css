@@ -20,8 +20,8 @@
 @import "general/side-nav/side-nav.css";
 
 :root {
-  --standout-color-cyan: #47cbd2;
-  --standout-color-green: #5ed453;
+  --standout-color-cyan: #3ae9f3;
+  --standout-color-green: #4af43a;
   --supporting-background-color: #3b3b3b;
   --main-background-color: #212121;
   --text-color: #e0e0e0;
