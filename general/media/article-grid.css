@@ -41,11 +41,12 @@
   object-fit: cover;
   object-position: center;
   /* opacity: 0.6; */
-  transform: scale(1.06);
+  filter: brightness(0.6);
+
+  transform: scale(1);
   transition:
-    transform 0.15s ease,
-    opacity 0.15s ease,
-    filter 0.15s ease;
+    transform 0.4s ease,
+    filter 0.4s ease;
 }
 
 .article-card-overlay {
@@ -77,8 +78,8 @@
 }
 
 .article-card:hover .article-card-media {
-  transform: scale(1.1);
-  opacity: 1;
+  transform: scale(1.06);
+  filter: brightness(1);
 }
 
 .article-card.samurai:hover > .custom-video-player > video.custom-video-media {
