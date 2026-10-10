@@ -12,6 +12,7 @@
     width: 100%;
     aspect-ratio: 1;
     background: var(--supporting-background-color);
+    border-radius: var(--border-radius);
 }
 .banner-model:only-child {
     grid-column: 1 / -1;

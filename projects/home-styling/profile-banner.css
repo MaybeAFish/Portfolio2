@@ -21,8 +21,8 @@
     height: 180px;
     margin: 0;
     object-fit: cover;
-    border: 5px solid var(--text-color);
-    border-radius: 50%;
+    border: 2px solid var(--text-color);
+    border-radius: var(--border-radius);
     box-sizing: border-box;
     transition: opacity 0.2s ease, border-color 0.2s ease;
 }
