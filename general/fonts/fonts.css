@@ -134,6 +134,10 @@
   font-display: block;
 }
 
+* {
+  font-family: inherit;
+}
+
 :root {
   --font-heading: "Rocky Rock";
   --font-body: "Bree Serif";
@@ -147,39 +151,63 @@
 .doomed {
   --font-heading: "Doomed Heading";
   --font-body: "Doomed Text";
-  --font-body-size: 1.1em;
+}
+.doomed a,
+.doomed h3 {
+  font-size: 22px;
+}
+.doomed h3 {
+  margin-bottom: 4px;
 }
 .doomed blockquote,
-.doomed a,
 .doomed p,
 .doomed span,
 .doomed li {
-  font-size: var(--font-body-size);
+  font-size: calc(var(--text-size) * 1.05);
 }
+
 .tetris {
   --font-heading: "Tetris Heading";
   --font-body: "Tetris Text";
-  --font-body-size: 1.1em;
+}
+.tetris h1 {
+  font-size: 32px;
+}
+.tetris a,
+.tetris h3 {
+  font-size: 20px;
+}
+.tetris h3 {
+  margin-bottom: 2px;
 }
 .tetris blockquote,
-.tetris a,
 .tetris p,
 .tetris span,
 .tetris li {
-  font-size: var(--font-body-size);
+  font-size: calc(var(--text-size) * 1.08);
 }
+
 .engine {
   --font-heading: "Engine Heading";
   --font-body: "Engine Text";
-  --font-body-size: 0.9em;
+}
+.engine h1 {
+  font-size: 32px;
+}
+.engine a,
+.engine h3 {
+  font-size: 20px;
+}
+.engine h3 {
+  margin-bottom: 4px;
 }
 .engine blockquote,
-.engine a,
 .engine p,
 .engine span,
 .engine li {
-  font-size: var(--font-body-size);
+  font-size: calc(var(--text-size) * 0.9);
 }
+
 .karaoke {
   --font-heading: "Karaoke Heading";
   --font-body: "Karaoke Text";
@@ -213,10 +241,7 @@
   --font-body: "Samurai Text";
 }
 
-* {
-  font-family: inherit;
-}
-
+/* Generic */
 div,
 h1,
 h2,

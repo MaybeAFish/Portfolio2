@@ -115,7 +115,6 @@ body:has(.profile-picture-container:active) #about-nav::after {
 
 .social-label p {
   margin: 0;
-  font-size: 16px;
 }
 
 .social-label::after {
