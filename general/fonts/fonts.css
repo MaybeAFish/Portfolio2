@@ -147,16 +147,31 @@
 .doomed {
   --font-heading: "Doomed Heading";
   --font-body: "Doomed Text";
+  --font-body-size: 1.1em;
+}
+.doomed blockquote,
+.doomed a,
+.doomed p,
+.doomed span,
+.doomed li {
+  font-size: var(--font-body-size);
 }
 .tetris {
   --font-heading: "Tetris Heading";
   --font-body: "Tetris Text";
   --font-body-size: 1.1em;
 }
+.tetris blockquote,
+.tetris a,
+.tetris p,
+.tetris span,
+.tetris li {
+  font-size: var(--font-body-size);
+}
 .engine {
   --font-heading: "Engine Heading";
   --font-body: "Engine Text";
-  --font-body-size: 0.95em;
+  --font-body-size: 0.9em;
 }
 .engine blockquote,
 .engine a,

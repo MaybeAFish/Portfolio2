@@ -118,16 +118,8 @@ section {
   padding: 0 28px;
 }
 
-/* YouTube */
-.video-container {
-  width: 100%;
-  max-width: 1000px;
-  aspect-ratio: 16 / 9;
-  margin: 40px auto;
-}
-.video-container iframe {
-  width: 100%;
-  height: 100%;
-  display: block;
-  border: 0;
+/* Pop */
+.important {
+  color: var(--standout-color-cyan);
+  font-size: inherit !important;
 }
