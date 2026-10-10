@@ -20,7 +20,7 @@
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(2px);
   border: 2px solid rgba(255, 255, 255, 0.15);
-  border-radius: 999px;
+  border-radius: var(--border-radius);
   overflow-x: auto;
   box-sizing: border-box;
   justify-content: flex-start;
