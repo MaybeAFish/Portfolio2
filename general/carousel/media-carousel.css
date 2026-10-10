@@ -437,7 +437,6 @@
   -webkit-user-drag: none;
 }
 
-/* Corner art is absolutely positioned and never participates in carousel layout. */
 .mediacarousel--corner-art {
   --corner-art-size: 24px;
   --corner-art-outset: 0px;
