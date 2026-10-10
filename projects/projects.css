@@ -12,7 +12,6 @@
   letter-spacing: 1px;
 }
 
-
 /* Info sidebar */
 .mediacarousel-info-shell {
   position: relative;
@@ -34,7 +33,6 @@
   display: flex;
   justify-content: center;
 
-
   padding: 16px;
   box-sizing: border-box;
   overflow: hidden;
@@ -52,10 +50,8 @@
   margin: 0;
   box-sizing: border-box;
 
-
   text-align: center;
   white-space: nowrap;
-
 }
 
 .mediacarousel-info-content {
@@ -76,13 +72,13 @@
 .mediacarousel-info-item h2 {
   margin: 1.25rem 0 0 0;
   line-height: 1.25;
-  font-size: 1.5rem;
+  font-size: 22px;
   color: var(--text-color);
 }
 
 .mediacarousel-info-item p {
   margin: 0;
-  color: var(--text-color-muted);
+  color: var(--text-color-muted2);
 }
 
 .mediacarousel-info-footer {
@@ -97,7 +93,6 @@
   align-items: center;
 }
 
-
 .project-info {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -109,8 +104,6 @@
   background: var(--supporting-background-color);
   border-radius: var(--border-radius);
 }
-
-
 
 @media (max-width: 700px) {
   .project-info {
@@ -131,7 +124,7 @@
     overflow: visible;
   }
 
-/* .mediacarousel.tetris .mediacarousel-info-heading {
+  /* .mediacarousel.tetris .mediacarousel-info-heading {
   font-size: clamp(1rem, 3vw, 2.5rem);
   overflow-wrap: break-word;
 } */

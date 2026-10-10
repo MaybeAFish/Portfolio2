@@ -143,6 +143,7 @@
   --font-heading: "Rocky Rock";
   --font-body: "Bree Serif";
 }
+
 .doomed {
   --font-heading: "Doomed Heading";
   --font-body: "Doomed Text";
@@ -150,11 +151,12 @@
 .tetris {
   --font-heading: "Tetris Heading";
   --font-body: "Tetris Text";
+  --font-body-size: 1.1em;
 }
 .engine {
   --font-heading: "Engine Heading";
   --font-body: "Engine Text";
-  --font-body-size: 0.9em;
+  --font-body-size: 0.95em;
 }
 .engine blockquote,
 .engine a,
@@ -227,6 +229,11 @@ li {
   font-family: var(--font-body), sans-serif !important;
 }
 
-.outline {
-  -webkit-text-stroke: 0.5px var(--supporting-background-color);
+.breathing-room {
+  letter-spacing: 0.5px;
+  /* -webkit-text-stroke: 0.5px var(--supporting-background-color); */
+}
+.breathing-room-big {
+  letter-spacing: 1px;
+  /* -webkit-text-stroke: 0.5px var(--supporting-background-color); */
 }

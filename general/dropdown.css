@@ -42,6 +42,7 @@
   transition: background 0.3s ease, color 0.3s ease;
   display: block;
   position: relative;
+  text-align: center;
 }
 
 .dropdown-content a:hover {

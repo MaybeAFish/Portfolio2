@@ -1,52 +1,54 @@
 .profile-banner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 42px;
-    max-width: 1000px;
-    margin: 60px auto 100px;
-    padding: 0 30px;
-    text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 42px;
+  max-width: 1000px;
+  margin: 60px auto 100px;
+  padding: 0 30px;
+  text-align: left;
 }
 
 .profile-picture-container {
-    position: relative;
-    width: 180px;
-    height: 180px;
+  position: relative;
+  width: 180px;
+  height: 180px;
 }
 
 .profile-picture {
-    display: block;
-    width: 180px;
-    height: 180px;
-    margin: 0;
-    object-fit: cover;
-    border: 2px solid var(--text-color);
-    border-radius: var(--border-radius);
-    box-sizing: border-box;
-    transition: opacity 0.2s ease, border-color 0.2s ease;
+  display: block;
+  width: 180px;
+  height: 180px;
+  margin: 0;
+  object-fit: cover;
+  border: 2px solid var(--text-color);
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+  transition:
+    opacity 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .profile-picture.hover {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
 }
 
 .profile-picture-container:hover .normal {
-    opacity: 0;
+  opacity: 0;
 }
 
 .profile-picture-container:hover .hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 .profile-picture-container:hover .profile-picture {
-    border-color: var(--standout-color-green);
+  border-color: var(--standout-color-green);
 }
 
 .profile-picture-container:active .profile-picture {
-    border-color: var(--standout-color-cyan);
+  border-color: var(--standout-color-cyan);
 }
 
 /* About me button effect */
@@ -54,82 +56,84 @@ body:has(.profile-picture-container:hover) #about-nav {
   color: var(--standout-color-green);
 }
 body:has(.profile-picture-container:hover) #about-nav::after {
-    width: 100%;
-    background-color: var(--standout-color-green);
+  width: 100%;
+  background-color: var(--standout-color-green);
 }
 body:has(.profile-picture-container:active) #about-nav {
-    color: var(--standout-color-cyan);
+  color: var(--standout-color-cyan);
 }
 body:has(.profile-picture-container:active) #about-nav::after {
-    width: 100%;
-    background-color: var(--standout-color-cyan);
+  width: 100%;
+  background-color: var(--standout-color-cyan);
 }
-
 
 .profile-info {
-    max-width: 500px;
+  max-width: 500px;
 }
 .profile-info h1 {
-    margin: 0;
-    text-align: left;
+  margin: 0;
+  text-align: left;
+}
+.profile-info h2 {
+  margin: 8px 0 20px;
+  text-align: left;
 }
 
-.profile-info h2 {
-    margin: 8px 0 20px;
-    text-align: left;
+.introduction {
+  color: var(--text-color-muted2);
 }
 
 .social-links {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 18px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 18px;
 }
 
 .social-label {
-    padding: 0;
-    margin: 0;
-    display: flex !important;
-    align-items: center;
-    gap: 8px;
+  padding: 0;
+  margin: 0;
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
 
-    text-decoration: none;
-    color: var(--text-color-muted);
-    background: none;
-    border: none;
-    font: inherit;
-    cursor: pointer;
+  text-decoration: none;
+  color: var(--text-color-muted2);
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
 }
 
 .social-links svg {
-    width: 28px;
-    height: 28px;
-    cursor: pointer;
-    flex-shrink: 0;
-    transform-origin: center;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transform-origin: center;
 }
 .social-label:nth-child(2) svg {
-    width: 21px;
-    height: 21px;
+  width: 21px;
+  height: 21px;
 }
 .social-label:nth-child(3) svg {
-    width: 21px;
-    height: 21px;
+  width: 21px;
+  height: 21px;
 }
 .social-label p {
-    margin: 0;
-    font-size: 16px;
+  margin: 0;
+  font-size: 16px;
 }
 
 .social-label::after {
-    bottom: -6px !important;
+  bottom: -6px !important;
 }
 .social-label.active {
-    color: var(--standout-color-cyan) !important;
+  color: var(--standout-color-cyan) !important;
 }
 
 .social-label.active::after {
-    background-color: var(--standout-color-cyan) !important;
+  background-color: var(--standout-color-cyan) !important;
 }
 
 @media (max-width: 768px) {

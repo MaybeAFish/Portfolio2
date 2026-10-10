@@ -2,12 +2,13 @@
   --carousel-arrow-edge-inset: 6px;
   --carousel-arrow-mobile-inset: 4px;
   --corner-art-outset: -16px;
-  --info-top-left-image: url("/projects/tetris/blocks/1.webp");
-  --info-top-right-image: url("/projects/tetris/blocks/2.webp");
-  --info-bottom-left-image: url("/projects/tetris/blocks/3.webp");
-  --info-bottom-right-image: url("/projects/tetris/blocks/4.webp");
-  --media-top-left-image: url("/projects/tetris/blocks/5.webp");
-  --media-top-right-image: url("/projects/tetris/blocks/6.webp");
+
+  --info-top-left-image: url("/projects/tetris/blocks/1.png");
+  --info-top-right-image: url("/projects/tetris/blocks/2.png");
+  --info-bottom-left-image: url("/projects/tetris/blocks/3.png");
+  --info-bottom-right-image: url("/projects/tetris/blocks/4.png");
+  --media-top-left-image: url("/projects/tetris/blocks/5.png");
+  --media-top-right-image: url("/projects/tetris/blocks/6.png");
 }
 
 .mediacarousel--corner-art.tetris .carousel-corner-art--info {
