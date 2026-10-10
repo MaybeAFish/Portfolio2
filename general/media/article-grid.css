@@ -112,11 +112,15 @@
   color: var(--text-color);
   font-size: 1rem;
   line-height: 1;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.25);
   border: 1px solid var(--supporting-background-color);
   border-radius: var(--border-radius);
   backdrop-filter: blur(2px);
   transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.article-card:hover .article-card-tags span {
+  background: rgba(0, 0, 0, 0.75);
 }
 
 .article-card-tags span.is-filter-hover {
@@ -130,8 +134,7 @@
   border-color: var(--standout-color-cyan);
 }
 
-.article-card-content h2,
-.article-card-content h3 {
+.article-card-content h2 {
   width: 100%;
   margin: 0;
   padding: 10px 0;
