@@ -14,7 +14,6 @@
   overflow: hidden;
   box-sizing: border-box;
   color: var(--text-color, #e0e0e0);
-  background: var(--main-background-color, #212121);
   border: 1px solid var(--supporting-background-color);
   border-radius: var(--border-radius);
   transition:
@@ -27,7 +26,6 @@
   border-color: var(--standout-color-green);
   box-shadow: 0 5px 30px var(--supporting-background-color);
 }
-
 .article-card:active {
   border-color: var(--standout-color-cyan);
 }
@@ -71,7 +69,6 @@
 }
 
 .article-card:hover .article-card-media {
-  opacity: 0.9;
   transform: scale(1.1);
 }
 
@@ -80,26 +77,6 @@
   transform: none;
 }
 
-.article-card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.3) 80%,
-    rgba(0, 0, 0, 0.95) 100%
-  );
-  transition: background 0.15s ease;
-}
-
-.article-card:hover .article-card-overlay {
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.3) 20%,
-    rgba(0, 0, 0, 0) 40%,
-    rgba(0, 0, 0, 0) 80%,
-    rgba(0, 0, 0, 0.95) 100%
-  );
-}
 
 
 .article-card-content {
@@ -110,7 +87,6 @@
   justify-content: space-between;
   width: 100%;
   min-height: inherit;
-  padding: 10px;
   box-sizing: border-box;
 }
 
@@ -119,6 +95,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
+  padding-top: 10px;
 }
 
 .article-card-tags span {
@@ -148,9 +125,21 @@
 .article-card-content h3 {
   width: 100%;
   margin: 0;
+  padding: 10px 0;
   color: var(--text-color);
   text-align: center;
   transition: color 0.25s ease;
+  background: rgba(0, 0, 0, 0.5);
+  border-top: 1px solid var(--supporting-background-color);
+  transition: border-color 0.2s ease;
+}
+.article-card-content:hover h2 {
+  color: var(--standout-color-green);
+  border-color: var(--standout-color-green);
+}
+.article-card-content:active h2 {
+  color: var(--standout-color-cyan);
+  border-color: var(--standout-color-cyan);
 }
 
 .article-card-content p {
