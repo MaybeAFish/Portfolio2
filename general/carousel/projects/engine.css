@@ -25,18 +25,18 @@
 
 .mediacarousel--corner-art.engine .carousel-corner-art--info {
   --corner-art-top-left-rotation: 0deg;
-  --corner-top-left-x: -21px;
-  --corner-top-left-y: -25px;
+  --corner-top-left-x: -17.5px;
+  --corner-top-left-y: -30px;
 
-  --corner-art-top-right-rotation: 180deg;
-  --corner-top-right-x: -21px;
-  --corner-top-right-y: -16px;
+  --corner-art-top-right-rotation: 240deg;
+  --corner-top-right-x: -22px;
+  --corner-top-right-y: -15px;
 
-  --corner-art-bottom-left-rotation: 120deg;
-  --corner-bottom-left-x: -12px;
-  --corner-bottom-left-y: -15px;
+  --corner-art-bottom-left-rotation: 209.5deg;
+  --corner-bottom-left-x: -16px;
+  --corner-bottom-left-y: -38px;
 
-  --corner-art-bottom-right-rotation: 240deg;
-  --corner-bottom-right-x: -14px;
-  --corner-bottom-right-y: -16px;
+  --corner-art-bottom-right-rotation: 270deg;
+  --corner-bottom-right-x: -4px;
+  --corner-bottom-right-y: -30px;
 }
