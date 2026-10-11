@@ -393,6 +393,7 @@
   z-index: 3;
 
   background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: grayscale(1);
 
   content: "";
   pointer-events: none;

@@ -1,6 +1,6 @@
 .mediacarousel--corner-art.tetris {
-  --carousel-arrow-edge-inset: 6px;
-  --carousel-arrow-mobile-inset: 4px;
+  --carousel-arrow-edge-inset: 0px;
+  --carousel-arrow-mobile-inset: 0px;
   --corner-art-outset: -16px;
 
   --info-top-left-image: url("/projects/tetris/blocks/1.png");

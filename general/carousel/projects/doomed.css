@@ -1,6 +1,7 @@
 .mediacarousel--corner-art.doomed {
-  --carousel-arrow-edge-inset: 5px;
-  --carousel-arrow-mobile-inset: 3px;
+  --carousel-arrow-edge-inset: 0px;
+  --carousel-arrow-mobile-inset: 0px;
+
   --corner-art-size: 40px;
   --corner-art-outset: -4px;
   --doomed-ornament-mask: url("/projects/doomed/carousel/ornament.png");

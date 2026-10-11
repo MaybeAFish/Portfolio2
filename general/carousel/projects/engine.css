@@ -1,6 +1,6 @@
 .mediacarousel--corner-art.engine {
-  --carousel-arrow-edge-inset: 3px;
-  --carousel-arrow-mobile-inset: 2px;
+  --carousel-arrow-edge-inset: 0px;
+  --carousel-arrow-mobile-inset: 0px;
   --corner-art-size: 60px;
   --corner-art-outset: -20px;
   --media-top-left-image: url("/projects/engine/carousel/triangle.webp");
