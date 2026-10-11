@@ -74,8 +74,9 @@
   position: absolute;
   z-index: 1;
   bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 50%);
+  left: 0;
+  right: 0;
+  transform: translateY(50%);
 
   display: flex;
   justify-content: center;
