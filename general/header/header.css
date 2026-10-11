@@ -22,18 +22,28 @@ nav {
 }
 
 .nav-container {
+  position: relative;
+  isolation: isolate;
   display: flex;
-  gap: clamp(4px, 0.9vw, 10px);
-  padding: clamp(6px, 0.9vw, 8px) clamp(12px, 2vw, 24px);
-
   justify-content: center;
+  gap: clamp(4px, 0.9vw, 10px);
   width: fit-content;
+  padding: clamp(6px, 0.9vw, 8px) clamp(12px, 2vw, 24px);
+}
 
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.7);
+.nav-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  box-sizing: border-box;
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   border: 2px solid var(--supporting-background-color);
   border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.75);
+  pointer-events: none;
 }
 
 nav a {

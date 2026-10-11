@@ -290,8 +290,8 @@
       playButton.type = "button";
       playButton.addEventListener("click", togglePlayback);
 
-      timeLabel = document.createElement("span");
-      timeLabel.className = "custom-video-time";
+      timeLabel = document.createElement("h4");
+      timeLabel.className = "custom-video-time rock";
       row.append(playButton, timeLabel);
 
       if (settings.volumeButton) {

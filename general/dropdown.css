@@ -12,12 +12,13 @@
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(2px);
   border: 2px solid var(--supporting-background-color);
   border-radius: var(--border-radius);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.75);
+
   z-index: 100;
-  min-width: 200px;
+  min-width: 170px;
   flex-direction: column;
   pointer-events: auto;
   overflow: hidden;
@@ -36,7 +37,7 @@
 
 /* Dropdown Items */
 .dropdown-content a {
-  padding: 10px 20px;
+  padding: 10px 10px;
   text-decoration: none;
   color: #ffffff;
   transition: background 0.3s ease, color 0.3s ease;
@@ -46,7 +47,7 @@
 }
 
 .dropdown-content a:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.075);
 }
 
 .dropdown:hover .dropdown-content {
