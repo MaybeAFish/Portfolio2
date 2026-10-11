@@ -71,7 +71,6 @@ a {
 }
 
 p {
-  font-size: var(--text-size);
   margin: 0 0 10px;
   line-height: 1.3;
 }
@@ -107,9 +106,7 @@ ul {
   flex-direction: column;
   gap: 0.5rem;
 }
-li {
-  font-size: var(--text-size);
-}
+
 li > ol,
 li > ul {
   margin-top: 0.5rem;
