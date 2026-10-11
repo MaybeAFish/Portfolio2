@@ -47,7 +47,7 @@
   height: 80px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 500px) {
   .mediacarousel--corner-art.tetris .carousel-corner-art--info .carousel-corner-art__piece--top-left,
   .mediacarousel--corner-art.tetris .carousel-corner-art--info .carousel-corner-art__piece--top-right {
     display: none;
