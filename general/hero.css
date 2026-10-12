@@ -32,6 +32,6 @@
 
 .hero-text {
   max-width: 560px;
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
-  line-height: 1.55;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.5;
 }
