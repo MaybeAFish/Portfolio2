@@ -102,6 +102,8 @@ function setupMediaCarousel(carousel) {
      ========================================================= */
 
   let currentIndex = 0;
+  let suspendedVideoState = null;
+  let mediaSuspended = false;
 
   let pointerId = null;
   let pointerStartX = 0;
@@ -112,6 +114,112 @@ function setupMediaCarousel(carousel) {
   let axisLocked = null;
 
   let suppressNextClick = false;
+
+  function rememberActiveVideoState() {
+    mediaSuspended = true;
+    const video = current.querySelector("video.custom-video-media");
+    if (!video) {
+      suspendedVideoState = null;
+      return;
+    }
+
+    if (suspendedVideoState?.video === video) {
+      return;
+    }
+
+    suspendedVideoState = {
+      video,
+      currentTime: video.currentTime,
+      wasPlaying: !video.paused && !video.ended
+    };
+  }
+
+  function recoverActiveVideo() {
+    if (!mediaSuspended) {
+      return;
+    }
+
+    mediaSuspended = false;
+    thumbs.forEach((thumb) => {
+      const video = thumb.querySelector("video");
+      if (video) {
+        video.pause();
+        video.load();
+      }
+    });
+
+    const state = suspendedVideoState;
+    suspendedVideoState = null;
+
+    if (!state || !current.contains(state.video)) {
+      return;
+    }
+
+    const { video, currentTime, wasPlaying } = state;
+    video.autoplay = false;
+    video.addEventListener("error", () => {
+      console.error("Video could not be restored after carousel resume:", video.error);
+    }, { once: true });
+    video.addEventListener("loadedmetadata", () => {
+      if (!current.contains(video)) {
+        return;
+      }
+
+      if (Number.isFinite(currentTime)) {
+        const targetTime = Number.isFinite(video.duration)
+          ? Math.min(currentTime, video.duration)
+          : currentTime;
+
+        try {
+          video.currentTime = targetTime;
+        } catch (error) {
+          console.error("Video position could not be restored after carousel resume:", error);
+        }
+      }
+
+      if (wasPlaying) {
+        video.play().catch((error) => {
+          if (error.name === "NotAllowedError" && !video.muted) {
+            video.muted = true;
+            video.play().catch((retryError) => {
+              if (retryError.name !== "AbortError") {
+                console.error("Video playback failed after carousel resume:", retryError);
+              }
+            });
+            return;
+          }
+
+          if (error.name !== "AbortError") {
+            console.error("Video playback failed after carousel resume:", error);
+          }
+        });
+      }
+    }, { once: true });
+    video.load();
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      rememberActiveVideoState();
+    } else {
+      recoverActiveVideo();
+    }
+  });
+
+  document.addEventListener("freeze", rememberActiveVideoState);
+  document.addEventListener("resume", recoverActiveVideo);
+  window.addEventListener("blur", rememberActiveVideoState);
+  window.addEventListener("focus", () => {
+    if (!document.hidden) {
+      recoverActiveVideo();
+    }
+  });
+  window.addEventListener("pagehide", rememberActiveVideoState);
+  window.addEventListener("pageshow", () => {
+    if (!document.hidden) {
+      recoverActiveVideo();
+    }
+  });
 
 
   /* =========================================================
@@ -267,16 +375,16 @@ function setupMediaCarousel(carousel) {
 
     if (media) {
       current.querySelectorAll("video").forEach((video) => video.pause());
-      let displayMedia = media;
+      if (media instanceof HTMLVideoElement && !window.VideoPlayer) {
+        throw new Error("The shared video player must load before the media carousel.");
+      }
+
+      current.replaceChildren(media);
 
       if (media instanceof HTMLVideoElement) {
-        if (!window.VideoPlayer) {
-          throw new Error("The shared video player must load before the media carousel.");
-        }
-
         media.muted = false;
         media.preload = "auto";
-        displayMedia = window.VideoPlayer.initialize(media, {
+        window.VideoPlayer.initialize(media, {
           controls: activeThumb.dataset.controls !== "false",
           volumeButton: activeThumb.dataset.volumeButton !== "false",
           volume: activeThumb.dataset.volume,
@@ -286,9 +394,6 @@ function setupMediaCarousel(carousel) {
           loop: true
         });
       }
-
-      current.replaceChildren(displayMedia);
-
     }
 
 
