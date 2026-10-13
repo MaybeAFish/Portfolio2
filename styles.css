@@ -37,9 +37,6 @@ main {
   flex: 1;
 }
 
-html {
-  scrollbar-gutter: stable;
-}
 html,
 body {
   height: 100%;

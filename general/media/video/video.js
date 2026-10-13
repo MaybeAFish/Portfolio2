@@ -142,13 +142,18 @@
     let volumeHover;
     let volumePlayed;
     let timeLabel;
+    let currentTimeLabel;
+    let durationLabel;
     let fullscreenButton;
+    let controls;
 
     function updateVolumeHover(event) {
       if (!volumeSlider) return;
       const bounds = volumeSlider.getBoundingClientRect();
-      if (!bounds.width) return;
-      const position = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
+      const thumbInset = 9;
+      const travel = bounds.height - thumbInset * 2;
+      if (travel <= 0) return;
+      const position = Math.max(0, Math.min(1, (bounds.bottom - event.clientY - thumbInset) / travel));
       volumeTrackContainer.style.setProperty("--volume-hover", `${position * 100}%`);
       volumeTrackContainer.classList.add("is-previewing");
     }
@@ -187,7 +192,7 @@
         volumeSlider.value = String(video.volume);
       }
       if (volumePlayed) {
-        volumePlayed.style.width = `${video.volume * 100}%`;
+        volumePlayed.style.height = `${video.volume * 100}%`;
       }
     }
 
@@ -199,11 +204,12 @@
       progress.value = String(Math.round(percentage * 10));
       progress.style.setProperty("--progress", `${percentage}%`);
       if (progressPlayed) progressPlayed.style.width = `${percentage}%`;
-      if (volumeSlider) {
-        if (volumePlayed) volumePlayed.style.width = `${video.volume * 100}%`;
-      }
-      progress.setAttribute("aria-valuetext", `${formatTime(currentTime)} of ${formatTime(duration)}`);
-      timeLabel.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+      const formattedCurrentTime = formatTime(currentTime);
+      const formattedDuration = formatTime(duration);
+      progress.setAttribute("aria-valuetext", `${formattedCurrentTime} of ${formattedDuration}`);
+      currentTimeLabel.textContent = formattedCurrentTime;
+      durationLabel.textContent = formattedDuration;
+      timeLabel.setAttribute("aria-label", `${formattedCurrentTime} / ${formattedDuration}`);
     }
 
     function updateFullscreenButton() {
@@ -215,12 +221,30 @@
 
     let controlsHideTimeout;
     let controlsPointerId = null;
+    let lastPointerX = null;
+    let lastPointerY = null;
 
-    function scheduleControlsHide() {
+    function scheduleControlsHide(delay = 3000) {
       clearTimeout(controlsHideTimeout);
       controlsHideTimeout = setTimeout(() => {
+        if (
+          controls &&
+          isFullscreen() &&
+          lastPointerX !== null &&
+          lastPointerY !== null
+        ) {
+          const bounds = controls.getBoundingClientRect();
+          const pointerOverControls =
+            lastPointerX >= bounds.left &&
+            lastPointerX <= bounds.right &&
+            lastPointerY >= bounds.top &&
+            lastPointerY <= bounds.bottom;
+
+          if (pointerOverControls) return;
+        }
+
         player.classList.remove("is-controls-visible");
-      }, 3000);
+      }, delay);
     }
 
     function finishTouchControls(event) {
@@ -243,8 +267,48 @@
     });
 
     if (settings.controls) {
-      const controls = document.createElement("div");
+      controls = document.createElement("div");
       controls.className = "custom-video-controls";
+
+      function handleFullscreenPointerMove(event) {
+        if (!isFullscreen() || event.pointerType !== "mouse") return;
+
+        lastPointerX = event.clientX;
+        lastPointerY = event.clientY;
+        player.classList.add("is-controls-visible");
+        scheduleControlsHide(1000);
+      }
+
+      function handleFullscreenChange() {
+        updateFullscreenButton();
+
+        if (!isFullscreen()) {
+          clearTimeout(controlsHideTimeout);
+          player.classList.remove("is-controls-visible");
+          return;
+        }
+
+        player.classList.add("is-controls-visible");
+        scheduleControlsHide(1000);
+      }
+
+      player.addEventListener("pointermove", handleFullscreenPointerMove);
+      controls.addEventListener("pointerleave", (event) => {
+        if (event.pointerType !== "mouse" && event.pointerType !== "pen") return;
+
+        controls
+          .querySelector(".custom-video-volume-control")
+          ?.classList.remove("is-volume-open");
+      });
+      player.addEventListener("pointerleave", (event) => {
+        if (event.pointerType !== "mouse" && event.pointerType !== "pen") return;
+
+        clearTimeout(controlsHideTimeout);
+        player.classList.remove("is-controls-visible");
+        controls
+          .querySelector(".custom-video-volume-control")
+          ?.classList.remove("is-volume-open");
+      });
 
       progressTrackContainer = document.createElement("div");
       progressTrackContainer.className = "custom-video-progress-container";
@@ -267,7 +331,10 @@
       progress.setAttribute("aria-label", "Seek video");
       progress.addEventListener("pointermove", (event) => {
         const bounds = progress.getBoundingClientRect();
-        const position = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
+        const thumbInset = 10;
+        const travel = bounds.width - thumbInset * 2;
+        if (travel <= 0) return;
+        const position = Math.max(0, Math.min(1, (event.clientX - bounds.left - thumbInset) / travel));
         progressTrackContainer.style.setProperty("--hover-progress", `${position * 100}%`);
         progressTrackContainer.classList.add("is-previewing");
       });
@@ -290,9 +357,20 @@
       playButton.type = "button";
       playButton.addEventListener("click", togglePlayback);
 
-      timeLabel = document.createElement("h4");
+      timeLabel = document.createElement("div");
       timeLabel.className = "custom-video-time rock";
-      row.append(playButton, timeLabel);
+      timeLabel.setAttribute("aria-label", "0:00 / 0:00");
+      currentTimeLabel = document.createElement("h4");
+      currentTimeLabel.className = "custom-video-time-current";
+      currentTimeLabel.textContent = "0:00";
+      const timeSeparator = document.createElement("h4");
+      timeSeparator.className = "custom-video-time-separator";
+      timeSeparator.textContent = "/";
+      durationLabel = document.createElement("h4");
+      durationLabel.className = "custom-video-time-duration";
+      durationLabel.textContent = "0:00";
+      timeLabel.append(currentTimeLabel, timeSeparator, durationLabel);
+      row.append(playButton, timeLabel, progressTrackContainer);
 
       if (settings.volumeButton) {
         const volumeControl = document.createElement("div");
@@ -354,11 +432,9 @@
           );
         }, { passive: false });
 
-        volumeControl.append(volumeSlider, volumeButton);
         volumeTrackContainer.append(volumeTrack, volumeSlider);
-        volumeControl.prepend(volumeTrackContainer);
+        volumeControl.append(volumeTrackContainer, volumeButton);
         row.append(volumeControl);
-        row.classList.add("has-volume-control");
       }
 
       fullscreenButton = document.createElement("button");
@@ -384,7 +460,7 @@
       });
 
       row.append(fullscreenButton);
-      controls.append(progressTrackContainer, row);
+      controls.append(row);
       controls.addEventListener("click", (event) => {
         event.stopPropagation();
       });
@@ -400,9 +476,9 @@
         updateVolumeButton();
         updateProgress();
       });
-      player.addEventListener("fullscreenchange", updateFullscreenButton);
-      video.addEventListener("webkitbeginfullscreen", updateFullscreenButton);
-      video.addEventListener("webkitendfullscreen", updateFullscreenButton);
+      player.addEventListener("fullscreenchange", handleFullscreenChange);
+      video.addEventListener("webkitbeginfullscreen", handleFullscreenChange);
+      video.addEventListener("webkitendfullscreen", handleFullscreenChange);
 
       updatePlayButton();
       updateVolumeButton();

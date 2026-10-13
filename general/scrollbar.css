@@ -1,3 +1,10 @@
+html {
+  scrollbar-gutter: stable;
+}
+html:has(:fullscreen) {
+  scrollbar-gutter: auto;
+}
+
 *::-webkit-scrollbar {
   height: 8px;
   width: 8px;

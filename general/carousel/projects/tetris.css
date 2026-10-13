@@ -1,7 +1,6 @@
 .mediacarousel--corner-art.tetris {
   --carousel-arrow-edge-inset: 0px;
   --carousel-arrow-mobile-inset: 0px;
-  --corner-art-outset: -16px;
 
   --info-top-left-image: url("/projects/tetris/blocks/1.png");
   --info-top-right-image: url("/projects/tetris/blocks/2.png");
@@ -11,11 +10,19 @@
   --media-top-right-image: url("/projects/tetris/blocks/6.png");
 }
 
+.mediacarousel--corner-art.tetris .carousel-corner-art--media {
+  --corner-top-right-x: -16.9px;
+  --corner-top-right-y: -16px;
+
+  --corner-top-left-x: -16px;
+  --corner-top-left-y: -15px;
+}
+
 .mediacarousel--corner-art.tetris .carousel-corner-art--info {
   --corner-top-left-x: -17px;
   --corner-top-left-y: -16px;
   --corner-top-right-x: -17px;
-  --corner-top-right-y: -16px;
+  --corner-top-right-y: -15px;
   --corner-bottom-left-x: -17px;
   --corner-bottom-left-y: -0;
   --corner-bottom-right-x: -17px;

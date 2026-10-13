@@ -150,7 +150,7 @@
 
   background: rgba(0, 0, 0, 0.75);
 
-  border: 1px solid var(--text-color);
+  border: 1px solid var(--supporting-background-color);;
   border-radius: var(--border-radius);
 
   font-size: 0.8rem;
