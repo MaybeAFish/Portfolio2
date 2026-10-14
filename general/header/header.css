@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: var(--header-height);
-  z-index: 300;
+  z-index: 1002;
   min-height: var(--header-height);
 
   display: flex;

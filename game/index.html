@@ -142,6 +142,22 @@
 
       await startGame();
     });
+
+    // Tell parent to keep updating the shizzle flashlight
+    document.addEventListener('mousemove', (e) => {
+      window.parent.postMessage({
+        type: 'cursor-position',
+        x: e.clientX,
+        y: e.clientY
+      }, location.origin);
+    });
+document.addEventListener('mouseenter', () => {
+  window.parent.postMessage({ type: 'game-hover', hovered: true }, location.origin);
+});
+
+document.addEventListener('mouseleave', () => {
+  window.parent.postMessage({ type: 'game-hover', hovered: false }, location.origin);
+});
   </script>
 </body>
 </html>

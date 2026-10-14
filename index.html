@@ -496,7 +496,19 @@
       window.addEventListener('resize', resizeGameFrame);
       resizeGameFrame();
 
-      // Cyan border
+      // darken flashlight shizzle while inside iframe
+      window.addEventListener('message', (event) => {
+        if (event.origin !== location.origin) return;
+
+        if (event.data?.type === 'game-hover') {
+          document.documentElement.classList.toggle(
+            'game-hovered',
+            event.data.hovered
+          );
+        }
+      });
+
+      // Cyan border when parent page realizes the iframe is focused
       window.addEventListener('message', (event) => {
         if (event.data?.type !== 'game-focus') return;
         gameFrame.classList.toggle('is-focused', event.data.focused);

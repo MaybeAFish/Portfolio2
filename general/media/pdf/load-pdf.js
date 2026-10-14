@@ -7,5 +7,14 @@ function loadPDF(button, pdfUrl) {
   const container = document.createElement("div");
   container.className = "pdf-container";
   container.innerHTML = `<iframe src="${pdfUrl}"></iframe>`;
+
+  container.addEventListener("mouseenter", () => {
+    document.documentElement.classList.add("game-hovered");
+  });
+
+  container.addEventListener("mouseleave", () => {
+    document.documentElement.classList.remove("game-hovered");
+  });
+
   button.replaceWith(container);
 }
