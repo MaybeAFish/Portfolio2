@@ -27,12 +27,12 @@
 }
 .likes-column li::before {
   content: "+";
-  color: var(--standout-color-green);
+  color: var(--standout-color-cyan);
   font-weight: bold;
 }
 .dislikes li::before {
   content: "–";
-  color: red;
+  color: var(--standout-color-green);
 }
 
 @media (max-width: 700px) {

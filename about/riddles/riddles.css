@@ -3,8 +3,6 @@
   --carousel-green: var(--standout-color-green);
   --carousel-cyan: var(--standout-color-cyan);
 
-  width: min(100%, 900px);
-  margin: 0 auto 80px;
 }
 
 .mediacarousel--text-only .mediacarousel-main {

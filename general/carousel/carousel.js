@@ -23,6 +23,7 @@ function setupMediaCarousel(carousel) {
   const infoItems = Array.from(
     carousel.querySelectorAll(".mediacarousel-info-item")
   );
+  const infoContent = carousel.querySelector(".mediacarousel-info-content");
 
   function addCornerArtwork(target, area) {
     if (!target) return;
@@ -255,6 +256,28 @@ function setupMediaCarousel(carousel) {
      INFO PANEL
      ========================================================= */
 
+  let infoFlashToken = 0;
+
+  function flashInfoText() {
+    if (!infoContent) {
+      return;
+    }
+
+    const token = ++infoFlashToken;
+    infoContent.classList.remove("is-color-flashing");
+    void infoContent.offsetWidth;
+    infoContent.classList.add("is-color-flashing");
+    void infoContent.offsetWidth;
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (token === infoFlashToken) {
+          infoContent.classList.remove("is-color-flashing");
+        }
+      });
+    });
+  }
+
   function updateInfo(index) {
 
     infoItems.forEach((item) => {
@@ -333,7 +356,7 @@ function setupMediaCarousel(carousel) {
      MAIN MEDIA UPDATE
      ========================================================= */
 
-  function updateMain(index, options = {}) {
+  function updateMain(index, options = {}, flash = true) {
 
     const {
       scrollThumb = true,
@@ -352,19 +375,16 @@ function setupMediaCarousel(carousel) {
 
     updateThumbs(currentIndex);
     updateInfo(currentIndex);
-
+    if (flash)
+      flashInfoText();
 
     /* -------------------------
        Counter
        ------------------------- */
-
     if (counter) {
-
       counter.textContent =
         `${currentIndex + 1} / ${thumbs.length}`;
-
     }
-
 
     /* -------------------------
        Main media
@@ -396,11 +416,9 @@ function setupMediaCarousel(carousel) {
       }
     }
 
-
     /* -------------------------
        Scroll active thumbnail
        ------------------------- */
-
     if (scrollThumb) {
 
       activeThumb.scrollIntoView({
@@ -415,10 +433,8 @@ function setupMediaCarousel(carousel) {
       activeThumb.focus({ preventScroll: true });
     }
 
-
     carousel.dataset.activeSlide =
       String(currentIndex);
-
   }
 
 
@@ -796,6 +812,6 @@ function setupMediaCarousel(carousel) {
 
   updateMain(0, {
     scrollThumb: false
-  });
+  }, false);
 
 }

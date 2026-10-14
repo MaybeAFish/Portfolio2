@@ -36,6 +36,17 @@
   border-radius: var(--border-radius);
 }
 
+.mediacarousel-info-content,
+.mediacarousel-info-content * {
+  transition: color 0.5s ease;
+}
+
+.mediacarousel-info-content.is-color-flashing,
+.mediacarousel-info-content.is-color-flashing * {
+  color: var(--standout-color-cyan) !important;
+  transition: none !important;
+}
+
 .mediacarousel-info-heading {
   position: absolute;
   width: 100%;
@@ -100,4 +111,11 @@
   font-size: clamp(1rem, 3vw, 2.5rem);
   overflow-wrap: break-word;
 } */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mediacarousel-info-content,
+  .mediacarousel-info-content * {
+    transition-duration: 0s;
+  }
 }

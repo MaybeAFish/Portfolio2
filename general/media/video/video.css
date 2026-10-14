@@ -117,10 +117,6 @@
   color: var(--standout-color-green);
 }
 
-.custom-video-control:active {
-  color: var(--supporting-color-cyan);
-}
-
 .custom-video-icon {
   display: block;
   width: 100%;
