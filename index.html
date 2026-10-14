@@ -4,12 +4,12 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amine El Hammdaoui – Technical Game Designer</title>
-    <meta name="description" content="My specialties are Game Mechanics, Systems, Loops & Player Experience.">
+    <meta name="description" content="My specialties are Game Mechanics, Game Systems & Player Experience.">
 
     
     <meta property="og:site_name" content="Amine El Hammdaoui">
     <meta property="og:title" content="Amine El Hammdaoui – Technical Game Designer">
-    <meta property="og:description" content="My specialties are Game Mechanics, Systems, Loops & Player Experience.">
+    <meta property="og:description" content="My specialties are Game Mechanics, Game Systems & Player Experience.">
     <meta property="og:image" content="https://amine-game.dev/projects/doomed/doomed-OG.jpg">
     <meta property="og:url" content="https://amine-game.dev/">
     <meta property="og:type" content="website">
@@ -20,18 +20,21 @@
 
     <link rel="stylesheet" href="/styles.css"/>
     <link rel="stylesheet" href="/projects/projects.css"/>
+
+    <link rel="preload" href="/general/fonts/doomed/Engravers'OldEnglishBold.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="/general/fonts/doomed/OldStandardTT-Regular.ttf" as="font" type="font/ttf" crossorigin>
   </head>
 
   <body>  
 
-
-
-<script>
-  document.documentElement.classList.add("no-header-transition");
-</script>
 <header class="site-header">
-  <nav class="nav-container">
+  <script>
+    document.documentElement.classList.add("no-header-transition");
+  </script>
+  <link rel="preload" href="/general/fonts/clicktoamine/Rocky%20Rock.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="/general/fonts/clicktoamine/bree-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
+  <nav class="nav-container">
     <div class="dropdown">
       <a href="/" class="projects-nav-trigger">Projects</a>
       <div class="dropdown-content">
@@ -40,23 +43,14 @@
         <a href="/projects/engine/">Engamine</a>
       </div>
     </div>
-
     <a href="/skills/">Skills</a>
-
     <a href="/cv/">CV</a>
-
     <a href="/about/" id="about-nav">About</a>
-
   </nav>
 
+  <script src="/general/header/header-state.js"></script>
+  <script src="/general/darkness/flashlight.js"></script>
 </header>
-<script src="/general/header/header-state.js"></script>
-<script src="/general/darkness/flashlight.js"></script>
-
-
-
-<script src="/general/media/video/video.js"></script>
-<script src="/general/carousel/carousel.js"></script>
 
     
     <section class="profile-banner">
@@ -472,12 +466,8 @@
       </article>
     </main>
 
-    
     <h2 class="breathing-room">Other Projects</h2>
     <main class="game">
-
-      
-
       <div class="game-iframe-container">
         <iframe src="/game/" title="The Underground" allowfullscreen></iframe>
       </div>
@@ -485,6 +475,8 @@
 
     <div id="footer-placeholder"></div>
     <script src="/general/footer/footer-loader.js"></script>
+    <script src="/general/media/video/video.js"></script>
+    <script src="/general/carousel/carousel.js"></script>
     <script>
       console.log("Why are you snooping here? :P");
 
