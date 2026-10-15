@@ -32,6 +32,8 @@
   --text-size: 18px;
   --header-height: 80px;
   --border-radius: 3px;
+
+/* to do animation speed. 2 of 3 sets van snelheid? voor alle transities in de game consistency */
 }
 
 :root {
