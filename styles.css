@@ -48,7 +48,7 @@
   background: radial-gradient(
     circle var(--light-radius) at var(--cursorX) var(--cursorY),
     transparent 0%,
-    rgba(0, 0, 0, 0.5) 80%,
+    rgba(0, 0, 0, 0.5) 95%,
     rgba(0, 0, 0, 0.95) 100%
   );
   transition: --light-radius 0.4s ease;
