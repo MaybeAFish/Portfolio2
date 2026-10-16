@@ -145,9 +145,3 @@ section {
   margin: 0 auto 120px;
   padding: 0 28px;
 }
-
-/* Pop */
-.important {
-  color: var(--standout-color-cyan);
-  font-size: inherit !important;
-}

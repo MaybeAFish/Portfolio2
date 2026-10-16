@@ -277,3 +277,8 @@ span {
 .breathing-room-big {
   letter-spacing: 1px;
 }
+
+.important {
+  color: var(--standout-color-cyan);
+  font-size: inherit !important;
+}
