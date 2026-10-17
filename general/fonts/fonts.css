@@ -196,6 +196,7 @@
 .engine {
   --font-heading: "Engine Heading";
   --font-body: "Engine Text";
+  word-spacing: -2px;
 }
 .engine h1 {
   font-size: 32px;

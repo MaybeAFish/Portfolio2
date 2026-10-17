@@ -82,7 +82,7 @@
   transition: opacity 0.18s ease;
 }
 
-.custom-video-player:hover .custom-video-controls,
+.custom-video-player.is-controls-visible .custom-video-controls,
 .custom-video-player:has(:focus-visible) .custom-video-controls {
   opacity: 1;
   pointer-events: auto;

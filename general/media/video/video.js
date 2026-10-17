@@ -221,28 +221,10 @@
 
     let controlsHideTimeout;
     let controlsPointerId = null;
-    let lastPointerX = null;
-    let lastPointerY = null;
 
-    function scheduleControlsHide(delay = 3000) {
+    function scheduleControlsHide(delay = 1000) {
       clearTimeout(controlsHideTimeout);
       controlsHideTimeout = setTimeout(() => {
-        if (
-          controls &&
-          isFullscreen() &&
-          lastPointerX !== null &&
-          lastPointerY !== null
-        ) {
-          const bounds = controls.getBoundingClientRect();
-          const pointerOverControls =
-            lastPointerX >= bounds.left &&
-            lastPointerX <= bounds.right &&
-            lastPointerY >= bounds.top &&
-            lastPointerY <= bounds.bottom;
-
-          if (pointerOverControls) return;
-        }
-
         player.classList.remove("is-controls-visible");
       }, delay);
     }
@@ -270,13 +252,11 @@
       controls = document.createElement("div");
       controls.className = "custom-video-controls";
 
-      function handleFullscreenPointerMove(event) {
-        if (!isFullscreen() || event.pointerType !== "mouse") return;
+      function handlePlayerPointerMove(event) {
+        if (event.pointerType !== "mouse") return;
 
-        lastPointerX = event.clientX;
-        lastPointerY = event.clientY;
         player.classList.add("is-controls-visible");
-        scheduleControlsHide(1000);
+        scheduleControlsHide(isFullscreen() ? 1000 : 1000);
       }
 
       function handleFullscreenChange() {
@@ -292,7 +272,7 @@
         scheduleControlsHide(1000);
       }
 
-      player.addEventListener("pointermove", handleFullscreenPointerMove);
+      player.addEventListener("pointermove", handlePlayerPointerMove);
       controls.addEventListener("pointerleave", (event) => {
         if (event.pointerType !== "mouse" && event.pointerType !== "pen") return;
 
