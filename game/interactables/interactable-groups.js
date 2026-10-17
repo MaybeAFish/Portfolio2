@@ -61,26 +61,26 @@ export const GameInteractables = {
     },
     {
       type: ProjectInteractable,
-      position: new THREE.Vector3(-33, interactableHeight, 17),
-      templateUrl: '/game/projects/portfolio.html',
-      options: { color: 'rgb(241, 122, 204)', icon: '/game/map/pixelart.gif' },
-      name: 'Portfolio'
-    },
-    {
-      type: ProjectInteractable,
       position: new THREE.Vector3(-33, interactableHeight, 20),
       templateUrl: '/game/projects/ledgeloop.html',
       options: { color: 'rgb(241, 122, 204)', icon: '/game/map/bucket.png' },
       name: 'Ledgeloop'
     },
   ],
-  "Personal projects/gamejams": [
+  "Gamejams": [
     {
       type: ProjectInteractable,
-      position: new THREE.Vector3(-110, interactableHeight, 45),
+      position: new THREE.Vector3(-105, interactableHeight, 45),
       templateUrl: '/game/projects/dont-pop-the-bubble.html',
       options: { color: 'rgb(129, 255, 196)', icon: '/game/map/say-something.png' },
       name: 'DONT Pop the Bubble'
+    },
+    {
+      type: ProjectInteractable,
+      position: new THREE.Vector3(-115, interactableHeight, 45),
+      templateUrl: '/game/projects/frog-to-it.html',
+      options: { color: 'rgb(129, 255, 196)', icon: '/game/map/say-something.png' },
+      name: 'Frog To It'
     },
   ],
   "Teleports": [

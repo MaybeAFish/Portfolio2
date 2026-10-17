@@ -3,8 +3,8 @@
    ========================================================= */
 
 .mediacarousel {
-  --carousel-green: var(--standout-color-green);
-  --carousel-cyan: var(--standout-color-cyan);
+  --carousel-green: var(--standout-color-ruby);
+  --carousel-cyan: var(--standout-color-gold);
   --carousel-info-width: 500px;
 
   width: 100%;
@@ -13,7 +13,6 @@
   gap: 32px;
   align-items: stretch;
 }
-
 
 /* =========================================================
    INFO POSITION
@@ -32,7 +31,6 @@
   grid-row: 1;
 }
 
-
 /* =========================================================
    MAIN CAROUSEL CONTENT
    ========================================================= */
@@ -40,7 +38,6 @@
 .mediacarousel-content {
   min-width: 0;
 }
-
 
 /* =========================================================
    MAIN MEDIA
@@ -66,7 +63,6 @@
   overflow: visible;
 }
 
-
 /* Current image/video */
 
 .mediacarousel-current {
@@ -85,7 +81,6 @@
   overflow: hidden;
   border-radius: inherit;
 }
-
 
 /* Main media */
 
@@ -123,7 +118,6 @@
   transition: opacity 0.18s ease;
 }
 
-
 /* Show controls on hover */
 
 .mediacarousel-main:hover .mediacarousel-overlay,
@@ -131,7 +125,6 @@
   opacity: 1;
   pointer-events: none;
 }
-
 
 /* =========================================================
    COUNTER
@@ -147,10 +140,9 @@
 
   padding: 5px 10px;
 
-
   background: rgba(0, 0, 0, 0.75);
 
-  border: 1px solid var(--supporting-background-color);;
+  border: 1px solid var(--supporting-background-color);
   border-radius: var(--border-radius);
 
   font-size: 0.8rem;
@@ -160,7 +152,6 @@
 
   pointer-events: none;
 }
-
 
 /* =========================================================
    MAIN ARROWS
@@ -186,7 +177,7 @@
 
   background: rgba(0, 0, 0, 0.75);
 
-  border: 1px solid var(--text-color);;
+  border: 1px solid var(--text-color);
   border-radius: var(--border-radius);
 
   cursor: pointer;
@@ -200,16 +191,13 @@
     transform 0.15s ease;
 }
 
-
 .mediacarousel-button--prev {
   left: calc(12px - var(--carousel-arrow-edge-inset, 0px));
 }
 
-
 .mediacarousel-button--next {
   right: calc(12px - var(--carousel-arrow-edge-inset, 0px));
 }
-
 
 .mediacarousel-button-icon {
   display: flex;
@@ -288,7 +276,6 @@
   transform: rotate(180deg);
 }
 
-
 /* Hover = green */
 
 .mediacarousel-button:hover,
@@ -299,7 +286,6 @@
   background: rgba(0, 0, 0, 0.75);
 }
 
-
 /* Click = cyan */
 
 .mediacarousel-button:active {
@@ -308,7 +294,6 @@
 
   transform: translateY(-50%) scale(0.94);
 }
-
 
 /* =========================================================
    THUMBNAIL STRIP
@@ -341,18 +326,15 @@
   -webkit-user-select: none;
 }
 
-
 .mediacarousel-thumbs::-webkit-scrollbar {
   display: none;
 }
-
 
 .mediacarousel-thumbs.is-dragging {
   cursor: grabbing;
 
   scroll-behavior: auto;
 }
-
 
 /* =========================================================
    THUMBNAILS
@@ -535,13 +517,11 @@
   outline-offset: 3px;
 }
 
-
 /* =========================================================
    TOUCH DEVICES
    ========================================================= */
 
 @media (hover: none), (pointer: coarse) {
-
   .mediacarousel-overlay {
     opacity: 0;
     pointer-events: none;
@@ -550,16 +530,13 @@
   .mediacarousel-main.is-controls-visible .mediacarousel-overlay {
     opacity: 1;
   }
-
 }
-
 
 /* =========================================================
    TABLET / SMALL DESKTOP
    ========================================================= */
 
 @media (max-width: 900px) {
-
   .mediacarousel,
   .mediacarousel--info-left {
     grid-template-columns: minmax(0, 1fr);
@@ -571,9 +548,7 @@
     grid-column: 1;
     grid-row: auto;
   }
-
 }
-
 
 /* =========================================================
    PHONE
@@ -610,16 +585,13 @@
   .mediacarousel-thumb {
     flex-basis: max(105px, calc(var(--carousel-thumb-min-height) * 16 / 9));
   }
-
 }
-
 
 /* =========================================================
    REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
   .mediacarousel-overlay,
   .mediacarousel-button,
   .mediacarousel-thumb,
@@ -627,5 +599,4 @@
     transition: none;
     scroll-behavior: auto;
   }
-
 }

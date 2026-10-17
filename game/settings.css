@@ -1,7 +1,10 @@
 #settings-menu {
   position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  background-color: rgba(0,0,0,0.85);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
   display: none;
   justify-content: center;
   z-index: 400;
@@ -40,14 +43,14 @@
   font-weight: bold;
 }
 .tab-button:hover {
-  border-color: var(--standout-color-green);
-  color: var(--standout-color-green);
+  border-color: var(--standout-color-ruby);
+  color: var(--standout-color-ruby);
 }
 
 .tab-button:active,
 .tab-button.active {
-  border-color: var(--standout-color-cyan);
-  color: var(--standout-color-cyan);
+  border-color: var(--standout-color-gold);
+  color: var(--standout-color-gold);
 }
 
 .close-button {
@@ -61,10 +64,10 @@
   cursor: pointer;
 }
 .close-button:hover {
-  color: var(--standout-color-green);
+  color: var(--standout-color-ruby);
 }
 .close-button:active {
-  color: var(--standout-color-cyan);
+  color: var(--standout-color-gold);
 }
 
 .settings-menu-content {

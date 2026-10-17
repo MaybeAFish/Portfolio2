@@ -76,22 +76,21 @@
 .side-navigation a:focus-visible,
 .side-navigation a.underline-hover:hover,
 .side-navigation a.underline-hover:focus-visible {
-  color: var(--standout-color-green);
+  color: var(--standout-color-ruby);
 }
 .side-navigation a:hover::after,
 .side-navigation a:focus-visible::after,
 .side-navigation a.underline-hover:hover::after,
 .side-navigation a.underline-hover:focus-visible::after {
   width: 100%;
-  background-color: var(--standout-color-green);
+  background-color: var(--standout-color-ruby);
 }
 .side-navigation a[aria-current="page"],
 .side-navigation a.underline-hover[aria-current="page"] {
-  color: var(--standout-color-cyan);
+  color: var(--standout-color-gold);
 }
 .side-navigation a[aria-current="page"]::after,
 .side-navigation a.underline-hover[aria-current="page"]::after {
   width: 100%;
-  background-color: var(--standout-color-cyan);
+  background-color: var(--standout-color-gold);
 }
-

@@ -9,10 +9,10 @@
   transition: opacity 1s ease;
 }
 .settings-button:hover {
-  color: var(--standout-color-green);
+  color: var(--standout-color-ruby);
 }
 .settings-button:active {
-  color: var(--standout-color-cyan);
+  color: var(--standout-color-gold);
 }
 
 #interact-button {

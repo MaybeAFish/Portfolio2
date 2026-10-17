@@ -106,7 +106,7 @@ export class TutorialScene extends Scene {
 
     // Opening cave
     loader.markDone('Opening the cave...');
-    await new Promise(r => setTimeout(r, 10));
+    await new Promise(r => setTimeout(r, 50));
 
     // Done
     this.isLoaded = true;

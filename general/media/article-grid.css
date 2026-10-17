@@ -22,13 +22,10 @@
     transform 0.3s ease;
 }
 .article-card:hover {
-  border-color: var(--standout-color-green);
+  border-color: var(--standout-color-ruby);
   box-shadow: 0 5px 30px var(--supporting-background-color);
 }
-.article-card:active {
-  border-color: var(--standout-color-cyan);
-  transition: border-color 0s;
-}
+
 .article-card.is-hidden {
   display: none;
 }
@@ -125,14 +122,14 @@
 }
 
 .article-card-tags span.is-filter-hover {
-  color: var(--standout-color-green);
-  border-color: var(--standout-color-green);
+  color: var(--standout-color-ruby);
+  border-color: var(--standout-color-ruby);
 }
 
 .article-card-tags span.is-clicking,
 .article-card-tags span.is-highlighted {
-  color: var(--standout-color-cyan);
-  border-color: var(--standout-color-cyan);
+  color: var(--standout-color-gold);
+  border-color: var(--standout-color-gold);
 }
 
 .article-card-content h2 {
@@ -142,7 +139,7 @@
   color: var(--text-color);
   text-align: center;
   transition: color 0.25s ease;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(2px);
 
   border-top: 1px solid var(--supporting-background-color);
@@ -151,12 +148,9 @@
     border-color 0.2s ease;
 }
 .article-card-content:hover h2 {
-  color: var(--standout-color-green);
-  border-color: var(--standout-color-green);
-}
-.article-card-content:active h2 {
-  color: var(--standout-color-cyan);
-  border-color: var(--standout-color-cyan);
+  color: var(--standout-color-ruby);
+  background: rgba(0, 0, 0, 1);
+  border-color: var(--standout-color-ruby);
 }
 
 .article-card-content p {

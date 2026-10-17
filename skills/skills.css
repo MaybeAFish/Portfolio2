@@ -26,19 +26,19 @@
 }
 
 .skill-filter:hover {
-  color: var(--standout-color-green);
-  border-color: var(--standout-color-green);
+  color: var(--standout-color-ruby);
+  border-color: var(--standout-color-ruby);
 }
 
 .skill-filter:active {
-  color: var(--standout-color-cyan);
-  border-color: var(--standout-color-cyan);
+  color: var(--standout-color-gold);
+  border-color: var(--standout-color-gold);
   transform: scale(0.97);
 }
 
 .skill-filter.is-active {
-  color: var(--standout-color-cyan);
-  border-color: var(--standout-color-cyan);
+  color: var(--standout-color-gold);
+  border-color: var(--standout-color-gold);
 }
 
 .skills-empty {

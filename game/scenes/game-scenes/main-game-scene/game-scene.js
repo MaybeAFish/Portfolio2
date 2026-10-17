@@ -87,7 +87,7 @@ export class GameScene extends Scene {
 
     // Opening the map
     loader.markDone('Opening the map...');
-    await new Promise(r => setTimeout(r, 10));
+    await new Promise(r => setTimeout(r, 50));
 
     // Done
     this.isLoaded = true;

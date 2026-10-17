@@ -1,8 +1,7 @@
 .mediacarousel--text-only {
   --font-heading: "Rocky Rock";
-  --carousel-green: var(--standout-color-green);
-  --carousel-cyan: var(--standout-color-cyan);
-
+  --carousel-green: var(--standout-color-ruby);
+  --carousel-cyan: var(--standout-color-gold);
 }
 
 .mediacarousel--text-only .mediacarousel-main {
@@ -29,17 +28,16 @@
   font-size: 0.95rem;
 }
 
-
 .mediacarousel-text-slide summary {
   color: var(--text-color);
   cursor: pointer;
   transition: color 0.2s ease;
 }
 .mediacarousel-text-slide summary:hover {
-  color: var(--standout-color-green);
+  color: var(--standout-color-ruby);
 }
 .mediacarousel-text-slide summary:active {
-  color: var(--standout-color-cyan);
+  color: var(--standout-color-gold);
 }
 
 .mediacarousel-text-slide details p {

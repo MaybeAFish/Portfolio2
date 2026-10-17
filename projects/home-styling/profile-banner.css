@@ -44,27 +44,27 @@
 }
 
 .profile-picture-container:hover .profile-picture {
-  border-color: var(--standout-color-green);
+  border-color: var(--standout-color-ruby);
 }
 
 .profile-picture-container:active .profile-picture {
-  border-color: var(--standout-color-cyan);
+  border-color: var(--standout-color-gold);
 }
 
 /* About me button effect */
 body:has(.profile-picture-container:hover) #about-nav {
-  color: var(--standout-color-green);
+  color: var(--standout-color-ruby);
 }
 body:has(.profile-picture-container:hover) #about-nav::after {
   width: 100%;
-  background-color: var(--standout-color-green);
+  background-color: var(--standout-color-ruby);
 }
 body:has(.profile-picture-container:active) #about-nav {
-  color: var(--standout-color-cyan);
+  color: var(--standout-color-gold);
 }
 body:has(.profile-picture-container:active) #about-nav::after {
   width: 100%;
-  background-color: var(--standout-color-cyan);
+  background-color: var(--standout-color-gold);
 }
 
 .profile-info {
@@ -121,11 +121,11 @@ body:has(.profile-picture-container:active) #about-nav::after {
   bottom: -6px !important;
 }
 .social-label.active {
-  color: var(--standout-color-cyan) !important;
+  color: var(--standout-color-gold) !important;
 }
 
 .social-label.active::after {
-  background-color: var(--standout-color-cyan) !important;
+  background-color: var(--standout-color-gold) !important;
 }
 
 @media (max-width: 768px) {

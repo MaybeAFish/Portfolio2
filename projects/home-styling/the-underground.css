@@ -17,11 +17,11 @@
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
 }
 .game-iframe-container:hover {
-  border-color: var(--standout-color-green);
+  border-color: var(--standout-color-ruby);
 }
 
 .game-iframe-container.is-focused {
-  border-color: var(--standout-color-cyan);
+  border-color: var(--standout-color-gold);
 }
 
 .game-iframe-container iframe {

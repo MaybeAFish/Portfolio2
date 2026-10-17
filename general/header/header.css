@@ -85,40 +85,40 @@ nav a::after {
 /* Tiny dot underline */
 nav a.subpage::after {
   width: 10%;
-  background-color: var(--standout-color-cyan);
+  background-color: var(--standout-color-gold);
 }
 .dropdown-content a.subpage::after,
 .dropdown-content a.active::after,
 .dropdown-content a.selected::after {
   width: 100%;
-  background-color: var(--standout-color-cyan);
+  background-color: var(--standout-color-gold);
 }
 
 nav a:hover {
-  color: var(--standout-color-green);
+  color: var(--standout-color-ruby);
 }
 nav a:hover::after {
   width: 100%;
-  background-color: var(--standout-color-green);
+  background-color: var(--standout-color-ruby);
 }
 
 nav a.active,
 nav a.selected {
-  color: var(--standout-color-cyan);
+  color: var(--standout-color-gold);
 }
 nav a.active::after,
 nav a.selected::after {
   width: 100%;
-  background-color: var(--standout-color-cyan);
+  background-color: var(--standout-color-gold);
 }
 
 #about-nav.hover {
-  color: var(--standout-color-green);
+  color: var(--standout-color-ruby);
 }
 
 #about-nav.hover::after {
   width: 100%;
-  background-color: var(--standout-color-green);
+  background-color: var(--standout-color-ruby);
 }
 
 html.no-header-transition .site-header,

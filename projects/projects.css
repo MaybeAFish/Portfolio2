@@ -43,7 +43,7 @@
 
 .mediacarousel-info-content.is-color-flashing,
 .mediacarousel-info-content.is-color-flashing * {
-  color: var(--standout-color-cyan) !important;
+  color: var(--standout-color-gold) !important;
   transition: none !important;
 }
 

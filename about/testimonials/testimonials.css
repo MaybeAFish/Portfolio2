@@ -14,7 +14,7 @@
   gap: 20px;
   padding: 20px;
 
-  color: var(--text-color);
+  color: var(--text-color-muted1);
   background: var(--supporting-background-color);
   border: 1px solid transparent;
   border-radius: var(--border-radius);
@@ -25,10 +25,10 @@
 }
 
 .testimonial-card:hover {
-  border-color: var(--standout-color-green);
+  border-color: var(--standout-color-ruby);
 }
 .testimonial-card:active {
-  border-color: var(--standout-color-cyan);
+  border-color: var(--standout-color-gold);
 }
 
 .testimonial-header {

@@ -6,14 +6,16 @@
 }
 @font-face {
   font-family: "Bree Serif";
-  src: url("/general/fonts/clicktoamine/bree-serif-latin-400-normal.woff2") format("woff2");
+  src: url("/general/fonts/clicktoamine/bree-serif-latin-400-normal.woff2")
+    format("woff2");
   font-display: block;
 }
 
 /* Doomed */
 @font-face {
   font-family: "Doomed Heading";
-  src: url("/general/fonts/doomed/Engravers'OldEnglishBold.otf") format("opentype");
+  src: url("/general/fonts/doomed/Engravers'OldEnglishBold.otf")
+    format("opentype");
   font-display: block;
 }
 @font-face {
@@ -32,7 +34,8 @@
 }
 @font-face {
   font-family: "Tetris Text";
-  src: url("/general/fonts/tetris/BarlowCondensed-Regular.ttf") format("truetype");
+  src: url("/general/fonts/tetris/BarlowCondensed-Regular.ttf")
+    format("truetype");
   font-display: block;
 }
 
@@ -87,14 +90,16 @@
 /* Frog */
 @font-face {
   font-family: "Frog Heading";
-  src: url("/general/fonts/frog/KaitlynRoseRegular-9MrPL.ttf") format("truetype");
+  src: url("/general/fonts/frog/KaitlynRoseRegular-9MrPL.ttf")
+    format("truetype");
   font-display: block;
 }
 
 /* Physiotherapy */
 @font-face {
   font-family: "Physiotherapy Heading";
-  src: url("/general/fonts/physiotherapy/Montserrat-Bold.ttf") format("truetype");
+  src: url("/general/fonts/physiotherapy/Montserrat-Bold.ttf")
+    format("truetype");
   font-display: block;
 }
 
@@ -106,7 +111,8 @@
 }
 @font-face {
   font-family: "Space Text";
-  src: url("/general/fonts/space/Oxanium-VariableFont_wght.ttf") format("truetype");
+  src: url("/general/fonts/space/Oxanium-VariableFont_wght.ttf")
+    format("truetype");
   font-display: block;
 }
 
@@ -279,6 +285,6 @@ span {
 }
 
 .important {
-  color: var(--standout-color-cyan);
+  color: var(--standout-color-gold);
   font-size: inherit !important;
 }

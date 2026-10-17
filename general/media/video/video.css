@@ -5,8 +5,6 @@
   background: #111;
 }
 
-
-
 .custom-video-player.solo-content {
   max-width: 840px;
   margin: 0 auto 10px;
@@ -69,7 +67,7 @@
 }
 
 .custom-video-controls {
-  --supporting-color-cyan: var(--standout-color-cyan);
+  --supporting-color-cyan: var(--standout-color-gold);
 
   position: absolute;
   z-index: 2;
@@ -114,7 +112,7 @@
 
 .custom-video-control:hover,
 .custom-video-control:focus-visible {
-  color: var(--standout-color-green);
+  color: var(--standout-color-ruby);
 }
 
 .custom-video-icon {
@@ -226,7 +224,7 @@
 }
 
 .custom-video-progress-hover {
-  background: var(--standout-color-green);
+  background: var(--standout-color-ruby);
   opacity: 0;
 }
 
@@ -272,9 +270,11 @@
   margin-top: -9.5px;
   appearance: none;
   border: 0;
-  background: var(--standout-color-cyan);
-  -webkit-mask: url("/general/media/video/icons/Playhead.svg") center / contain no-repeat;
-  mask: url("/general/media/video/icons/Playhead.svg") center / contain no-repeat;
+  background: var(--standout-color-gold);
+  -webkit-mask: url("/general/media/video/icons/Playhead.svg") center / contain
+    no-repeat;
+  mask: url("/general/media/video/icons/Playhead.svg") center / contain
+    no-repeat;
 }
 
 .custom-video-progress::-moz-range-thumb {
@@ -282,9 +282,11 @@
   height: 20px;
   margin-top: -9.5px;
   border: 0;
-  background: var(--standout-color-cyan);
-  -webkit-mask: url("/general/media/video/icons/Playhead.svg") center / contain no-repeat;
-  mask: url("/general/media/video/icons/Playhead.svg") center / contain no-repeat;
+  background: var(--standout-color-gold);
+  -webkit-mask: url("/general/media/video/icons/Playhead.svg") center / contain
+    no-repeat;
+  mask: url("/general/media/video/icons/Playhead.svg") center / contain
+    no-repeat;
 }
 
 .custom-video-volume-control {
@@ -308,7 +310,9 @@
   background: rgba(0, 0, 0, 0.75);
   border-radius: var(--border-radius);
   transform: translateX(-50%);
-  transition: opacity 0.18s ease, visibility 0.18s ease;
+  transition:
+    opacity 0.18s ease,
+    visibility 0.18s ease;
 }
 
 .custom-video-volume-track {
@@ -333,7 +337,7 @@
 }
 
 .custom-video-volume-hover {
-  background: var(--standout-color-green);
+  background: var(--standout-color-ruby);
   opacity: 0;
 }
 
@@ -391,9 +395,11 @@
 
   appearance: none;
   border: 0;
-  background: var(--standout-color-cyan);
-  -webkit-mask: url("/general/media/video/icons/SoundSlider.svg") center / contain no-repeat;
-  mask: url("/general/media/video/icons/SoundSlider.svg") center / contain no-repeat;
+  background: var(--standout-color-gold);
+  -webkit-mask: url("/general/media/video/icons/SoundSlider.svg") center /
+    contain no-repeat;
+  mask: url("/general/media/video/icons/SoundSlider.svg") center / contain
+    no-repeat;
   cursor: pointer;
 }
 
@@ -401,14 +407,17 @@
   width: 18px;
   height: 18px;
   border: 0;
-  background: var(--standout-color-cyan);
-  -webkit-mask: url("/general/media/video/icons/SoundSlider.svg") center / contain no-repeat;
-  mask: url("/general/media/video/icons/SoundSlider.svg") center / contain no-repeat;
+  background: var(--standout-color-gold);
+  -webkit-mask: url("/general/media/video/icons/SoundSlider.svg") center /
+    contain no-repeat;
+  mask: url("/general/media/video/icons/SoundSlider.svg") center / contain
+    no-repeat;
   cursor: pointer;
 }
 
 .custom-video-volume-control:hover .custom-video-volume-slider-container,
-.custom-video-volume-control.is-volume-open .custom-video-volume-slider-container {
+.custom-video-volume-control.is-volume-open
+  .custom-video-volume-slider-container {
   opacity: 1;
   visibility: visible;
 }
@@ -441,7 +450,9 @@
   object-fit: cover;
 }
 
-.mediacarousel-current > .custom-video-player.is-contain video.custom-video-media {
+.mediacarousel-current
+  > .custom-video-player.is-contain
+  video.custom-video-media {
   object-fit: contain;
 }
 
@@ -471,7 +482,8 @@
   object-fit: contain;
 }
 
-.custom-video-player:fullscreen:not(.is-controls-visible) .custom-video-controls {
+.custom-video-player:fullscreen:not(.is-controls-visible)
+  .custom-video-controls {
   opacity: 0;
   pointer-events: none;
 }

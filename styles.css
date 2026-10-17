@@ -11,7 +11,6 @@
 @import "general/media/pdf/pdf.css";
 @import "general/media/grid.css";
 @import "general/media/article-grid.css";
-@import "general/hero.css";
 @import "general/media/art/art-grid.css";
 @import "general/media/art/models-grid.css";
 
@@ -20,8 +19,8 @@
 @import "general/media/tooltip.css";
 
 :root {
-  --standout-color-cyan: #f8d212;
-  --standout-color-green: #cc1010;
+  --standout-color-gold: #f8d212;
+  --standout-color-ruby: #cc1010;
   /* --standout-funny-color: #cc1010; */
   --supporting-background-color: #3b3b3b;
   --main-background-color: #212121;
@@ -33,16 +32,16 @@
   --header-height: 80px;
   --border-radius: 3px;
 
-/* to do animation speed. 2 of 3 sets van snelheid? voor alle transities in de game consistency */
+  /* to do animation speed. 2 of 3 sets van snelheid? voor alle transities in de game consistency */
 }
 
 :root {
   --cursorX: 50vw;
   --cursorY: 50vh;
-  --light-radius: 50vmax;
+  --light-radius: 45vmax;
 }
 :root::before {
-  content: '';
+  content: "";
   position: fixed;
   inset: 0;
   z-index: 1001;
@@ -61,7 +60,7 @@
 @property --light-radius {
   syntax: "<length>";
   inherits: true;
-  initial-value: 50vmax;
+  initial-value: 45vmax;
 }
 
 main {
@@ -83,14 +82,17 @@ body {
   display: flex;
   flex-direction: column;
 
-  color: var(--text-color);
-
+  color: var(--text-color-muted2);
   background: var(--main-background-color);
-  /* background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 40px 40px;
-  background-position: center top; */
+}
+
+::selection {
+  background: var(--standout-color-gold);
+  color: var(--main-background-color);
+}
+::-moz-selection {
+  background: var(--standout-color-gold);
+  color: var(--main-background-color);
 }
 
 a {

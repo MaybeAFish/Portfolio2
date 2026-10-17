@@ -70,7 +70,7 @@
   opacity: 0;
 
   background: var(--supporting-background-color);
-  border: 1px solid var(--standout-color-green);
+  border: 1px solid var(--standout-color-ruby);
   border-radius: var(--border-radius);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
   will-change: transform;
@@ -96,7 +96,7 @@
   flex: 0 0 auto;
 }
 .game-hover-favourites img {
-  width: 200px;
+  width: 180px;
   aspect-ratio: 1;
   object-fit: cover;
   object-position: top;
@@ -127,13 +127,12 @@
   gap: 10px;
 
   padding-top: 10px;
-  border-top: 1px solid var(--standout-color-green);
+  border-top: 1px solid var(--standout-color-ruby);
 }
 .game-hover-cool-stuff img {
   width: 55px;
   height: 55px;
   object-fit: contain;
-
 }
 .game-hover-background {
   background: var(--main-background-color);
