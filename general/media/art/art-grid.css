@@ -23,7 +23,7 @@
   object-fit: contain;
 
   image-rendering: pixelated;
-  filter: saturate(0.5);
+  filter: saturate(0.3);
 }
 .art-grid figure:hover img {
   filter: saturate(1);

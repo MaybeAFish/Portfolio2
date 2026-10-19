@@ -38,7 +38,7 @@
   object-fit: cover;
   object-position: center;
   /* opacity: 0.6; */
-  filter: brightness(0.6);
+  filter: saturate(0.3);
 
   transform: scale(1);
   transition:
@@ -76,7 +76,7 @@
 
 .article-card:hover .article-card-media {
   transform: scale(1.06);
-  filter: brightness(1);
+  filter: saturate(1);
 }
 
 .article-card.samurai:hover > .custom-video-player > video.custom-video-media {
