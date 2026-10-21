@@ -35,7 +35,7 @@
 }
 .hero-text {
   max-width: 560px;
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 1.5;
   /* color: var(--text-color); */
 }
