@@ -6,7 +6,7 @@
   border-radius: var(--border-radius);
 }
 .likes-column {
-  padding: 20px 40px;
+  padding: 14px 30px;
 }
 .likes-column + .likes-column {
   border-left: 1px solid var(--main-background-color);
